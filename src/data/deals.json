@@ -1115,11 +1115,48 @@
     "manufacturer": "Coachmen",
     "model": "Chaparral Lite",
     "floor": "274BH",
-    "ask": null,
-    "dealer": "",
+    "ask": 46250,
+    "dealer": "Byerly RV, Eureka, MO",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low→high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Byerly RV, Eureka, MO, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-coachmen-chaparral-lite-274bh/fa32a29d-3747-11f1-9d95-02ea7b77d8a7/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen-CHAPARRAL+LITE+274BH-5039990749#sid=953023",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-29. Same listing verified on both sites. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP has no 2026 Chaparral Lite 274BH (listed Lite plans include 218SE, 254RLS, 27BAR, 30RLS, 30BHS, 31BH, etc.), so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,

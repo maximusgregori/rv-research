@@ -22,7 +22,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(3)
+    expect(priced).toHaveLength(4)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -58,7 +58,8 @@ describe("deal data", () => {
       (deal) => deal.model === "Chaparral Lite" && deal.floor === "274BH"
     )
     expect(chaparralLite).toMatchObject({
-      ask: null,
+      ask: 46250,
+      dealer: "Byerly RV, Eureka, MO",
       trade: null,
       delta: null,
     })
