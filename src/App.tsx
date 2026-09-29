@@ -119,7 +119,7 @@ export function App() {
 
   return (
     <div className="min-h-svh bg-background text-foreground">
-      <main className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-8 md:px-6">
+      <main className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 py-8 md:px-6 xl:max-w-[90rem]">
         <header className="flex flex-col gap-2">
           <h1 className="font-heading text-2xl font-medium tracking-tight">
             RV Research
@@ -262,7 +262,7 @@ export function App() {
                     <Button
                       type="button"
                       variant="ghost"
-                      size="sm"
+                      size="xs"
                       onClick={() => onSort(column.key)}
                     >
                       {column.label}
@@ -288,7 +288,7 @@ export function App() {
                     <Button
                       type="button"
                       variant="ghost"
-                      size="sm"
+                      size="xs"
                       onClick={() => onSort(column.key)}
                     >
                       {column.label}
@@ -308,25 +308,23 @@ export function App() {
                   key={dealKey(deal)}
                   className={cn(index % 2 === 1 && "bg-muted/40")}
                 >
-                  <TableCell>{deal.year}</TableCell>
-                  <TableCell>{deal.manufacturer}</TableCell>
-                  <TableCell>{deal.model}</TableCell>
-                  <TableCell>{deal.floor}</TableCell>
-                  <TableCell className="tabular-nums">
+                  <TableCell className="w-[1%]">{deal.year}</TableCell>
+                  <TableCell className="w-[1%]">{deal.manufacturer}</TableCell>
+                  <TableCell className="w-[1%]">{deal.model}</TableCell>
+                  <TableCell className="w-[1%]">{deal.floor}</TableCell>
+                  <TableCell className="w-[1%] tabular-nums">
                     {formatMoney(deal.ask)}
                   </TableCell>
-                  <TableCell className="whitespace-normal">
-                    {deal.dealer}
-                  </TableCell>
-                  <TableCell className="tabular-nums">
+                  <TableCell className="w-[1%]">{deal.dealer}</TableCell>
+                  <TableCell className="w-[1%] tabular-nums">
                     {formatMoney(deal.trade)}
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="w-[1%]">
                     <DeltaCell value={deal.delta} />
                   </TableCell>
-                  <TableCell className="min-w-64 whitespace-normal text-muted-foreground">
+                  <TableCell className="min-w-52 whitespace-normal text-muted-foreground">
                     {deal.notes.length > 0 ? (
-                      <div className="flex max-w-xl flex-col gap-1.5">
+                      <div className="flex max-w-sm flex-col gap-1.5">
                         {deal.notes.map((paragraph, paragraphIndex) => (
                           <p key={`${dealKey(deal)}-note-${paragraphIndex}`}>
                             <NoteSpans spans={paragraph} />
