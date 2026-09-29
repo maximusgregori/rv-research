@@ -11,13 +11,71 @@ import {
 } from "./deals"
 import { formatMoney } from "./format"
 
+const COACHMEN_FIFTH_WHEELS = [
+  ["Brookstone", "290RL"],
+  ["Chaparral", "254RLS"],
+  ["Chaparral", "27BAR"],
+  ["Chaparral", "298RLS"],
+  ["Chaparral", "30BHS"],
+  ["Chaparral", "30RLS"],
+  ["Chaparral", "336TSIK"],
+  ["Chaparral", "360IBL"],
+  ["Chaparral Lite", "218SE"],
+  ["Chaparral Lite", "274BH"],
+  ["Chaparral Lite", "30BHS"],
+  ["Chaparral Lite", "30RLS"],
+  ["Chaparral Lite", "31BH"],
+  ["Phoenix Lite", "218SE"],
+] as const
+
+const EAST_TO_WEST_FIFTH_WHEELS = [
+  ["Ahara", "297MK"],
+  ["Ahara", "325RL"],
+  ["Ahara", "365RL"],
+  ["Tandara", "235ML"],
+  ["Tandara", "295RL"],
+] as const
+
 describe("deal data", () => {
-  it("keeps every migrated Coachmen row", () => {
-    expect(deals).toHaveLength(262)
+  it("keeps every migrated Coachmen row and adds East To West fifth wheels", () => {
+    expect(deals).toHaveLength(267)
+    expect(
+      deals.filter((deal) => deal.manufacturer === "Coachmen")
+    ).toHaveLength(262)
     expect(new Set(deals.map((deal) => deal.manufacturer))).toEqual(
-      new Set(["Coachmen"])
+      new Set(["Coachmen", "East To West"])
     )
     expect(new Set(deals.map((deal) => deal.year))).toEqual(new Set([2026]))
+    expect(deals.some((deal) => deal.model === "Adrenaline")).toBe(true)
+    expect(deals.some((deal) => deal.model === "Viking")).toBe(true)
+  })
+
+  it("lists every Coachmen and East To West fifth-wheel floor plan", () => {
+    for (const [model, floor] of COACHMEN_FIFTH_WHEELS) {
+      expect(
+        deals.some(
+          (deal) =>
+            deal.manufacturer === "Coachmen" &&
+            deal.model === model &&
+            deal.floor === floor
+        )
+      ).toBe(true)
+    }
+
+    const etw = deals.filter((deal) => deal.manufacturer === "East To West")
+    expect(etw).toHaveLength(5)
+    expect(etw.map((deal) => [deal.model, deal.floor])).toEqual(
+      EAST_TO_WEST_FIFTH_WHEELS.map(([model, floor]) => [model, floor])
+    )
+    expect(
+      etw.every(
+        (deal) =>
+          deal.ask == null &&
+          deal.trade == null &&
+          deal.delta == null &&
+          deal.dealer === ""
+      )
+    ).toBe(true)
   })
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
@@ -81,7 +139,11 @@ describe("filters and sort", () => {
   it("drops a model that is no longer valid after another filter changes", () => {
     const next = coerceFilters(
       { manufacturer: "Coachmen", year: "2026", model: "Missing" },
-      filterOptions(deals, { manufacturer: "Coachmen", year: "2026", model: "" })
+      filterOptions(deals, {
+        manufacturer: "Coachmen",
+        year: "2026",
+        model: "",
+      })
     )
     expect(next.model).toBe("")
   })
@@ -96,7 +158,7 @@ describe("filters and sort", () => {
     const priced = rows.filter((deal) => deal.delta != null)
     const empty = rows.filter((deal) => deal.delta == null)
     expect(priced.map((deal) => deal.delta)).toEqual([-5252, -586, 13165])
-    expect(empty.length).toBe(259)
+    expect(empty.length).toBe(264)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
@@ -110,6 +172,22 @@ describe("filters and sort", () => {
     })
     expect(rows.length).toBeGreaterThan(0)
     expect(rows.every((deal) => deal.model === "Chaparral")).toBe(true)
+  })
+
+  it("cascades East To West models and keeps those rows unpriced", () => {
+    const options = filterOptions(deals, {
+      manufacturer: "East To West",
+      year: "",
+      model: "",
+    })
+    expect(options.model).toEqual(["Ahara", "Tandara"])
+    const rows = matching(deals, {
+      manufacturer: "East To West",
+      year: "",
+      model: "Ahara",
+    })
+    expect(rows).toHaveLength(3)
+    expect(rows.every((deal) => deal.ask == null)).toBe(true)
   })
 })
 

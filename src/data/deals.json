@@ -3016,5 +3016,60 @@
     "trade": null,
     "delta": null,
     "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "East To West",
+    "model": "Ahara",
+    "floor": "297MK",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "East To West",
+    "model": "Ahara",
+    "floor": "325RL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "East To West",
+    "model": "Ahara",
+    "floor": "365RL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "East To West",
+    "model": "Tandara",
+    "floor": "235ML",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "East To West",
+    "model": "Tandara",
+    "floor": "295RL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
   }
 ]
