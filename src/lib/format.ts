@@ -1,0 +1,6 @@
+export function formatMoney(value: number | null): string {
+  if (value == null) return ""
+  const formatted = Math.abs(value).toLocaleString("en-US")
+  if (value < 0) return `−$${formatted}`
+  return `$${formatted}`
+}
