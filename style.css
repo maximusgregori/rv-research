@@ -197,7 +197,7 @@ tr:last-child td {
   color: #6b3d00;
 }
 
-.notes {
+.notes:not(:empty) {
   min-width: 16rem;
 }
 
