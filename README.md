@@ -1,6 +1,6 @@
 # RV Research
 
-Static GitHub Pages site for an industry RV deal / trade-delta benchmark: lowest ask (RV Trader + RVT) vs J.D. Power Low Retail × 0.9.
+Static GitHub Pages site for an industry RV deal / trade-delta benchmark: new model-year 2026 units under 40 ft; lowest ask (RV Trader + RVT) vs J.D. Power Low Retail × 0.9.
 
 The table is sortable (click a column header) and filterable by manufacturer, year, and model. No build step — open `index.html` or enable Pages:
 
