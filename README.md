@@ -1,6 +1,6 @@
 # RV Research
 
-Static GitHub Pages table for Dale/Max RV deal research: lowest ask (RV Trader + RVT) vs J.D. Power Low Retail × 0.9.
+Static GitHub Pages table for an industry RV deal / trade-delta benchmark: lowest ask (RV Trader + RVT) vs J.D. Power Low Retail × 0.9.
 
 Open `index.html` locally, or enable Pages:
 
