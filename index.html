@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RV Research — Pilot</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>RV Research — Pilot</h1>
+    <p class="lede">Lowest published ask versus Dale’s trade value for one floor plan. This page is the pilot; later tables will use one row per manufacturer → model → floor plan.</p>
+
+    <section class="method" aria-labelledby="method-heading">
+      <h2 id="method-heading">Methodology</h2>
+      <ul>
+        <li>Listing sources: <a href="https://www.rvtrader.com">rvtrader.com</a> and <a href="https://www.rvt.com">rvt.com</a></li>
+        <li>Filters: New, year 2026+, length under 40 ft</li>
+        <li>Trade value = J.D. Power Low Retail × 0.9 (Dale’s rule)</li>
+        <li>Delta = lowest ask − trade</li>
+        <li>Sort target eventually: smallest delta first</li>
+        <li>One row per manufacturer → model → floor plan when scaled; this page is the pilot</li>
+      </ul>
+    </section>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Manufacturer</th>
+            <th>Model</th>
+            <th>Floor plan</th>
+            <th>Lowest ask</th>
+            <th>Dealer</th>
+            <th>Trade value</th>
+            <th>Delta</th>
+            <th>Notes/Links</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2026</td>
+            <td>Coachmen</td>
+            <td>Brookstone</td>
+            <td>290RL</td>
+            <td class="num">$69,595</td>
+            <td>Kris Willis RV (Dexter, MO)</td>
+            <td class="num">$65,250</td>
+            <td class="num">$4,345</td>
+            <td class="notes">
+              <p>Found on both RV Trader and RVT.</p>
+              <p><a href="https://www.rvt.com/buy/details/2026-coachmen-brookstone-290rl/38ee8720-7eb1-11f1-beaa-02c8259c7411/">Listing (RVT)</a></p>
+              <p>JDP Low Retail $72,500. <a href="https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-290-rl/6644350/values">JDP values</a></p>
+            </td>
+          </tr>
+          <tr class="incomplete">
+            <td>2027</td>
+            <td>Coachmen</td>
+            <td>Brookstone</td>
+            <td>290RL</td>
+            <td class="num">$63,200</td>
+            <td>Trailer Source, Inc. (Frederick / Longmont, CO)</td>
+            <td class="num">—</td>
+            <td class="num">—</td>
+            <td class="notes">
+              <p>Found on both RV Trader and RVT. J.D. Power Low Retail is not published for 2027 yet, so trade and delta cannot be computed.</p>
+              <p>Cheaper ask exists but cannot compute Dale’s trade delta until JDP lists 2027.</p>
+              <p><a href="https://www.rvtrader.com/listing/2027-Coachmen-Brookstone+290RL-5041009420">Listing (RV Trader)</a> · <a href="https://www.rvt.com/buy/details/2027-coachmen-brookstone-290rl/77ebf2d8-6a3c-11f1-adcf-02c8259c7411/">Listing (RVT)</a></p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <footer>Data as of 2026-09-29. Pilot only.</footer>
+  </main>
+</body>
+</html>
