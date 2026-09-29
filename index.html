@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>RV Research — Pilot</title>
+  <title>RV Research</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <main>
-    <h1>RV Research — Pilot</h1>
-    <p class="lede">Industry trade-delta benchmark: lowest published ask versus trade value for one floor plan. This page is the pilot; later tables will use one row per manufacturer → model → floor plan.</p>
+    <h1>RV Research</h1>
+    <p class="lede">Industry RV trade-delta benchmark: lowest published ask versus trade value, one row per manufacturer → model → floor plan.</p>
 
     <section class="method" aria-labelledby="method-heading">
       <h2 id="method-heading">Methodology</h2>
@@ -18,28 +18,59 @@
         <li>Industry research filters: New, year 2026+, length under 40 ft</li>
         <li>Trade value = J.D. Power Low Retail × 0.9</li>
         <li>Delta = lowest ask − trade</li>
-        <li>Sort target eventually: smallest delta first</li>
-        <li>One row per manufacturer → model → floor plan when scaled; this page is the pilot</li>
+        <li>Default sort: smallest delta first. Click a column header to change sort.</li>
+        <li>One row per manufacturer → model → floor plan</li>
       </ul>
     </section>
 
+    <form class="filters" id="filters" aria-label="Table filters">
+      <label>
+        Manufacturer
+        <select id="filter-manufacturer" name="manufacturer">
+          <option value="">All</option>
+        </select>
+      </label>
+      <label>
+        Year
+        <select id="filter-year" name="year">
+          <option value="">All</option>
+        </select>
+      </label>
+      <label>
+        Model
+        <select id="filter-model" name="model">
+          <option value="">All</option>
+        </select>
+      </label>
+      <button type="reset" id="reset-filters">Reset filters</button>
+      <p class="filter-status" id="filter-status" aria-live="polite"></p>
+    </form>
+
     <div class="table-wrap">
-      <table>
+      <table id="deals">
         <thead>
           <tr>
-            <th>Year</th>
-            <th>Manufacturer</th>
-            <th>Model</th>
-            <th>Floor plan</th>
-            <th>Lowest ask</th>
-            <th>Dealer</th>
-            <th>Trade value</th>
-            <th>Delta</th>
-            <th>Notes/Links</th>
+            <th scope="col" aria-sort="none" data-sort="year"><button type="button">Year</button></th>
+            <th scope="col" aria-sort="none" data-sort="manufacturer"><button type="button">Manufacturer</button></th>
+            <th scope="col" aria-sort="none" data-sort="model"><button type="button">Model</button></th>
+            <th scope="col" aria-sort="none" data-sort="floor"><button type="button">Floor plan</button></th>
+            <th scope="col" aria-sort="none" data-sort="ask"><button type="button">Lowest ask</button></th>
+            <th scope="col">Dealer</th>
+            <th scope="col" aria-sort="none" data-sort="trade"><button type="button">Trade value</button></th>
+            <th scope="col" aria-sort="none" data-sort="delta"><button type="button">Delta</button></th>
+            <th scope="col">Notes/Links</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr
+            data-year="2026"
+            data-manufacturer="Coachmen"
+            data-model="Brookstone"
+            data-floor="290RL"
+            data-ask="69595"
+            data-trade="65250"
+            data-delta="4345"
+          >
             <td>2026</td>
             <td>Coachmen</td>
             <td>Brookstone</td>
@@ -54,7 +85,16 @@
               <p>JDP Low Retail $72,500. <a href="https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-290-rl/6644350/values">JDP values</a></p>
             </td>
           </tr>
-          <tr class="incomplete">
+          <tr
+            class="incomplete"
+            data-year="2027"
+            data-manufacturer="Coachmen"
+            data-model="Brookstone"
+            data-floor="290RL"
+            data-ask="63200"
+            data-trade=""
+            data-delta=""
+          >
             <td>2027</td>
             <td>Coachmen</td>
             <td>Brookstone</td>
@@ -73,7 +113,8 @@
       </table>
     </div>
 
-    <footer>Data as of 2026-09-29. Pilot only.</footer>
+    <footer>Data as of 2026-09-29.</footer>
   </main>
+  <script src="app.js"></script>
 </body>
 </html>

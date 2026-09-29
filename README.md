@@ -1,8 +1,8 @@
 # RV Research
 
-Static GitHub Pages table for an industry RV deal / trade-delta benchmark: lowest ask (RV Trader + RVT) vs J.D. Power Low Retail × 0.9.
+Static GitHub Pages site for an industry RV deal / trade-delta benchmark: lowest ask (RV Trader + RVT) vs J.D. Power Low Retail × 0.9.
 
-Open `index.html` locally, or enable Pages:
+The table is sortable (click a column header) and filterable by manufacturer, year, and model. No build step — open `index.html` or enable Pages:
 
 1. Repo **Settings → Pages**
 2. **Deploy from a branch**
