@@ -261,11 +261,12 @@ describe("deal data", () => {
       "Cherokee Arctic Wolf|289PANO",
       "Cherokee Arctic Wolf|3250 SUITE",
       "Cherokee Arctic Wolf|331BH",
+      "Crusader|KING33",
     ])
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(12)
+    expect(pricedForest).toHaveLength(13)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -319,7 +320,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(98)
+    expect(priced).toHaveLength(99)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -1135,8 +1136,61 @@ describe("deal data", () => {
               span.href === askAltUrl &&
               span.label === "RV Trader"
           )
-      ).toBe(true)
+      ).toBe(true      )
     }
+  })
+
+  it("applies Crusader KING33 ask and 2026 JDP trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Crusader" &&
+        row.floor === "KING33" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 52495,
+      dealer: "Roth RV - Grand Rapids, Grand Rapids, MN",
+      trade: 39420,
+      delta: 13075,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Trade = 2026 JDP Low Retail $43,800 × 0.9. Ask $52,495 both sites (Roth RV Grand Rapids MN). Length 35'11\"."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvt.com/buy/details/2026-forest-river-crusader-king33/2ec95e3a-0333-11f1-beaa-02c8259c7411/" &&
+            span.label === "RVT"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Crusader+KING33-5039242753" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
   })
 
   it("applies 2025 JDP proxy trades on Coachmen Adrenaline", () => {
@@ -2322,10 +2376,10 @@ describe("filters and sort", () => {
       659, 1163, 1340, 1609, 1665, 1919, 2089, 2535, 3195, 3435, 3570, 4310,
       4644, 4790, 4875, 4970, 5243, 5480, 5514, 5834, 5889, 5965, 6144, 6540,
       6735, 6900, 7201, 7294, 7370, 7709, 7980, 8356, 8784, 8790, 9034, 9073,
-      10050, 11736, 13165, 13584, 15697, 17460, 17664, 17740, 19530, 21524,
+      10050, 11736, 13075, 13165, 13584, 15697, 17460, 17664, 17740, 19530, 21524,
       22400, 25615, 25875, 26440, 26520, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(330)
+    expect(empty.length).toBe(329)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
