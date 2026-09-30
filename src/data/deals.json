@@ -4,55 +4,227 @@
     "manufacturer": "Coachmen",
     "model": "Adrenaline",
     "floor": "21LT",
-    "ask": null,
-    "dealer": "",
+    "ask": 34699,
+    "dealer": "RV Value Mart - Manheim",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was RV Value Mart - Manheim, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen-Adrenaline+21LT-5041508337#sid=755239",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-coachmen-adrenaline-21lt/a144f2f6-8a8d-11f1-adcf-02f5bff6b341/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. RVT and RV Trader organic 2026 new 21LT listings both $34,699. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 21LT, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Adrenaline",
     "floor": "27LT",
-    "ask": null,
-    "dealer": "",
+    "ask": 35986,
+    "dealer": "Uwharrie RV, Albemarle, NC",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Uwharrie RV, Albemarle, NC, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen-Adrenaline+27LT-5039418323#sid=640943",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-coachmen-adrenaline-27lt/8a0f7843-0e1d-11f1-beaa-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. Cheapest organic current 2026 new 27LT on both sites is $35,986. RVT lists 33 ft (<40). Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 27LT, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Adrenaline",
     "floor": "30GS",
-    "ask": null,
-    "dealer": "",
+    "ask": 59999,
+    "dealer": "General RV Center - Tampa, Dover, FL",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was General RV Center - Tampa, Dover, FL, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen-ADRENALINE+30GS-5039287671#sid=107899",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. Cheapest current organic 2026 new 30GS on RV Trader is $59,999. RVT search had no current active 2026 30GS listing. RV Trader detail lists 37 ft (<40). Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 30GS, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Apex",
     "floor": "ULTRA-LITE 293RLDS",
-    "ask": null,
-    "dealer": "",
+    "ask": 42999,
+    "dealer": "General RV Center - Salisbury, Salisbury, NC",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was General RV Center - Salisbury, Salisbury, NC, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen-Apex+Ultra+Lite+293RLDS-5040333009#sid=460761",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. Cheapest organic current 2026 new 293RLDS on RV Trader is $42,999; RVT current comparable Mesa listing is $46,999, so RV Trader was kept. RV Trader detail lists 34 ft (<40). Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP has 2022 M-293 RLDS Low Retail $27,100 but no 2026 value, so trade and delta stay blank rather than use a mismatched year. "
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2022/apex-by-coachmen/m-293-rlds/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Apex Nano",
     "floor": "181RB",
-    "ask": null,
-    "dealer": "",
+    "ask": 20999,
+    "dealer": "Camp Rite RV Sales, Loganville, GA",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Camp Rite RV Sales, Loganville, GA, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen+Rv-Apex+Nano+181RB-5038999302#sid=656260",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-coachmen-apex-nano-181rb/a72cbb72-9ddd-11f0-beaa-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. Cheapest organic current 2026 new 181RB on RV Trader is $20,999; RVT current comparable Bunker Hill listing is $23,441, so RV Trader was kept. RV Trader detail lists 21 ft (<40). Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 181RB, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
