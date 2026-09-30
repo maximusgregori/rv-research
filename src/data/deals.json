@@ -1167,8 +1167,8 @@
     "floor": "22C AWD",
     "ask": 142000,
     "dealer": "Delta, OH",
-    "trade": null,
-    "delta": null,
+    "trade": 115560,
+    "delta": 26440,
     "notes": [
       [
         {
@@ -1194,7 +1194,12 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "JDP Low Retail $128,400. "
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-22-c-awd-ford/6640384/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -1233,7 +1238,7 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "Exact floor 22C was checked on the 2026 JDP Beyond series page and is not listed, so trade and delta stay blank."
         }
       ]
     ]
@@ -1245,8 +1250,8 @@
     "floor": "22D AWD",
     "ask": 142986,
     "dealer": "Albemarle, NC",
-    "trade": null,
-    "delta": null,
+    "trade": 114120,
+    "delta": 28866,
     "notes": [
       [
         {
@@ -1272,7 +1277,12 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "JDP Low Retail $126,800. "
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-22-d-awd-ford/6640383/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -1311,7 +1321,7 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "Exact floor 22D-EB was checked on the 2026 JDP Beyond series page and is not listed, so trade and delta stay blank."
         }
       ]
     ]
@@ -1323,8 +1333,8 @@
     "floor": "22RB AWD",
     "ask": 141785,
     "dealer": "Lewisville, TX",
-    "trade": null,
-    "delta": null,
+    "trade": 119385,
+    "delta": 22400,
     "notes": [
       [
         {
@@ -1350,7 +1360,12 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "JDP Low Retail $132,650. "
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-22-rb-awd-ford/6640385/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -1389,7 +1404,7 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "Exact floor 22RBBC was checked on the 2026 JDP Beyond series page and is not listed, so trade and delta stay blank."
         }
       ]
     ]
@@ -1428,7 +1443,7 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "Exact floor 22RB was checked on the 2026 JDP Beyond series page and is not listed, so trade and delta stay blank."
         }
       ]
     ]
@@ -1493,7 +1508,7 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "Exact floor 243RBSLE was checked on the 2026 JDP Catalina Legacy Edition series page and is not listed, so trade and delta stay blank."
         }
       ]
     ]
@@ -1505,8 +1520,8 @@
     "floor": "243RBS",
     "ask": 25495,
     "dealer": "RV Dynasty, Bunker Hill, IN",
-    "trade": null,
-    "delta": null,
+    "trade": 27090,
+    "delta": -1595,
     "notes": [
       [
         {
@@ -1523,7 +1538,12 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "JDP Low Retail $30,100. "
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-243-rbs/6648716/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -1535,8 +1555,8 @@
     "floor": "263BHSCK",
     "ask": 28833,
     "dealer": "RV Wholesalers, Lakeview, OH",
-    "trade": null,
-    "delta": null,
+    "trade": 28260,
+    "delta": 573,
     "notes": [
       [
         {
@@ -1553,7 +1573,12 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "JDP Low Retail $31,400. "
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-263-bhsck/6648717/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -1565,8 +1590,8 @@
     "floor": "263FKDS",
     "ask": 36519,
     "dealer": "Palmetto State RV, Greer SC",
-    "trade": null,
-    "delta": null,
+    "trade": 31005,
+    "delta": 5514,
     "notes": [
       [
         {
@@ -1601,7 +1626,12 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "JDP Low Retail $34,450. "
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-263-fkds/6648718/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -1613,8 +1643,8 @@
     "floor": "273DBHCK",
     "ask": 27495,
     "dealer": "RV Dynasty, Bunker Hill, IN",
-    "trade": null,
-    "delta": null,
+    "trade": 28665,
+    "delta": -1170,
     "notes": [
       [
         {
@@ -1631,7 +1661,12 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "JDP Low Retail $31,850. "
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-273-dbhck/6648719/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -1643,8 +1678,8 @@
     "floor": "283RKS",
     "ask": 31995,
     "dealer": "Alpin Haus - Amsterdam, Amsterdam NY",
-    "trade": null,
-    "delta": null,
+    "trade": 28800,
+    "delta": 3195,
     "notes": [
       [
         {
@@ -1679,7 +1714,12 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "JDP Low Retail $32,000. "
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-283-rks/6648720/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -1727,7 +1767,7 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "Exact floor 283RNR was checked on the 2026 JDP Catalina Legacy Edition series page and is not listed, so trade and delta stay blank."
         }
       ]
     ]
@@ -1775,7 +1815,7 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "Exact floor 293QBCKLE was checked on the 2026 JDP Catalina Legacy Edition series page and is not listed, so trade and delta stay blank."
         }
       ]
     ]
@@ -1787,8 +1827,8 @@
     "floor": "293QBCK",
     "ask": 28995,
     "dealer": "RV Dynasty, Bunker Hill IN",
-    "trade": null,
-    "delta": null,
+    "trade": 29025,
+    "delta": -30,
     "notes": [
       [
         {
@@ -1823,7 +1863,12 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "JDP Low Retail $32,250. "
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-293-qbck/6648721/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -1835,8 +1880,8 @@
     "floor": "293TQBSCK",
     "ask": 27999,
     "dealer": "Cheyenne Camping Center Co, Walcott IA",
-    "trade": null,
-    "delta": null,
+    "trade": 29475,
+    "delta": -1476,
     "notes": [
       [
         {
@@ -1871,7 +1916,12 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "JDP Low Retail $32,750. "
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-293-tqbsck/6648722/values",
+          "label": "JDP values"
         }
       ]
     ]
