@@ -277,12 +277,13 @@ describe("deal data", () => {
       "Rockwood Signature|372RL",
       "Rockwood Signature|R331RL",
       "Rockwood Signature FW|361RLS",
+      "Rockwood Signature FW|R374DBH",
       "Rockwood Signature Fifth Wheel|281RK",
     ])
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(29)
+    expect(pricedForest).toHaveLength(30)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -336,7 +337,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(115)
+    expect(priced).toHaveLength(116)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -2077,6 +2078,97 @@ describe("deal data", () => {
     expect(fifthTwin).toBeUndefined()
   })
 
+  it("applies Rockwood Signature FW R374DBH ask and 2026 JDP trade", () => {
+    const rows = [
+      ["Rockwood Signature FW", "R374DBH"],
+    ] as const
+    for (const [model, floor] of rows) {
+      const deal = deals.find(
+        (row) =>
+          row.manufacturer === "Forest River" &&
+          row.model === model &&
+          row.floor === floor &&
+          row.year === 2026
+      )
+      expect(deal).toMatchObject({
+        ask: 54994,
+        dealer: "Camping World, Wentzville, MO",
+        trade: 43110,
+        delta: 11884,
+      })
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "text" &&
+              span.text ===
+                "Ask $54,994 RV Trader (Camping World, Wentzville MO), 374DBH ~36.83 ft New; RVT only open-to-offers with no fixed price (RV World Yuma AZ). Trade = 2026 JDP Low Retail $47,900 × 0.9 = $43,110 (Signature Series M-374DBH)."
+          )
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some((span) => span.type === "link" && span.label === "JDP values")
+      ).toBe(false)
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "link" &&
+              span.href ===
+                "https://www.rvt.com/buy/details/2026-forest-river-rockwood-signature/f212022f-13db-11f1-beaa-02c8259c7411/" &&
+              span.label === "RVT"
+          )
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "link" &&
+              span.href ===
+                "https://www.rvtrader.com/listing/2026-Forest+River-ROCKWOOD+SIGNATURE+374DBH-5042062690" &&
+              span.label === "RV Trader"
+          )
+      ).toBe(true)
+    }
+
+    const signatureBare = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Rockwood Signature" &&
+        (row.floor === "374DBH" || row.floor === "R374DBH") &&
+        row.year === 2026
+    )
+    expect(signatureBare).toBeUndefined()
+
+    const flagstaff = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Flagstaff Classic" &&
+        row.floor === "374DBH" &&
+        row.year === 2026
+    )
+    expect(flagstaff).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(flagstaff?.notes).toEqual([])
+
+    const fifthTwin = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Rockwood Signature Fifth Wheel" &&
+        (row.floor === "374DBH" || row.floor === "R374DBH") &&
+        row.year === 2026
+    )
+    expect(fifthTwin).toBeUndefined()
+  })
+
   it("applies 2025 JDP proxy trades on Coachmen Adrenaline", () => {
     const rows = [
       [
@@ -3266,11 +3358,11 @@ describe("filters and sort", () => {
       659, 1163, 1340, 1609, 1665, 1919, 2089, 2535, 3195, 3435, 3570, 4310,
       4644, 4790, 4875, 4970, 5243, 5480, 5514, 5834, 5889, 5965, 6144, 6540,
       6554, 6735, 6900, 7201, 7294, 7370, 7709, 7980, 8010, 8356, 8784, 8790, 8828, 9034,
-      9073, 9314, 10050, 10859, 10859, 11385, 11736, 12283, 13013, 13013, 13075, 13165, 13584,
+      9073, 9314, 10050, 10859, 10859, 11385, 11736, 11884, 12283, 13013, 13013, 13075, 13165, 13584,
       14139, 15689, 15697, 16667, 16667, 17460, 17664, 17740, 17755, 19530, 21524, 22400, 25615, 25875,
       26440, 26520, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(314)
+    expect(empty.length).toBe(313)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
