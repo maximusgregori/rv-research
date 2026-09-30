@@ -846,55 +846,150 @@
     "manufacturer": "Coachmen",
     "model": "Apex Ultra-Lite",
     "floor": "188RBST",
-    "ask": null,
+    "ask": 29714,
     "dealer": "",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask is $29,714 as of 2026-09-30. RVT $29,714 cheaper than RV Trader $29,999. Dealer and listing URLs were not captured this pass. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 188RBST, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Apex Ultra-Lite",
     "floor": "241BHS",
-    "ask": null,
+    "ask": 35721,
     "dealer": "",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask is $35,721 as of 2026-09-30. Both sites $35,721. Dealer and listing URLs were not captured this pass. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 241BHS, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Apex Ultra-Lite",
     "floor": "242BARV",
-    "ask": null,
+    "ask": 33495,
     "dealer": "",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask is $33,495 as of 2026-09-30. Kept RV Trader $33,495 (asterisk on card) over RVT $38,265; repo has no convention rejecting marked prices. Dealer and listing URLs were not captured this pass. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 242BARV, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Apex Ultra-Lite",
     "floor": "244RBS",
-    "ask": null,
+    "ask": 32995,
     "dealer": "",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask is $32,995 as of 2026-09-30. RV Trader $32,995 cheaper than RVT $33,999. Dealer and listing URLs were not captured this pass. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 244RBS, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Apex Ultra-Lite",
     "floor": "246BARV",
-    "ask": null,
+    "ask": 35128,
     "dealer": "",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask is $35,128 as of 2026-09-30. RVT $35,128 cheaper than RV Trader $36,985. Dealer and listing URLs were not captured this pass. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 246BARV, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
