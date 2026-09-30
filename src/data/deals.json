@@ -996,44 +996,174 @@
     "manufacturer": "Coachmen",
     "model": "Apex Ultra-Lite",
     "floor": "26BHX",
-    "ask": null,
-    "dealer": "",
+    "ask": 27999,
+    "dealer": "Bill's Happy Camper RV Sales and Service, Mill Hall, PA",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Bill's Happy Camper RV Sales and Service, Mill Hall, PA, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen-Apex+Ultra-Lite+X+26BHX-5038475199#sid=213200",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-coachmen-apex-ultra-lite-26bhx/73def44c-c2dc-11f0-beaa-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. Cheapest organic current 2026 new 26BHX is $27,999. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 26BHX, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Apex Ultra-Lite",
     "floor": "289TBSS",
-    "ask": null,
-    "dealer": "",
+    "ask": 34999,
+    "dealer": "Franklinville, NC",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Franklinville, NC, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-coachmen-apex-ultra-lite-289tbss/5e177c0f-baf6-11f0-beaa-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. Cheapest organic current 2026 new 289TBSS is $34,999. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 289TBSS, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Apex Ultra-Lite X Series",
     "floor": "24RBX",
-    "ask": null,
-    "dealer": "",
+    "ask": 25980,
+    "dealer": "Bobby Combs RV, Caldwell, ID",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Bobby Combs RV, Caldwell, ID, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen-APEX+24RBX-5037846819#sid=926615",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-coachmen-apex-ultra-lite-x-series-24rbx/e53de919-6e4a-11f1-adcf-02f5bff6b341/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. Cheapest organic current 2026 new 24RBX is $25,980. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 24RBX, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Apex Ultra-Lite X Series",
     "floor": "29BHX",
-    "ask": null,
-    "dealer": "",
+    "ask": 25328,
+    "dealer": "Forest River RV Little Rock by Camping World",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Forest River RV Little Rock by Camping World, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen+Rv-Apex+X+Series+29BHX-5038641280#sid=926615",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. Cheapest organic current 2026 new 29BHX is $25,328. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 29BHX, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
