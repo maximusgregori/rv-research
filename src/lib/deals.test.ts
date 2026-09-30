@@ -286,11 +286,12 @@ describe("deal data", () => {
       "Salem Hemisphere|321DRL",
       "Salem Hemisphere|325RL",
       "Sandpiper|3370RLS",
+      "Sanibel|34LOUNGE",
     ])
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(37)
+    expect(pricedForest).toHaveLength(38)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -344,7 +345,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(123)
+    expect(priced).toHaveLength(124)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -2863,6 +2864,59 @@ describe("deal data", () => {
     expect(sierraTwin?.notes).toEqual([])
   })
 
+  it("applies Sanibel 34LOUNGE ask and 2026 JDP trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Sanibel" &&
+        row.floor === "34LOUNGE" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 69995,
+      dealer: "Open Road RV - Monticello, MN",
+      trade: 47250,
+      delta: 22745,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $69,995 both RV Trader + RVT (Open Road RV - Monticello, MN), 36 ft New 34LOUNGE. Excluded $66,495 Premium/Sponsored. Trade = 2026 JDP Low Retail $52,500 × 0.9 = $47,250 (Sanibel by Forest River M-34LOUNGE)."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvt.com/buy/details/2026-forest-river-sanibel-34lounge/47e78d86-1f72-11f1-beaa-02f5bff6b341/" &&
+            span.label === "RVT"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Sanibel+34LOUNGE-5039661528" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+  })
+
   it("applies 2025 JDP proxy trades on Coachmen Adrenaline", () => {
     const rows = [
       [
@@ -4053,10 +4107,10 @@ describe("filters and sort", () => {
       4644, 4790, 4875, 4970, 5243, 5480, 5514, 5834, 5889, 5965, 6144, 6471, 6540,
       6554, 6735, 6900, 7201, 7294, 7370, 7709, 7980, 8010, 8356, 8784, 8790, 8828, 9034,
       9073, 9314, 10050, 10859, 10859, 11385, 11736, 11884, 12283, 13013, 13013, 13075, 13165, 13584,
-      14139, 15689, 15697, 16667, 16667, 17460, 17664, 17740, 17755, 19530, 21524, 22400, 22925, 25615, 25875,
+      14139, 15689, 15697, 16667, 16667, 17460, 17664, 17740, 17755, 19530, 21524, 22400, 22745, 22925, 25615, 25875,
       26440, 26520, 27222, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(306)
+    expect(empty.length).toBe(305)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
