@@ -1568,11 +1568,30 @@
     "manufacturer": "Coachmen",
     "model": "Catalina Legacy Edition",
     "floor": "263FKDS",
-    "ask": null,
+    "ask": 36519,
     "dealer": "",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest published ask is $36,519 as of 2026-09-30. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 263FKDS, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
@@ -1609,77 +1628,210 @@
     "manufacturer": "Coachmen",
     "model": "Catalina Legacy Edition",
     "floor": "283RKS",
-    "ask": null,
+    "ask": 31995,
     "dealer": "",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest published ask is $31,995 as of 2026-09-30. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 283RKS, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Catalina Legacy Edition",
     "floor": "283RNR",
-    "ask": null,
+    "ask": 33995,
     "dealer": "",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest published ask is $33,995 as of 2026-09-30. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 283RNR, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Catalina Legacy Edition",
     "floor": "293QBCKLE",
-    "ask": null,
+    "ask": 30944,
     "dealer": "",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest published ask is $30,944 as of 2026-09-30. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 293QBCKLE, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Catalina Legacy Edition",
     "floor": "293QBCK",
-    "ask": null,
+    "ask": 28995,
     "dealer": "",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest published ask is $28,995 as of 2026-09-30. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 293QBCK, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Catalina Legacy Edition",
     "floor": "293TQBSCK",
-    "ask": null,
+    "ask": 27999,
     "dealer": "",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest published ask is $27,999 as of 2026-09-30. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 293TQBSCK, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Catalina Summit Series 7",
     "floor": "134BHX",
-    "ask": null,
+    "ask": 11929,
     "dealer": "",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest published ask is $11,929 as of 2026-09-30. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 134BHX, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Catalina Summit Series 7",
     "floor": "134RDX",
-    "ask": null,
+    "ask": 11599,
     "dealer": "",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest published ask is $11,599 as of 2026-09-30. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 134RDX, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,

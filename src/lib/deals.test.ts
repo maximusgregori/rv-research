@@ -304,7 +304,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(42)
+    expect(priced).toHaveLength(50)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -663,7 +663,13 @@ describe("deal data", () => {
       ["243RBSLE", 26980, "Eagle Country RV, Eagle River, WI"],
       ["243RBS", 25495, "RV Dynasty, Bunker Hill, IN"],
       ["263BHSCK", 28833, "RV Wholesalers, Lakeview, OH"],
+      ["263FKDS", 36519, ""],
       ["273DBHCK", 27495, "RV Dynasty, Bunker Hill, IN"],
+      ["283RKS", 31995, ""],
+      ["283RNR", 33995, ""],
+      ["293QBCKLE", 30944, ""],
+      ["293QBCK", 28995, ""],
+      ["293TQBSCK", 27999, ""],
     ] as const
     for (const [floor, ask, dealer] of catalina) {
       expect(
@@ -673,15 +679,42 @@ describe("deal data", () => {
         )
       ).toMatchObject({ ask, dealer, trade: null, delta: null })
     }
-
-    const untouched = deals.filter(
-      (deal) =>
-        deal.model === "Catalina Legacy Edition" &&
-        !catalina.some(([floor]) => floor === deal.floor)
-    )
-    expect(untouched.length).toBeGreaterThan(0)
     expect(
-      untouched.every(
+      deals.filter((deal) => deal.model === "Catalina Legacy Edition")
+    ).toHaveLength(10)
+  })
+
+  it("prices Catalina Summit Series 7 134BHX and 134RDX without inventing trades", () => {
+    expect(
+      deals.find(
+        (deal) =>
+          deal.model === "Catalina Summit Series 7" && deal.floor === "134BHX"
+      )
+    ).toMatchObject({
+      ask: 11929,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(
+      deals.find(
+        (deal) =>
+          deal.model === "Catalina Summit Series 7" && deal.floor === "134RDX"
+      )
+    ).toMatchObject({
+      ask: 11599,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    const later = deals.filter(
+      (deal) =>
+        deal.model === "Catalina Summit Series 7" &&
+        !["134BHX", "134RDX"].includes(deal.floor)
+    )
+    expect(later.length).toBeGreaterThan(0)
+    expect(
+      later.every(
         (deal) =>
           deal.ask == null &&
           deal.trade == null &&
