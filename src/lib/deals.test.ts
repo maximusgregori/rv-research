@@ -304,7 +304,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(22)
+    expect(priced).toHaveLength(27)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -397,6 +397,44 @@ describe("deal data", () => {
       trade: null,
       delta: null,
     })
+  })
+
+  it("prices Apex Ultra-Lite 188–246 asks without inventing trades or dealers", () => {
+    const floors = [
+      ["188RBST", 29714],
+      ["241BHS", 35721],
+      ["242BARV", 33495],
+      ["244RBS", 32995],
+      ["246BARV", 35128],
+    ] as const
+
+    for (const [floor, ask] of floors) {
+      const deal = deals.find(
+        (row) =>
+          row.manufacturer === "Coachmen" &&
+          row.model === "Apex Ultra-Lite" &&
+          row.floor === floor
+      )
+      expect(deal).toMatchObject({
+        ask,
+        dealer: "",
+        trade: null,
+        delta: null,
+      })
+      expect(deal?.notes.length).toBeGreaterThan(0)
+    }
+
+    const barv242 = deals.find(
+      (deal) => deal.model === "Apex Ultra-Lite" && deal.floor === "242BARV"
+    )
+    expect(
+      barv242?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" && span.text.includes("asterisk on card")
+        )
+    ).toBe(true)
   })
 
   it("prices Apex Nano 183BH, 184BH, and 185BH without inventing trades", () => {
