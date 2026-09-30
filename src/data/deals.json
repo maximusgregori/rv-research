@@ -6955,11 +6955,33 @@
     "manufacturer": "Forest River",
     "model": "Sabre",
     "floor": "33RLP",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 59498,
+    "dealer": "Camping World, West Hatfield, MA",
+    "trade": 55395,
+    "delta": 4103,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Camping World, West Hatfield, MA, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Forest+River-SABRE+33RLP-5042060522",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $59,498 RV Trader (Camping World, West Hatfield MA), ~39.92 ft New; RVT blocked by CAPTCHA (not cross-checked). Trade = 2026 JDP Low Retail $61,550 × 0.9 = $55,395 (Sabre-by-FR M-33RLP)."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
