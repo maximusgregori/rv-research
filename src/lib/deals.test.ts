@@ -700,21 +700,21 @@ describe("deal data", () => {
         "181RB",
         20999,
         "Camp Rite RV Sales, Loganville, GA",
-        "Verified absent from 2026 and 2025 Apex-by-Coachmen Nano lists on jdpower.com; trade left blank.",
+        "JDP checked 2025–2026 Apex-by-Coachmen (Nano + full make list): no 181RB. No prior-year exact-floor Low Retail found. Trade/delta left blank — no comparable.",
       ],
       [
         "Apex Nano",
         "183BH",
         25114,
         "RV Dynasty, Bunker Hill, IN",
-        "Verified absent from 2026 and 2025 Apex-by-Coachmen Nano lists on jdpower.com; trade left blank.",
+        "JDP checked 2025–2026 Apex-by-Coachmen (Nano + full make list): no 183BH. No prior-year exact-floor Low Retail found. Trade/delta left blank — no comparable.",
       ],
       [
         "Apex Ultra-Lite",
         "244RBS",
         32995,
         "",
-        "Verified absent from 2026 and 2025 Apex-by-Coachmen Ultra-Lite lists on jdpower.com; trade left blank.",
+        "JDP checked 2025–2026 Apex-by-Coachmen Ultra-Lite: no 244RBS. No prior-year exact-floor Low Retail found. Trade/delta left blank — no comparable.",
       ],
     ] as const
     for (const [model, floor, ask, dealer, exactNote] of missing) {
@@ -996,7 +996,7 @@ describe("deal data", () => {
         "283RNR",
         33995,
         "Triple H RVs, Haleyville AL",
-        "2026 Catalina Legacy has M-283 RKS, not 283RNR; different floor code; trade left blank.",
+        "Real 2026 Coachmen floor; JDP has no 283RNR (2026 Legacy closest codes are 283 RKS etc. — different floors, not used). Trade/delta left blank — no comparable.",
       ],
     ] as const
     for (const [model, floor, ask, dealer, exactNote] of missing) {
