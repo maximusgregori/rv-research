@@ -304,7 +304,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(27)
+    expect(priced).toHaveLength(31)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -435,6 +435,52 @@ describe("deal data", () => {
             span.type === "text" && span.text.includes("asterisk on card")
         )
     ).toBe(true)
+  })
+
+  it("prices Apex Ultra-Lite 26BHX, 289TBSS, and X Series asks without inventing trades", () => {
+    const ultra26 = deals.find(
+      (deal) =>
+        deal.model === "Apex Ultra-Lite" && deal.floor === "26BHX"
+    )
+    expect(ultra26).toMatchObject({
+      ask: 27999,
+      dealer: "Bill's Happy Camper RV Sales and Service, Mill Hall, PA",
+      trade: null,
+      delta: null,
+    })
+
+    const ultra289 = deals.find(
+      (deal) =>
+        deal.model === "Apex Ultra-Lite" && deal.floor === "289TBSS"
+    )
+    expect(ultra289).toMatchObject({
+      ask: 34999,
+      dealer: "Franklinville, NC",
+      trade: null,
+      delta: null,
+    })
+
+    const x24 = deals.find(
+      (deal) =>
+        deal.model === "Apex Ultra-Lite X Series" && deal.floor === "24RBX"
+    )
+    expect(x24).toMatchObject({
+      ask: 25980,
+      dealer: "Bobby Combs RV, Caldwell, ID",
+      trade: null,
+      delta: null,
+    })
+
+    const x29 = deals.find(
+      (deal) =>
+        deal.model === "Apex Ultra-Lite X Series" && deal.floor === "29BHX"
+    )
+    expect(x29).toMatchObject({
+      ask: 25328,
+      dealer: "Forest River RV Little Rock by Camping World",
+      trade: null,
+      delta: null,
+    })
   })
 
   it("prices Apex Nano 183BH, 184BH, and 185BH without inventing trades", () => {
