@@ -663,13 +663,13 @@ describe("deal data", () => {
       ["243RBSLE", 26980, "Eagle Country RV, Eagle River, WI"],
       ["243RBS", 25495, "RV Dynasty, Bunker Hill, IN"],
       ["263BHSCK", 28833, "RV Wholesalers, Lakeview, OH"],
-      ["263FKDS", 36519, ""],
+      ["263FKDS", 36519, "Palmetto State RV, Greer SC"],
       ["273DBHCK", 27495, "RV Dynasty, Bunker Hill, IN"],
-      ["283RKS", 31995, ""],
-      ["283RNR", 33995, ""],
-      ["293QBCKLE", 30944, ""],
-      ["293QBCK", 28995, ""],
-      ["293TQBSCK", 27999, ""],
+      ["283RKS", 31995, "Alpin Haus - Amsterdam, Amsterdam NY"],
+      ["283RNR", 33995, "Triple H RVs, Haleyville AL"],
+      ["293QBCKLE", 30944, "RV Value Mart - Asheboro, Franklinville NC"],
+      ["293QBCK", 28995, "RV Dynasty, Bunker Hill IN"],
+      ["293TQBSCK", 27999, "Cheyenne Camping Center Co, Walcott IA"],
     ] as const
     for (const [floor, ask, dealer] of catalina) {
       expect(
@@ -692,7 +692,7 @@ describe("deal data", () => {
       )
     ).toMatchObject({
       ask: 11929,
-      dealer: "",
+      dealer: "Moix RV Hot Springs Landing, Hot Springs AR",
       trade: null,
       delta: null,
     })
@@ -703,7 +703,7 @@ describe("deal data", () => {
       )
     ).toMatchObject({
       ask: 11599,
-      dealer: "",
+      dealer: "Bayer RV, Dublin TX",
       trade: null,
       delta: null,
     })
