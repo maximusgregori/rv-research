@@ -279,11 +279,12 @@ describe("deal data", () => {
       "Rockwood Signature FW|361RLS",
       "Rockwood Signature FW|R374DBH",
       "Rockwood Signature Fifth Wheel|281RK",
+      "Sabre|32GKS",
     ])
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(30)
+    expect(pricedForest).toHaveLength(31)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -2167,6 +2168,78 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(fifthTwin).toBeUndefined()
+  })
+
+  it("applies Sabre 32GKS ask and 2026 JDP trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Sabre" &&
+        row.floor === "32GKS" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 54981,
+      dealer: "Pete’s RV Center–Indiana, Schererville, IN",
+      trade: 48510,
+      delta: 6471,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $54,981 both RV Trader and RVT (Pete’s RV Center–Indiana, Schererville IN), stock 92576; listing length blank/0 but JDP M-32GKS is 34'10\". Trade = 2026 JDP Low Retail $53,900 × 0.9 = $48,510 (Sabre-by-FR M-32GKS)."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvt.com/buy/?q=%28And.%28C.Make.FOREST%20RIVER._.%28C.Model.SABRE._.FamilyName.32GKS.%29%29_.Year.range%282026..2026%29.%29&sort=Price" &&
+            span.label === "RVT"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/New-2026-Forest-River-Sabre-32gks/rvs-for-sale?make=Forest%20River%7C440465&model=SABRE%7C764955083&trim=32GKS%7C327518&condition=N&year=2026&zip=78702&radius=10000&sort=price%3Aasc" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+
+    const siblings = deals.filter(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Sabre" &&
+        row.floor !== "32GKS" &&
+        row.year === 2026
+    )
+    expect(siblings.map((row) => row.floor).sort()).toEqual(["25RLS", "33RLP"])
+    expect(
+      siblings.every(
+        (row) =>
+          row.ask == null &&
+          row.trade == null &&
+          row.delta == null &&
+          row.dealer === "" &&
+          row.notes.length === 0
+      )
+    ).toBe(true)
   })
 
   it("applies 2025 JDP proxy trades on Coachmen Adrenaline", () => {

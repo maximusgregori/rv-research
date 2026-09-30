@@ -6913,11 +6913,42 @@
     "manufacturer": "Forest River",
     "model": "Sabre",
     "floor": "32GKS",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 54981,
+    "dealer": "Pete’s RV Center–Indiana, Schererville, IN",
+    "trade": 48510,
+    "delta": 6471,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Pete’s RV Center–Indiana, Schererville, IN, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/?q=%28And.%28C.Make.FOREST%20RIVER._.%28C.Model.SABRE._.FamilyName.32GKS.%29%29_.Year.range%282026..2026%29.%29&sort=Price",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/New-2026-Forest-River-Sabre-32gks/rvs-for-sale?make=Forest%20River%7C440465&model=SABRE%7C764955083&trim=32GKS%7C327518&condition=N&year=2026&zip=78702&radius=10000&sort=price%3Aasc",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $54,981 both RV Trader and RVT (Pete’s RV Center–Indiana, Schererville IN), stock 92576; listing length blank/0 but JDP M-32GKS is 34'10\". Trade = 2026 JDP Low Retail $53,900 × 0.9 = $48,510 (Sabre-by-FR M-32GKS)."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
