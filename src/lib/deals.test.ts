@@ -304,7 +304,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(4)
+    expect(priced).toHaveLength(9)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -342,6 +342,58 @@ describe("deal data", () => {
     expect(chaparralLite).toMatchObject({
       ask: 46250,
       dealer: "Byerly RV, Eureka, MO",
+      trade: null,
+      delta: null,
+    })
+  })
+
+  it("prices new Adrenaline and Apex asks without inventing trades", () => {
+    const adrenaline21 = deals.find(
+      (deal) => deal.model === "Adrenaline" && deal.floor === "21LT"
+    )
+    expect(adrenaline21).toMatchObject({
+      ask: 34699,
+      dealer: "RV Value Mart - Manheim",
+      trade: null,
+      delta: null,
+    })
+
+    const adrenaline27 = deals.find(
+      (deal) => deal.model === "Adrenaline" && deal.floor === "27LT"
+    )
+    expect(adrenaline27).toMatchObject({
+      ask: 35986,
+      dealer: "Uwharrie RV, Albemarle, NC",
+      trade: null,
+      delta: null,
+    })
+
+    const adrenaline30 = deals.find(
+      (deal) => deal.model === "Adrenaline" && deal.floor === "30GS"
+    )
+    expect(adrenaline30).toMatchObject({
+      ask: 59999,
+      dealer: "General RV Center - Tampa, Dover, FL",
+      trade: null,
+      delta: null,
+    })
+
+    const apexUltra = deals.find(
+      (deal) => deal.model === "Apex" && deal.floor === "ULTRA-LITE 293RLDS"
+    )
+    expect(apexUltra).toMatchObject({
+      ask: 42999,
+      dealer: "General RV Center - Salisbury, Salisbury, NC",
+      trade: null,
+      delta: null,
+    })
+
+    const apexNano = deals.find(
+      (deal) => deal.model === "Apex Nano" && deal.floor === "181RB"
+    )
+    expect(apexNano).toMatchObject({
+      ask: 20999,
+      dealer: "Camp Rite RV Sales, Loganville, GA",
       trade: null,
       delta: null,
     })
