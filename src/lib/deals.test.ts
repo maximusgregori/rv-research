@@ -355,9 +355,8 @@ describe("deal data", () => {
         "RV Value Mart - Manheim",
         27405,
         7294,
-        "$30,450",
+        "TRADE FROM 2025 (not 2026): J.D. Power Low Retail $30,450 × 0.9 = $27,405. Why not 2026: Adrenaline is absent from the 2026 Coachmen-by-Forest-River model list on jdpower.com (full series scroll verified). Used prior-year 2025 Coachmen Adrenaline M-21 LT Low Retail as proxy. Source: https://www.jdpower.com/rvs/2025/coachmen-by-forest-river/m-21-lt/6639477/values",
         "m-21-lt/6639477",
-        "M-21 LT",
       ],
       [
         "27LT",
@@ -365,9 +364,8 @@ describe("deal data", () => {
         "Uwharrie RV, Albemarle, NC",
         27630,
         8356,
-        "$30,700",
+        "TRADE FROM 2025 (not 2026): J.D. Power Low Retail $30,700 × 0.9 = $27,630. Why not 2026: Adrenaline is absent from the 2026 Coachmen-by-Forest-River model list on jdpower.com (full series scroll verified). Used prior-year 2025 Coachmen Adrenaline M-27 LT Low Retail as proxy. Source: https://www.jdpower.com/rvs/2025/coachmen-by-forest-river/m-27-lt/6639479/values",
         "m-27-lt/6639479",
-        "M-27 LT",
       ],
       [
         "30GS",
@@ -375,21 +373,11 @@ describe("deal data", () => {
         "General RV Center - Tampa, Dover, FL",
         38475,
         21524,
-        "$42,750",
+        "TRADE FROM 2025 (not 2026): J.D. Power Low Retail $42,750 × 0.9 = $38,475. Why not 2026: Adrenaline is absent from the 2026 Coachmen-by-Forest-River model list on jdpower.com (full series scroll verified). Used prior-year 2025 Coachmen Adrenaline M-30 GS Low Retail as proxy. Source: https://www.jdpower.com/rvs/2025/coachmen-by-forest-river/m-30-gs/6639482/values",
         "m-30-gs/6639482",
-        "M-30 GS",
       ],
     ] as const
-    for (const [
-      floor,
-      ask,
-      dealer,
-      trade,
-      delta,
-      lowRetail,
-      path,
-      modelName,
-    ] of rows) {
+    for (const [floor, ask, dealer, trade, delta, exactNote, path] of rows) {
       const deal = deals.find(
         (row) =>
           row.manufacturer === "Coachmen" &&
@@ -397,18 +385,16 @@ describe("deal data", () => {
           row.floor === floor
       )
       expect(deal).toMatchObject({ ask, dealer, trade, delta })
-      const noteText = deal?.notes
-        .flat()
-        .filter((span) => span.type === "text")
-        .map((span) => span.text)
-        .join("")
-      expect(noteText).toContain("TRADE FROM 2025 (not 2026)")
-      expect(noteText).toContain(
-        "absent from the 2026 Coachmen-by-Forest-River JDP list"
-      )
-      expect(noteText).toContain(`${lowRetail} × 0.9`)
-      expect(noteText).toContain(modelName)
-      expect(noteText).not.toMatch(/not found/i)
+      expect(
+        deal?.notes
+          .flat()
+          .some((span) => span.type === "text" && span.text === exactNote)
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some((span) => span.type === "text" && /not found/i.test(span.text))
+      ).toBe(false)
       expect(
         deal?.notes
           .flat()
