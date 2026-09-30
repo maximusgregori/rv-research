@@ -304,7 +304,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(9)
+    expect(priced).toHaveLength(12)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -394,6 +394,38 @@ describe("deal data", () => {
     expect(apexNano).toMatchObject({
       ask: 20999,
       dealer: "Camp Rite RV Sales, Loganville, GA",
+      trade: null,
+      delta: null,
+    })
+  })
+
+  it("prices Apex Nano 183BH, 184BH, and 185BH without inventing trades", () => {
+    const nano183 = deals.find(
+      (deal) => deal.model === "Apex Nano" && deal.floor === "183BH"
+    )
+    expect(nano183).toMatchObject({
+      ask: 25114,
+      dealer: "RV Dynasty, Bunker Hill, IN",
+      trade: null,
+      delta: null,
+    })
+
+    const nano184 = deals.find(
+      (deal) => deal.model === "Apex Nano" && deal.floor === "184BH"
+    )
+    expect(nano184).toMatchObject({
+      ask: 22200,
+      dealer: "Trailer Source Inc. Wheat Ridge RV Center, Wheat Ridge, CO",
+      trade: null,
+      delta: null,
+    })
+
+    const nano185 = deals.find(
+      (deal) => deal.model === "Apex Nano" && deal.floor === "185BH"
+    )
+    expect(nano185).toMatchObject({
+      ask: 21961,
+      dealer: "RV Dynasty, Bunker Hill, IN",
       trade: null,
       delta: null,
     })

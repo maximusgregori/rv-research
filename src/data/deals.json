@@ -231,33 +231,135 @@
     "manufacturer": "Coachmen",
     "model": "Apex Nano",
     "floor": "183BH",
-    "ask": null,
-    "dealer": "",
+    "ask": 25114,
+    "dealer": "RV Dynasty, Bunker Hill, IN",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was RV Dynasty, Bunker Hill, IN, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen+Rv-Apex+Nano+183BH-5037972111",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. Cheapest organic current 2026 new 183BH on RV Trader is $25,114. RVT result was sold or unavailable with no active price. RV Trader detail lists New, 22 ft (<40). Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 183BH, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Apex Nano",
     "floor": "184BH",
-    "ask": null,
-    "dealer": "",
+    "ask": 22200,
+    "dealer": "Trailer Source Inc. Wheat Ridge RV Center, Wheat Ridge, CO",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Trailer Source Inc. Wheat Ridge RV Center, Wheat Ridge, CO, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen-Apex-Nano-184BH-5039873767",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-coachmen-apex-nano-184bh/fd774dc7-2e88-11f1-9d95-02ea7b77d8a7/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. Cheapest organic current 2026 new 184BH on both sites is $22,200. RV Trader detail lists New, 21 ft (<40). Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 184BH, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Apex Nano",
     "floor": "185BH",
-    "ask": null,
-    "dealer": "",
+    "ask": 21961,
+    "dealer": "RV Dynasty, Bunker Hill, IN",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was RV Dynasty, Bunker Hill, IN, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen+Rv-Apex+Nano+185BH-5037972098#sid=744034",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-coachmen-apex-nano-185bh/a6d872e1-9ddd-11f0-beaa-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. Cheapest organic current 2026 new 185BH on both sites is $21,961. RV Trader detail lists New, 20 ft (<40). Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 185BH, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
