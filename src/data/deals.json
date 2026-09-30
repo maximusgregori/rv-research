@@ -386,7 +386,7 @@
       [
         {
           "type": "text",
-          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+          "text": "Found via Make + Model + Year, then Price low→high. Floor plan was matched on the listing; it was not used as the primary facet gate."
         }
       ],
       [
@@ -960,7 +960,7 @@
       [
         {
           "type": "text",
-          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+          "text": "Found via Make + Model + Year, then Price low→high. Floor plan was matched on the listing; it was not used as the primary facet gate."
         }
       ],
       [
@@ -1024,7 +1024,7 @@
       [
         {
           "type": "text",
-          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+          "text": "Found via Make + Model + Year, then Price low→high. Floor plan was matched on the listing; it was not used as the primary facet gate."
         }
       ],
       [
@@ -1123,7 +1123,7 @@
       [
         {
           "type": "text",
-          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+          "text": "Found via Make + Model + Year, then Price low→high. Floor plan was matched on the listing; it was not used as the primary facet gate."
         }
       ],
       [
@@ -4034,6 +4034,688 @@
     "manufacturer": "Jayco",
     "model": "Pinnacle",
     "floor": "32RLTS",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Alpine",
+    "floor": "3011CK",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Alpine",
+    "floor": "3100 RE",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Alpine",
+    "floor": "3100RE",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Alpine",
+    "floor": "3303CK",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Alpine Avalanche Edition",
+    "floor": "321RL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Alpine Avalanche Edition",
+    "floor": "338GK",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Arcadia",
+    "floor": "3260RL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Arcadia Select",
+    "floor": "21SRK",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Arcadia Select",
+    "floor": "24SRE",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Arcadia Select",
+    "floor": "25SRD",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Arcadia Select",
+    "floor": "27SBH",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Arcadia Select",
+    "floor": "28SLS",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Arcadia Super Lite",
+    "floor": "242SLMD",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Arcadia Super Lite",
+    "floor": "260SLCL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Arcadia Super Lite",
+    "floor": "292SLRL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Arcadia Super Lite",
+    "floor": "294SLRD",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Arcadia Super Lite",
+    "floor": "308SLBH",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Avalanche",
+    "floor": "302RS",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Avalanche",
+    "floor": "321RL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Cougar",
+    "floor": "24RDS",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Cougar",
+    "floor": "260MLE",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Cougar",
+    "floor": "27SGS",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Cougar",
+    "floor": "290RLS",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Cougar",
+    "floor": "316RLS",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Cougar",
+    "floor": "320RDS",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Cougar",
+    "floor": "32BHS",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Cougar",
+    "floor": "350LLK",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Cougar",
+    "floor": "355FBS",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Cougar",
+    "floor": "360MBI",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Cougar",
+    "floor": "364BHL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Cougar Half-Ton",
+    "floor": "23MLE",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Cougar Half-Ton",
+    "floor": "24RDS",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Cougar Half-Ton",
+    "floor": "26RES",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Cougar Half-Ton",
+    "floor": "26RKE",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Cougar Half-Ton",
+    "floor": "27SGS",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Cougar Half-Ton",
+    "floor": "28RLI",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Cougar Half-Ton",
+    "floor": "29MBD",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Cougar Half-Ton",
+    "floor": "29RLI",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Cougar Half-Ton",
+    "floor": "30REP",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Cougar Half-Ton",
+    "floor": "32BHS",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Cougar Sport",
+    "floor": "2100RK",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Cougar Sport",
+    "floor": "2400RE",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Cougar Sport",
+    "floor": "2700BH",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Impact",
+    "floor": "321LT",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Montana",
+    "floor": "295RL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Montana",
+    "floor": "300RK",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Montana",
+    "floor": "3100RL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Montana",
+    "floor": "3123RL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Montana",
+    "floor": "3231CK",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Montana",
+    "floor": "3532SP",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Montana",
+    "floor": "3795FK",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Montana High Country",
+    "floor": "290RL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Montana High Country",
+    "floor": "295RL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Montana High Country",
+    "floor": "300RK",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Montana High Country",
+    "floor": "311RD",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Montana High Country",
+    "floor": "325RK",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Montana High Country",
+    "floor": "331RL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Montana High Country",
+    "floor": "351BH",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Sprinter",
+    "floor": "3900DBL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Sprinter Limited",
+    "floor": "3210RLS",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Sprinter Limited",
+    "floor": "3520RDS",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Keystone",
+    "model": "Sprinter Limited",
+    "floor": "3590LFT",
     "ask": null,
     "dealer": "",
     "trade": null,
