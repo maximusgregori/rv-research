@@ -3436,22 +3436,94 @@
     "manufacturer": "Coachmen",
     "model": "Chaparral Lite",
     "floor": "30RLS",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 44907,
+    "dealer": "Prosser\u2019s Premium RV Outlet, Sturtevant, WI",
+    "trade": 50535,
+    "delta": -5628,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Prosser\u2019s Premium RV Outlet, Sturtevant, WI, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen+Chaparral+Lite+30RLS-5040092020",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-coachmen-chaparral-lite-30rls/954f40b1-b0fe-11f1-84c9-020f812d825b/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Trade from 2026 J.D. Power Low Retail $56,150 \u00d7 0.9 = $50,535 (Coachmen-by-Forest-River Chaparral Lite M-30 RLS). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-30-rls/6644374/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-30-rls/6644374/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Chaparral Lite",
     "floor": "31BH",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 47995,
+    "dealer": "Holiday RV Sales and Service, Jefferson, IA",
+    "trade": 49995,
+    "delta": -2000,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Holiday RV Sales and Service, Jefferson, IA, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-coachmen-chaparral-lite-31bh/443bd00f-e5bc-11f0-beaa-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen+Rv-Chaparral+Lite+31BH-5038868834",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Trade from 2026 J.D. Power Low Retail $55,550 \u00d7 0.9 = $49,995 (Coachmen-by-Forest-River Chaparral Lite M-31 BH). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-31-bh/6644372/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-31-bh/6644372/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
@@ -4822,11 +4894,47 @@
     "manufacturer": "Coachmen",
     "model": "Phoenix Lite",
     "floor": "218SE",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 42999,
+    "dealer": "Sun City RV, Peoria, AZ",
+    "trade": 43830,
+    "delta": -831,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Sun City RV, Peoria, AZ, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-coachmen-phoenix-lite-218se/7e7b7e39-d4f9-11f0-beaa-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Chaparral+Lite-Phoenix+Lite+218SE-5038680458#sid=889324",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Trade from 2026 J.D. Power Low Retail $48,700 \u00d7 0.9 = $43,830 (Coachmen-by-Forest-River Phoenix Lite M-218 SE). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-218-se/6644405/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-218-se/6644405/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
@@ -5284,22 +5392,89 @@
     "manufacturer": "East To West",
     "model": "Ahara",
     "floor": "297MK",
-    "ask": null,
-    "dealer": "",
+    "ask": 74849,
+    "dealer": "RV Value Mart - Asheboro, Franklinville, NC",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was RV Value Mart - Asheboro, Franklinville, NC, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-east-to-west-ahara-297mk/920a75dc-8a8d-11f1-adcf-02f5bff6b341/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-East+To+West-Ahara+297MK-5039713978",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "J.D. Power Low Retail not found for East To West Ahara 297MK: 2026 east-to-west model list on jdpower.com has Class C + travel trailers only (no Ahara/fifth-wheel series). 2025 Ahara Series has M-325RL/M-365RL/etc. but no M-297 MK. Trade/delta left blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "East To West",
     "model": "Ahara",
     "floor": "325RL",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 68995,
+    "dealer": "Miles RV Center",
+    "trade": 51255,
+    "delta": 17740,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Miles RV Center, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-East+To+West-Ahara+325RL-5041007098",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-east-to-west-ahara-325rl/dbc0e90f-6fc9-11f1-adcf-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "TRADE FROM 2025 (not 2026): J.D. Power Low Retail $56,950 \u00d7 0.9 = $51,255 (East To West Ahara Series M-325RL). 2026 unused because Ahara/fifth-wheel series absent from 2026 east-to-west model list on jdpower.com (Class C + TT only). Source: https://www.jdpower.com/rvs/2025/east-to-west/m-325rl/6638522/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2025/east-to-west/m-325rl/6638522/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,

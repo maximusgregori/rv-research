@@ -239,8 +239,16 @@ describe("deal data", () => {
     expect(etw.map((deal) => [deal.model, deal.floor])).toEqual(
       EAST_TO_WEST_FIFTH_WHEELS.map(([model, floor]) => [model, floor])
     )
+    const unpricedEtw = etw.filter(
+      (deal) => deal.floor !== "297MK" && deal.floor !== "325RL"
+    )
+    expect(unpricedEtw.map((deal) => [deal.model, deal.floor])).toEqual([
+      ["Ahara", "365RL"],
+      ["Tandara", "235ML"],
+      ["Tandara", "295RL"],
+    ])
     expect(
-      etw.every(
+      unpricedEtw.every(
         (deal) =>
           deal.ask == null &&
           deal.trade == null &&
@@ -304,7 +312,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(78)
+    expect(priced).toHaveLength(83)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -517,6 +525,176 @@ describe("deal data", () => {
         ).toBe(false)
       }
     }
+  })
+
+  it("applies Chaparral Lite, Phoenix Lite, and Ahara batch asks and trades", () => {
+    const rows = [
+      [
+        "Coachmen",
+        "Chaparral Lite",
+        "30RLS",
+        44907,
+        "Prosser’s Premium RV Outlet, Sturtevant, WI",
+        50535,
+        -5628,
+        "Trade from 2026 J.D. Power Low Retail $56,150 × 0.9 = $50,535 (Coachmen-by-Forest-River Chaparral Lite M-30 RLS). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-30-rls/6644374/values",
+        "m-30-rls/6644374",
+        "https://www.rvtrader.com/listing/2026-Coachmen+Chaparral+Lite+30RLS-5040092020",
+        "RV Trader",
+        "https://www.rvt.com/buy/details/2026-coachmen-chaparral-lite-30rls/954f40b1-b0fe-11f1-84c9-020f812d825b/",
+        "RVT",
+      ],
+      [
+        "Coachmen",
+        "Chaparral Lite",
+        "31BH",
+        47995,
+        "Holiday RV Sales and Service, Jefferson, IA",
+        49995,
+        -2000,
+        "Trade from 2026 J.D. Power Low Retail $55,550 × 0.9 = $49,995 (Coachmen-by-Forest-River Chaparral Lite M-31 BH). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-31-bh/6644372/values",
+        "m-31-bh/6644372",
+        "https://www.rvt.com/buy/details/2026-coachmen-chaparral-lite-31bh/443bd00f-e5bc-11f0-beaa-02c8259c7411/",
+        "RVT",
+        "https://www.rvtrader.com/listing/2026-Coachmen+Rv-Chaparral+Lite+31BH-5038868834",
+        "RV Trader",
+      ],
+      [
+        "Coachmen",
+        "Phoenix Lite",
+        "218SE",
+        42999,
+        "Sun City RV, Peoria, AZ",
+        43830,
+        -831,
+        "Trade from 2026 J.D. Power Low Retail $48,700 × 0.9 = $43,830 (Coachmen-by-Forest-River Phoenix Lite M-218 SE). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-218-se/6644405/values",
+        "m-218-se/6644405",
+        "https://www.rvt.com/buy/details/2026-coachmen-phoenix-lite-218se/7e7b7e39-d4f9-11f0-beaa-02c8259c7411/",
+        "RVT",
+        "https://www.rvtrader.com/listing/2026-Chaparral+Lite-Phoenix+Lite+218SE-5038680458#sid=889324",
+        "RV Trader",
+      ],
+      [
+        "East To West",
+        "Ahara",
+        "325RL",
+        68995,
+        "Miles RV Center",
+        51255,
+        17740,
+        "TRADE FROM 2025 (not 2026): J.D. Power Low Retail $56,950 × 0.9 = $51,255 (East To West Ahara Series M-325RL). 2026 unused because Ahara/fifth-wheel series absent from 2026 east-to-west model list on jdpower.com (Class C + TT only). Source: https://www.jdpower.com/rvs/2025/east-to-west/m-325rl/6638522/values",
+        "m-325rl/6638522",
+        "https://www.rvtrader.com/listing/2026-East+To+West-Ahara+325RL-5041007098",
+        "RV Trader",
+        "https://www.rvt.com/buy/details/2026-east-to-west-ahara-325rl/dbc0e90f-6fc9-11f1-adcf-02c8259c7411/",
+        "RVT",
+      ],
+    ] as const
+    for (const [
+      manufacturer,
+      model,
+      floor,
+      ask,
+      dealer,
+      trade,
+      delta,
+      exactNote,
+      path,
+      askUrl,
+      askLabel,
+      askAltUrl,
+      askAltLabel,
+    ] of rows) {
+      const deal = deals.find(
+        (row) =>
+          row.manufacturer === manufacturer &&
+          row.model === model &&
+          row.floor === floor &&
+          row.year === 2026
+      )
+      expect(deal).toMatchObject({ ask, dealer, trade, delta })
+      expect(
+        deal?.notes
+          .flat()
+          .some((span) => span.type === "text" && span.text === exactNote)
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "link" &&
+              span.href.includes(path) &&
+              span.label === "JDP values"
+          )
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "link" &&
+              span.href === askUrl &&
+              span.label === askLabel
+          )
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "link" &&
+              span.href === askAltUrl &&
+              span.label === askAltLabel
+          )
+      ).toBe(true)
+    }
+
+    const ahara297 = deals.find(
+      (row) =>
+        row.manufacturer === "East To West" &&
+        row.model === "Ahara" &&
+        row.floor === "297MK" &&
+        row.year === 2026
+    )
+    expect(ahara297).toMatchObject({
+      ask: 74849,
+      dealer: "RV Value Mart - Asheboro, Franklinville, NC",
+      trade: null,
+      delta: null,
+    })
+    expect(
+      ahara297?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "J.D. Power Low Retail not found for East To West Ahara 297MK: 2026 east-to-west model list on jdpower.com has Class C + travel trailers only (no Ahara/fifth-wheel series). 2025 Ahara Series has M-325RL/M-365RL/etc. but no M-297 MK. Trade/delta left blank."
+        )
+    ).toBe(true)
+    expect(
+      ahara297?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvt.com/buy/details/2026-east-to-west-ahara-297mk/920a75dc-8a8d-11f1-adcf-02f5bff6b341/" &&
+            span.label === "RVT"
+        )
+    ).toBe(true)
+    expect(
+      ahara297?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-East+To+West-Ahara+297MK-5039713978" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
   })
 
   it("applies 2025 JDP proxy trades on Coachmen Adrenaline", () => {
@@ -1511,6 +1689,7 @@ describe("deal data", () => {
         33995,
         "Triple H RVs, Haleyville AL",
       ],
+      ["Ahara", "297MK", 74849, "RV Value Mart - Asheboro, Franklinville, NC"],
     ] as const
     const askNoTrade = deals.filter(
       (deal) => deal.ask != null && deal.trade == null
@@ -1523,11 +1702,15 @@ describe("deal data", () => {
         (row) => row.model === model && row.floor === floor
       )
       expect(deal).toMatchObject({ ask, dealer, trade: null, delta: null })
-      expect(
-        deal?.notes
-          .flat()
-          .some((span) => span.type === "text" && /not found/i.test(span.text))
-      ).toBe(false)
+      if (floor !== "297MK") {
+        expect(
+          deal?.notes
+            .flat()
+            .some(
+              (span) => span.type === "text" && /not found/i.test(span.text)
+            )
+        ).toBe(false)
+      }
     }
   })
 
@@ -1669,15 +1852,15 @@ describe("filters and sort", () => {
     const priced = rows.filter((deal) => deal.delta != null)
     const empty = rows.filter((deal) => deal.delta == null)
     expect(priced.map((deal) => deal.delta)).toEqual([
-      -10004, -6760, -5469, -5252, -5190, -3791, -3525, -3461, -2490, -2065,
-      -1971, -1885, -1885, -1862, -1805, -1595, -1476, -1206, -1195, -1170,
-      -795, -586, -343, -110, -101, -30, -20, 390, 535, 573, 659, 1163, 1609,
-      1665, 1919, 2089, 2535, 3195, 3435, 3570, 4310, 4644, 4790, 4970, 5480,
-      5514, 5834, 5889, 6144, 6540, 6735, 6900, 7201, 7294, 7370, 7709, 7980,
-      8356, 8784, 8790, 9034, 9073, 10050, 11736, 13165, 17664, 21524, 22400,
-      25615, 25875, 26440, 28866, 29438, 40600,
+      -10004, -6760, -5628, -5469, -5252, -5190, -3791, -3525, -3461, -2490,
+      -2065, -2000, -1971, -1885, -1885, -1862, -1805, -1595, -1476, -1206,
+      -1195, -1170, -831, -795, -586, -343, -110, -101, -30, -20, 390, 535, 573,
+      659, 1163, 1609, 1665, 1919, 2089, 2535, 3195, 3435, 3570, 4310, 4644,
+      4790, 4970, 5480, 5514, 5834, 5889, 6144, 6540, 6735, 6900, 7201, 7294,
+      7370, 7709, 7980, 8356, 8784, 8790, 9034, 9073, 10050, 11736, 13165,
+      17664, 17740, 21524, 22400, 25615, 25875, 26440, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(343)
+    expect(empty.length).toBe(339)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
@@ -1797,7 +1980,7 @@ describe("filters and sort", () => {
     expect(empty).toHaveLength(0)
   })
 
-  it("cascades East To West models and keeps those rows unpriced", () => {
+  it("cascades East To West models and prices Ahara 297MK and 325RL", () => {
     const options = filterOptions(deals, {
       manufacturer: "East To West",
       year: "",
@@ -1810,7 +1993,21 @@ describe("filters and sort", () => {
       model: "Ahara",
     })
     expect(rows).toHaveLength(3)
-    expect(rows.every((deal) => deal.ask == null)).toBe(true)
+    expect(rows.find((deal) => deal.floor === "297MK")).toMatchObject({
+      ask: 74849,
+      trade: null,
+      delta: null,
+    })
+    expect(rows.find((deal) => deal.floor === "325RL")).toMatchObject({
+      ask: 68995,
+      trade: 51255,
+      delta: 17740,
+    })
+    expect(rows.find((deal) => deal.floor === "365RL")).toMatchObject({
+      ask: null,
+      trade: null,
+      delta: null,
+    })
   })
 
   it("cascades Forest River models and keeps those rows unpriced", () => {
