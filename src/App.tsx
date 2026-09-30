@@ -184,10 +184,11 @@ export function App() {
                   last. Click a column header to change sort.
                 </li>
                 <li>
-                  One row per manufacturer → model → floor plan. Coachmen 2026
-                  floor plans from RV Trader facets are listed; the OTHER bucket
-                  (no floor plans) is omitted. Ask, dealer, trade, and delta
-                  stay blank until a lowest ask is recorded.
+                  One row per manufacturer → model → floor plan. Coachmen, East
+                  To West, and Forest River 2026 floor plans from RV Trader
+                  facets are listed; OTHER buckets (no floor plans) are omitted.
+                  Ask, dealer, trade, and delta stay blank until a lowest ask is
+                  recorded.
                 </li>
                 <li>
                   New catalog work is fifth wheels only (New, 2026, under 40

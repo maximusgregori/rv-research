@@ -36,21 +36,99 @@ const EAST_TO_WEST_FIFTH_WHEELS = [
   ["Tandara", "295RL"],
 ] as const
 
+const FOREST_RIVER_FIFTH_WHEELS = [
+  ["Cardinal", "32LIVE"],
+  ["Cardinal", "33CHEF"],
+  ["Cedar Creek", "290RL"],
+  ["Cedar Creek", "39RKB"],
+  ["Cedar Creek Experience", "2925RL"],
+  ["Cedar Creek Experience", "35RL"],
+  ["Cedar Creek Silverback", "29RL"],
+  ["Cherokee Arctic Wolf", "27SGS"],
+  ["Cherokee Arctic Wolf", "285OPT"],
+  ["Cherokee Arctic Wolf", "287BH"],
+  ["Cherokee Arctic Wolf", "289PANO"],
+  ["Cherokee Arctic Wolf", "3250 SUITE"],
+  ["Cherokee Arctic Wolf", "331BH"],
+  ["Cherokee Arctic Wolf", "3550 SUITE"],
+  ["Columbus River Ranch", "394RKL"],
+  ["Crusader", "KING33"],
+  ["Impression", "235RW"],
+  ["Impression", "242RD"],
+  ["Impression", "301ML"],
+  ["Impression", "315MB"],
+  ["Impression", "318RL"],
+  ["Rockwood Signature FW", "361RLS"],
+  ["Rockwood Signature FW", "R374DBH"],
+  ["Rockwood Signature", "281RK"],
+  ["Rockwood Signature", "282RK"],
+  ["Rockwood Signature", "290SFK"],
+  ["Rockwood Signature", "301RKS"],
+  ["Rockwood Signature", "301RK"],
+  ["Rockwood Signature", "331RL"],
+  ["Rockwood Signature", "361RL"],
+  ["Rockwood Signature", "371RK"],
+  ["Rockwood Signature", "372RL"],
+  ["Rockwood Signature", "R331RL"],
+  ["Rockwood Signature Fifth Wheel", "281RK"],
+  ["Sabre", "25RLS"],
+  ["Sabre", "32GKS"],
+  ["Sabre", "33RLP"],
+  ["Salem Hemisphere", "286RL"],
+  ["Salem Hemisphere", "301FAM"],
+  ["Salem Hemisphere", "321DRL"],
+  ["Salem Hemisphere", "325RL"],
+  ["Sandpiper", "3370RLS"],
+  ["Sandstorm", "2710"],
+  ["Sanibel", "34LOUNGE"],
+  ["Sierra", "3370RLS"],
+  ["Sierra", "3710HBFB"],
+  ["Sierra", "3800RK"],
+  ["Sierra", "3900HBLR"],
+  ["Sierra", "4003MB"],
+  ["Vengeance Rogue Armored", "341GS11"],
+  ["Flagstaff Classic", "281RK"],
+  ["Flagstaff Classic", "282RK"],
+  ["Flagstaff Classic", "290CFK"],
+  ["Flagstaff Classic", "301RKS"],
+  ["Flagstaff Classic", "331RL"],
+  ["Flagstaff Classic", "361RLS"],
+  ["Flagstaff Classic", "371RK"],
+  ["Flagstaff Classic", "372RL"],
+  ["Flagstaff Classic", "374DBH"],
+  ["Flagstaff Classic", "F282RK"],
+  ["Wildcat", "32LIVE"],
+  ["Wildcat", "33CHEF"],
+  ["Wildcat", "35FL"],
+  ["Wildcat", "36FUN"],
+  ["Wildcat", "37GALLEY"],
+  ["Wildcat XL", "30BAM"],
+  ["Wildwood Heritage Glen", "286RL"],
+  ["Wildwood Heritage Glen", "321DRL"],
+] as const
+
 describe("deal data", () => {
-  it("keeps every migrated Coachmen row and adds East To West fifth wheels", () => {
-    expect(deals).toHaveLength(267)
+  it("keeps Coachmen and East To West rows and adds Forest River fifth wheels", () => {
+    expect(deals).toHaveLength(335)
     expect(
       deals.filter((deal) => deal.manufacturer === "Coachmen")
     ).toHaveLength(262)
+    expect(
+      deals.filter((deal) => deal.manufacturer === "East To West")
+    ).toHaveLength(5)
+    expect(
+      deals.filter((deal) => deal.manufacturer === "Forest River")
+    ).toHaveLength(68)
     expect(new Set(deals.map((deal) => deal.manufacturer))).toEqual(
-      new Set(["Coachmen", "East To West"])
+      new Set(["Coachmen", "East To West", "Forest River"])
     )
     expect(new Set(deals.map((deal) => deal.year))).toEqual(new Set([2026]))
     expect(deals.some((deal) => deal.model === "Adrenaline")).toBe(true)
     expect(deals.some((deal) => deal.model === "Viking")).toBe(true)
+    expect(deals.some((deal) => deal.model === "Other")).toBe(false)
   })
 
-  it("lists every Coachmen and East To West fifth-wheel floor plan", () => {
+  it("lists every Coachmen, East To West, and Forest River fifth-wheel floor plan", () => {
     for (const [model, floor] of COACHMEN_FIFTH_WHEELS) {
       expect(
         deals.some(
@@ -74,6 +152,23 @@ describe("deal data", () => {
           deal.trade == null &&
           deal.delta == null &&
           deal.dealer === ""
+      )
+    ).toBe(true)
+
+    const forest = deals.filter((deal) => deal.manufacturer === "Forest River")
+    expect(forest).toHaveLength(FOREST_RIVER_FIFTH_WHEELS.length)
+    expect(forest.map((deal) => [deal.model, deal.floor])).toEqual(
+      FOREST_RIVER_FIFTH_WHEELS.map(([model, floor]) => [model, floor])
+    )
+    expect(
+      forest.every(
+        (deal) =>
+          deal.year === 2026 &&
+          deal.ask == null &&
+          deal.trade == null &&
+          deal.delta == null &&
+          deal.dealer === "" &&
+          deal.notes.length === 0
       )
     ).toBe(true)
   })
@@ -158,7 +253,7 @@ describe("filters and sort", () => {
     const priced = rows.filter((deal) => deal.delta != null)
     const empty = rows.filter((deal) => deal.delta == null)
     expect(priced.map((deal) => deal.delta)).toEqual([-5252, -586, 13165])
-    expect(empty.length).toBe(264)
+    expect(empty.length).toBe(332)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
@@ -214,6 +309,18 @@ describe("filters and sort", () => {
     expect(byMake.every((deal) => deal.manufacturer === "East To West")).toBe(
       true
     )
+
+    const byForest = visibleDeals(
+      deals,
+      { manufacturer: "", year: "", model: "" },
+      DEFAULT_SORT_KEY,
+      DEFAULT_SORT_DIR,
+      "forest river"
+    )
+    expect(byForest).toHaveLength(68)
+    expect(byForest.every((deal) => deal.manufacturer === "Forest River")).toBe(
+      true
+    )
   })
 
   it("ANDs text search with dropdown filters", () => {
@@ -258,6 +365,46 @@ describe("filters and sort", () => {
     })
     expect(rows).toHaveLength(3)
     expect(rows.every((deal) => deal.ask == null)).toBe(true)
+  })
+
+  it("cascades Forest River models and keeps those rows unpriced", () => {
+    const options = filterOptions(deals, {
+      manufacturer: "Forest River",
+      year: "",
+      model: "",
+    })
+    expect(options.manufacturer).toEqual([
+      "Coachmen",
+      "East To West",
+      "Forest River",
+    ])
+    expect(options.model).toContain("Flagstaff Classic")
+    expect(options.model).toContain("Cherokee Arctic Wolf")
+    expect(options.model).toContain("Wildcat XL")
+    expect(options.model).not.toContain("Other")
+    expect(options.model).not.toContain("Brookstone")
+
+    const rows = matching(deals, {
+      manufacturer: "Forest River",
+      year: "",
+      model: "Flagstaff Classic",
+    })
+    expect(rows).toHaveLength(10)
+    expect(rows.every((deal) => deal.ask == null && deal.delta == null)).toBe(
+      true
+    )
+    expect(rows.map((deal) => deal.floor)).toEqual([
+      "281RK",
+      "282RK",
+      "290CFK",
+      "301RKS",
+      "331RL",
+      "361RLS",
+      "371RK",
+      "372RL",
+      "374DBH",
+      "F282RK",
+    ])
   })
 })
 
