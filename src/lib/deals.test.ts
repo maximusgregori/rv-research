@@ -769,12 +769,12 @@ describe("deal data", () => {
 
   it("prices Catalina Trail Blazer asks without inventing trades", () => {
     const trail = [
-      ["26TH", 23495],
-      ["27THS", 31495],
-      ["28THS", 33495],
-      ["29THS", 28995],
+      ["26TH", 23495, "RV Dynasty"],
+      ["27THS", 31495, "RV Dynasty"],
+      ["28THS", 33495, "RV Dynasty"],
+      ["29THS", 28995, "RV Dynasty"],
     ] as const
-    for (const [floor, ask] of trail) {
+    for (const [floor, ask, dealer] of trail) {
       expect(
         deals.find(
           (deal) =>
@@ -782,7 +782,7 @@ describe("deal data", () => {
             deal.model === "Catalina Trail Blazer" &&
             deal.floor === floor
         )
-      ).toMatchObject({ ask, dealer: "", trade: null, delta: null })
+      ).toMatchObject({ ask, dealer, trade: null, delta: null })
     }
     expect(
       deals.filter((deal) => deal.model === "Catalina Trail Blazer")
