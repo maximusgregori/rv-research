@@ -6135,11 +6135,42 @@
     "manufacturer": "Forest River",
     "model": "Crusader",
     "floor": "KING33",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 52495,
+    "dealer": "Roth RV - Grand Rapids, Grand Rapids, MN",
+    "trade": 39420,
+    "delta": 13075,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Roth RV - Grand Rapids, Grand Rapids, MN, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-forest-river-crusader-king33/2ec95e3a-0333-11f1-beaa-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Crusader+KING33-5039242753",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Trade = 2026 JDP Low Retail $43,800 × 0.9. Ask $52,495 both sites (Roth RV Grand Rapids MN). Length 35'11\"."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
