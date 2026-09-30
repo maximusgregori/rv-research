@@ -875,6 +875,91 @@ describe("deal data", () => {
     }
   })
 
+  it("applies Cardinal 32LIVE ask and 2025 JDP proxy trade and leaves Wildcat 32LIVE blank", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Cardinal" &&
+        row.floor === "32LIVE" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 47115,
+      dealer: "Fun Town RV - Anna",
+      trade: 29655,
+      delta: 17460,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text.includes(
+              "Ask $47,115 tied RV Trader + RVT at Fun Town (Anna IL / Edinburgh IN), 36 ft New 32LIVE."
+            )
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "TRADE FROM 2025 (not 2026): J.D. Power Low Retail $32,950 × 0.9 = $29,655 (Cardinal-by-Forest-River M-32LIVE). 2026 cardinal-by-forest-river page returned error/unavailable on scrape; used matching 2025 floor. Source: https://www.jdpower.com/rvs/2025/cardinal-by-forest-river/m-32live/6647567/values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.jdpower.com/rvs/2025/cardinal-by-forest-river/m-32live/6647567/values" &&
+            span.label === "JDP values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvt.com/buy/details/2026-forest-river-cardinal-32live/3edfe407-79a4-11f0-b688-02c8259c7411/" &&
+            span.label === "RVT"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Cardinal+32LIVE-5037477901" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+
+    const wildcatTwin = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Wildcat" &&
+        row.floor === "32LIVE" &&
+        row.year === 2026
+    )
+    expect(wildcatTwin).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(wildcatTwin?.notes).toEqual([])
+  })
+
   it("applies Cedar Creek and Arctic Wolf 27SGS asks and proxy trades", () => {
     const rows = [
       [
