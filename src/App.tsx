@@ -141,7 +141,9 @@ export function App() {
           </h1>
           <p className="max-w-3xl text-muted-foreground">
             Industry RV trade-delta benchmark: lowest published ask versus trade
-            value, one row per manufacturer → model → floor plan.
+            value,
+            <br />
+            one row per manufacturer → model → floor plan.
           </p>
         </header>
 
@@ -185,8 +187,9 @@ export function App() {
                 </li>
                 <li>
                   One row per manufacturer → model → floor plan. Coachmen, East
-                  To West, and Forest River 2026 floor plans from RV Trader
-                  facets are listed; OTHER buckets (no floor plans) are omitted.
+                  To West, Forest River, and Jayco 2026 floor plans from RV
+                  Trader facets are listed; OTHER buckets (no floor plans) are
+                  omitted.
                   Ask, dealer, trade, and delta stay blank until a lowest ask is
                   recorded.
                 </li>

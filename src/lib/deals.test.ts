@@ -36,6 +36,29 @@ const EAST_TO_WEST_FIFTH_WHEELS = [
   ["Tandara", "295RL"],
 ] as const
 
+const JAYCO_FIFTH_WHEELS = [
+  ["Eagle", "28CRT"],
+  ["Eagle", "321RSTS"],
+  ["Eagle", "325MKTS"],
+  ["Eagle", "335LSTS"],
+  ["Eagle", "355MBQS"],
+  ["Eagle", "365UKTS"],
+  ["Eagle HT", "25RUC"],
+  ["Eagle HT", "26REC"],
+  ["Eagle HT", "27MLC"],
+  ["Eagle HT", "28CRT"],
+  ["Eagle HT", "29DDB"],
+  ["Eagle HT", "29RLC"],
+  ["Eagle HT", "30CRT"],
+  ["Eagle HT", "31QCD"],
+  ["Eagle SLE", "24MLE"],
+  ["Eagle SLE", "28BHU"],
+  ["Eagle SLE", "28RKS"],
+  ["Eagle SLE", "30RLT"],
+  ["North Point", "310RLTS"],
+  ["Pinnacle", "32RLTS"],
+] as const
+
 const FOREST_RIVER_FIFTH_WHEELS = [
   ["Cardinal", "32LIVE"],
   ["Cardinal", "33CHEF"],
@@ -108,8 +131,8 @@ const FOREST_RIVER_FIFTH_WHEELS = [
 ] as const
 
 describe("deal data", () => {
-  it("keeps Coachmen and East To West rows and adds Forest River fifth wheels", () => {
-    expect(deals).toHaveLength(335)
+  it("keeps Coachmen, East To West, and Forest River rows and adds Jayco fifth wheels", () => {
+    expect(deals).toHaveLength(355)
     expect(
       deals.filter((deal) => deal.manufacturer === "Coachmen")
     ).toHaveLength(262)
@@ -119,8 +142,11 @@ describe("deal data", () => {
     expect(
       deals.filter((deal) => deal.manufacturer === "Forest River")
     ).toHaveLength(68)
+    expect(
+      deals.filter((deal) => deal.manufacturer === "Jayco")
+    ).toHaveLength(20)
     expect(new Set(deals.map((deal) => deal.manufacturer))).toEqual(
-      new Set(["Coachmen", "East To West", "Forest River"])
+      new Set(["Coachmen", "East To West", "Forest River", "Jayco"])
     )
     expect(new Set(deals.map((deal) => deal.year))).toEqual(new Set([2026]))
     expect(deals.some((deal) => deal.model === "Adrenaline")).toBe(true)
@@ -128,7 +154,7 @@ describe("deal data", () => {
     expect(deals.some((deal) => deal.model === "Other")).toBe(false)
   })
 
-  it("lists every Coachmen, East To West, and Forest River fifth-wheel floor plan", () => {
+  it("lists every Coachmen, East To West, Forest River, and Jayco fifth-wheel floor plan", () => {
     for (const [model, floor] of COACHMEN_FIFTH_WHEELS) {
       expect(
         deals.some(
@@ -162,6 +188,23 @@ describe("deal data", () => {
     )
     expect(
       forest.every(
+        (deal) =>
+          deal.year === 2026 &&
+          deal.ask == null &&
+          deal.trade == null &&
+          deal.delta == null &&
+          deal.dealer === "" &&
+          deal.notes.length === 0
+      )
+    ).toBe(true)
+
+    const jayco = deals.filter((deal) => deal.manufacturer === "Jayco")
+    expect(jayco).toHaveLength(JAYCO_FIFTH_WHEELS.length)
+    expect(jayco.map((deal) => [deal.model, deal.floor])).toEqual(
+      JAYCO_FIFTH_WHEELS.map(([model, floor]) => [model, floor])
+    )
+    expect(
+      jayco.every(
         (deal) =>
           deal.year === 2026 &&
           deal.ask == null &&
@@ -253,7 +296,7 @@ describe("filters and sort", () => {
     const priced = rows.filter((deal) => deal.delta != null)
     const empty = rows.filter((deal) => deal.delta == null)
     expect(priced.map((deal) => deal.delta)).toEqual([-5252, -586, 13165])
-    expect(empty.length).toBe(332)
+    expect(empty.length).toBe(352)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
@@ -321,6 +364,16 @@ describe("filters and sort", () => {
     expect(byForest.every((deal) => deal.manufacturer === "Forest River")).toBe(
       true
     )
+
+    const byJayco = visibleDeals(
+      deals,
+      { manufacturer: "", year: "", model: "" },
+      DEFAULT_SORT_KEY,
+      DEFAULT_SORT_DIR,
+      "jayco"
+    )
+    expect(byJayco).toHaveLength(20)
+    expect(byJayco.every((deal) => deal.manufacturer === "Jayco")).toBe(true)
   })
 
   it("ANDs text search with dropdown filters", () => {
@@ -377,6 +430,7 @@ describe("filters and sort", () => {
       "Coachmen",
       "East To West",
       "Forest River",
+      "Jayco",
     ])
     expect(options.model).toContain("Flagstaff Classic")
     expect(options.model).toContain("Cherokee Arctic Wolf")
@@ -404,6 +458,49 @@ describe("filters and sort", () => {
       "372RL",
       "374DBH",
       "F282RK",
+    ])
+  })
+
+  it("cascades Jayco models and keeps those rows unpriced", () => {
+    const options = filterOptions(deals, {
+      manufacturer: "Jayco",
+      year: "",
+      model: "",
+    })
+    expect(options.manufacturer).toEqual([
+      "Coachmen",
+      "East To West",
+      "Forest River",
+      "Jayco",
+    ])
+    expect(options.model).toEqual([
+      "Eagle",
+      "Eagle HT",
+      "Eagle SLE",
+      "North Point",
+      "Pinnacle",
+    ])
+    expect(options.model).not.toContain("Brookstone")
+    expect(options.model).not.toContain("Flagstaff Classic")
+
+    const rows = matching(deals, {
+      manufacturer: "Jayco",
+      year: "",
+      model: "Eagle HT",
+    })
+    expect(rows).toHaveLength(8)
+    expect(rows.every((deal) => deal.ask == null && deal.delta == null)).toBe(
+      true
+    )
+    expect(rows.map((deal) => deal.floor)).toEqual([
+      "25RUC",
+      "26REC",
+      "27MLC",
+      "28CRT",
+      "29DDB",
+      "29RLC",
+      "30CRT",
+      "31QCD",
     ])
   })
 })
