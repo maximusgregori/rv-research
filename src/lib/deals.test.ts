@@ -1207,7 +1207,7 @@ describe("deal data", () => {
           .flat()
           .some((span) => span.type === "text" && span.text === pending)
       ).length
-    ).toBe(24)
+    ).toBe(0)
   })
 
   it("applies JDP trades on Catalina Trail Blazer", () => {
