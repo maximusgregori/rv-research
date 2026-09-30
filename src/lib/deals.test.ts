@@ -272,13 +272,15 @@ describe("deal data", () => {
       "Rockwood Signature|290SFK",
       "Rockwood Signature|301RKS",
       "Rockwood Signature|331RL",
+      "Rockwood Signature|361RL",
       "Rockwood Signature|R331RL",
+      "Rockwood Signature FW|361RLS",
       "Rockwood Signature Fifth Wheel|281RK",
     ])
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(25)
+    expect(pricedForest).toHaveLength(27)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -332,7 +334,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(111)
+    expect(priced).toHaveLength(113)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -1826,6 +1828,80 @@ describe("deal data", () => {
     expect(flagstaff?.notes).toEqual([])
   })
 
+  it("applies Rockwood Signature 361RL ask and 2026 JDP trade", () => {
+    const rows = [
+      ["Rockwood Signature", "361RL"],
+      ["Rockwood Signature FW", "361RLS"],
+    ] as const
+    for (const [model, floor] of rows) {
+      const deal = deals.find(
+        (row) =>
+          row.manufacturer === "Forest River" &&
+          row.model === model &&
+          row.floor === floor &&
+          row.year === 2026
+      )
+      expect(deal).toMatchObject({
+        ask: 65987,
+        dealer: "A & L RV Sales–Lake Park, Lake Park, GA",
+        trade: 49320,
+        delta: 16667,
+      })
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "text" &&
+              span.text ===
+                "Ask $65,987 RVT (A & L RV Sales–Lake Park, GA), listed 361RL (~36.83 ft New; descriptions sometimes R361RLS); RV Trader organic exact 361RL $69,977 (Tom Stinnett’s Campers Inn RV, Clarksville IN). Separate cheaper R361RLS-only variants excluded. Trade = 2026 JDP Low Retail $54,800 × 0.9 = $49,320 (Signature Series M-361RLS — no bare M-361RL on 2026 JDP list)."
+          )
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some((span) => span.type === "link" && span.label === "JDP values")
+      ).toBe(false)
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "link" &&
+              span.href ===
+                "https://www.rvt.com/buy/details/2026-forest-river-rockwood-signature-361rl/56542f01-1a15-11f1-beaa-02c8259c7411/" &&
+              span.label === "RVT"
+          )
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "link" &&
+              span.href ===
+                "https://www.rvtrader.com/listing/2026-Forest+River-Rockwood+Signature+361RL-5038638016" &&
+              span.label === "RV Trader"
+          )
+      ).toBe(true)
+    }
+
+    const flagstaff = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Flagstaff Classic" &&
+        row.floor === "361RLS" &&
+        row.year === 2026
+    )
+    expect(flagstaff).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(flagstaff?.notes).toEqual([])
+  })
+
   it("applies 2025 JDP proxy trades on Coachmen Adrenaline", () => {
     const rows = [
       [
@@ -3016,10 +3092,10 @@ describe("filters and sort", () => {
       4644, 4790, 4875, 4970, 5243, 5480, 5514, 5834, 5889, 5965, 6144, 6540,
       6554, 6735, 6900, 7201, 7294, 7370, 7709, 7980, 8010, 8356, 8784, 8790, 8828, 9034,
       9073, 9314, 10050, 10859, 10859, 11385, 11736, 12283, 13013, 13013, 13075, 13165, 13584,
-      14139, 15697, 17460, 17664, 17740, 19530, 21524, 22400, 25615, 25875,
+      14139, 15697, 16667, 16667, 17460, 17664, 17740, 19530, 21524, 22400, 25615, 25875,
       26440, 26520, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(318)
+    expect(empty.length).toBe(316)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )

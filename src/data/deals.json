@@ -6387,11 +6387,42 @@
     "manufacturer": "Forest River",
     "model": "Rockwood Signature FW",
     "floor": "361RLS",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 65987,
+    "dealer": "A & L RV Sales–Lake Park, Lake Park, GA",
+    "trade": 49320,
+    "delta": 16667,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was A & L RV Sales–Lake Park, Lake Park, GA, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-forest-river-rockwood-signature-361rl/56542f01-1a15-11f1-beaa-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Forest+River-Rockwood+Signature+361RL-5038638016",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $65,987 RVT (A & L RV Sales–Lake Park, GA), listed 361RL (~36.83 ft New; descriptions sometimes R361RLS); RV Trader organic exact 361RL $69,977 (Tom Stinnett’s Campers Inn RV, Clarksville IN). Separate cheaper R361RLS-only variants excluded. Trade = 2026 JDP Low Retail $54,800 × 0.9 = $49,320 (Signature Series M-361RLS — no bare M-361RL on 2026 JDP list)."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
@@ -6630,11 +6661,42 @@
     "manufacturer": "Forest River",
     "model": "Rockwood Signature",
     "floor": "361RL",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 65987,
+    "dealer": "A & L RV Sales–Lake Park, Lake Park, GA",
+    "trade": 49320,
+    "delta": 16667,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was A & L RV Sales–Lake Park, Lake Park, GA, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-forest-river-rockwood-signature-361rl/56542f01-1a15-11f1-beaa-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Forest+River-Rockwood+Signature+361RL-5038638016",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $65,987 RVT (A & L RV Sales–Lake Park, GA), listed 361RL (~36.83 ft New; descriptions sometimes R361RLS); RV Trader organic exact 361RL $69,977 (Tom Stinnett’s Campers Inn RV, Clarksville IN). Separate cheaper R361RLS-only variants excluded. Trade = 2026 JDP Low Retail $54,800 × 0.9 = $49,320 (Signature Series M-361RLS — no bare M-361RL on 2026 JDP list)."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
