@@ -635,11 +635,11 @@ describe("deal data", () => {
     const beyond = [
       ["22C AWD", 142000, "Shafer's RV"],
       ["22C", 144998, "Western Skies RV"],
-      ["22D AWD", 145000, "Shafer's RV"],
-      ["22D-EB", 141000, "Showroom, Delta, OH"],
-      ["22RB AWD", 144900, "Johnson RV Sales - Medford"],
+      ["22D AWD", 142986, "Shafer's RV"],
+      ["22D-EB", 139995, "Showroom, Delta, OH"],
+      ["22RB AWD", 141785, "Johnson RV Sales - Medford"],
       ["22RBBC", 159985, "Mike Thompson's RV - Fountain Valley"],
-      ["22RB", 145900, "Giant Recreation World"],
+      ["22RB", 145000, "Giant Recreation World"],
     ] as const
 
     for (const [floor, ask, dealer] of beyond) {
