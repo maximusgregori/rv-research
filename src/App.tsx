@@ -1,10 +1,25 @@
-import { ArrowDownIcon, ArrowUpIcon, ChevronsUpDownIcon } from "lucide-react"
+import {
+  ArrowDownIcon,
+  ArrowUpIcon,
+  ChevronsUpDownIcon,
+  SearchIcon,
+} from "lucide-react"
 import { useMemo, useState } from "react"
 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/ui/input-group"
 import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select"
 import {
   Table,
@@ -29,7 +44,7 @@ import {
   type SortDir,
   type SortKey,
 } from "@/lib/deals"
-import { formatMoney } from "@/lib/format"
+import { deltaTone, formatMoney } from "@/lib/format"
 import { cn } from "@/lib/utils"
 
 const SORTABLE: { key: SortKey; label: string }[] = [
@@ -74,10 +89,16 @@ function NoteSpans({ spans }: { spans: NoteSpan[] }) {
   )
 }
 
+const DELTA_VARIANT = {
+  positive: "success",
+  negative: "destructive",
+  neutral: "secondary",
+} as const
+
 function DeltaCell({ value }: { value: number | null }) {
   if (value == null) return null
   return (
-    <Badge variant={value < 0 ? "secondary" : "outline"}>
+    <Badge variant={DELTA_VARIANT[deltaTone(value)]} className="tabular-nums">
       {formatMoney(value)}
     </Badge>
   )
@@ -85,13 +106,14 @@ function DeltaCell({ value }: { value: number | null }) {
 
 export function App() {
   const [filters, setFilters] = useState<FilterState>(EMPTY_FILTERS)
+  const [search, setSearch] = useState("")
   const [sortKey, setSortKey] = useState<SortKey>(DEFAULT_SORT_KEY)
   const [sortDir, setSortDir] = useState<SortDir>(DEFAULT_SORT_DIR)
 
   const options = useMemo(() => filterOptions(deals, filters), [filters])
   const rows = useMemo(
-    () => visibleDeals(deals, filters, sortKey, sortDir),
-    [filters, sortKey, sortDir]
+    () => visibleDeals(deals, filters, sortKey, sortDir, search),
+    [filters, search, sortKey, sortDir]
   )
 
   function updateFilter(key: keyof FilterState, value: string) {
@@ -101,6 +123,7 @@ export function App() {
 
   function resetFilters() {
     setFilters(EMPTY_FILTERS)
+    setSearch("")
   }
 
   function onSort(key: SortKey) {
@@ -122,50 +145,59 @@ export function App() {
           </p>
         </header>
 
-        <Card>
-          <CardHeader>
-            <CardTitle id="method-heading">Methodology</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ul className="flex list-disc flex-col gap-1.5 pl-5 text-muted-foreground">
-              <li>
-                Listing sources:{" "}
-                <a href="https://www.rvtrader.com">rvtrader.com</a> and{" "}
-                <a href="https://www.rvt.com">rvt.com</a>
-              </li>
-              <li>
-                Industry research filters: New, model year 2026, length under 40
-                ft
-              </li>
-              <li>
-                Lowest ask: filter Make + Model + Year, sort Price low→high,
-                then take the first organic listing that matches the floor plan.
-                Ignore Featured/Sponsored. Do not use the Floor Plan keyword
-                facet as the primary gate.
-              </li>
-              <li>
-                Cross-check both listing sites and keep the cheaper qualifying
-                ask.
-              </li>
-              <li>Trade value = J.D. Power Low Retail × 0.9</li>
-              <li>Delta = lowest ask − trade</li>
-              <li>
-                Default sort: smallest delta first. Empty numeric fields sort
-                last. Click a column header to change sort.
-              </li>
-              <li>
-                One row per manufacturer → model → floor plan. Coachmen 2026
-                floor plans from RV Trader facets are listed; the OTHER bucket
-                (no floor plans) is omitted. Ask, dealer, trade, and delta stay
-                blank until a lowest ask is recorded.
-              </li>
-              <li>
-                New catalog work is fifth wheels only (New, 2026, under 40 ft).
-                Earlier Coachmen non-fifth-wheel rows remain on the table.
-              </li>
-            </ul>
-          </CardContent>
-        </Card>
+        <Accordion type="single" collapsible>
+          <AccordionItem
+            value="methodology"
+            className="rounded-xl border bg-card px-4"
+          >
+            <AccordionTrigger
+              id="method-heading"
+              className="font-heading text-sm hover:no-underline"
+            >
+              Methodology
+            </AccordionTrigger>
+            <AccordionContent>
+              <ul className="flex list-disc flex-col gap-1.5 pl-5 text-muted-foreground">
+                <li>
+                  Listing sources:{" "}
+                  <a href="https://www.rvtrader.com">rvtrader.com</a> and{" "}
+                  <a href="https://www.rvt.com">rvt.com</a>
+                </li>
+                <li>
+                  Industry research filters: New, model year 2026, length under
+                  40 ft
+                </li>
+                <li>
+                  Lowest ask: filter Make + Model + Year, sort Price low→high,
+                  then take the first organic listing that matches the floor
+                  plan. Ignore Featured/Sponsored. Do not use the Floor Plan
+                  keyword facet as the primary gate.
+                </li>
+                <li>
+                  Cross-check both listing sites and keep the cheaper qualifying
+                  ask.
+                </li>
+                <li>Trade value = J.D. Power Low Retail × 0.9</li>
+                <li>Delta = lowest ask − trade</li>
+                <li>
+                  Default sort: smallest delta first. Empty numeric fields sort
+                  last. Click a column header to change sort.
+                </li>
+                <li>
+                  One row per manufacturer → model → floor plan. Coachmen 2026
+                  floor plans from RV Trader facets are listed; the OTHER bucket
+                  (no floor plans) is omitted. Ask, dealer, trade, and delta
+                  stay blank until a lowest ask is recorded.
+                </li>
+                <li>
+                  New catalog work is fifth wheels only (New, 2026, under 40
+                  ft). Earlier Coachmen non-fifth-wheel rows remain on the
+                  table.
+                </li>
+              </ul>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
 
         <form
           className="flex flex-col gap-3"
@@ -239,6 +271,23 @@ export function App() {
             >
               Showing {rows.length} of {deals.length} rows
             </p>
+            <Field className="w-full min-w-56 sm:ml-auto sm:w-80">
+              <FieldLabel htmlFor="filter-search">Search</FieldLabel>
+              <InputGroup>
+                <InputGroupAddon>
+                  <SearchIcon />
+                </InputGroupAddon>
+                <InputGroupInput
+                  id="filter-search"
+                  type="search"
+                  name="search"
+                  placeholder="Search make, model, floor plan…"
+                  value={search}
+                  onChange={(event) => setSearch(event.target.value)}
+                  aria-controls="deals"
+                />
+              </InputGroup>
+            </Field>
           </FieldGroup>
         </form>
 
