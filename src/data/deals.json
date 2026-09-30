@@ -1170,77 +1170,273 @@
     "manufacturer": "Coachmen",
     "model": "Beyond",
     "floor": "22C AWD",
-    "ask": null,
-    "dealer": "",
+    "ask": 142000,
+    "dealer": "Shafer's RV",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Shafer's RV, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen-BEYOND+22C+AWD-5037413559",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. Cheapest organic current 2026 new 22C AWD on RV Trader is $142,000. RVT search was blocked by Human Verification, so the RV Trader organic match was kept. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 22C AWD, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Beyond",
     "floor": "22C",
-    "ask": null,
-    "dealer": "",
+    "ask": 144998,
+    "dealer": "Western Skies RV",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Western Skies RV, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen-Beyond+22C-5038757417",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. Cheapest organic current 2026 new 22C on RV Trader is $144,998. RVT search was blocked by Human Verification, so the RV Trader organic match was kept. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 22C, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Beyond",
     "floor": "22D AWD",
-    "ask": null,
-    "dealer": "",
+    "ask": 145000,
+    "dealer": "Shafer's RV",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Shafer's RV, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen-BEYOND+22D+AWD-5040638976",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. Cheapest organic current 2026 new 22D AWD on RV Trader is $145,000. RVT search was blocked by Human Verification, so the RV Trader organic match was kept. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 22D AWD, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Beyond",
     "floor": "22D-EB",
-    "ask": null,
-    "dealer": "",
+    "ask": 141000,
+    "dealer": "Showroom, Delta, OH",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Showroom, Delta, OH, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-coachmen-beyond-22d-eb/f8c79181-2c32-11f1-9d95-02ea7b77d8a7/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. RVT detail confirmed $141,000. RV Trader cross-check is still pending. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 22D-EB, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Beyond",
     "floor": "22RB AWD",
-    "ask": null,
-    "dealer": "",
+    "ask": 144900,
+    "dealer": "Johnson RV Sales - Medford",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Johnson RV Sales - Medford, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen-Beyond+22RB+AWD-5038764307",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. Cheapest organic current 2026 new 22RB AWD on RV Trader is $144,900. RVT search was blocked by Human Verification, so the RV Trader organic match was kept. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 22RB AWD, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Beyond",
     "floor": "22RBBC",
-    "ask": null,
-    "dealer": "",
+    "ask": 159985,
+    "dealer": "Mike Thompson's RV - Fountain Valley",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Mike Thompson's RV - Fountain Valley, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen+Rv-Beyond+22RBBC-5039947953",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. Cheapest organic current 2026 new 22RBBC on RV Trader is $159,985. RVT search was blocked by Human Verification, so the RV Trader organic match was kept. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 22RBBC, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Beyond",
     "floor": "22RB",
-    "ask": null,
-    "dealer": "",
+    "ask": 145900,
+    "dealer": "Giant Recreation World",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Giant Recreation World, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen-Beyond+22RB-5037473732",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. Cheapest organic current 2026 new 22RB on RV Trader is $145,900. RVT search was blocked by Human Verification, so the RV Trader organic match was kept. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 22RB, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
@@ -1255,7 +1451,7 @@
       [
         {
           "type": "text",
-          "text": "Found via Make + Model + Year, then Price low→high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
         }
       ],
       [
@@ -1829,7 +2025,7 @@
       [
         {
           "type": "text",
-          "text": "Found via Make + Model + Year, then Price low→high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
         }
       ],
       [
@@ -1893,7 +2089,7 @@
       [
         {
           "type": "text",
-          "text": "Found via Make + Model + Year, then Price low→high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
         }
       ],
       [
@@ -1992,7 +2188,7 @@
       [
         {
           "type": "text",
-          "text": "Found via Make + Model + Year, then Price low→high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
         }
       ],
       [
