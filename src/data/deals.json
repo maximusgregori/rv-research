@@ -7138,11 +7138,47 @@
     "manufacturer": "Forest River",
     "model": "Sandpiper",
     "floor": "3370RLS",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 63807,
+    "dealer": "Carolina RV, Myrtle Beach, SC",
+    "trade": 36585,
+    "delta": 27222,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Carolina RV, Myrtle Beach, SC, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-forest-river-sandpiper-3370rls/7dcb7159-eae5-11f0-beaa-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Sandpiper+3370RLS-5038916171",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $63,807 both RV Trader + RVT (Carolina RV, Myrtle Beach SC), 36 ft New 3370RLS. TRADE FROM 2025 (not 2026): J.D. Power Low Retail $40,650 \u00d7 0.9 = $36,585 (Sandpiper by Forest River M-3370RLS). Why not 2026: 2026 JDP listed M-3370LS not exact M-3370RLS \u2014 used prior-year 2025 proxy. Source: https://www.jdpower.com/rvs/2025/sandpiper-by-forest-river/m-3370rls/6643593/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2025/sandpiper-by-forest-river/m-3370rls/6643593/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
