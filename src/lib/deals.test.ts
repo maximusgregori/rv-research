@@ -288,11 +288,12 @@ describe("deal data", () => {
       "Sandpiper|3370RLS",
       "Sandstorm|2710",
       "Sanibel|34LOUNGE",
+      "Vengeance Rogue Armored|341GS11",
     ])
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(39)
+    expect(pricedForest).toHaveLength(40)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -346,7 +347,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(125)
+    expect(priced).toHaveLength(126)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -2981,6 +2982,65 @@ describe("deal data", () => {
     ).toBe(true)
   })
 
+  it("applies Vengeance Rogue Armored 341GS11 ask and 2026 JDP trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Vengeance Rogue Armored" &&
+        row.floor === "341GS11" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 67328,
+      dealer: "Forest River RV Little Rock by Camping World, Sherwood, AR",
+      trade: 56835,
+      delta: 10493,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $67,328 RV Trader (Camping World Little Rock / Sherwood AR), 39.92 ft New 341GS11. RVT $69,999 was 40 ft (skipped); lowest RVT under-40 was $74,995. Trade = 2026 JDP Low Retail $63,150 × 0.9 = $56,835. Delta +$10,493."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.jdpower.com/rvs/2026/vengeance-by-forest-river/m-341gs11/6648531/values" &&
+            span.label === "JDP values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Forest+River-ROGUE+ARMORED+341GS11-5042059698" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvt.com/buy/details/2026-forest-river-vengeance-rogue-armored-341gs11/4d9e72af-95de-11ef-b575-12043a49ed9f/" &&
+            span.label === "RVT"
+        )
+    ).toBe(true)
+  })
+
   it("applies 2025 JDP proxy trades on Coachmen Adrenaline", () => {
     const rows = [
       [
@@ -4176,11 +4236,11 @@ describe("filters and sort", () => {
       659, 1163, 1340, 1609, 1665, 1919, 2089, 2535, 3005, 3080, 3195, 3435, 3498, 3570, 4103, 4310,
       4644, 4790, 4875, 4970, 5243, 5480, 5514, 5834, 5889, 5965, 6144, 6471, 6540,
       6554, 6735, 6900, 7201, 7294, 7370, 7709, 7980, 8010, 8356, 8784, 8790, 8828, 9034,
-      9073, 9314, 10050, 10859, 10859, 11385, 11736, 11884, 12283, 13013, 13013, 13075, 13165, 13584,
+      9073, 9314, 10050, 10493, 10859, 10859, 11385, 11736, 11884, 12283, 13013, 13013, 13075, 13165, 13584,
       14139, 15689, 15697, 16667, 16667, 17460, 17664, 17740, 17755, 19530, 21524, 22400, 22745, 22925, 25615, 25875,
       26440, 26520, 27222, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(305)
+    expect(empty.length).toBe(304)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )

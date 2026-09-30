@@ -7324,11 +7324,47 @@
     "manufacturer": "Forest River",
     "model": "Vengeance Rogue Armored",
     "floor": "341GS11",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 67328,
+    "dealer": "Forest River RV Little Rock by Camping World, Sherwood, AR",
+    "trade": 56835,
+    "delta": 10493,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Forest River RV Little Rock by Camping World, Sherwood, AR, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Forest+River-ROGUE+ARMORED+341GS11-5042059698",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-forest-river-vengeance-rogue-armored-341gs11/4d9e72af-95de-11ef-b575-12043a49ed9f/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $67,328 RV Trader (Camping World Little Rock / Sherwood AR), 39.92 ft New 341GS11. RVT $69,999 was 40 ft (skipped); lowest RVT under-40 was $74,995. Trade = 2026 JDP Low Retail $63,150 \u00d7 0.9 = $56,835. Delta +$10,493."
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/vengeance-by-forest-river/m-341gs11/6648531/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
