@@ -1146,8 +1146,8 @@
     "floor": "289TBSS",
     "ask": 34999,
     "dealer": "Franklinville, NC",
-    "trade": null,
-    "delta": null,
+    "trade": 25965,
+    "delta": 9034,
     "notes": [
       [
         {
@@ -1173,7 +1173,12 @@
       [
         {
           "type": "text",
-          "text": "Verified absent from 2026 Apex Ultra-Lite (2025 has 291 TBSS only, not 289); trade left blank \u2014 no same-floor prior-year proxy."
+          "text": "TRADE FROM 2023 (not 2026): J.D. Power Low Retail $28,850 \u00d7 0.9 = $25,965 (Apex-by-Coachmen M-289 TBSS). Floor absent from 2024\u20132026 Apex lists (2025 has 291 TBSS only \u2014 different code, not used). Source: https://www.jdpower.com/rvs/2023/apex-by-coachmen/m-289-tbss/6620293/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2023/apex-by-coachmen/m-289-tbss/6620293/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -1502,8 +1507,8 @@
     "floor": "22RBBC",
     "ask": 159985,
     "dealer": "Fountain Valley, CA",
-    "trade": null,
-    "delta": null,
+    "trade": 119385,
+    "delta": 40600,
     "notes": [
       [
         {
@@ -1529,7 +1534,12 @@
       [
         {
           "type": "text",
-          "text": "No exact 22RBBC on 2026 JDP Beyond/Beyond Li (codes are M-22 C/D/RB AWD Ford). Not mapping to Beyond Li 22RB without confirmation; trade left blank."
+          "text": "Trade from 2026 J.D. Power Low Retail $132,650 \u00d7 0.9 = $119,385 (Beyond M-22 RB AWD Ford; dealer listings brand this as Beyond 22RBBC (rear wet bath); JDP codes it M-22 RB in Beyond series (not Beyond Li)). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-22-rb-awd-ford/6640385/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-22-rb-awd-ford/6640385/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -2487,8 +2497,8 @@
     "floor": "184RBS",
     "ask": 19999,
     "dealer": "Camp Rite RV Sales",
-    "trade": null,
-    "delta": null,
+    "trade": 17910,
+    "delta": 2089,
     "notes": [
       [
         {
@@ -2514,7 +2524,12 @@
       [
         {
           "type": "text",
-          "text": "2026 Catalina Summit has M-184 BHSX and M-184 MKS, not 184RBS; trade left blank."
+          "text": "TRADE FROM 2025 (not 2026): J.D. Power Low Retail $19,900 \u00d7 0.9 = $17,910 (Catalina Summit M-184 RBS). 2026 unused because absent from 2026 Summit list (2026 has BHSX/MKS only for 184). Source: https://www.jdpower.com/rvs/2025/coachmen-by-forest-river/m-184-rbs/6639404/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2025/coachmen-by-forest-river/m-184-rbs/6639404/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -2572,13 +2587,18 @@
     "floor": "221MKE",
     "ask": 26895,
     "dealer": "Meyer's RV of Egg Harbor",
-    "trade": null,
-    "delta": null,
+    "trade": 20160,
+    "delta": 6735,
     "notes": [
       [
         {
           "type": "text",
-          "text": "2026 Catalina Summit has M-221 EPIC, not 221MKE; trade left blank."
+          "text": "TRADE FROM 2025 (not 2026): J.D. Power Low Retail $22,400 \u00d7 0.9 = $20,160 (Catalina Summit M-221 MKE). 2026 unused because absent from 2026 Summit list (2026 has M-221 EPIC only). Source: https://www.jdpower.com/rvs/2025/coachmen-by-forest-river/m-221-mke/6639393/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2025/coachmen-by-forest-river/m-221-mke/6639393/values",
+          "label": "JDP values"
         }
       ]
     ]
