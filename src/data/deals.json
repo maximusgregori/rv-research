@@ -654,44 +654,192 @@
     "manufacturer": "Coachmen",
     "model": "Apex Nano",
     "floor": "213RDS",
-    "ask": null,
-    "dealer": "",
+    "ask": 24900,
+    "dealer": "Camp EZ RV - Livingston",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Camp EZ RV - Livingston, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen+Rv-Apex+Nano+213RDS-5038857348",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-coachmen-apex-nano-213rds/bd19c214-e4d0-11f0-beaa-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. Cheapest organic current 2026 new 213RDS on both sites is $24,900. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 213RDS, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Apex Nano",
     "floor": "216RKS",
-    "ask": null,
-    "dealer": "",
+    "ask": 27999,
+    "dealer": "Bill's Happy Camper RV Sales and Service",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Bill's Happy Camper RV Sales and Service, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen-Apex+Nano+216RKS-5038475202#sid=263432",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-coachmen-apex-nano-216rks/78a9da5f-c2dc-11f0-beaa-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. Cheapest organic current 2026 new 216RKS on both sites is $27,999. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 216RKS, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Apex Nano",
     "floor": "224RBS",
-    "ask": null,
-    "dealer": "",
+    "ask": 24999,
+    "dealer": "General RV Center - Mesa",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was General RV Center - Mesa, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-coachmen-apex-nano-224rbs/e2c0ff31-7a84-11f1-adcf-02f5bff6b341/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen+Rv-Apex+Nano+224RBS-5042029710#sid=294746",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. Cheapest organic current 2026 new 224RBS is $24,999 on RVT; RV Trader comparable is $27,895, so RVT was kept. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 224RBS, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Apex Nano",
     "floor": "228BHS",
-    "ask": null,
-    "dealer": "",
+    "ask": 28995,
+    "dealer": "RV Specialist",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was RV Specialist, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen-Apex+Nano+228BHS-5041680752#sid=964290",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-coachmen-apex-nano-228bhs/17f45c3f-84ee-11f1-adcf-02f5bff6b341/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. Cheapest organic current 2026 new 228BHS on both sites is $28,995. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 228BHS, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
