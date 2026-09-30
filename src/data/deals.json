@@ -6345,11 +6345,42 @@
     "manufacturer": "Forest River",
     "model": "Impression",
     "floor": "318RL",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 53595,
+    "dealer": "Fun Town RV - Anna, Anna, IL",
+    "trade": 42210,
+    "delta": 11385,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Fun Town RV - Anna, Anna, IL, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-forest-river-impression-318rl/28a27f4f-9914-11f0-beaa-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Impression+318RL-5037909973",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $53,595 both sites (Fun Town RV Anna IL), 38 ft New. TRADE FROM 2025 (not 2026): JDP Low Retail $46,900 \u00d7 0.9 = $42,210 (Impression-by-FR M-318RLVIEW). 2026 make page HTTP 500."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
