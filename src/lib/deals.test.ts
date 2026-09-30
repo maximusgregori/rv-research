@@ -268,12 +268,13 @@ describe("deal data", () => {
       "Impression|315MB",
       "Impression|318RL",
       "Rockwood Signature|281RK",
+      "Rockwood Signature|282RK",
       "Rockwood Signature Fifth Wheel|281RK",
     ])
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(20)
+    expect(pricedForest).toHaveLength(21)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -327,7 +328,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(106)
+    expect(priced).toHaveLength(107)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -1537,6 +1538,74 @@ describe("deal data", () => {
     expect(flagstaff?.notes).toEqual([])
   })
 
+  it("applies Rockwood Signature 282RK ask and 2026 JDP trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Rockwood Signature" &&
+        row.floor === "282RK" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 43589,
+      dealer: "Camping World, Apollo, PA",
+      trade: 37035,
+      delta: 6554,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $43,589 both sites (Camping World Apollo PA), ~28.92 ft New. Trade = 2026 JDP Low Retail $41,150 × 0.9 = $37,035 (Rockwood-by-FR M-282RK)."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvt.com/buy/details/2026-forest-river-rockwood-signature-282rk/ceba381a-ad10-11f1-84f9-020f812d825b/" &&
+            span.label === "RVT"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Forest+River-ROCKWOOD+SIGNATURE+282RK-5042059751" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+
+    const flagstaff = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Flagstaff Classic" &&
+        row.floor === "282RK" &&
+        row.year === 2026
+    )
+    expect(flagstaff).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(flagstaff?.notes).toEqual([])
+  })
+
   it("applies 2025 JDP proxy trades on Coachmen Adrenaline", () => {
     const rows = [
       [
@@ -2725,12 +2794,12 @@ describe("filters and sort", () => {
       -1195, -1170, -831, -795, -586, -343, -110, -101, -30, -20, 390, 535, 573,
       659, 1163, 1340, 1609, 1665, 1919, 2089, 2535, 3195, 3435, 3570, 4310,
       4644, 4790, 4875, 4970, 5243, 5480, 5514, 5834, 5889, 5965, 6144, 6540,
-      6735, 6900, 7201, 7294, 7370, 7709, 7980, 8356, 8784, 8790, 8828, 9034,
+      6554, 6735, 6900, 7201, 7294, 7370, 7709, 7980, 8356, 8784, 8790, 8828, 9034,
       9073, 9314, 10050, 11385, 11736, 13013, 13013, 13075, 13165, 13584, 14139,
       15697, 17460, 17664, 17740, 19530, 21524, 22400, 25615, 25875, 26440,
       26520, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(323)
+    expect(empty.length).toBe(322)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
