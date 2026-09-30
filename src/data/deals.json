@@ -5660,23 +5660,14 @@
     "model": "Cardinal",
     "floor": "33CHEF",
     "ask": 49995,
-    "dealer": "RV Dynasty",
+    "dealer": "County Line Campers, Gulfport, MS",
     "trade": 30465,
     "delta": 19530,
     "notes": [
       [
         {
           "type": "text",
-          "text": "Lowest ask was RV Dynasty, on "
-        },
-        {
-          "type": "link",
-          "href": "https://www.rvt.com/buy/details/2026-forest-river-cardinal-33chef/611895bd-b16c-11f0-beaa-02c8259c7411/",
-          "label": "RVT"
-        },
-        {
-          "type": "text",
-          "text": " / "
+          "text": "Lowest ask was County Line Campers, Gulfport, MS, on "
         },
         {
           "type": "link",
@@ -5685,13 +5676,13 @@
         },
         {
           "type": "text",
-          "text": " as of 2026-09-30."
+          "text": " as of 2026-09-30. Ask $49,995 RV Trader only (County Line Campers, Gulfport MS), ~38 ft New 33CHEF (JDP 38'3\"). RVT was CAPTCHA-blocked \u2014 not cross-checked."
         }
       ],
       [
         {
           "type": "text",
-          "text": "TRADE FROM 2025 (not 2026): J.D. Power Low Retail $33,850 \u00d7 0.9 = $30,465 (Cardinal-by-Forest-River M-33CHEF). 2026 cardinal-by-forest-river page returned error/unavailable on scrape; used matching 2025 floor. Source: https://www.jdpower.com/rvs/2025/cardinal-by-forest-river/m-33chef/6647568/values"
+          "text": "TRADE FROM 2025 (not 2026): J.D. Power Low Retail $33,850 \u00d7 0.9 = $30,465 (Cardinal-by-Forest-River M-33CHEF). 2026 JDP No Data Available \u2014 prior-year proxy. 2026 cardinal-by-forest-river page returned error/unavailable on scrape; used matching 2025 floor. Source: https://www.jdpower.com/rvs/2025/cardinal-by-forest-river/m-33chef/6647568/values"
         },
         {
           "type": "link",
