@@ -6703,11 +6703,42 @@
     "manufacturer": "Forest River",
     "model": "Rockwood Signature",
     "floor": "371RK",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 65995,
+    "dealer": "Open Roads Complete RV, Acworth, GA",
+    "trade": 48240,
+    "delta": 17755,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Open Roads Complete RV, Acworth, GA, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-forest-river-rockwood-signature-371rk/25115e6e-bed0-11f0-beaa-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Forest+River-Rv-Rockwood+Signature+R371RK-5038414638",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $65,995 both RV Trader and RVT (Open Roads Complete RV, Acworth GA), ~36.8 ft New; listed R371RK / 371RK. Trade = 2026 JDP Low Retail $53,600 × 0.9 = $48,240 (Signature Series M-371RK)."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
