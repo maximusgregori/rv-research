@@ -5481,55 +5481,225 @@
     "manufacturer": "East To West",
     "model": "Ahara",
     "floor": "365RL",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 66999,
+    "dealer": "Buckeye RV - Jeffersonville, Jeffersonville, OH",
+    "trade": 53415,
+    "delta": 13584,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Buckeye RV - Jeffersonville, Jeffersonville, OH, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-east-to-west-ahara-365rl/dc02d67c-3920-11f0-ae63-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-East+To+West-Ahara+365RL-5041180504",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "TRADE FROM 2025 (not 2026): J.D. Power Low Retail $59,350 \u00d7 0.9 = $53,415 (East To West Ahara Series M-365RL). 2026 unused because Ahara/fifth-wheel series absent from 2026 east-to-west model list on jdpower.com. Source: https://www.jdpower.com/rvs/2025/east-to-west/m-365rl/6638523/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2025/east-to-west/m-365rl/6638523/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "East To West",
     "model": "Tandara",
     "floor": "235ML",
-    "ask": null,
-    "dealer": "",
+    "ask": 38204,
+    "dealer": "Glampers RV",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Glampers RV, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-East+To+West-Tandara+235ML-5041758774",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-east-to-west-tandara-235ml/4c303480-08ae-11f1-beaa-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "J.D. Power Low Retail not found for East To West Tandara 235ML: absent from 2026 east-to-west model list (no fifth-wheel/Tandara series). 2025 Tandara Series lists M-320RL/M-321RL-OK/M-340RD/M-375BH-OK/M-385MB/M-386MB-OK; 2025 Tandara Half-Ton lists M-22RK/M-26RD/M-27BH-OK/M-28RL/M-28RL-OK \u2014 no M-235 ML. Trade/delta left blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "East To West",
     "model": "Tandara",
     "floor": "295RL",
-    "ask": null,
-    "dealer": "",
+    "ask": 54990,
+    "dealer": "Berryland Campers",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Berryland Campers, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-east-to-west-tandara-295rl/5119194f-6436-11f1-adcf-02f5bff6b341/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-East+To+West-Tandara+295RL-5040254119",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "J.D. Power Low Retail not found for East To West Tandara 295RL: absent from 2026 east-to-west model list (no fifth-wheel/Tandara series). 2025 Tandara Series has M-320RL/M-321RL-OK/M-340RD/M-375BH-OK/M-385MB/M-386MB-OK; Half-Ton has M-22RK/M-26RD/M-27BH-OK/M-28RL/M-28RL-OK \u2014 no M-295 RL. Trade/delta left blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Forest River",
     "model": "Cardinal",
     "floor": "32LIVE",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 47115,
+    "dealer": "Fun Town RV - Anna",
+    "trade": 29655,
+    "delta": 17460,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Fun Town RV - Anna, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-forest-river-cardinal-32live/3edfe407-79a4-11f0-b688-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Cardinal+32LIVE-5037477901",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "TRADE FROM 2025 (not 2026): J.D. Power Low Retail $32,950 \u00d7 0.9 = $29,655 (Cardinal-by-Forest-River M-32LIVE). 2026 cardinal-by-forest-river page returned error/unavailable on scrape; used matching 2025 floor. Source: https://www.jdpower.com/rvs/2025/cardinal-by-forest-river/m-32live/6647567/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2025/cardinal-by-forest-river/m-32live/6647567/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Forest River",
     "model": "Cardinal",
     "floor": "33CHEF",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 49995,
+    "dealer": "RV Dynasty",
+    "trade": 30465,
+    "delta": 19530,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was RV Dynasty, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-forest-river-cardinal-33chef/611895bd-b16c-11f0-beaa-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Forest+River-CARDINAL+33CHEF-5040815575",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "TRADE FROM 2025 (not 2026): J.D. Power Low Retail $33,850 \u00d7 0.9 = $30,465 (Cardinal-by-Forest-River M-33CHEF). 2026 cardinal-by-forest-river page returned error/unavailable on scrape; used matching 2025 floor. Source: https://www.jdpower.com/rvs/2025/cardinal-by-forest-river/m-33chef/6647568/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2025/cardinal-by-forest-river/m-33chef/6647568/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
