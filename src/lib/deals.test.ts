@@ -263,12 +263,13 @@ describe("deal data", () => {
       "Cherokee Arctic Wolf|331BH",
       "Crusader|KING33",
       "Impression|235RW",
+      "Impression|301ML",
       "Impression|315MB",
     ])
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(15)
+    expect(pricedForest).toHaveLength(16)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -322,7 +323,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(101)
+    expect(priced).toHaveLength(102)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -1243,6 +1244,59 @@ describe("deal data", () => {
             span.type === "link" &&
             span.href ===
               "https://www.rvtrader.com/listing/2026-Forest+River-IMPRESSION+235RW-5042064069" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+  })
+
+  it("applies Impression 301ML ask and leaves trade/delta blank", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Impression" &&
+        row.floor === "301ML" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 52777,
+      dealer: "Thrills RV, Columbia City, IN",
+      trade: null,
+      delta: null,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $52,777 RVT (Thrills RV Columbia City IN), 35 ft New; RV Trader organic $55,499. Trade blank: verified JDP miss — 2026 Impression-by-FR M-301ML values page undefined/no Low Retail; 2026 make index HTTP 500; 2025 Impression index has no M-301ML and direct 2025 values URL also undefined. Length ~35'8\" (RVUSA). JDP URL checked: https://www.jdpower.com/rvs/2026/impression-by-forest-river/m-301ml/values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvt.com/buy/details/2026-forest-river-impression-301ml/6ca4ec1c-954c-11f0-beaa-02c8259c7411/" &&
+            span.label === "RVT"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Impression+301ML-5038976826" &&
             span.label === "RV Trader"
         )
     ).toBe(true)
@@ -2314,6 +2368,12 @@ describe("deal data", () => {
         "289PANO",
         45887,
         "Buckeye RV Jeffersonville, Jeffersonville, OH",
+      ],
+      [
+        "Impression",
+        "301ML",
+        52777,
+        "Thrills RV, Columbia City, IN",
       ],
     ] as const
     const verifiedMiss = new Set(["297MK", "235ML", "295RL"])
