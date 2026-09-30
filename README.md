@@ -6,7 +6,7 @@ Lowest ask is taken from Make + Model + Year (New, under 40 ft), sorted Price lo
 
 The Coachmen 2026 catalog lists one row per model → floor plan (OTHER omitted). Unpriced rows leave ask, dealer, trade, and delta blank. New catalog work is fifth wheels only (New, 2026, under 40 ft); earlier Coachmen non-fifth-wheel rows remain. East To West fifth-wheel floor plans are listed as blank skeletons.
 
-The table is sortable (click a column header; empty numeric fields sort last) and filterable by manufacturer, year, and model.
+The table is sortable (click a column header; empty numeric fields sort last) and filterable by manufacturer, year, and model. A text search matches make, model, and floor plan and ANDs with the dropdowns. Positive deltas are green; negative deltas are red.
 
 ## Local development
 

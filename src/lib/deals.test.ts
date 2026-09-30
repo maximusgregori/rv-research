@@ -9,7 +9,7 @@ import {
   matching,
   visibleDeals,
 } from "./deals"
-import { formatMoney } from "./format"
+import { deltaTone, formatMoney } from "./format"
 
 const COACHMEN_FIFTH_WHEELS = [
   ["Brookstone", "290RL"],
@@ -174,6 +174,76 @@ describe("filters and sort", () => {
     expect(rows.every((deal) => deal.model === "Chaparral")).toBe(true)
   })
 
+  it("searches make, model, and floor plan case-insensitively", () => {
+    const byModel = visibleDeals(
+      deals,
+      { manufacturer: "", year: "", model: "" },
+      DEFAULT_SORT_KEY,
+      DEFAULT_SORT_DIR,
+      "chaparral"
+    )
+    expect(byModel.length).toBeGreaterThan(0)
+    expect(
+      byModel.every(
+        (deal) =>
+          deal.model.toLowerCase().includes("chaparral") ||
+          deal.manufacturer.toLowerCase().includes("chaparral") ||
+          deal.floor.toLowerCase().includes("chaparral")
+      )
+    ).toBe(true)
+
+    const byFloor = visibleDeals(
+      deals,
+      { manufacturer: "", year: "", model: "" },
+      DEFAULT_SORT_KEY,
+      DEFAULT_SORT_DIR,
+      "254rls"
+    )
+    expect(byFloor.map((deal) => [deal.model, deal.floor])).toEqual([
+      ["Chaparral", "254RLS"],
+    ])
+
+    const byMake = visibleDeals(
+      deals,
+      { manufacturer: "", year: "", model: "" },
+      DEFAULT_SORT_KEY,
+      DEFAULT_SORT_DIR,
+      "east to"
+    )
+    expect(byMake).toHaveLength(5)
+    expect(byMake.every((deal) => deal.manufacturer === "East To West")).toBe(
+      true
+    )
+  })
+
+  it("ANDs text search with dropdown filters", () => {
+    const rows = visibleDeals(
+      deals,
+      { manufacturer: "Coachmen", year: "", model: "Chaparral" },
+      DEFAULT_SORT_KEY,
+      DEFAULT_SORT_DIR,
+      "254"
+    )
+    expect(rows).toHaveLength(1)
+    expect(rows[0]).toMatchObject({
+      manufacturer: "Coachmen",
+      model: "Chaparral",
+      floor: "254RLS",
+      ask: 56995,
+      trade: 43830,
+      delta: 13165,
+    })
+
+    const empty = visibleDeals(
+      deals,
+      { manufacturer: "East To West", year: "", model: "" },
+      DEFAULT_SORT_KEY,
+      DEFAULT_SORT_DIR,
+      "Chaparral"
+    )
+    expect(empty).toHaveLength(0)
+  })
+
   it("cascades East To West models and keeps those rows unpriced", () => {
     const options = filterOptions(deals, {
       manufacturer: "East To West",
@@ -197,5 +267,13 @@ describe("money format", () => {
     expect(formatMoney(-5252)).toBe("−$5,252")
     expect(formatMoney(13165)).toBe("$13,165")
     expect(formatMoney(null)).toBe("")
+  })
+
+  it("classifies delta color without changing values", () => {
+    expect(deltaTone(13165)).toBe("positive")
+    expect(deltaTone(-5252)).toBe("negative")
+    expect(deltaTone(-586)).toBe("negative")
+    expect(deltaTone(null)).toBe("neutral")
+    expect(deltaTone(0)).toBe("neutral")
   })
 })

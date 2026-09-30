@@ -1,8 +1,7 @@
 import dealsJson from "@/data/deals.json"
 
 export type NoteSpan =
-  | { type: "text"; text: string }
-  | { type: "link"; href: string; label: string }
+  { type: "text"; text: string } | { type: "link"; href: string; label: string }
 
 export type Deal = {
   year: number
@@ -23,13 +22,7 @@ export type FilterState = {
 }
 
 export type SortKey =
-  | "year"
-  | "manufacturer"
-  | "model"
-  | "floor"
-  | "ask"
-  | "trade"
-  | "delta"
+  "year" | "manufacturer" | "model" | "floor" | "ask" | "trade" | "delta"
 
 export type SortDir = "asc" | "desc"
 
@@ -50,6 +43,16 @@ const NUMERIC: Record<string, boolean> = {
 }
 
 export const deals = dealsJson as Deal[]
+
+export function matchesSearch(deal: Deal, search: string): boolean {
+  const query = search.trim().toLowerCase()
+  if (!query) return true
+  return (
+    deal.manufacturer.toLowerCase().includes(query) ||
+    deal.model.toLowerCase().includes(query) ||
+    deal.floor.toLowerCase().includes(query)
+  )
+}
 
 export function matching(
   rows: Deal[],
@@ -80,7 +83,9 @@ export function uniqueValues(
       out.push(value)
     }
   }
-  out.sort((a, b) => (NUMERIC[key] ? Number(a) - Number(b) : a.localeCompare(b)))
+  out.sort((a, b) =>
+    NUMERIC[key] ? Number(a) - Number(b) : a.localeCompare(b)
+  )
   return out
 }
 
@@ -146,9 +151,11 @@ export function visibleDeals(
   rows: Deal[],
   filters: FilterState,
   sortKey: SortKey,
-  sortDir: SortDir
+  sortDir: SortDir,
+  search = ""
 ): Deal[] {
   return matching(rows, filters)
+    .filter((deal) => matchesSearch(deal, search))
     .slice()
     .sort((a, b) => compareDeals(a, b, sortKey, sortDir))
 }
