@@ -304,7 +304,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(50)
+    expect(priced).toHaveLength(58)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -684,7 +684,7 @@ describe("deal data", () => {
     ).toHaveLength(10)
   })
 
-  it("prices Catalina Summit Series 7 134BHX and 134RDX without inventing trades", () => {
+  it("prices Catalina Summit Series 7 asks without inventing trades", () => {
     expect(
       deals.find(
         (deal) =>
@@ -707,20 +707,31 @@ describe("deal data", () => {
       trade: null,
       delta: null,
     })
-    const later = deals.filter(
-      (deal) =>
-        deal.model === "Catalina Summit Series 7" &&
-        !["134BHX", "134RDX"].includes(deal.floor)
-    )
-    expect(later.length).toBeGreaterThan(0)
+    const later = [
+      ["134REX", 16995, "RV Central"],
+      ["134RKX", 12900, "Riley's RV World"],
+      ["154RBX", 14900, "Riley's RV World"],
+      ["164BHX", 14900, "Riley's RV World"],
+      ["184BHSX", 18830, "RV Value Mart - Ephrata"],
+      ["184BHS", 24995, "Campers Inn RV of Johnstown"],
+      ["184MKS", 18999, "Bayer RV"],
+      ["184RBS", 19999, "Camp Rite RV Sales"],
+    ] as const
+    for (const [floor, ask, dealer] of later) {
+      expect(
+        deals.find(
+          (deal) =>
+            deal.model === "Catalina Summit Series 7" && deal.floor === floor
+        )
+      ).toMatchObject({ ask, dealer, trade: null, delta: null })
+    }
     expect(
-      later.every(
-        (deal) =>
-          deal.ask == null &&
-          deal.trade == null &&
-          deal.delta == null &&
-          deal.dealer === ""
-      )
+      deals.filter((deal) => deal.model === "Catalina Summit Series 7")
+    ).toHaveLength(10)
+    expect(
+      deals
+        .filter((deal) => deal.model === "Catalina Summit Series 7")
+        .every((deal) => deal.trade == null && deal.delta == null)
     ).toBe(true)
   })
 })

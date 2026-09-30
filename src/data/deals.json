@@ -1982,88 +1982,312 @@
     "manufacturer": "Coachmen",
     "model": "Catalina Summit Series 7",
     "floor": "134REX",
-    "ask": null,
-    "dealer": "",
+    "ask": 16995,
+    "dealer": "RV Central",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was RV Central, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen+Rv-Catalina+Summit+Series+7+134REX-5041433103",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. Organic exact-title listing; RVT returned HTTP 403. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 134REX, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Catalina Summit Series 7",
     "floor": "134RKX",
-    "ask": null,
-    "dealer": "",
+    "ask": 12900,
+    "dealer": "Riley's RV World",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Riley's RV World, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen+Rv-Catalina+Summit+Series+7+134RKX-5040663063",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. Organic exact-title listing; RVT returned HTTP 403. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 134RKX, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Catalina Summit Series 7",
     "floor": "154RBX",
-    "ask": null,
-    "dealer": "",
+    "ask": 14900,
+    "dealer": "Riley's RV World",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Riley's RV World, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen+Rv-Catalina+Summit+Series+7+154RBX-5040663078",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. Organic exact-title listing; RVT returned HTTP 403. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 154RBX, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Catalina Summit Series 7",
     "floor": "164BHX",
-    "ask": null,
-    "dealer": "",
+    "ask": 14900,
+    "dealer": "Riley's RV World",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Riley's RV World, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen+Rv-Catalina+Summit+Series+7+164BHX-5040663051",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. Organic exact-title listing; RVT returned HTTP 403. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 164BHX, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Catalina Summit Series 7",
     "floor": "184BHSX",
-    "ask": null,
-    "dealer": "",
+    "ask": 18830,
+    "dealer": "RV Value Mart - Ephrata",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was RV Value Mart - Ephrata, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen-Catalina+Summit+Series+7+184BHSX-5041508089",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. Organic exact-title listing; RVT returned HTTP 403. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 184BHSX, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Catalina Summit Series 7",
     "floor": "184BHS",
-    "ask": null,
-    "dealer": "",
+    "ask": 24995,
+    "dealer": "Campers Inn RV of Johnstown",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Campers Inn RV of Johnstown, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen+Rv-Catalina+Summit+Series+7+184BHS-5038638654",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. Organic exact-title listing; RVT returned HTTP 403. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 184BHS, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Catalina Summit Series 7",
     "floor": "184MKS",
-    "ask": null,
-    "dealer": "",
+    "ask": 18999,
+    "dealer": "Bayer RV",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Bayer RV, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen+Rv-Catalina+Summit+Series+7+184MKS-5038202516",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. Organic exact-title listing; RVT returned HTTP 403. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 184MKS, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Catalina Summit Series 7",
     "floor": "184RBS",
-    "ask": null,
-    "dealer": "",
+    "ask": 19999,
+    "dealer": "Camp Rite RV Sales",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Camp Rite RV Sales, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen+Rv-Catalina+Summit+Series+7+184RBS-5037512343",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. Organic exact-title listing; RVT returned HTTP 403. Featured/Sponsored listings ignored."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "JDP Low Retail not found for 2026 184RBS, so trade and delta stay blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
