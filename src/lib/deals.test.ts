@@ -790,21 +790,6 @@ describe("deal data", () => {
         "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Cardinal+32LIVE-5037477901",
         "RV Trader",
       ],
-      [
-        "Forest River",
-        "Cardinal",
-        "33CHEF",
-        49995,
-        "RV Dynasty",
-        30465,
-        19530,
-        "TRADE FROM 2025 (not 2026): J.D. Power Low Retail $33,850 × 0.9 = $30,465 (Cardinal-by-Forest-River M-33CHEF). 2026 cardinal-by-forest-river page returned error/unavailable on scrape; used matching 2025 floor. Source: https://www.jdpower.com/rvs/2025/cardinal-by-forest-river/m-33chef/6647568/values",
-        "m-33chef/6647568",
-        "https://www.rvt.com/buy/details/2026-forest-river-cardinal-33chef/611895bd-b16c-11f0-beaa-02c8259c7411/",
-        "RVT",
-        "https://www.rvtrader.com/listing/2026-Forest+River-CARDINAL+33CHEF-5040815575",
-        "RV Trader",
-      ],
     ] as const
     for (const [
       manufacturer,
@@ -949,6 +934,85 @@ describe("deal data", () => {
         row.manufacturer === "Forest River" &&
         row.model === "Wildcat" &&
         row.floor === "32LIVE" &&
+        row.year === 2026
+    )
+    expect(wildcatTwin).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(wildcatTwin?.notes).toEqual([])
+  })
+
+  it("applies Cardinal 33CHEF ask and 2025 JDP proxy trade and leaves Wildcat 33CHEF blank", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Cardinal" &&
+        row.floor === "33CHEF" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 49995,
+      dealer: "County Line Campers, Gulfport, MS",
+      trade: 30465,
+      delta: 19530,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text.includes(
+              "Ask $49,995 RV Trader only (County Line Campers, Gulfport MS), ~38 ft New 33CHEF (JDP 38'3\"). RVT was CAPTCHA-blocked — not cross-checked."
+            )
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "TRADE FROM 2025 (not 2026): J.D. Power Low Retail $33,850 × 0.9 = $30,465 (Cardinal-by-Forest-River M-33CHEF). 2026 JDP No Data Available — prior-year proxy. 2026 cardinal-by-forest-river page returned error/unavailable on scrape; used matching 2025 floor. Source: https://www.jdpower.com/rvs/2025/cardinal-by-forest-river/m-33chef/6647568/values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.jdpower.com/rvs/2025/cardinal-by-forest-river/m-33chef/6647568/values" &&
+            span.label === "JDP values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "RVT")
+    ).toBe(false)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Forest+River-CARDINAL+33CHEF-5040815575" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+
+    const wildcatTwin = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Wildcat" &&
+        row.floor === "33CHEF" &&
         row.year === 2026
     )
     expect(wildcatTwin).toMatchObject({
