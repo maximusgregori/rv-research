@@ -5706,11 +5706,42 @@
     "manufacturer": "Forest River",
     "model": "Cedar Creek",
     "floor": "290RL",
-    "ask": null,
-    "dealer": "",
+    "ask": 102297,
+    "dealer": "Dakota Discount RV, Rapid City, SD",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Dakota Discount RV, Rapid City, SD, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-forest-river-cedar-creek-290rl/af3e4f67-859d-11f1-adcf-02f5bff6b341/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Cedar+Creek+290RL-5041432897#sid=683751",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest organic ask $102,297 on both RV Trader and RVT (Dakota Discount RV, Rapid City SD). Trade blank: verified no exact M-290RL on 2025/2026 cedar-creek JDP pages (nearby M-29RL not mapped)."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
@@ -5728,44 +5759,168 @@
     "manufacturer": "Forest River",
     "model": "Cedar Creek Experience",
     "floor": "2925RL",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 69900,
+    "dealer": "Open Roads Complete RV - Jasper, GA",
+    "trade": 43380,
+    "delta": 26520,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Open Roads Complete RV - Jasper, GA, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-forest-river-cedar-creek-experience-2925rl/1ad11b75-7da3-11f0-a456-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Cedar+Creek+Experience+29RL-5037525197",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest organic ask $69,900 on both RV Trader and RVT (Open Roads Complete RV, Jasper GA; ~35 ft). TRADE FROM 2024: JDP Low Retail $48,200 \u00d7 0.9 = $43,380 (Experience Series M-2925RL). 2026/2025 have no M-2925RL. RV Trader on-page title normalizes to 29RL; page title/RVT confirm 2925RL."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Forest River",
     "model": "Cedar Creek Experience",
     "floor": "35RL",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 68977,
+    "dealer": "Lazydays by Campers Inn RV",
+    "trade": 53280,
+    "delta": 15697,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Lazydays by Campers Inn RV, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-forest-river-cedar-creek-experience-35rl/92c8592e-5c94-11f0-9079-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Cedar+Creek+Experience+35RL-5037050467#sid=824715",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest organic ask $68,977 on both RV Trader and RVT (Lazydays by Campers Inn RV; ~39 ft). TRADE FROM 2025: JDP Low Retail $59,200 \u00d7 0.9 = $53,280 (Experience Series M-35RL). 2026 cedar-creek page has no Experience M-35RL."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Forest River",
     "model": "Cedar Creek Silverback",
     "floor": "29RL",
-    "ask": null,
-    "dealer": "",
+    "ask": 74995,
+    "dealer": "RV Dynasty, Bunker Hill, IN",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was RV Dynasty, Bunker Hill, IN, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-forest-river-cedar-creek-silverback-29rl/91332278-235f-11f1-beaa-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Cedar+Creek+29RL-5039714103",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest organic NEW ask $74,995 on both sites (RV Dynasty, Bunker Hill IN; ~33 ft). RVT $68,798 Lake Park result was Used \u2014 excluded. Trade blank: verified no recent (2023\u20132026) Cedar Creek Silverback M-29RL on jdpower.com."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Forest River",
     "model": "Cherokee Arctic Wolf",
     "floor": "27SGS",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 42548,
+    "dealer": "Camping World, Kodak, TN",
+    "trade": 37305,
+    "delta": 5243,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Camping World, Kodak, TN, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-forest-river-cherokee-arctic-wolf-27sgs/6a92b105-ad12-11f1-84c9-020f812d825b/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Forest+River-ARCTIC+WOLF+27SGS-5042063301",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Lowest organic ask $42,548 on both RV Trader and RVT (Camping World Kodak TN; ~29.92 ft; stock #2600467). TRADE FROM 2025: JDP Low Retail $41,450 \u00d7 0.9 = $37,305 (Cherokee-by-Forest-River Arctic Wolf Series M-27SGS). 2026 cherokee-by-forest-river make page has no M-27SGS."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
