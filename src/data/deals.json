@@ -386,7 +386,7 @@
       [
         {
           "type": "text",
-          "text": "Found via Make + Model + Year, then Price low→high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
         }
       ],
       [
@@ -960,7 +960,7 @@
       [
         {
           "type": "text",
-          "text": "Found via Make + Model + Year, then Price low→high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
         }
       ],
       [
@@ -1024,7 +1024,7 @@
       [
         {
           "type": "text",
-          "text": "Found via Make + Model + Year, then Price low→high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
         }
       ],
       [
@@ -1123,7 +1123,7 @@
       [
         {
           "type": "text",
-          "text": "Found via Make + Model + Year, then Price low→high. Floor plan was matched on the listing; it was not used as the primary facet gate."
+          "text": "Found via Make + Model + Year, then Price low\u2192high. Floor plan was matched on the listing; it was not used as the primary facet gate."
         }
       ],
       [
@@ -3066,6 +3066,754 @@
     "manufacturer": "East To West",
     "model": "Tandara",
     "floor": "295RL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Cardinal",
+    "floor": "32LIVE",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Cardinal",
+    "floor": "33CHEF",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Cedar Creek",
+    "floor": "290RL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Cedar Creek",
+    "floor": "39RKB",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Cedar Creek Experience",
+    "floor": "2925RL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Cedar Creek Experience",
+    "floor": "35RL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Cedar Creek Silverback",
+    "floor": "29RL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Cherokee Arctic Wolf",
+    "floor": "27SGS",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Cherokee Arctic Wolf",
+    "floor": "285OPT",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Cherokee Arctic Wolf",
+    "floor": "287BH",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Cherokee Arctic Wolf",
+    "floor": "289PANO",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Cherokee Arctic Wolf",
+    "floor": "3250 SUITE",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Cherokee Arctic Wolf",
+    "floor": "331BH",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Cherokee Arctic Wolf",
+    "floor": "3550 SUITE",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Columbus River Ranch",
+    "floor": "394RKL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Crusader",
+    "floor": "KING33",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Impression",
+    "floor": "235RW",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Impression",
+    "floor": "242RD",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Impression",
+    "floor": "301ML",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Impression",
+    "floor": "315MB",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Impression",
+    "floor": "318RL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Rockwood Signature FW",
+    "floor": "361RLS",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Rockwood Signature FW",
+    "floor": "R374DBH",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Rockwood Signature",
+    "floor": "281RK",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Rockwood Signature",
+    "floor": "282RK",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Rockwood Signature",
+    "floor": "290SFK",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Rockwood Signature",
+    "floor": "301RKS",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Rockwood Signature",
+    "floor": "301RK",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Rockwood Signature",
+    "floor": "331RL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Rockwood Signature",
+    "floor": "361RL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Rockwood Signature",
+    "floor": "371RK",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Rockwood Signature",
+    "floor": "372RL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Rockwood Signature",
+    "floor": "R331RL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Rockwood Signature Fifth Wheel",
+    "floor": "281RK",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Sabre",
+    "floor": "25RLS",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Sabre",
+    "floor": "32GKS",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Sabre",
+    "floor": "33RLP",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Salem Hemisphere",
+    "floor": "286RL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Salem Hemisphere",
+    "floor": "301FAM",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Salem Hemisphere",
+    "floor": "321DRL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Salem Hemisphere",
+    "floor": "325RL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Sandpiper",
+    "floor": "3370RLS",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Sandstorm",
+    "floor": "2710",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Sanibel",
+    "floor": "34LOUNGE",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Sierra",
+    "floor": "3370RLS",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Sierra",
+    "floor": "3710HBFB",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Sierra",
+    "floor": "3800RK",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Sierra",
+    "floor": "3900HBLR",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Sierra",
+    "floor": "4003MB",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Vengeance Rogue Armored",
+    "floor": "341GS11",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Flagstaff Classic",
+    "floor": "281RK",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Flagstaff Classic",
+    "floor": "282RK",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Flagstaff Classic",
+    "floor": "290CFK",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Flagstaff Classic",
+    "floor": "301RKS",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Flagstaff Classic",
+    "floor": "331RL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Flagstaff Classic",
+    "floor": "361RLS",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Flagstaff Classic",
+    "floor": "371RK",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Flagstaff Classic",
+    "floor": "372RL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Flagstaff Classic",
+    "floor": "374DBH",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Flagstaff Classic",
+    "floor": "F282RK",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Wildcat",
+    "floor": "32LIVE",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Wildcat",
+    "floor": "33CHEF",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Wildcat",
+    "floor": "35FL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Wildcat",
+    "floor": "36FUN",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Wildcat",
+    "floor": "37GALLEY",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Wildcat XL",
+    "floor": "30BAM",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Wildwood Heritage Glen",
+    "floor": "286RL",
+    "ask": null,
+    "dealer": "",
+    "trade": null,
+    "delta": null,
+    "notes": []
+  },
+  {
+    "year": 2026,
+    "manufacturer": "Forest River",
+    "model": "Wildwood Heritage Glen",
+    "floor": "321DRL",
     "ask": null,
     "dealer": "",
     "trade": null,
