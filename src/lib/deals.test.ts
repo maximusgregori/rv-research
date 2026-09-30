@@ -304,7 +304,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(38)
+    expect(priced).toHaveLength(42)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -633,13 +633,13 @@ describe("deal data", () => {
 
   it("prices Coachmen Beyond asks without inventing trades", () => {
     const beyond = [
-      ["22C AWD", 142000, "Shafer's RV"],
-      ["22C", 144998, "Western Skies RV"],
-      ["22D AWD", 142986, "Shafer's RV"],
-      ["22D-EB", 139995, "Showroom, Delta, OH"],
-      ["22RB AWD", 141785, "Johnson RV Sales - Medford"],
-      ["22RBBC", 159985, "Mike Thompson's RV - Fountain Valley"],
-      ["22RB", 145000, "Giant Recreation World"],
+      ["22C AWD", 142000, "Delta, OH"],
+      ["22C", 144998, "Reno, NV"],
+      ["22D AWD", 142986, "Albemarle, NC"],
+      ["22D-EB", 139995, "Myrtle Beach, SC"],
+      ["22RB AWD", 141785, "Lewisville, TX"],
+      ["22RBBC", 159985, "Fountain Valley, CA"],
+      ["22RB", 145000, "Delta, OH"],
     ] as const
 
     for (const [floor, ask, dealer] of beyond) {
@@ -656,6 +656,39 @@ describe("deal data", () => {
         delta: null,
       })
     }
+  })
+
+  it("prices Catalina Legacy Edition asks without inventing trades", () => {
+    const catalina = [
+      ["243RBSLE", 26980, "Eagle Country RV, Eagle River, WI"],
+      ["243RBS", 25495, "RV Dynasty, Bunker Hill, IN"],
+      ["263BHSCK", 28833, "RV Wholesalers, Lakeview, OH"],
+      ["273DBHCK", 27495, "RV Dynasty, Bunker Hill, IN"],
+    ] as const
+    for (const [floor, ask, dealer] of catalina) {
+      expect(
+        deals.find(
+          (deal) =>
+            deal.model === "Catalina Legacy Edition" && deal.floor === floor
+        )
+      ).toMatchObject({ ask, dealer, trade: null, delta: null })
+    }
+
+    const untouched = deals.filter(
+      (deal) =>
+        deal.model === "Catalina Legacy Edition" &&
+        !catalina.some(([floor]) => floor === deal.floor)
+    )
+    expect(untouched.length).toBeGreaterThan(0)
+    expect(
+      untouched.every(
+        (deal) =>
+          deal.ask == null &&
+          deal.trade == null &&
+          deal.delta == null &&
+          deal.dealer === ""
+      )
+    ).toBe(true)
   })
 })
 
