@@ -3157,44 +3157,179 @@
     "manufacturer": "Coachmen",
     "model": "Chaparral",
     "floor": "30RLS",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 52200,
+    "dealer": "Trailer Source, Inc \u2013 Frederick, Longmont, CO",
+    "trade": 50535,
+    "delta": 1665,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Trailer Source, Inc \u2013 Frederick, Longmont, CO, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-coachmen-chaparral-30rls/bf1e7380-4616-11f1-adcf-02f5bff6b341/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30. RV Trader listed a higher $55,900 at Amos Motor & RV Inc., Bradner, OH."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Trade from 2026 J.D. Power Low Retail $56,150 \u00d7 0.9 = $50,535 (Coachmen-by-Forest-River Chaparral Lite M-30 RLS; dealer lists Chaparral 30RLS; JDP 2026 lists this floor under Chaparral Lite). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-30-rls/6644374/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-30-rls/6644374/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Chaparral",
     "floor": "336TSIK",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 52500,
+    "dealer": "Wana RV Center, Shipshewana, IN",
+    "trade": 57690,
+    "delta": -5190,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Wana RV Center, Shipshewana, IN, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-coachmen-chaparral-336tsik/85fb4817-9568-11f1-beaa-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen+Rv-Chaparral+336TSIK-5041680490#sid=177027",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Trade from 2026 J.D. Power Low Retail $64,100 \u00d7 0.9 = $57,690 (Coachmen-by-Forest-River Chaparral M-336 TSIK). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-336-tsik/6644359/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-336-tsik/6644359/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Chaparral",
     "floor": "360IBL",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 55997,
+    "dealer": "Campers Inn RV of Davenport, Davenport, IA",
+    "trade": 56340,
+    "delta": -343,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Campers Inn RV of Davenport, Davenport, IA, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-coachmen-chaparral-360ibl/dafe1a69-53f2-11f0-9c42-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen+Rv-Chaparral+360IBL-5036948952#sid=177027",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Trade from 2026 J.D. Power Low Retail $62,600 \u00d7 0.9 = $56,340 (Coachmen-by-Forest-River Chaparral M-360 IBL). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-360-ibl/6644361/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-360-ibl/6644361/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Coachmen",
     "model": "Chaparral Lite",
     "floor": "218SE",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 33826,
+    "dealer": "Stellhorn RV and Camping Center, Kokomo, IN",
+    "trade": 43830,
+    "delta": -10004,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Stellhorn RV and Camping Center, Kokomo, IN, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-coachmen-chaparral-lite-218se/0a7bf397-a4ea-11f0-beaa-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen+Rv-Chaparral+Lite+218SE-5038075947#sid=254083",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Trade from 2026 J.D. Power Low Retail $48,700 \u00d7 0.9 = $43,830 (Coachmen-by-Forest-River Chaparral Lite M-218 SE). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-218-se/6644369/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-218-se/6644369/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
@@ -3254,11 +3389,47 @@
     "manufacturer": "Coachmen",
     "model": "Chaparral Lite",
     "floor": "30BHS",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 49888,
+    "dealer": "Parris RV Pocatello, Chubbuck/Pocatello, ID",
+    "trade": 51750,
+    "delta": -1862,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Parris RV Pocatello, Chubbuck/Pocatello, ID, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-coachmen-chaparral-lite-30bhs/d52cce46-7a7b-11f0-b688-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Coachmen+Rv-Chaparral+Lite+30BHS-5037492060",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Trade from 2026 J.D. Power Low Retail $57,500 \u00d7 0.9 = $51,750 (Coachmen-by-Forest-River Chaparral Lite M-30 BHS). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-30-bhs/6644373/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-30-bhs/6644373/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
