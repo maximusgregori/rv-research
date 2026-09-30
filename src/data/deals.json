@@ -156,8 +156,8 @@
     "floor": "ULTRA-LITE 293RLDS",
     "ask": 42999,
     "dealer": "General RV Center - Salisbury, Salisbury, NC",
-    "trade": null,
-    "delta": null,
+    "trade": 25335,
+    "delta": 17664,
     "notes": [
       [
         {
@@ -183,7 +183,12 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "Trade from 2026 J.D. Power Low Retail $28,150 \u00d7 0.9 = $25,335 (Apex-by-Coachmen brand path \u2014 not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-293rlds/6650575/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-293rlds/6650575/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -231,7 +236,7 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "Exact floor 181RB was checked on the 2026 Apex-by-Coachmen J.D. Power list and is not listed, so trade and delta stay blank."
         }
       ]
     ]
@@ -270,7 +275,7 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "Exact floor 183BH was checked on the 2026 Apex-by-Coachmen J.D. Power list and is not listed, so trade and delta stay blank."
         }
       ]
     ]
@@ -282,8 +287,8 @@
     "floor": "184BH",
     "ask": 22200,
     "dealer": "Trailer Source Inc. Wheat Ridge RV Center, Wheat Ridge, CO",
-    "trade": null,
-    "delta": null,
+    "trade": 15300,
+    "delta": 6900,
     "notes": [
       [
         {
@@ -318,7 +323,12 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "Trade from 2026 J.D. Power Low Retail $17,000 \u00d7 0.9 = $15,300 (Apex-by-Coachmen brand path \u2014 not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-184bh/6650553/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-184bh/6650553/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -330,8 +340,8 @@
     "floor": "185BH",
     "ask": 21961,
     "dealer": "RV Dynasty, Bunker Hill, IN",
-    "trade": null,
-    "delta": null,
+    "trade": 14760,
+    "delta": 7201,
     "notes": [
       [
         {
@@ -366,7 +376,12 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "Trade from 2026 J.D. Power Low Retail $16,400 \u00d7 0.9 = $14,760 (Apex-by-Coachmen brand path \u2014 not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-185bh/6650554/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-185bh/6650554/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -378,8 +393,8 @@
     "floor": "186BH",
     "ask": 20495,
     "dealer": "RV Specialist, Goshen, IN",
-    "trade": null,
-    "delta": null,
+    "trade": 15705,
+    "delta": 4790,
     "notes": [
       [
         {
@@ -414,7 +429,12 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "Trade from 2026 J.D. Power Low Retail $17,450 \u00d7 0.9 = $15,705 (Apex-by-Coachmen brand path \u2014 not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-186bh/6650555/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-186bh/6650555/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -426,8 +446,8 @@
     "floor": "187RB",
     "ask": 22400,
     "dealer": "RV Dynasty, Bunker Hill, IN",
-    "trade": null,
-    "delta": null,
+    "trade": 15030,
+    "delta": 7370,
     "notes": [
       [
         {
@@ -462,7 +482,12 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "Trade from 2026 J.D. Power Low Retail $16,700 \u00d7 0.9 = $15,030 (Apex-by-Coachmen brand path \u2014 not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-187rb/6650556/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-187rb/6650556/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -474,8 +499,8 @@
     "floor": "190RBS",
     "ask": 19995,
     "dealer": "RV Specialist",
-    "trade": null,
-    "delta": null,
+    "trade": 16425,
+    "delta": 3570,
     "notes": [
       [
         {
@@ -510,7 +535,12 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "Trade from 2026 J.D. Power Low Retail $18,250 \u00d7 0.9 = $16,425 (Apex-by-Coachmen brand path \u2014 not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-190rbs/6650557/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-190rbs/6650557/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -522,8 +552,8 @@
     "floor": "194BHS",
     "ask": 24900,
     "dealer": "Minneapolis Trailer Sales",
-    "trade": null,
-    "delta": null,
+    "trade": 16920,
+    "delta": 7980,
     "notes": [
       [
         {
@@ -558,7 +588,12 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "Trade from 2026 J.D. Power Low Retail $18,800 \u00d7 0.9 = $16,920 (Apex-by-Coachmen brand path \u2014 not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-194bhs/6650558/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-194bhs/6650558/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -570,8 +605,8 @@
     "floor": "203RBK",
     "ask": 21995,
     "dealer": "RV Specialist",
-    "trade": null,
-    "delta": null,
+    "trade": 17685,
+    "delta": 4310,
     "notes": [
       [
         {
@@ -606,7 +641,12 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "Trade from 2026 J.D. Power Low Retail $19,650 \u00d7 0.9 = $17,685 (Apex-by-Coachmen brand path \u2014 not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-203rbk/6650559/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-203rbk/6650559/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -618,8 +658,8 @@
     "floor": "208BHS",
     "ask": 23339,
     "dealer": "Carolina RV",
-    "trade": null,
-    "delta": null,
+    "trade": 17505,
+    "delta": 5834,
     "notes": [
       [
         {
@@ -654,7 +694,12 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "Trade from 2026 J.D. Power Low Retail $19,450 \u00d7 0.9 = $17,505 (Apex-by-Coachmen brand path \u2014 not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-208bhs/6650560/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-208bhs/6650560/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -666,8 +711,8 @@
     "floor": "213RDS",
     "ask": 24900,
     "dealer": "Camp EZ RV - Livingston",
-    "trade": null,
-    "delta": null,
+    "trade": 18360,
+    "delta": 6540,
     "notes": [
       [
         {
@@ -702,7 +747,12 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "Trade from 2026 J.D. Power Low Retail $20,400 \u00d7 0.9 = $18,360 (Apex-by-Coachmen brand path \u2014 not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-213rds/6650561/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-213rds/6650561/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -714,8 +764,8 @@
     "floor": "216RKS",
     "ask": 27999,
     "dealer": "Bill's Happy Camper RV Sales and Service",
-    "trade": null,
-    "delta": null,
+    "trade": 19215,
+    "delta": 8784,
     "notes": [
       [
         {
@@ -750,7 +800,12 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "Trade from 2026 J.D. Power Low Retail $21,350 \u00d7 0.9 = $19,215 (Apex-by-Coachmen brand path \u2014 not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-216rks/6650562/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-216rks/6650562/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -762,8 +817,8 @@
     "floor": "224RBS",
     "ask": 24999,
     "dealer": "General RV Center - Mesa",
-    "trade": null,
-    "delta": null,
+    "trade": 18855,
+    "delta": 6144,
     "notes": [
       [
         {
@@ -798,7 +853,12 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "Trade from 2026 J.D. Power Low Retail $20,950 \u00d7 0.9 = $18,855 (Apex-by-Coachmen brand path \u2014 not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-224rbs/6650563/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-224rbs/6650563/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -810,8 +870,8 @@
     "floor": "228BHS",
     "ask": 28995,
     "dealer": "RV Specialist",
-    "trade": null,
-    "delta": null,
+    "trade": 18945,
+    "delta": 10050,
     "notes": [
       [
         {
@@ -846,7 +906,12 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "Trade from 2026 J.D. Power Low Retail $21,050 \u00d7 0.9 = $18,945 (Apex-by-Coachmen brand path \u2014 not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-228bhs/6650564/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-228bhs/6650564/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -858,8 +923,8 @@
     "floor": "188RBST",
     "ask": 29714,
     "dealer": "",
-    "trade": null,
-    "delta": null,
+    "trade": 22005,
+    "delta": 7709,
     "notes": [
       [
         {
@@ -876,7 +941,12 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "Trade from 2026 J.D. Power Low Retail $24,450 \u00d7 0.9 = $22,005 (Apex-by-Coachmen brand path \u2014 not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-188rbst/6650565/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-188rbst/6650565/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -888,8 +958,8 @@
     "floor": "241BHS",
     "ask": 35721,
     "dealer": "",
-    "trade": null,
-    "delta": null,
+    "trade": 23985,
+    "delta": 11736,
     "notes": [
       [
         {
@@ -906,7 +976,12 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "Trade from 2026 J.D. Power Low Retail $26,650 \u00d7 0.9 = $23,985 (Apex-by-Coachmen brand path \u2014 not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-241bhs/6650566/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-241bhs/6650566/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -918,8 +993,8 @@
     "floor": "242BARV",
     "ask": 33495,
     "dealer": "",
-    "trade": null,
-    "delta": null,
+    "trade": 24705,
+    "delta": 8790,
     "notes": [
       [
         {
@@ -936,7 +1011,12 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "Trade from 2026 J.D. Power Low Retail $27,450 \u00d7 0.9 = $24,705 (Apex-by-Coachmen brand path \u2014 not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-242barv/6650567/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-242barv/6650567/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -966,7 +1046,7 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "Exact floor 244RBS was checked on the 2026 Apex-by-Coachmen J.D. Power list and is not listed, so trade and delta stay blank."
         }
       ]
     ]
@@ -978,8 +1058,8 @@
     "floor": "246BARV",
     "ask": 35128,
     "dealer": "",
-    "trade": null,
-    "delta": null,
+    "trade": 26055,
+    "delta": 9073,
     "notes": [
       [
         {
@@ -996,7 +1076,12 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "Trade from 2026 J.D. Power Low Retail $28,950 \u00d7 0.9 = $26,055 (Apex-by-Coachmen brand path \u2014 not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-246barv/6650569/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-246barv/6650569/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -1044,7 +1129,7 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "Exact floor 26BHX was checked on the 2026 Apex-by-Coachmen J.D. Power list and is not listed, so trade and delta stay blank."
         }
       ]
     ]
@@ -1083,7 +1168,7 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "Exact floor 289TBSS was checked on the 2026 Apex-by-Coachmen J.D. Power list and is not listed, so trade and delta stay blank."
         }
       ]
     ]
@@ -1131,7 +1216,7 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "Exact floor 24RBX was checked on the 2026 Apex-by-Coachmen J.D. Power list and is not listed, so trade and delta stay blank."
         }
       ]
     ]
@@ -1170,7 +1255,7 @@
       [
         {
           "type": "text",
-          "text": "Trade and delta pending J.D. Power Low Retail \u00d7 0.9 lookup."
+          "text": "Exact floor 29BHX was checked on the 2026 Apex-by-Coachmen J.D. Power list and is not listed, so trade and delta stay blank."
         }
       ]
     ]

@@ -416,51 +416,217 @@ describe("deal data", () => {
     }
   })
 
-  it("prices new Apex asks without inventing trades", () => {
-    const apexUltra = deals.find(
-      (deal) => deal.model === "Apex" && deal.floor === "ULTRA-LITE 293RLDS"
-    )
-    expect(apexUltra).toMatchObject({
-      ask: 42999,
-      dealer: "General RV Center - Salisbury, Salisbury, NC",
-      trade: null,
-      delta: null,
-    })
-
-    const apexNano = deals.find(
-      (deal) => deal.model === "Apex Nano" && deal.floor === "181RB"
-    )
-    expect(apexNano).toMatchObject({
-      ask: 20999,
-      dealer: "Camp Rite RV Sales, Loganville, GA",
-      trade: null,
-      delta: null,
-    })
-  })
-
-  it("prices Apex Ultra-Lite 188–246 asks without inventing trades or dealers", () => {
-    const floors = [
-      ["188RBST", 29714],
-      ["241BHS", 35721],
-      ["242BARV", 33495],
-      ["244RBS", 32995],
-      ["246BARV", 35128],
+  it("applies 2026 Apex-by-Coachmen JDP Low Retail trades", () => {
+    const rows = [
+      [
+        "Apex Nano",
+        "184BH",
+        22200,
+        "Trailer Source Inc. Wheat Ridge RV Center, Wheat Ridge, CO",
+        15300,
+        6900,
+        "Trade from 2026 J.D. Power Low Retail $17,000 × 0.9 = $15,300 (Apex-by-Coachmen brand path — not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-184bh/6650553/values",
+        "m-184bh/6650553",
+      ],
+      [
+        "Apex Nano",
+        "185BH",
+        21961,
+        "RV Dynasty, Bunker Hill, IN",
+        14760,
+        7201,
+        "Trade from 2026 J.D. Power Low Retail $16,400 × 0.9 = $14,760 (Apex-by-Coachmen brand path — not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-185bh/6650554/values",
+        "m-185bh/6650554",
+      ],
+      [
+        "Apex Nano",
+        "186BH",
+        20495,
+        "RV Specialist, Goshen, IN",
+        15705,
+        4790,
+        "Trade from 2026 J.D. Power Low Retail $17,450 × 0.9 = $15,705 (Apex-by-Coachmen brand path — not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-186bh/6650555/values",
+        "m-186bh/6650555",
+      ],
+      [
+        "Apex Nano",
+        "187RB",
+        22400,
+        "RV Dynasty, Bunker Hill, IN",
+        15030,
+        7370,
+        "Trade from 2026 J.D. Power Low Retail $16,700 × 0.9 = $15,030 (Apex-by-Coachmen brand path — not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-187rb/6650556/values",
+        "m-187rb/6650556",
+      ],
+      [
+        "Apex Nano",
+        "190RBS",
+        19995,
+        "RV Specialist",
+        16425,
+        3570,
+        "Trade from 2026 J.D. Power Low Retail $18,250 × 0.9 = $16,425 (Apex-by-Coachmen brand path — not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-190rbs/6650557/values",
+        "m-190rbs/6650557",
+      ],
+      [
+        "Apex Nano",
+        "194BHS",
+        24900,
+        "Minneapolis Trailer Sales",
+        16920,
+        7980,
+        "Trade from 2026 J.D. Power Low Retail $18,800 × 0.9 = $16,920 (Apex-by-Coachmen brand path — not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-194bhs/6650558/values",
+        "m-194bhs/6650558",
+      ],
+      [
+        "Apex Nano",
+        "203RBK",
+        21995,
+        "RV Specialist",
+        17685,
+        4310,
+        "Trade from 2026 J.D. Power Low Retail $19,650 × 0.9 = $17,685 (Apex-by-Coachmen brand path — not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-203rbk/6650559/values",
+        "m-203rbk/6650559",
+      ],
+      [
+        "Apex Nano",
+        "208BHS",
+        23339,
+        "Carolina RV",
+        17505,
+        5834,
+        "Trade from 2026 J.D. Power Low Retail $19,450 × 0.9 = $17,505 (Apex-by-Coachmen brand path — not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-208bhs/6650560/values",
+        "m-208bhs/6650560",
+      ],
+      [
+        "Apex Nano",
+        "213RDS",
+        24900,
+        "Camp EZ RV - Livingston",
+        18360,
+        6540,
+        "Trade from 2026 J.D. Power Low Retail $20,400 × 0.9 = $18,360 (Apex-by-Coachmen brand path — not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-213rds/6650561/values",
+        "m-213rds/6650561",
+      ],
+      [
+        "Apex Nano",
+        "216RKS",
+        27999,
+        "Bill's Happy Camper RV Sales and Service",
+        19215,
+        8784,
+        "Trade from 2026 J.D. Power Low Retail $21,350 × 0.9 = $19,215 (Apex-by-Coachmen brand path — not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-216rks/6650562/values",
+        "m-216rks/6650562",
+      ],
+      [
+        "Apex Nano",
+        "224RBS",
+        24999,
+        "General RV Center - Mesa",
+        18855,
+        6144,
+        "Trade from 2026 J.D. Power Low Retail $20,950 × 0.9 = $18,855 (Apex-by-Coachmen brand path — not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-224rbs/6650563/values",
+        "m-224rbs/6650563",
+      ],
+      [
+        "Apex Nano",
+        "228BHS",
+        28995,
+        "RV Specialist",
+        18945,
+        10050,
+        "Trade from 2026 J.D. Power Low Retail $21,050 × 0.9 = $18,945 (Apex-by-Coachmen brand path — not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-228bhs/6650564/values",
+        "m-228bhs/6650564",
+      ],
+      [
+        "Apex Ultra-Lite",
+        "188RBST",
+        29714,
+        "",
+        22005,
+        7709,
+        "Trade from 2026 J.D. Power Low Retail $24,450 × 0.9 = $22,005 (Apex-by-Coachmen brand path — not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-188rbst/6650565/values",
+        "m-188rbst/6650565",
+      ],
+      [
+        "Apex Ultra-Lite",
+        "241BHS",
+        35721,
+        "",
+        23985,
+        11736,
+        "Trade from 2026 J.D. Power Low Retail $26,650 × 0.9 = $23,985 (Apex-by-Coachmen brand path — not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-241bhs/6650566/values",
+        "m-241bhs/6650566",
+      ],
+      [
+        "Apex Ultra-Lite",
+        "242BARV",
+        33495,
+        "",
+        24705,
+        8790,
+        "Trade from 2026 J.D. Power Low Retail $27,450 × 0.9 = $24,705 (Apex-by-Coachmen brand path — not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-242barv/6650567/values",
+        "m-242barv/6650567",
+      ],
+      [
+        "Apex Ultra-Lite",
+        "246BARV",
+        35128,
+        "",
+        26055,
+        9073,
+        "Trade from 2026 J.D. Power Low Retail $28,950 × 0.9 = $26,055 (Apex-by-Coachmen brand path — not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-246barv/6650569/values",
+        "m-246barv/6650569",
+      ],
+      [
+        "Apex",
+        "ULTRA-LITE 293RLDS",
+        42999,
+        "General RV Center - Salisbury, Salisbury, NC",
+        25335,
+        17664,
+        "Trade from 2026 J.D. Power Low Retail $28,150 × 0.9 = $25,335 (Apex-by-Coachmen brand path — not listed under Coachmen-by-Forest-River). Source: https://www.jdpower.com/rvs/2026/apex-by-coachmen/m-293rlds/6650575/values",
+        "m-293rlds/6650575",
+      ],
     ] as const
-
-    for (const [floor, ask] of floors) {
+    for (const [
+      model,
+      floor,
+      ask,
+      dealer,
+      trade,
+      delta,
+      exactNote,
+      path,
+    ] of rows) {
       const deal = deals.find(
         (row) =>
           row.manufacturer === "Coachmen" &&
-          row.model === "Apex Ultra-Lite" &&
+          row.model === model &&
           row.floor === floor
       )
-      expect(deal).toMatchObject({
-        ask,
-        dealer: "",
-        trade: null,
-        delta: null,
-      })
-      expect(deal?.notes.length).toBeGreaterThan(0)
+      expect(deal).toMatchObject({ ask, dealer, trade, delta })
+      expect(
+        deal?.notes
+          .flat()
+          .some((span) => span.type === "text" && span.text === exactNote)
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some((span) => span.type === "text" && /not found/i.test(span.text))
+      ).toBe(false)
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "link" &&
+              span.href.includes("/2026/apex-by-coachmen/") &&
+              span.href.includes(path) &&
+              span.label === "JDP values"
+          )
+      ).toBe(true)
     }
 
     const barv242 = deals.find(
@@ -474,198 +640,69 @@ describe("deal data", () => {
             span.type === "text" && span.text.includes("asterisk on card")
         )
     ).toBe(true)
+
+    const apex293 = deals.find(
+      (deal) => deal.model === "Apex" && deal.floor === "ULTRA-LITE 293RLDS"
+    )
+    expect(
+      apex293?.notes
+        .flat()
+        .some(
+          (span) => span.type === "link" && span.href.includes("rvtrader.com")
+        )
+    ).toBe(true)
   })
 
-  it("prices Apex Ultra-Lite 26BHX, 289TBSS, and X Series asks without inventing trades", () => {
-    const ultra26 = deals.find(
-      (deal) => deal.model === "Apex Ultra-Lite" && deal.floor === "26BHX"
-    )
-    expect(ultra26).toMatchObject({
-      ask: 27999,
-      dealer: "Bill's Happy Camper RV Sales and Service, Mill Hall, PA",
-      trade: null,
-      delta: null,
-    })
-
-    const ultra289 = deals.find(
-      (deal) => deal.model === "Apex Ultra-Lite" && deal.floor === "289TBSS"
-    )
-    expect(ultra289).toMatchObject({
-      ask: 34999,
-      dealer: "Franklinville, NC",
-      trade: null,
-      delta: null,
-    })
-
-    const x24 = deals.find(
-      (deal) =>
-        deal.model === "Apex Ultra-Lite X Series" && deal.floor === "24RBX"
-    )
-    expect(x24).toMatchObject({
-      ask: 25980,
-      dealer: "Bobby Combs RV, Caldwell, ID",
-      trade: null,
-      delta: null,
-    })
-
-    const x29 = deals.find(
-      (deal) =>
-        deal.model === "Apex Ultra-Lite X Series" && deal.floor === "29BHX"
-    )
-    expect(x29).toMatchObject({
-      ask: 25328,
-      dealer: "Forest River RV Little Rock by Camping World",
-      trade: null,
-      delta: null,
-    })
-  })
-
-  it("prices Apex Nano 183BH, 184BH, and 185BH without inventing trades", () => {
-    const nano183 = deals.find(
-      (deal) => deal.model === "Apex Nano" && deal.floor === "183BH"
-    )
-    expect(nano183).toMatchObject({
-      ask: 25114,
-      dealer: "RV Dynasty, Bunker Hill, IN",
-      trade: null,
-      delta: null,
-    })
-
-    const nano184 = deals.find(
-      (deal) => deal.model === "Apex Nano" && deal.floor === "184BH"
-    )
-    expect(nano184).toMatchObject({
-      ask: 22200,
-      dealer: "Trailer Source Inc. Wheat Ridge RV Center, Wheat Ridge, CO",
-      trade: null,
-      delta: null,
-    })
-
-    const nano185 = deals.find(
-      (deal) => deal.model === "Apex Nano" && deal.floor === "185BH"
-    )
-    expect(nano185).toMatchObject({
-      ask: 21961,
-      dealer: "RV Dynasty, Bunker Hill, IN",
-      trade: null,
-      delta: null,
-    })
-  })
-
-  it("prices Apex Nano 186BH through 208BHS without inventing trades", () => {
-    const nano186 = deals.find(
-      (deal) => deal.model === "Apex Nano" && deal.floor === "186BH"
-    )
-    expect(nano186).toMatchObject({
-      ask: 20495,
-      dealer: "RV Specialist, Goshen, IN",
-      trade: null,
-      delta: null,
-    })
-
-    const nano187 = deals.find(
-      (deal) => deal.model === "Apex Nano" && deal.floor === "187RB"
-    )
-    expect(nano187).toMatchObject({
-      ask: 22400,
-      dealer: "RV Dynasty, Bunker Hill, IN",
-      trade: null,
-      delta: null,
-    })
-
-    const nano190 = deals.find(
-      (deal) => deal.model === "Apex Nano" && deal.floor === "190RBS"
-    )
-    expect(nano190).toMatchObject({
-      ask: 19995,
-      dealer: "RV Specialist",
-      trade: null,
-      delta: null,
-    })
-
-    const nano194 = deals.find(
-      (deal) => deal.model === "Apex Nano" && deal.floor === "194BHS"
-    )
-    expect(nano194).toMatchObject({
-      ask: 24900,
-      dealer: "Minneapolis Trailer Sales",
-      trade: null,
-      delta: null,
-    })
-
-    const nano203 = deals.find(
-      (deal) => deal.model === "Apex Nano" && deal.floor === "203RBK"
-    )
-    expect(nano203).toMatchObject({
-      ask: 21995,
-      dealer: "RV Specialist",
-      trade: null,
-      delta: null,
-    })
-
-    const nano208 = deals.find(
-      (deal) => deal.model === "Apex Nano" && deal.floor === "208BHS"
-    )
-    expect(nano208).toMatchObject({
-      ask: 23339,
-      dealer: "Carolina RV",
-      trade: null,
-      delta: null,
-    })
-  })
-
-  it("prices Apex Nano 213RDS, 216RKS, 224RBS, and 228BHS without inventing trades", () => {
-    const nano213 = deals.find(
-      (deal) =>
-        deal.manufacturer === "Coachmen" &&
-        deal.model === "Apex Nano" &&
-        deal.floor === "213RDS"
-    )
-    expect(nano213).toMatchObject({
-      ask: 24900,
-      dealer: "Camp EZ RV - Livingston",
-      trade: null,
-      delta: null,
-    })
-
-    const nano216 = deals.find(
-      (deal) =>
-        deal.manufacturer === "Coachmen" &&
-        deal.model === "Apex Nano" &&
-        deal.floor === "216RKS"
-    )
-    expect(nano216).toMatchObject({
-      ask: 27999,
-      dealer: "Bill's Happy Camper RV Sales and Service",
-      trade: null,
-      delta: null,
-    })
-
-    const nano224 = deals.find(
-      (deal) =>
-        deal.manufacturer === "Coachmen" &&
-        deal.model === "Apex Nano" &&
-        deal.floor === "224RBS"
-    )
-    expect(nano224).toMatchObject({
-      ask: 24999,
-      dealer: "General RV Center - Mesa",
-      trade: null,
-      delta: null,
-    })
-
-    const nano228 = deals.find(
-      (deal) =>
-        deal.manufacturer === "Coachmen" &&
-        deal.model === "Apex Nano" &&
-        deal.floor === "228BHS"
-    )
-    expect(nano228).toMatchObject({
-      ask: 28995,
-      dealer: "RV Specialist",
-      trade: null,
-      delta: null,
-    })
+  it("leaves Apex floors verified absent from 2026 Apex-by-Coachmen without trades", () => {
+    const missing = [
+      ["Apex Nano", "181RB", 20999, "Camp Rite RV Sales, Loganville, GA"],
+      ["Apex Nano", "183BH", 25114, "RV Dynasty, Bunker Hill, IN"],
+      ["Apex Ultra-Lite", "244RBS", 32995, ""],
+      [
+        "Apex Ultra-Lite",
+        "26BHX",
+        27999,
+        "Bill's Happy Camper RV Sales and Service, Mill Hall, PA",
+      ],
+      ["Apex Ultra-Lite", "289TBSS", 34999, "Franklinville, NC"],
+      [
+        "Apex Ultra-Lite X Series",
+        "24RBX",
+        25980,
+        "Bobby Combs RV, Caldwell, ID",
+      ],
+      [
+        "Apex Ultra-Lite X Series",
+        "29BHX",
+        25328,
+        "Forest River RV Little Rock by Camping World",
+      ],
+    ] as const
+    for (const [model, floor, ask, dealer] of missing) {
+      const deal = deals.find(
+        (row) =>
+          row.manufacturer === "Coachmen" &&
+          row.model === model &&
+          row.floor === floor
+      )
+      expect(deal).toMatchObject({ ask, dealer, trade: null, delta: null })
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "text" &&
+              span.text.includes(
+                `Exact floor ${floor} was checked on the 2026 Apex-by-Coachmen J.D. Power list and is not listed`
+              )
+          )
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some((span) => span.type === "text" && /not found/i.test(span.text))
+      ).toBe(false)
+    }
   })
 
   it("applies JDP trades on Coachmen Beyond", () => {
@@ -1266,10 +1303,11 @@ describe("filters and sort", () => {
     expect(priced.map((deal) => deal.delta)).toEqual([
       -5252, -3791, -3525, -3461, -2490, -2065, -1971, -1885, -1885, -1805,
       -1595, -1476, -1206, -1195, -1170, -795, -586, -101, -30, -20, 390, 535,
-      573, 659, 1609, 2535, 3195, 5514, 5889, 7294, 8356, 13165, 21524, 22400,
-      26440, 28866,
+      573, 659, 1609, 2535, 3195, 3570, 4310, 4790, 5514, 5834, 5889, 6144,
+      6540, 6900, 7201, 7294, 7370, 7709, 7980, 8356, 8784, 8790, 9073, 10050,
+      11736, 13165, 17664, 21524, 22400, 26440, 28866,
     ])
-    expect(empty.length).toBe(381)
+    expect(empty.length).toBe(364)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
