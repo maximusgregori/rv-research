@@ -304,7 +304,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(18)
+    expect(priced).toHaveLength(22)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -488,6 +488,60 @@ describe("deal data", () => {
     expect(nano208).toMatchObject({
       ask: 23339,
       dealer: "Carolina RV",
+      trade: null,
+      delta: null,
+    })
+  })
+
+  it("prices Apex Nano 213RDS, 216RKS, 224RBS, and 228BHS without inventing trades", () => {
+    const nano213 = deals.find(
+      (deal) =>
+        deal.manufacturer === "Coachmen" &&
+        deal.model === "Apex Nano" &&
+        deal.floor === "213RDS"
+    )
+    expect(nano213).toMatchObject({
+      ask: 24900,
+      dealer: "Camp EZ RV - Livingston",
+      trade: null,
+      delta: null,
+    })
+
+    const nano216 = deals.find(
+      (deal) =>
+        deal.manufacturer === "Coachmen" &&
+        deal.model === "Apex Nano" &&
+        deal.floor === "216RKS"
+    )
+    expect(nano216).toMatchObject({
+      ask: 27999,
+      dealer: "Bill's Happy Camper RV Sales and Service",
+      trade: null,
+      delta: null,
+    })
+
+    const nano224 = deals.find(
+      (deal) =>
+        deal.manufacturer === "Coachmen" &&
+        deal.model === "Apex Nano" &&
+        deal.floor === "224RBS"
+    )
+    expect(nano224).toMatchObject({
+      ask: 24999,
+      dealer: "General RV Center - Mesa",
+      trade: null,
+      delta: null,
+    })
+
+    const nano228 = deals.find(
+      (deal) =>
+        deal.manufacturer === "Coachmen" &&
+        deal.model === "Apex Nano" &&
+        deal.floor === "228BHS"
+    )
+    expect(nano228).toMatchObject({
+      ask: 28995,
+      dealer: "RV Specialist",
       trade: null,
       delta: null,
     })
