@@ -7185,11 +7185,42 @@
     "manufacturer": "Forest River",
     "model": "Sandstorm",
     "floor": "2710",
-    "ask": null,
-    "dealer": "",
+    "ask": 62980,
+    "dealer": "Bobby Combs RV – Yuma, AZ",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Bobby Combs RV – Yuma, AZ, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-forest-river-sandstorm-2710/c36f7726-6e4a-11f1-adcf-02f5bff6b341/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Sandstorm+2710-5041071364",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $62,980 both sites (Bobby Combs RV – Yuma, AZ), New 2026 Sandstorm 2710 toy hauler; length not listed on either site. Higher RV Trader listing $63,995. Trade blank: verified JDP miss — no 2026 or 2025 Forest River Sandstorm 2710 Low Retail. Do not use Stealth Toy Hauler M-2710 values."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,

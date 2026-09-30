@@ -286,12 +286,13 @@ describe("deal data", () => {
       "Salem Hemisphere|321DRL",
       "Salem Hemisphere|325RL",
       "Sandpiper|3370RLS",
+      "Sandstorm|2710",
       "Sanibel|34LOUNGE",
     ])
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(38)
+    expect(pricedForest).toHaveLength(39)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -345,7 +346,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(124)
+    expect(priced).toHaveLength(125)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -2864,6 +2865,69 @@ describe("deal data", () => {
     expect(sierraTwin?.notes).toEqual([])
   })
 
+  it("applies Sandstorm 2710 ask and leaves trade/delta blank", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Sandstorm" &&
+        row.floor === "2710" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 62980,
+      dealer: "Bobby Combs RV – Yuma, AZ",
+      trade: null,
+      delta: null,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $62,980 both sites (Bobby Combs RV – Yuma, AZ), New 2026 Sandstorm 2710 toy hauler; length not listed on either site. Higher RV Trader listing $63,995. Trade blank: verified JDP miss — no 2026 or 2025 Forest River Sandstorm 2710 Low Retail. Do not use Stealth Toy Hauler M-2710 values."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /Stealth Toy Hauler/i.test(span.text) &&
+            /do not use/i.test(span.text)
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvt.com/buy/details/2026-forest-river-sandstorm-2710/c36f7726-6e4a-11f1-adcf-02f5bff6b341/" &&
+            span.label === "RVT"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Sandstorm+2710-5041071364" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+  })
+
   it("applies Sanibel 34LOUNGE ask and 2026 JDP trade", () => {
     const deal = deals.find(
       (row) =>
@@ -3936,6 +4000,12 @@ describe("deal data", () => {
         "301ML",
         52777,
         "Thrills RV, Columbia City, IN",
+      ],
+      [
+        "Sandstorm",
+        "2710",
+        62980,
+        "Bobby Combs RV – Yuma, AZ",
       ],
     ] as const
     const verifiedMiss = new Set(["297MK", "235ML", "295RL"])
