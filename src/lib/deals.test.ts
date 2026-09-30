@@ -207,9 +207,9 @@ describe("deal data", () => {
     expect(
       deals.filter((deal) => deal.manufacturer === "Forest River")
     ).toHaveLength(68)
-    expect(
-      deals.filter((deal) => deal.manufacturer === "Jayco")
-    ).toHaveLength(20)
+    expect(deals.filter((deal) => deal.manufacturer === "Jayco")).toHaveLength(
+      20
+    )
     expect(
       deals.filter((deal) => deal.manufacturer === "Keystone")
     ).toHaveLength(62)
@@ -439,8 +439,7 @@ describe("deal data", () => {
 
   it("prices Apex Ultra-Lite 26BHX, 289TBSS, and X Series asks without inventing trades", () => {
     const ultra26 = deals.find(
-      (deal) =>
-        deal.model === "Apex Ultra-Lite" && deal.floor === "26BHX"
+      (deal) => deal.model === "Apex Ultra-Lite" && deal.floor === "26BHX"
     )
     expect(ultra26).toMatchObject({
       ask: 27999,
@@ -450,8 +449,7 @@ describe("deal data", () => {
     })
 
     const ultra289 = deals.find(
-      (deal) =>
-        deal.model === "Apex Ultra-Lite" && deal.floor === "289TBSS"
+      (deal) => deal.model === "Apex Ultra-Lite" && deal.floor === "289TBSS"
     )
     expect(ultra289).toMatchObject({
       ask: 34999,
@@ -684,91 +682,262 @@ describe("deal data", () => {
     ).toHaveLength(10)
   })
 
-  it("prices Catalina Summit Series 7 asks without inventing trades", () => {
-    expect(
-      deals.find(
-        (deal) =>
-          deal.model === "Catalina Summit Series 7" && deal.floor === "134BHX"
-      )
-    ).toMatchObject({
-      ask: 11929,
-      dealer: "Moix RV Hot Springs Landing, Hot Springs AR",
-      trade: null,
-      delta: null,
-    })
-    expect(
-      deals.find(
-        (deal) =>
-          deal.model === "Catalina Summit Series 7" && deal.floor === "134RDX"
-      )
-    ).toMatchObject({
-      ask: 11599,
-      dealer: "Bayer RV, Dublin TX",
-      trade: null,
-      delta: null,
-    })
-    const later = [
-      ["134REX", 16995, "RV Central"],
-      ["134RKX", 12900, "Riley's RV World"],
-      ["154RBX", 14900, "Riley's RV World"],
-      ["164BHX", 14900, "Riley's RV World"],
-      ["184BHSX", 18830, "RV Value Mart - Ephrata"],
-      ["184BHS", 24995, "Campers Inn RV of Johnstown"],
-      ["184MKS", 18999, "Bayer RV"],
-      ["184RBS", 19999, "Camp Rite RV Sales"],
+  it("applies JDP trades on Catalina Summit Series 7", () => {
+    const rows = [
+      [
+        "134BHX",
+        11929,
+        "Moix RV Hot Springs Landing, Hot Springs AR",
+        15390,
+        -3461,
+        "$17,100",
+        "m-134-bhx/6648736",
+      ],
+      [
+        "134RDX",
+        11599,
+        "Bayer RV, Dublin TX",
+        15390,
+        -3791,
+        "$17,100",
+        "m-134-rdx/6648737",
+      ],
+      [
+        "134REX",
+        16995,
+        "RV Central",
+        16605,
+        390,
+        "$18,450",
+        "m-134-rex/6648739",
+      ],
+      [
+        "134RKX",
+        12900,
+        "Riley's RV World",
+        15390,
+        -2490,
+        "$17,100",
+        "m-134-rkx/6648738",
+      ],
+      [
+        "154RBX",
+        14900,
+        "Riley's RV World",
+        16785,
+        -1885,
+        "$18,650",
+        "m-154-rbx/6648741",
+      ],
+      [
+        "164BHX",
+        14900,
+        "Riley's RV World",
+        16785,
+        -1885,
+        "$18,650",
+        "m-164-bhx/6648742",
+      ],
+      [
+        "184BHSX",
+        18830,
+        "RV Value Mart - Ephrata",
+        20025,
+        -1195,
+        "$22,250",
+        "m-184-bhsx/6648743",
+      ],
+      [
+        "184MKS",
+        18999,
+        "Bayer RV",
+        20970,
+        -1971,
+        "$23,300",
+        "m-184-mks/6648744",
+      ],
     ] as const
-    for (const [floor, ask, dealer] of later) {
+    for (const [floor, ask, dealer, trade, delta, lowRetail, path] of rows) {
+      const deal = deals.find(
+        (row) => row.model === "Catalina Summit Series 7" && row.floor === floor
+      )
+      expect(deal).toMatchObject({ ask, dealer, trade, delta })
       expect(
-        deals.find(
-          (deal) =>
-            deal.model === "Catalina Summit Series 7" && deal.floor === floor
-        )
-      ).toMatchObject({ ask, dealer, trade: null, delta: null })
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "text" &&
+              span.text.includes(`JDP Low Retail ${lowRetail}`)
+          )
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "link" &&
+              span.href.includes(path) &&
+              span.label === "JDP values"
+          )
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some((span) => span.type === "text" && /not found/i.test(span.text))
+      ).toBe(false)
     }
     expect(
       deals.filter((deal) => deal.model === "Catalina Summit Series 7")
     ).toHaveLength(10)
-    expect(
-      deals
-        .filter((deal) => deal.model === "Catalina Summit Series 7")
-        .every((deal) => deal.trade == null && deal.delta == null)
-    ).toBe(true)
   })
 
-  it("prices Catalina Summit Series 8 asks without inventing trades", () => {
-    const summit8 = [
-      ["211BH", 18594, "Kunes RV Lake Mills"],
-      ["221EPIC", 20995, "RV Dynasty"],
-      ["221MKE", 26895, "Meyer's RV of Egg Harbor"],
-      ["231BHS", 22894, "RV Value Mart - Manheim"],
-      ["231MKS", 22495, "RV Dynasty"],
-      ["261BHS", 25594, "Kunes Freedom RV"],
-      ["261BH", 16995, "RV Dynasty"],
-      ["271DBS", 27399, "Bill's Happy Camper RV Sales and Service"],
-      ["281QBUNK", 27929, "Moix RV McGaugh Outpost"],
+  it("applies JDP trades on Catalina Summit Series 8", () => {
+    const rows = [
+      [
+        "211BH",
+        18594,
+        "Kunes RV Lake Mills",
+        19800,
+        -1206,
+        "$22,000",
+        "m-211-bh/6648729",
+      ],
+      [
+        "221EPIC",
+        20995,
+        "RV Dynasty",
+        21015,
+        -20,
+        "$23,350",
+        "m-221-epic/6648730",
+      ],
+      [
+        "231BHS",
+        22894,
+        "RV Value Mart - Manheim",
+        22995,
+        -101,
+        "$25,550",
+        "m-231-bhs/6648731",
+      ],
+      [
+        "231MKS",
+        22495,
+        "RV Dynasty",
+        24300,
+        -1805,
+        "$27,000",
+        "m-231-mks/6648732",
+      ],
+      [
+        "261BHS",
+        25594,
+        "Kunes Freedom RV",
+        23985,
+        1609,
+        "$26,650",
+        "m-261-bhs/6648734",
+      ],
+      [
+        "261BH",
+        16995,
+        "RV Dynasty",
+        20520,
+        -3525,
+        "$22,800",
+        "m-261-bh/6648733",
+      ],
+      [
+        "271DBS",
+        27399,
+        "Bill's Happy Camper RV Sales and Service",
+        21510,
+        5889,
+        "$23,900",
+        "m-271-dbs/6650074",
+      ],
+      [
+        "281QBUNK",
+        27929,
+        "Moix RV McGaugh Outpost",
+        27270,
+        659,
+        "$30,300",
+        "m-281-qbunk/6648735",
+      ],
     ] as const
-    for (const [floor, ask, dealer] of summit8) {
+    for (const [floor, ask, dealer, trade, delta, lowRetail, path] of rows) {
+      const deal = deals.find(
+        (row) =>
+          row.manufacturer === "Coachmen" &&
+          row.model === "Catalina Summit Series 8" &&
+          row.floor === floor
+      )
+      expect(deal).toMatchObject({ ask, dealer, trade, delta })
       expect(
-        deals.find(
-          (deal) =>
-            deal.manufacturer === "Coachmen" &&
-            deal.model === "Catalina Summit Series 8" &&
-            deal.floor === floor
-        )
-      ).toMatchObject({ ask, dealer, trade: null, delta: null })
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "text" &&
+              span.text.includes(`JDP Low Retail ${lowRetail}`)
+          )
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "link" &&
+              span.href.includes(path) &&
+              span.label === "JDP values"
+          )
+      ).toBe(true)
     }
     expect(
       deals.filter((deal) => deal.model === "Catalina Summit Series 8")
     ).toHaveLength(9)
-    expect(
-      deals
-        .filter((deal) => deal.model === "Catalina Summit Series 8")
-        .every((deal) => deal.trade == null && deal.delta == null)
-    ).toBe(true)
+  })
+
+  it("leaves verified-missing Summit floors without trade or a not-found claim", () => {
+    const missing = [
+      [
+        "Catalina Summit Series 7",
+        "184BHS",
+        24995,
+        "Campers Inn RV of Johnstown",
+      ],
+      ["Catalina Summit Series 7", "184RBS", 19999, "Camp Rite RV Sales"],
+      ["Catalina Summit Series 8", "221MKE", 26895, "Meyer's RV of Egg Harbor"],
+    ] as const
+    for (const [model, floor, ask, dealer] of missing) {
+      const deal = deals.find(
+        (row) => row.model === model && row.floor === floor
+      )
+      expect(deal).toMatchObject({ ask, dealer, trade: null, delta: null })
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "text" &&
+              span.text.includes(
+                `Exact floor ${floor} was checked on 2026 JDP Catalina Summit and is not listed`
+              )
+          )
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some((span) => span.type === "text" && /not found/i.test(span.text))
+      ).toBe(false)
+    }
   })
 
   it("does not claim JDP Low Retail is missing unless the miss was verified", () => {
-    const pending = "Trade and delta pending J.D. Power Low Retail × 0.9 lookup."
+    const pending =
+      "Trade and delta pending J.D. Power Low Retail × 0.9 lookup."
     const falseMiss = deals.filter((deal) =>
       deal.notes
         .flat()
@@ -795,36 +964,67 @@ describe("deal data", () => {
 
     expect(
       deals.filter((deal) =>
-        deal.notes.flat().some((span) => span.type === "text" && span.text === pending)
+        deal.notes
+          .flat()
+          .some((span) => span.type === "text" && span.text === pending)
       ).length
-    ).toBe(54)
+    ).toBe(44)
   })
 
-  it("prices Catalina Trail Blazer asks without inventing trades", () => {
+  it("applies JDP trades on Catalina Trail Blazer", () => {
     const trail = [
-      ["26TH", 23495, "RV Dynasty"],
-      ["27THS", 31495, "RV Dynasty"],
-      ["28THS", 33495, "RV Dynasty"],
-      ["29THS", 28995, "RV Dynasty"],
+      ["26TH", 23495, "RV Dynasty", 25560, -2065, "$28,400", "m-26-th/6648746"],
+      ["27THS", 31495, "RV Dynasty", 30960, 535, "$34,400", "m-27-ths/6648747"],
+      [
+        "28THS",
+        33495,
+        "RV Dynasty",
+        30960,
+        2535,
+        "$34,400",
+        "m-28-ths/6648748",
+      ],
+      [
+        "29THS",
+        28995,
+        "RV Dynasty",
+        29790,
+        -795,
+        "$33,100",
+        "m-29-ths/6648749",
+      ],
     ] as const
-    for (const [floor, ask, dealer] of trail) {
+    for (const [floor, ask, dealer, trade, delta, lowRetail, path] of trail) {
+      const deal = deals.find(
+        (row) =>
+          row.manufacturer === "Coachmen" &&
+          row.model === "Catalina Trail Blazer" &&
+          row.floor === floor
+      )
+      expect(deal).toMatchObject({ ask, dealer, trade, delta })
       expect(
-        deals.find(
-          (deal) =>
-            deal.manufacturer === "Coachmen" &&
-            deal.model === "Catalina Trail Blazer" &&
-            deal.floor === floor
-        )
-      ).toMatchObject({ ask, dealer, trade: null, delta: null })
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "text" &&
+              span.text.includes(`JDP Low Retail ${lowRetail}`)
+          )
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "link" &&
+              span.href.includes(path) &&
+              span.label === "JDP values"
+          )
+      ).toBe(true)
     }
     expect(
       deals.filter((deal) => deal.model === "Catalina Trail Blazer")
     ).toHaveLength(4)
-    expect(
-      deals
-        .filter((deal) => deal.model === "Catalina Trail Blazer")
-        .every((deal) => deal.trade == null && deal.delta == null)
-    ).toBe(true)
   })
 })
 
@@ -861,8 +1061,12 @@ describe("filters and sort", () => {
     )
     const priced = rows.filter((deal) => deal.delta != null)
     const empty = rows.filter((deal) => deal.delta == null)
-    expect(priced.map((deal) => deal.delta)).toEqual([-5252, -586, 13165])
-    expect(empty.length).toBe(414)
+    expect(priced.map((deal) => deal.delta)).toEqual([
+      -5252, -3791, -3525, -3461, -2490, -2065, -1971, -1885, -1885, -1805,
+      -1206, -1195, -795, -586, -101, -20, 390, 535, 659, 1609, 2535, 5889,
+      13165,
+    ])
+    expect(empty.length).toBe(394)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
