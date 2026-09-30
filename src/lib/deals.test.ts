@@ -256,11 +256,13 @@ describe("deal data", () => {
       "Cedar Creek Experience|35RL",
       "Cedar Creek Silverback|29RL",
       "Cherokee Arctic Wolf|27SGS",
+      "Cherokee Arctic Wolf|285OPT",
+      "Cherokee Arctic Wolf|287BH",
     ])
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(7)
+    expect(pricedForest).toHaveLength(9)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -314,7 +316,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(93)
+    expect(priced).toHaveLength(95)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -966,6 +968,88 @@ describe("deal data", () => {
           )
       ).toBe(true)
     }
+  })
+
+  it("applies Arctic Wolf 285OPT and 287BH asks and 2025 proxy trade", () => {
+    const opt = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Cherokee Arctic Wolf" &&
+        row.floor === "285OPT" &&
+        row.year === 2026
+    )
+    expect(opt).toMatchObject({
+      ask: 38995,
+      dealer: "Bunker Hill, IN",
+      trade: null,
+      delta: null,
+    })
+    expect(
+      opt?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $38,995 both RVT + RV Trader (Bunker Hill IN), 34 ft New. Trade blank: verified 2025/2026 no M-285OPT; 2027 lists M-285OPT but Low Retail N/A — no forward proxy."
+        )
+    ).toBe(true)
+    expect(
+      opt?.notes
+        .flat()
+        .some((span) => span.type === "link")
+    ).toBe(false)
+
+    const bh = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Cherokee Arctic Wolf" &&
+        row.floor === "287BH" &&
+        row.year === 2026
+    )
+    expect(bh).toMatchObject({
+      ask: 39995,
+      dealer: "RV Dynasty, Bunker Hill, IN",
+      trade: 38655,
+      delta: 1340,
+    })
+    expect(
+      bh?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $39,995 both RVT + RV Trader (RV Dynasty, Bunker Hill IN), 35 ft New. TRADE FROM 2025 (not 2026): J.D. Power Low Retail $42,950 × 0.9 = $38,655 (Cherokee-by-FR Arctic Wolf M-287BH). 2026 cherokee-by-forest-river make page has no Arctic Wolf / M-287BH."
+        )
+    ).toBe(true)
+    expect(
+      bh?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(
+      bh?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvt.com/buy/details/2026-forest-river-cherokee-arctic-wolf-287bh/f588d5db-b16b-11f0-beaa-02c8259c7411/" &&
+            span.label === "RVT"
+        )
+    ).toBe(true)
+    expect(
+      bh?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Cherokee+Arctic+Wolf+287BH-5038250917" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
   })
 
   it("applies 2025 JDP proxy trades on Coachmen Adrenaline", () => {
@@ -1970,6 +2054,12 @@ describe("deal data", () => {
         74995,
         "RV Dynasty, Bunker Hill, IN",
       ],
+      [
+        "Cherokee Arctic Wolf",
+        "285OPT",
+        38995,
+        "Bunker Hill, IN",
+      ],
     ] as const
     const verifiedMiss = new Set(["297MK", "235ML", "295RL"])
     const askNoTrade = deals.filter(
@@ -2136,13 +2226,13 @@ describe("filters and sort", () => {
       -10004, -6760, -5628, -5469, -5252, -5190, -3791, -3525, -3461, -2490,
       -2065, -2000, -1971, -1885, -1885, -1862, -1805, -1595, -1476, -1206,
       -1195, -1170, -831, -795, -586, -343, -110, -101, -30, -20, 390, 535, 573,
-      659, 1163, 1609, 1665, 1919, 2089, 2535, 3195, 3435, 3570, 4310, 4644,
-      4790, 4970, 5243, 5480, 5514, 5834, 5889, 6144, 6540, 6735, 6900, 7201,
-      7294, 7370, 7709, 7980, 8356, 8784, 8790, 9034, 9073, 10050, 11736, 13165,
-      13584, 15697, 17460, 17664, 17740, 19530, 21524, 22400, 25615, 25875,
-      26440, 26520, 28866, 29438, 40600,
+      659, 1163, 1340, 1609, 1665, 1919, 2089, 2535, 3195, 3435, 3570, 4310,
+      4644, 4790, 4970, 5243, 5480, 5514, 5834, 5889, 6144, 6540, 6735, 6900,
+      7201, 7294, 7370, 7709, 7980, 8356, 8784, 8790, 9034, 9073, 10050, 11736,
+      13165, 13584, 15697, 17460, 17664, 17740, 19530, 21524, 22400, 25615,
+      25875, 26440, 26520, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(333)
+    expect(empty.length).toBe(332)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
