@@ -248,13 +248,21 @@ describe("deal data", () => {
     expect(forest.map((deal) => [deal.model, deal.floor])).toEqual(
       FOREST_RIVER_FIFTH_WHEELS.map(([model, floor]) => [model, floor])
     )
-    const pricedCardinal = new Set(["32LIVE", "33CHEF"])
-    const pricedForest = forest.filter(
-      (deal) => deal.model === "Cardinal" && pricedCardinal.has(deal.floor)
+    const pricedForestKeys = new Set([
+      "Cardinal|32LIVE",
+      "Cardinal|33CHEF",
+      "Cedar Creek|290RL",
+      "Cedar Creek Experience|2925RL",
+      "Cedar Creek Experience|35RL",
+      "Cedar Creek Silverback|29RL",
+      "Cherokee Arctic Wolf|27SGS",
+    ])
+    const pricedForest = forest.filter((deal) =>
+      pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(2)
+    expect(pricedForest).toHaveLength(7)
     const unpricedForest = forest.filter(
-      (deal) => !(deal.model === "Cardinal" && pricedCardinal.has(deal.floor))
+      (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
     expect(
       unpricedForest.every(
@@ -306,7 +314,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(88)
+    expect(priced).toHaveLength(93)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -815,6 +823,128 @@ describe("deal data", () => {
             .some((span) => span.type === "link" && span.label === "JDP values")
         ).toBe(false)
       }
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "link" &&
+              span.href === askUrl &&
+              span.label === askLabel
+          )
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "link" &&
+              span.href === askAltUrl &&
+              span.label === askAltLabel
+          )
+      ).toBe(true)
+    }
+  })
+
+  it("applies Cedar Creek and Arctic Wolf 27SGS asks and proxy trades", () => {
+    const rows = [
+      [
+        "Cedar Creek",
+        "290RL",
+        102297,
+        "Dakota Discount RV, Rapid City, SD",
+        null,
+        null,
+        "Lowest organic ask $102,297 on both RV Trader and RVT (Dakota Discount RV, Rapid City SD). Trade blank: verified no exact M-290RL on 2025/2026 cedar-creek JDP pages (nearby M-29RL not mapped).",
+        "https://www.rvt.com/buy/details/2026-forest-river-cedar-creek-290rl/af3e4f67-859d-11f1-adcf-02f5bff6b341/",
+        "RVT",
+        "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Cedar+Creek+290RL-5041432897#sid=683751",
+        "RV Trader",
+      ],
+      [
+        "Cedar Creek Experience",
+        "2925RL",
+        69900,
+        "Open Roads Complete RV - Jasper, GA",
+        43380,
+        26520,
+        "Lowest organic ask $69,900 on both RV Trader and RVT (Open Roads Complete RV, Jasper GA; ~35 ft). TRADE FROM 2024: JDP Low Retail $48,200 × 0.9 = $43,380 (Experience Series M-2925RL). 2026/2025 have no M-2925RL. RV Trader on-page title normalizes to 29RL; page title/RVT confirm 2925RL.",
+        "https://www.rvt.com/buy/details/2026-forest-river-cedar-creek-experience-2925rl/1ad11b75-7da3-11f0-a456-02c8259c7411/",
+        "RVT",
+        "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Cedar+Creek+Experience+29RL-5037525197",
+        "RV Trader",
+      ],
+      [
+        "Cedar Creek Experience",
+        "35RL",
+        68977,
+        "Lazydays by Campers Inn RV",
+        53280,
+        15697,
+        "Lowest organic ask $68,977 on both RV Trader and RVT (Lazydays by Campers Inn RV; ~39 ft). TRADE FROM 2025: JDP Low Retail $59,200 × 0.9 = $53,280 (Experience Series M-35RL). 2026 cedar-creek page has no Experience M-35RL.",
+        "https://www.rvt.com/buy/details/2026-forest-river-cedar-creek-experience-35rl/92c8592e-5c94-11f0-9079-02c8259c7411/",
+        "RVT",
+        "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Cedar+Creek+Experience+35RL-5037050467#sid=824715",
+        "RV Trader",
+      ],
+      [
+        "Cedar Creek Silverback",
+        "29RL",
+        74995,
+        "RV Dynasty, Bunker Hill, IN",
+        null,
+        null,
+        "Lowest organic NEW ask $74,995 on both sites (RV Dynasty, Bunker Hill IN; ~33 ft). RVT $68,798 Lake Park result was Used — excluded. Trade blank: verified no recent (2023–2026) Cedar Creek Silverback M-29RL on jdpower.com.",
+        "https://www.rvt.com/buy/details/2026-forest-river-cedar-creek-silverback-29rl/91332278-235f-11f1-beaa-02c8259c7411/",
+        "RVT",
+        "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Cedar+Creek+29RL-5039714103",
+        "RV Trader",
+      ],
+      [
+        "Cherokee Arctic Wolf",
+        "27SGS",
+        42548,
+        "Camping World, Kodak, TN",
+        37305,
+        5243,
+        "Lowest organic ask $42,548 on both RV Trader and RVT (Camping World Kodak TN; ~29.92 ft; stock #2600467). TRADE FROM 2025: JDP Low Retail $41,450 × 0.9 = $37,305 (Cherokee-by-Forest-River Arctic Wolf Series M-27SGS). 2026 cherokee-by-forest-river make page has no M-27SGS.",
+        "https://www.rvt.com/buy/details/2026-forest-river-cherokee-arctic-wolf-27sgs/6a92b105-ad12-11f1-84c9-020f812d825b/",
+        "RVT",
+        "https://www.rvtrader.com/listing/2026-Forest+River-ARCTIC+WOLF+27SGS-5042063301",
+        "RV Trader",
+      ],
+    ] as const
+    for (const [
+      model,
+      floor,
+      ask,
+      dealer,
+      trade,
+      delta,
+      exactNote,
+      askUrl,
+      askLabel,
+      askAltUrl,
+      askAltLabel,
+    ] of rows) {
+      const deal = deals.find(
+        (row) =>
+          row.manufacturer === "Forest River" &&
+          row.model === model &&
+          row.floor === floor &&
+          row.year === 2026
+      )
+      expect(deal).toMatchObject({ ask, dealer, trade, delta })
+      expect(
+        deal?.notes
+          .flat()
+          .some((span) => span.type === "text" && span.text === exactNote)
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some((span) => span.type === "link" && span.label === "JDP values")
+      ).toBe(false)
       expect(
         deal?.notes
           .flat()
@@ -1833,6 +1963,13 @@ describe("deal data", () => {
       ["Ahara", "297MK", 74849, "RV Value Mart - Asheboro, Franklinville, NC"],
       ["Tandara", "235ML", 38204, "Glampers RV"],
       ["Tandara", "295RL", 54990, "Berryland Campers"],
+      ["Cedar Creek", "290RL", 102297, "Dakota Discount RV, Rapid City, SD"],
+      [
+        "Cedar Creek Silverback",
+        "29RL",
+        74995,
+        "RV Dynasty, Bunker Hill, IN",
+      ],
     ] as const
     const verifiedMiss = new Set(["297MK", "235ML", "295RL"])
     const askNoTrade = deals.filter(
@@ -2000,12 +2137,12 @@ describe("filters and sort", () => {
       -2065, -2000, -1971, -1885, -1885, -1862, -1805, -1595, -1476, -1206,
       -1195, -1170, -831, -795, -586, -343, -110, -101, -30, -20, 390, 535, 573,
       659, 1163, 1609, 1665, 1919, 2089, 2535, 3195, 3435, 3570, 4310, 4644,
-      4790, 4970, 5480, 5514, 5834, 5889, 6144, 6540, 6735, 6900, 7201, 7294,
-      7370, 7709, 7980, 8356, 8784, 8790, 9034, 9073, 10050, 11736, 13165,
-      13584, 17460, 17664, 17740, 19530, 21524, 22400, 25615, 25875, 26440,
-      28866, 29438, 40600,
+      4790, 4970, 5243, 5480, 5514, 5834, 5889, 6144, 6540, 6735, 6900, 7201,
+      7294, 7370, 7709, 7980, 8356, 8784, 8790, 9034, 9073, 10050, 11736, 13165,
+      13584, 15697, 17460, 17664, 17740, 19530, 21524, 22400, 25615, 25875,
+      26440, 26520, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(336)
+    expect(empty.length).toBe(333)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
