@@ -304,7 +304,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(73)
+    expect(priced).toHaveLength(78)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -385,6 +385,138 @@ describe("deal data", () => {
             span.label === "JDP values"
         )
     ).toBe(true)
+  })
+
+  it("applies Chaparral batch 5 asks and 2026 JDP trades", () => {
+    const rows = [
+      [
+        "Chaparral",
+        "30RLS",
+        52200,
+        "Trailer Source, Inc – Frederick, Longmont, CO",
+        50535,
+        1665,
+        "Trade from 2026 J.D. Power Low Retail $56,150 × 0.9 = $50,535 (Coachmen-by-Forest-River Chaparral Lite M-30 RLS; dealer lists Chaparral 30RLS; JDP 2026 lists this floor under Chaparral Lite). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-30-rls/6644374/values",
+        "m-30-rls/6644374",
+        "https://www.rvt.com/buy/details/2026-coachmen-chaparral-30rls/bf1e7380-4616-11f1-adcf-02f5bff6b341/",
+        null,
+      ],
+      [
+        "Chaparral",
+        "336TSIK",
+        52500,
+        "Wana RV Center, Shipshewana, IN",
+        57690,
+        -5190,
+        "Trade from 2026 J.D. Power Low Retail $64,100 × 0.9 = $57,690 (Coachmen-by-Forest-River Chaparral M-336 TSIK). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-336-tsik/6644359/values",
+        "m-336-tsik/6644359",
+        "https://www.rvt.com/buy/details/2026-coachmen-chaparral-336tsik/85fb4817-9568-11f1-beaa-02c8259c7411/",
+        "https://www.rvtrader.com/listing/2026-Coachmen+Rv-Chaparral+336TSIK-5041680490#sid=177027",
+      ],
+      [
+        "Chaparral",
+        "360IBL",
+        55997,
+        "Campers Inn RV of Davenport, Davenport, IA",
+        56340,
+        -343,
+        "Trade from 2026 J.D. Power Low Retail $62,600 × 0.9 = $56,340 (Coachmen-by-Forest-River Chaparral M-360 IBL). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-360-ibl/6644361/values",
+        "m-360-ibl/6644361",
+        "https://www.rvt.com/buy/details/2026-coachmen-chaparral-360ibl/dafe1a69-53f2-11f0-9c42-02c8259c7411/",
+        "https://www.rvtrader.com/listing/2026-Coachmen+Rv-Chaparral+360IBL-5036948952#sid=177027",
+      ],
+      [
+        "Chaparral Lite",
+        "218SE",
+        33826,
+        "Stellhorn RV and Camping Center, Kokomo, IN",
+        43830,
+        -10004,
+        "Trade from 2026 J.D. Power Low Retail $48,700 × 0.9 = $43,830 (Coachmen-by-Forest-River Chaparral Lite M-218 SE). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-218-se/6644369/values",
+        "m-218-se/6644369",
+        "https://www.rvt.com/buy/details/2026-coachmen-chaparral-lite-218se/0a7bf397-a4ea-11f0-beaa-02c8259c7411/",
+        "https://www.rvtrader.com/listing/2026-Coachmen+Rv-Chaparral+Lite+218SE-5038075947#sid=254083",
+      ],
+      [
+        "Chaparral Lite",
+        "30BHS",
+        49888,
+        "Parris RV Pocatello, Chubbuck/Pocatello, ID",
+        51750,
+        -1862,
+        "Trade from 2026 J.D. Power Low Retail $57,500 × 0.9 = $51,750 (Coachmen-by-Forest-River Chaparral Lite M-30 BHS). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-30-bhs/6644373/values",
+        "m-30-bhs/6644373",
+        "https://www.rvt.com/buy/details/2026-coachmen-chaparral-lite-30bhs/d52cce46-7a7b-11f0-b688-02c8259c7411/",
+        "https://www.rvtrader.com/listing/2026-Coachmen+Rv-Chaparral+Lite+30BHS-5037492060",
+      ],
+    ] as const
+    for (const [
+      model,
+      floor,
+      ask,
+      dealer,
+      trade,
+      delta,
+      exactNote,
+      path,
+      askUrl,
+      askAltUrl,
+    ] of rows) {
+      const deal = deals.find(
+        (row) =>
+          row.manufacturer === "Coachmen" &&
+          row.model === model &&
+          row.floor === floor &&
+          row.year === 2026
+      )
+      expect(deal).toMatchObject({ ask, dealer, trade, delta })
+      expect(
+        deal?.notes
+          .flat()
+          .some((span) => span.type === "text" && span.text === exactNote)
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "link" &&
+              span.href.includes(path) &&
+              span.label === "JDP values"
+          )
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "link" &&
+              span.href === askUrl &&
+              span.label === "RVT"
+          )
+      ).toBe(true)
+      if (askAltUrl) {
+        expect(
+          deal?.notes
+            .flat()
+            .some(
+              (span) =>
+                span.type === "link" &&
+                span.href === askAltUrl &&
+                span.label === "RV Trader"
+            )
+        ).toBe(true)
+      } else {
+        expect(
+          deal?.notes
+            .flat()
+            .some(
+              (span) =>
+                span.type === "link" && span.href.includes("rvtrader.com")
+            )
+        ).toBe(false)
+      }
+    }
   })
 
   it("applies 2025 JDP proxy trades on Coachmen Adrenaline", () => {
@@ -1370,12 +1502,7 @@ describe("deal data", () => {
 
   it("leaves only floors with no usable JDP match blank", () => {
     const missing = [
-      [
-        "Apex Nano",
-        "181RB",
-        20999,
-        "Camp Rite RV Sales, Loganville, GA",
-      ],
+      ["Apex Nano", "181RB", 20999, "Camp Rite RV Sales, Loganville, GA"],
       ["Apex Nano", "183BH", 25114, "RV Dynasty, Bunker Hill, IN"],
       ["Apex Ultra-Lite", "244RBS", 32995, ""],
       [
@@ -1542,15 +1669,15 @@ describe("filters and sort", () => {
     const priced = rows.filter((deal) => deal.delta != null)
     const empty = rows.filter((deal) => deal.delta == null)
     expect(priced.map((deal) => deal.delta)).toEqual([
-      -6760, -5469, -5252, -3791, -3525, -3461, -2490, -2065, -1971, -1885,
-      -1885, -1805, -1595, -1476, -1206, -1195, -1170, -795, -586, -110, -101,
-      -30, -20, 390, 535, 573, 659, 1163, 1609, 1919, 2089, 2535, 3195, 3435,
-      3570, 4310, 4644, 4790, 4970, 5480, 5514, 5834, 5889, 6144, 6540, 6735,
-      6900, 7201, 7294, 7370, 7709, 7980, 8356, 8784, 8790, 9034, 9073, 10050,
-      11736, 13165, 17664, 21524, 22400, 25615, 25875, 26440, 28866, 29438,
-      40600,
+      -10004, -6760, -5469, -5252, -5190, -3791, -3525, -3461, -2490, -2065,
+      -1971, -1885, -1885, -1862, -1805, -1595, -1476, -1206, -1195, -1170,
+      -795, -586, -343, -110, -101, -30, -20, 390, 535, 573, 659, 1163, 1609,
+      1665, 1919, 2089, 2535, 3195, 3435, 3570, 4310, 4644, 4790, 4970, 5480,
+      5514, 5834, 5889, 6144, 6540, 6735, 6900, 7201, 7294, 7370, 7709, 7980,
+      8356, 8784, 8790, 9034, 9073, 10050, 11736, 13165, 17664, 21524, 22400,
+      25615, 25875, 26440, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(348)
+    expect(empty.length).toBe(343)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
