@@ -304,7 +304,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(71)
+    expect(priced).toHaveLength(73)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -342,9 +342,49 @@ describe("deal data", () => {
     expect(chaparralLite).toMatchObject({
       ask: 46250,
       dealer: "Byerly RV, Eureka, MO",
-      trade: null,
-      delta: null,
+      trade: 40770,
+      delta: 5480,
     })
+
+    const chaparral27 = deals.find(
+      (deal) => deal.model === "Chaparral" && deal.floor === "27BAR"
+    )
+    expect(chaparral27).toMatchObject({
+      ask: 43851,
+      dealer: "Carolina RV, Myrtle Beach SC",
+      trade: 49320,
+      delta: -5469,
+    })
+
+    const chaparral30 = deals.find(
+      (deal) => deal.model === "Chaparral" && deal.floor === "30BHS"
+    )
+    expect(chaparral30).toMatchObject({
+      ask: 44990,
+      dealer: "Bobby Combs RV Center, Hayden",
+      trade: 51750,
+      delta: -6760,
+    })
+    expect(
+      chaparral27?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href.includes("m-27-bar/6644371") &&
+            span.label === "JDP values"
+        )
+    ).toBe(true)
+    expect(
+      chaparral30?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href.includes("m-30-bhs/6644373") &&
+            span.label === "JDP values"
+        )
+    ).toBe(true)
   })
 
   it("applies 2025 JDP proxy trades on Coachmen Adrenaline", () => {
@@ -653,32 +693,31 @@ describe("deal data", () => {
     ).toBe(true)
   })
 
-  it("leaves Apex floors verified absent from 2026 Apex-by-Coachmen without trades", () => {
+  it("leaves Apex floors verified absent from 2026 and 2025 lists without trades", () => {
     const missing = [
-      ["Apex Nano", "181RB", 20999, "Camp Rite RV Sales, Loganville, GA"],
-      ["Apex Nano", "183BH", 25114, "RV Dynasty, Bunker Hill, IN"],
-      ["Apex Ultra-Lite", "244RBS", 32995, ""],
+      [
+        "Apex Nano",
+        "181RB",
+        20999,
+        "Camp Rite RV Sales, Loganville, GA",
+        "Verified absent from 2026 and 2025 Apex-by-Coachmen Nano lists on jdpower.com; trade left blank.",
+      ],
+      [
+        "Apex Nano",
+        "183BH",
+        25114,
+        "RV Dynasty, Bunker Hill, IN",
+        "Verified absent from 2026 and 2025 Apex-by-Coachmen Nano lists on jdpower.com; trade left blank.",
+      ],
       [
         "Apex Ultra-Lite",
-        "26BHX",
-        27999,
-        "Bill's Happy Camper RV Sales and Service, Mill Hall, PA",
-      ],
-      ["Apex Ultra-Lite", "289TBSS", 34999, "Franklinville, NC"],
-      [
-        "Apex Ultra-Lite X Series",
-        "24RBX",
-        25980,
-        "Bobby Combs RV, Caldwell, ID",
-      ],
-      [
-        "Apex Ultra-Lite X Series",
-        "29BHX",
-        25328,
-        "Forest River RV Little Rock by Camping World",
+        "244RBS",
+        32995,
+        "",
+        "Verified absent from 2026 and 2025 Apex-by-Coachmen Ultra-Lite lists on jdpower.com; trade left blank.",
       ],
     ] as const
-    for (const [model, floor, ask, dealer] of missing) {
+    for (const [model, floor, ask, dealer, exactNote] of missing) {
       const deal = deals.find(
         (row) =>
           row.manufacturer === "Coachmen" &&
@@ -689,19 +728,97 @@ describe("deal data", () => {
       expect(
         deal?.notes
           .flat()
-          .some(
-            (span) =>
-              span.type === "text" &&
-              span.text.includes(
-                `Exact floor ${floor} was checked on the 2026 Apex-by-Coachmen J.D. Power list and is not listed`
-              )
-          )
+          .some((span) => span.type === "text" && span.text === exactNote)
       ).toBe(true)
       expect(
         deal?.notes
           .flat()
           .some((span) => span.type === "text" && /not found/i.test(span.text))
       ).toBe(false)
+    }
+  })
+
+  it("applies prior-year Apex proxy trades on 26BHX, 24RBX, 29BHX, and 289TBSS", () => {
+    const rows = [
+      [
+        "Apex Ultra-Lite",
+        "26BHX",
+        27999,
+        "Bill's Happy Camper RV Sales and Service, Mill Hall, PA",
+        23355,
+        4644,
+        "TRADE FROM 2025 (not 2026): J.D. Power Low Retail $25,950 × 0.9 = $23,355 (Apex-by-Coachmen X Series). 2026 unused because absent from 2026 Apex-by-Coachmen list. Source: https://www.jdpower.com/rvs/2025/apex-by-coachmen/m-26-bhx/6641641/values",
+        "m-26-bhx/6641641",
+      ],
+      [
+        "Apex Ultra-Lite X Series",
+        "24RBX",
+        25980,
+        "Bobby Combs RV, Caldwell, ID",
+        22545,
+        3435,
+        "TRADE FROM 2025 (not 2026): J.D. Power Low Retail $25,050 × 0.9 = $22,545 (Apex-by-Coachmen X Series). 2026 unused because absent from 2026 Apex-by-Coachmen list. Source: https://www.jdpower.com/rvs/2025/apex-by-coachmen/m-24-rbx/6641640/values",
+        "m-24-rbx/6641640",
+      ],
+      [
+        "Apex Ultra-Lite X Series",
+        "29BHX",
+        25328,
+        "Forest River RV Little Rock by Camping World",
+        24165,
+        1163,
+        "TRADE FROM 2025 (not 2026): J.D. Power Low Retail $26,850 × 0.9 = $24,165 (Apex-by-Coachmen X Series). 2026 unused because absent from 2026 Apex-by-Coachmen list. Source: https://www.jdpower.com/rvs/2025/apex-by-coachmen/m-29-bhx/6641642/values",
+        "m-29-bhx/6641642",
+      ],
+      [
+        "Apex Ultra-Lite",
+        "289TBSS",
+        34999,
+        "Franklinville, NC",
+        25965,
+        9034,
+        "TRADE FROM 2023 (not 2026): J.D. Power Low Retail $28,850 × 0.9 = $25,965 (Apex-by-Coachmen M-289 TBSS). Floor absent from 2024–2026 Apex lists (2025 has 291 TBSS only — different code, not used). Source: https://www.jdpower.com/rvs/2023/apex-by-coachmen/m-289-tbss/6620293/values",
+        "m-289-tbss/6620293",
+      ],
+    ] as const
+    for (const [
+      model,
+      floor,
+      ask,
+      dealer,
+      trade,
+      delta,
+      exactNote,
+      path,
+    ] of rows) {
+      const deal = deals.find(
+        (row) =>
+          row.manufacturer === "Coachmen" &&
+          row.model === model &&
+          row.floor === floor
+      )
+      expect(deal).toMatchObject({ ask, dealer, trade, delta })
+      expect(
+        deal?.notes
+          .flat()
+          .some((span) => span.type === "text" && span.text === exactNote)
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some((span) => span.type === "text" && /not found/i.test(span.text))
+      ).toBe(false)
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "link" &&
+              span.href.includes("/apex-by-coachmen/") &&
+              span.href.includes(path) &&
+              span.label === "JDP values"
+          )
+      ).toBe(true)
     }
   })
 
@@ -876,28 +993,13 @@ describe("deal data", () => {
     const missing = [
       [
         "Catalina Legacy Edition",
-        "243RBSLE",
-        26980,
-        "Eagle Country RV, Eagle River, WI",
-      ],
-      [
-        "Catalina Legacy Edition",
         "283RNR",
         33995,
         "Triple H RVs, Haleyville AL",
+        "2026 Catalina Legacy has M-283 RKS, not 283RNR; different floor code; trade left blank.",
       ],
-      [
-        "Catalina Legacy Edition",
-        "293QBCKLE",
-        30944,
-        "RV Value Mart - Asheboro, Franklinville NC",
-      ],
-      ["Beyond", "22C", 144998, "Reno, NV"],
-      ["Beyond", "22D-EB", 139995, "Myrtle Beach, SC"],
-      ["Beyond", "22RBBC", 159985, "Fountain Valley, CA"],
-      ["Beyond", "22RB", 145000, "Delta, OH"],
     ] as const
-    for (const [model, floor, ask, dealer] of missing) {
+    for (const [model, floor, ask, dealer, exactNote] of missing) {
       const deal = deals.find(
         (row) => row.model === model && row.floor === floor
       )
@@ -905,19 +1007,146 @@ describe("deal data", () => {
       expect(
         deal?.notes
           .flat()
-          .some(
-            (span) =>
-              span.type === "text" &&
-              span.text.includes(
-                `Exact floor ${floor} was checked on the 2026 JDP ${model} series page and is not listed`
-              )
-          )
+          .some((span) => span.type === "text" && span.text === exactNote)
       ).toBe(true)
       expect(
         deal?.notes
           .flat()
           .some((span) => span.type === "text" && /not found/i.test(span.text))
       ).toBe(false)
+    }
+  })
+
+  it("applies catch-up JDP trades on mapped Beyond, Legacy, and Summit floors", () => {
+    const rows = [
+      [
+        "Beyond",
+        "22C",
+        144998,
+        "Reno, NV",
+        115560,
+        29438,
+        "Trade from 2026 J.D. Power Low Retail $128,400 × 0.9 = $115,560 (Coachmen-by-Forest-River Beyond M-22 C AWD Ford; matched dealer 22C to JDP M-22 C). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-22-c-awd-ford/6640384/values",
+        "m-22-c-awd-ford/6640384",
+      ],
+      [
+        "Beyond",
+        "22D-EB",
+        139995,
+        "Myrtle Beach, SC",
+        114120,
+        25875,
+        "Trade from 2026 J.D. Power Low Retail $126,800 × 0.9 = $114,120 (Coachmen-by-Forest-River Beyond M-22 D AWD Ford; matched dealer 22D-EB to JDP M-22 D (closest 2026 Beyond D floor)). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-22-d-awd-ford/6640383/values",
+        "m-22-d-awd-ford/6640383",
+      ],
+      [
+        "Beyond",
+        "22RB",
+        145000,
+        "Delta, OH",
+        119385,
+        25615,
+        "Trade from 2026 J.D. Power Low Retail $132,650 × 0.9 = $119,385 (Coachmen-by-Forest-River Beyond M-22 RB AWD Ford; matched dealer 22RB to JDP M-22 RB). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-22-rb-awd-ford/6640385/values",
+        "m-22-rb-awd-ford/6640385",
+      ],
+      [
+        "Catalina Legacy Edition",
+        "243RBSLE",
+        26980,
+        "Eagle Country RV, Eagle River, WI",
+        27090,
+        -110,
+        "Trade from 2026 J.D. Power Low Retail $30,100 × 0.9 = $27,090 (Catalina Legacy M-243 RBS; dealer floor 243RBSLE mapped to JDP M-243 RBS (Legacy; LE suffix not on JDP code)). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-243-rbs/6648716/values",
+        "m-243-rbs/6648716",
+      ],
+      [
+        "Catalina Legacy Edition",
+        "293QBCKLE",
+        30944,
+        "RV Value Mart - Asheboro, Franklinville NC",
+        29025,
+        1919,
+        "Trade from 2026 J.D. Power Low Retail $32,250 × 0.9 = $29,025 (Catalina Legacy M-293 QBCK; dealer floor 293QBCKLE mapped to JDP M-293 QBCK (Legacy; LE suffix not on JDP code)). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-293-qbck/6648721/values",
+        "m-293-qbck/6648721",
+      ],
+      [
+        "Catalina Summit Series 7",
+        "184BHS",
+        24995,
+        "Campers Inn RV of Johnstown",
+        20025,
+        4970,
+        "Trade from 2026 J.D. Power Low Retail $22,250 × 0.9 = $20,025 (Catalina Summit M-184 BHSX; dealer floor 184BHS mapped to closest 2026 Summit M-184 BHSX). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-184-bhsx/6648743/values",
+        "m-184-bhsx/6648743",
+      ],
+      [
+        "Beyond",
+        "22RBBC",
+        159985,
+        "Fountain Valley, CA",
+        119385,
+        40600,
+        "Trade from 2026 J.D. Power Low Retail $132,650 × 0.9 = $119,385 (Beyond M-22 RB AWD Ford; dealer listings brand this as Beyond 22RBBC (rear wet bath); JDP codes it M-22 RB in Beyond series (not Beyond Li)). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-22-rb-awd-ford/6640385/values",
+        "m-22-rb-awd-ford/6640385",
+      ],
+      [
+        "Catalina Summit Series 7",
+        "184RBS",
+        19999,
+        "Camp Rite RV Sales",
+        17910,
+        2089,
+        "TRADE FROM 2025 (not 2026): J.D. Power Low Retail $19,900 × 0.9 = $17,910 (Catalina Summit M-184 RBS). 2026 unused because absent from 2026 Summit list (2026 has BHSX/MKS only for 184). Source: https://www.jdpower.com/rvs/2025/coachmen-by-forest-river/m-184-rbs/6639404/values",
+        "m-184-rbs/6639404",
+      ],
+      [
+        "Catalina Summit Series 8",
+        "221MKE",
+        26895,
+        "Meyer's RV of Egg Harbor",
+        20160,
+        6735,
+        "TRADE FROM 2025 (not 2026): J.D. Power Low Retail $22,400 × 0.9 = $20,160 (Catalina Summit M-221 MKE). 2026 unused because absent from 2026 Summit list (2026 has M-221 EPIC only). Source: https://www.jdpower.com/rvs/2025/coachmen-by-forest-river/m-221-mke/6639393/values",
+        "m-221-mke/6639393",
+      ],
+    ] as const
+    for (const [
+      model,
+      floor,
+      ask,
+      dealer,
+      trade,
+      delta,
+      exactNote,
+      path,
+    ] of rows) {
+      const deal = deals.find(
+        (row) =>
+          row.manufacturer === "Coachmen" &&
+          row.model === model &&
+          row.floor === floor
+      )
+      expect(deal).toMatchObject({ ask, dealer, trade, delta })
+      expect(
+        deal?.notes
+          .flat()
+          .some((span) => span.type === "text" && span.text === exactNote)
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some((span) => span.type === "text" && /not found/i.test(span.text))
+      ).toBe(false)
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "link" &&
+              span.href.includes(path) &&
+              span.label === "JDP values"
+          )
+      ).toBe(true)
     }
   })
 
@@ -1139,33 +1368,34 @@ describe("deal data", () => {
     ).toHaveLength(9)
   })
 
-  it("leaves verified-missing Summit floors without trade or a not-found claim", () => {
+  it("leaves only floors with no usable JDP match blank", () => {
     const missing = [
       [
-        "Catalina Summit Series 7",
-        "184BHS",
-        24995,
-        "Campers Inn RV of Johnstown",
+        "Apex Nano",
+        "181RB",
+        20999,
+        "Camp Rite RV Sales, Loganville, GA",
       ],
-      ["Catalina Summit Series 7", "184RBS", 19999, "Camp Rite RV Sales"],
-      ["Catalina Summit Series 8", "221MKE", 26895, "Meyer's RV of Egg Harbor"],
+      ["Apex Nano", "183BH", 25114, "RV Dynasty, Bunker Hill, IN"],
+      ["Apex Ultra-Lite", "244RBS", 32995, ""],
+      [
+        "Catalina Legacy Edition",
+        "283RNR",
+        33995,
+        "Triple H RVs, Haleyville AL",
+      ],
     ] as const
+    const askNoTrade = deals.filter(
+      (deal) => deal.ask != null && deal.trade == null
+    )
+    expect(askNoTrade.map((deal) => [deal.model, deal.floor])).toEqual(
+      missing.map(([model, floor]) => [model, floor])
+    )
     for (const [model, floor, ask, dealer] of missing) {
       const deal = deals.find(
         (row) => row.model === model && row.floor === floor
       )
       expect(deal).toMatchObject({ ask, dealer, trade: null, delta: null })
-      expect(
-        deal?.notes
-          .flat()
-          .some(
-            (span) =>
-              span.type === "text" &&
-              span.text.includes(
-                `Exact floor ${floor} was checked on 2026 JDP Catalina Summit and is not listed`
-              )
-          )
-      ).toBe(true)
       expect(
         deal?.notes
           .flat()
@@ -1191,6 +1421,17 @@ describe("deal data", () => {
     const lite274 = deals.find(
       (deal) => deal.model === "Chaparral Lite" && deal.floor === "274BH"
     )
+    expect(lite274).toMatchObject({ trade: 40770, delta: 5480 })
+    expect(
+      lite274?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text.includes("TRADE FROM 2025 (not 2026)") &&
+            span.text.includes("m-274-bh/6643414")
+        )
+    ).toBe(true)
     expect(
       lite274?.notes
         .flat()
@@ -1199,7 +1440,7 @@ describe("deal data", () => {
             span.type === "text" &&
             span.text.includes("JDP has no 2026 Chaparral Lite 274BH")
         )
-    ).toBe(true)
+    ).toBe(false)
 
     expect(
       deals.filter((deal) =>
@@ -1301,13 +1542,15 @@ describe("filters and sort", () => {
     const priced = rows.filter((deal) => deal.delta != null)
     const empty = rows.filter((deal) => deal.delta == null)
     expect(priced.map((deal) => deal.delta)).toEqual([
-      -5252, -3791, -3525, -3461, -2490, -2065, -1971, -1885, -1885, -1805,
-      -1595, -1476, -1206, -1195, -1170, -795, -586, -101, -30, -20, 390, 535,
-      573, 659, 1609, 2535, 3195, 3570, 4310, 4790, 5514, 5834, 5889, 6144,
-      6540, 6900, 7201, 7294, 7370, 7709, 7980, 8356, 8784, 8790, 9073, 10050,
-      11736, 13165, 17664, 21524, 22400, 26440, 28866,
+      -6760, -5469, -5252, -3791, -3525, -3461, -2490, -2065, -1971, -1885,
+      -1885, -1805, -1595, -1476, -1206, -1195, -1170, -795, -586, -110, -101,
+      -30, -20, 390, 535, 573, 659, 1163, 1609, 1919, 2089, 2535, 3195, 3435,
+      3570, 4310, 4644, 4790, 4970, 5480, 5514, 5834, 5889, 6144, 6540, 6735,
+      6900, 7201, 7294, 7370, 7709, 7980, 8356, 8784, 8790, 9034, 9073, 10050,
+      11736, 13165, 17664, 21524, 22400, 25615, 25875, 26440, 28866, 29438,
+      40600,
     ])
-    expect(empty.length).toBe(364)
+    expect(empty.length).toBe(348)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
