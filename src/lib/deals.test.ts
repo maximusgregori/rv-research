@@ -304,7 +304,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(31)
+    expect(priced).toHaveLength(38)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -629,6 +629,33 @@ describe("deal data", () => {
       trade: null,
       delta: null,
     })
+  })
+
+  it("prices Coachmen Beyond asks without inventing trades", () => {
+    const beyond = [
+      ["22C AWD", 142000, "Shafer's RV"],
+      ["22C", 144998, "Western Skies RV"],
+      ["22D AWD", 142986, "Shafer's RV"],
+      ["22D-EB", 139995, "Showroom, Delta, OH"],
+      ["22RB AWD", 141785, "Johnson RV Sales - Medford"],
+      ["22RBBC", 159985, "Mike Thompson's RV - Fountain Valley"],
+      ["22RB", 145000, "Giant Recreation World"],
+    ] as const
+
+    for (const [floor, ask, dealer] of beyond) {
+      const deal = deals.find(
+        (row) =>
+          row.manufacturer === "Coachmen" &&
+          row.model === "Beyond" &&
+          row.floor === floor
+      )
+      expect(deal).toMatchObject({
+        ask,
+        dealer,
+        trade: null,
+        delta: null,
+      })
+    }
   })
 })
 
