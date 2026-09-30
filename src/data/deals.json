@@ -6219,11 +6219,42 @@
     "manufacturer": "Forest River",
     "model": "Impression",
     "floor": "242RD",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 38654,
+    "dealer": "Thrills RV, Columbia City, IN",
+    "trade": 29340,
+    "delta": 9314,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Thrills RV, Columbia City, IN, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-forest-river-impression-242rd/fce30cfd-4758-11f0-a527-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Forest+River-Impression+242RD-5036714865",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $38,654 both sites (Thrills RV Columbia City IN), 30 ft New. TRADE FROM 2025 (not 2026): JDP Low Retail $32,600 \u00d7 0.9 = $29,340 (Impression-by-FR M-242RD). 2026 page unavailable."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
