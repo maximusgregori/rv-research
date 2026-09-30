@@ -304,7 +304,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(12)
+    expect(priced).toHaveLength(18)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -426,6 +426,68 @@ describe("deal data", () => {
     expect(nano185).toMatchObject({
       ask: 21961,
       dealer: "RV Dynasty, Bunker Hill, IN",
+      trade: null,
+      delta: null,
+    })
+  })
+
+  it("prices Apex Nano 186BH through 208BHS without inventing trades", () => {
+    const nano186 = deals.find(
+      (deal) => deal.model === "Apex Nano" && deal.floor === "186BH"
+    )
+    expect(nano186).toMatchObject({
+      ask: 20495,
+      dealer: "RV Specialist, Goshen, IN",
+      trade: null,
+      delta: null,
+    })
+
+    const nano187 = deals.find(
+      (deal) => deal.model === "Apex Nano" && deal.floor === "187RB"
+    )
+    expect(nano187).toMatchObject({
+      ask: 22400,
+      dealer: "RV Dynasty, Bunker Hill, IN",
+      trade: null,
+      delta: null,
+    })
+
+    const nano190 = deals.find(
+      (deal) => deal.model === "Apex Nano" && deal.floor === "190RBS"
+    )
+    expect(nano190).toMatchObject({
+      ask: 19995,
+      dealer: "RV Specialist",
+      trade: null,
+      delta: null,
+    })
+
+    const nano194 = deals.find(
+      (deal) => deal.model === "Apex Nano" && deal.floor === "194BHS"
+    )
+    expect(nano194).toMatchObject({
+      ask: 24900,
+      dealer: "Minneapolis Trailer Sales",
+      trade: null,
+      delta: null,
+    })
+
+    const nano203 = deals.find(
+      (deal) => deal.model === "Apex Nano" && deal.floor === "203RBK"
+    )
+    expect(nano203).toMatchObject({
+      ask: 21995,
+      dealer: "RV Specialist",
+      trade: null,
+      delta: null,
+    })
+
+    const nano208 = deals.find(
+      (deal) => deal.model === "Apex Nano" && deal.floor === "208BHS"
+    )
+    expect(nano208).toMatchObject({
+      ask: 23339,
+      dealer: "Carolina RV",
       trade: null,
       delta: null,
     })
