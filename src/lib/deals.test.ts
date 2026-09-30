@@ -304,7 +304,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(67)
+    expect(priced).toHaveLength(71)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -763,6 +763,33 @@ describe("deal data", () => {
     expect(
       deals
         .filter((deal) => deal.model === "Catalina Summit Series 8")
+        .every((deal) => deal.trade == null && deal.delta == null)
+    ).toBe(true)
+  })
+
+  it("prices Catalina Trail Blazer asks without inventing trades", () => {
+    const trail = [
+      ["26TH", 23495],
+      ["27THS", 31495],
+      ["28THS", 33495],
+      ["29THS", 28995],
+    ] as const
+    for (const [floor, ask] of trail) {
+      expect(
+        deals.find(
+          (deal) =>
+            deal.manufacturer === "Coachmen" &&
+            deal.model === "Catalina Trail Blazer" &&
+            deal.floor === floor
+        )
+      ).toMatchObject({ ask, dealer: "", trade: null, delta: null })
+    }
+    expect(
+      deals.filter((deal) => deal.model === "Catalina Trail Blazer")
+    ).toHaveLength(4)
+    expect(
+      deals
+        .filter((deal) => deal.model === "Catalina Trail Blazer")
         .every((deal) => deal.trade == null && deal.delta == null)
     ).toBe(true)
   })
