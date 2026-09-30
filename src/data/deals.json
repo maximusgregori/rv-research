@@ -7196,11 +7196,42 @@
     "manufacturer": "Forest River",
     "model": "Sanibel",
     "floor": "34LOUNGE",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 69995,
+    "dealer": "Open Road RV - Monticello, MN",
+    "trade": 47250,
+    "delta": 22745,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Open Road RV - Monticello, MN, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-forest-river-sanibel-34lounge/47e78d86-1f72-11f1-beaa-02f5bff6b341/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Sanibel+34LOUNGE-5039661528",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $69,995 both RV Trader + RVT (Open Road RV - Monticello, MN), 36 ft New 34LOUNGE. Excluded $66,495 Premium/Sponsored. Trade = 2026 JDP Low Retail $52,500 \u00d7 0.9 = $47,250 (Sanibel by Forest River M-34LOUNGE)."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
