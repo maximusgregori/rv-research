@@ -6409,11 +6409,42 @@
     "manufacturer": "Forest River",
     "model": "Rockwood Signature",
     "floor": "281RK",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 51578,
+    "dealer": "Forest River RV Little Rock by Camping World, Sherwood / Little Rock, AR",
+    "trade": 38565,
+    "delta": 13013,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Forest River RV Little Rock by Camping World, Sherwood / Little Rock, AR, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-forest-river-rockwood-signature-281rk/7f418b8d-ad12-11f1-84c9-020f812d825b/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Forest+River-ROCKWOOD+SIGNATURE+281RK-5042063477",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $51,578 both sites (Camping World Little Rock / Sherwood AR), ~28.92 ft New. Trade = 2026 JDP Low Retail $42,850 × 0.9 = $38,565 (Rockwood-by-FR M-281RK, length 28'11\")."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
@@ -6519,11 +6550,42 @@
     "manufacturer": "Forest River",
     "model": "Rockwood Signature Fifth Wheel",
     "floor": "281RK",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 51578,
+    "dealer": "Forest River RV Little Rock by Camping World, Sherwood / Little Rock, AR",
+    "trade": 38565,
+    "delta": 13013,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Forest River RV Little Rock by Camping World, Sherwood / Little Rock, AR, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-forest-river-rockwood-signature-281rk/7f418b8d-ad12-11f1-84c9-020f812d825b/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Forest+River-ROCKWOOD+SIGNATURE+281RK-5042063477",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $51,578 both sites (Camping World Little Rock / Sherwood AR), ~28.92 ft New. Trade = 2026 JDP Low Retail $42,850 × 0.9 = $38,565 (Rockwood-by-FR M-281RK, length 28'11\")."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,

@@ -267,11 +267,13 @@ describe("deal data", () => {
       "Impression|301ML",
       "Impression|315MB",
       "Impression|318RL",
+      "Rockwood Signature|281RK",
+      "Rockwood Signature Fifth Wheel|281RK",
     ])
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(18)
+    expect(pricedForest).toHaveLength(20)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -325,7 +327,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(104)
+    expect(priced).toHaveLength(106)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -1461,6 +1463,78 @@ describe("deal data", () => {
             span.label === "RV Trader"
         )
     ).toBe(true)
+  })
+
+  it("applies Rockwood Signature 281RK ask and 2026 JDP trade", () => {
+    const models = ["Rockwood Signature", "Rockwood Signature Fifth Wheel"]
+    for (const model of models) {
+      const deal = deals.find(
+        (row) =>
+          row.manufacturer === "Forest River" &&
+          row.model === model &&
+          row.floor === "281RK" &&
+          row.year === 2026
+      )
+      expect(deal).toMatchObject({
+        ask: 51578,
+        dealer:
+          "Forest River RV Little Rock by Camping World, Sherwood / Little Rock, AR",
+        trade: 38565,
+        delta: 13013,
+      })
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "text" &&
+              span.text ===
+                "Ask $51,578 both sites (Camping World Little Rock / Sherwood AR), ~28.92 ft New. Trade = 2026 JDP Low Retail $42,850 × 0.9 = $38,565 (Rockwood-by-FR M-281RK, length 28'11\")."
+          )
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some((span) => span.type === "link" && span.label === "JDP values")
+      ).toBe(false)
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "link" &&
+              span.href ===
+                "https://www.rvt.com/buy/details/2026-forest-river-rockwood-signature-281rk/7f418b8d-ad12-11f1-84c9-020f812d825b/" &&
+              span.label === "RVT"
+          )
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "link" &&
+              span.href ===
+                "https://www.rvtrader.com/listing/2026-Forest+River-ROCKWOOD+SIGNATURE+281RK-5042063477" &&
+              span.label === "RV Trader"
+          )
+      ).toBe(true)
+    }
+
+    const flagstaff = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Flagstaff Classic" &&
+        row.floor === "281RK" &&
+        row.year === 2026
+    )
+    expect(flagstaff).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(flagstaff?.notes).toEqual([])
   })
 
   it("applies 2025 JDP proxy trades on Coachmen Adrenaline", () => {
@@ -2652,11 +2726,11 @@ describe("filters and sort", () => {
       659, 1163, 1340, 1609, 1665, 1919, 2089, 2535, 3195, 3435, 3570, 4310,
       4644, 4790, 4875, 4970, 5243, 5480, 5514, 5834, 5889, 5965, 6144, 6540,
       6735, 6900, 7201, 7294, 7370, 7709, 7980, 8356, 8784, 8790, 8828, 9034,
-      9073, 9314, 10050, 11385, 11736, 13075, 13165, 13584, 14139, 15697, 17460,
-      17664, 17740, 19530, 21524, 22400, 25615, 25875, 26440, 26520, 28866,
-      29438, 40600,
+      9073, 9314, 10050, 11385, 11736, 13013, 13013, 13075, 13165, 13584, 14139,
+      15697, 17460, 17664, 17740, 19530, 21524, 22400, 25615, 25875, 26440,
+      26520, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(325)
+    expect(empty.length).toBe(323)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
