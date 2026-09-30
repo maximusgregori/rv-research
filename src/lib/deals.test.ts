@@ -285,11 +285,12 @@ describe("deal data", () => {
       "Salem Hemisphere|301FAM",
       "Salem Hemisphere|321DRL",
       "Salem Hemisphere|325RL",
+      "Sandpiper|3370RLS",
     ])
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(36)
+    expect(pricedForest).toHaveLength(37)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -343,7 +344,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(122)
+    expect(priced).toHaveLength(123)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -2788,6 +2789,80 @@ describe("deal data", () => {
     ).toBe(true)
   })
 
+  it("applies Sandpiper 3370RLS ask and 2025 JDP proxy trade and leaves Sierra 3370RLS blank", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Sandpiper" &&
+        row.floor === "3370RLS" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 63807,
+      dealer: "Carolina RV, Myrtle Beach, SC",
+      trade: 36585,
+      delta: 27222,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $63,807 both RV Trader + RVT (Carolina RV, Myrtle Beach SC), 36 ft New 3370RLS. TRADE FROM 2025 (not 2026): J.D. Power Low Retail $40,650 × 0.9 = $36,585 (Sandpiper by Forest River M-3370RLS). Why not 2026: 2026 JDP listed M-3370LS not exact M-3370RLS — used prior-year 2025 proxy. Source: https://www.jdpower.com/rvs/2025/sandpiper-by-forest-river/m-3370rls/6643593/values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.jdpower.com/rvs/2025/sandpiper-by-forest-river/m-3370rls/6643593/values" &&
+            span.label === "JDP values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvt.com/buy/details/2026-forest-river-sandpiper-3370rls/7dcb7159-eae5-11f0-beaa-02c8259c7411/" &&
+            span.label === "RVT"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Sandpiper+3370RLS-5038916171" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+
+    const sierraTwin = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Sierra" &&
+        row.floor === "3370RLS" &&
+        row.year === 2026
+    )
+    expect(sierraTwin).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(sierraTwin?.notes).toEqual([])
+  })
+
   it("applies 2025 JDP proxy trades on Coachmen Adrenaline", () => {
     const rows = [
       [
@@ -3979,9 +4054,9 @@ describe("filters and sort", () => {
       6554, 6735, 6900, 7201, 7294, 7370, 7709, 7980, 8010, 8356, 8784, 8790, 8828, 9034,
       9073, 9314, 10050, 10859, 10859, 11385, 11736, 11884, 12283, 13013, 13013, 13075, 13165, 13584,
       14139, 15689, 15697, 16667, 16667, 17460, 17664, 17740, 17755, 19530, 21524, 22400, 22925, 25615, 25875,
-      26440, 26520, 28866, 29438, 40600,
+      26440, 26520, 27222, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(307)
+    expect(empty.length).toBe(306)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
