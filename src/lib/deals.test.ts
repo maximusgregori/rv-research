@@ -767,6 +767,39 @@ describe("deal data", () => {
     ).toBe(true)
   })
 
+  it("does not claim JDP Low Retail is missing unless the miss was verified", () => {
+    const pending = "Trade and delta pending J.D. Power Low Retail × 0.9 lookup."
+    const falseMiss = deals.filter((deal) =>
+      deal.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /JDP Low Retail not found|no 2026 value/i.test(span.text)
+        )
+    )
+    expect(falseMiss).toEqual([])
+
+    const lite274 = deals.find(
+      (deal) => deal.model === "Chaparral Lite" && deal.floor === "274BH"
+    )
+    expect(
+      lite274?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text.includes("JDP has no 2026 Chaparral Lite 274BH")
+        )
+    ).toBe(true)
+
+    expect(
+      deals.filter((deal) =>
+        deal.notes.flat().some((span) => span.type === "text" && span.text === pending)
+      ).length
+    ).toBe(54)
+  })
+
   it("prices Catalina Trail Blazer asks without inventing trades", () => {
     const trail = [
       ["26TH", 23495, "RV Dynasty"],
