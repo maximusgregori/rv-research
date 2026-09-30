@@ -7063,11 +7063,42 @@
     "manufacturer": "Forest River",
     "model": "Salem Hemisphere",
     "floor": "321DRL",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 55338,
+    "dealer": "Fun Town RV – Ottawa, KS",
+    "trade": 51840,
+    "delta": 3498,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Fun Town RV – Ottawa, KS, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Salem+Hemisphere+321DRL-5039276994",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-forest-river-salem-hemisphere-321drl/991d0d27-0bcd-11f1-beaa-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $55,338 RV Trader (Fun Town RV – Ottawa, KS); RVT higher at $56,288 (Fun Town RV – Tyler, Mineola TX). RVT $55,338 card 404'd — excluded. Trade = 2026 JDP Low Retail $57,600 × 0.9 = $51,840 (Salem Hemisphere Series M-321DRL)."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
