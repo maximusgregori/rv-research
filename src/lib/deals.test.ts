@@ -347,37 +347,76 @@ describe("deal data", () => {
     })
   })
 
-  it("prices new Adrenaline and Apex asks without inventing trades", () => {
-    const adrenaline21 = deals.find(
-      (deal) => deal.model === "Adrenaline" && deal.floor === "21LT"
-    )
-    expect(adrenaline21).toMatchObject({
-      ask: 34699,
-      dealer: "RV Value Mart - Manheim",
-      trade: null,
-      delta: null,
-    })
+  it("applies 2025 JDP proxy trades on Coachmen Adrenaline", () => {
+    const rows = [
+      [
+        "21LT",
+        34699,
+        "RV Value Mart - Manheim",
+        27405,
+        7294,
+        "TRADE FROM 2025 (not 2026): J.D. Power Low Retail $30,450 × 0.9 = $27,405. Why not 2026: Adrenaline is absent from the 2026 Coachmen-by-Forest-River model list on jdpower.com (full series scroll verified). Used prior-year 2025 Coachmen Adrenaline M-21 LT Low Retail as proxy. Source: https://www.jdpower.com/rvs/2025/coachmen-by-forest-river/m-21-lt/6639477/values",
+        "m-21-lt/6639477",
+      ],
+      [
+        "27LT",
+        35986,
+        "Uwharrie RV, Albemarle, NC",
+        27630,
+        8356,
+        "TRADE FROM 2025 (not 2026): J.D. Power Low Retail $30,700 × 0.9 = $27,630. Why not 2026: Adrenaline is absent from the 2026 Coachmen-by-Forest-River model list on jdpower.com (full series scroll verified). Used prior-year 2025 Coachmen Adrenaline M-27 LT Low Retail as proxy. Source: https://www.jdpower.com/rvs/2025/coachmen-by-forest-river/m-27-lt/6639479/values",
+        "m-27-lt/6639479",
+      ],
+      [
+        "30GS",
+        59999,
+        "General RV Center - Tampa, Dover, FL",
+        38475,
+        21524,
+        "TRADE FROM 2025 (not 2026): J.D. Power Low Retail $42,750 × 0.9 = $38,475. Why not 2026: Adrenaline is absent from the 2026 Coachmen-by-Forest-River model list on jdpower.com (full series scroll verified). Used prior-year 2025 Coachmen Adrenaline M-30 GS Low Retail as proxy. Source: https://www.jdpower.com/rvs/2025/coachmen-by-forest-river/m-30-gs/6639482/values",
+        "m-30-gs/6639482",
+      ],
+    ] as const
+    for (const [floor, ask, dealer, trade, delta, exactNote, path] of rows) {
+      const deal = deals.find(
+        (row) =>
+          row.manufacturer === "Coachmen" &&
+          row.model === "Adrenaline" &&
+          row.floor === floor
+      )
+      expect(deal).toMatchObject({ ask, dealer, trade, delta })
+      expect(
+        deal?.notes
+          .flat()
+          .some((span) => span.type === "text" && span.text === exactNote)
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some((span) => span.type === "text" && /not found/i.test(span.text))
+      ).toBe(false)
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "link" &&
+              span.href.includes("/2025/coachmen-by-forest-river/") &&
+              span.href.includes(path) &&
+              span.label === "JDP values"
+          )
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) => span.type === "link" && span.href.includes("rvtrader.com")
+          )
+      ).toBe(true)
+    }
+  })
 
-    const adrenaline27 = deals.find(
-      (deal) => deal.model === "Adrenaline" && deal.floor === "27LT"
-    )
-    expect(adrenaline27).toMatchObject({
-      ask: 35986,
-      dealer: "Uwharrie RV, Albemarle, NC",
-      trade: null,
-      delta: null,
-    })
-
-    const adrenaline30 = deals.find(
-      (deal) => deal.model === "Adrenaline" && deal.floor === "30GS"
-    )
-    expect(adrenaline30).toMatchObject({
-      ask: 59999,
-      dealer: "General RV Center - Tampa, Dover, FL",
-      trade: null,
-      delta: null,
-    })
-
+  it("prices new Apex asks without inventing trades", () => {
     const apexUltra = deals.find(
       (deal) => deal.model === "Apex" && deal.floor === "ULTRA-LITE 293RLDS"
     )
@@ -1131,7 +1170,7 @@ describe("deal data", () => {
           .flat()
           .some((span) => span.type === "text" && span.text === pending)
       ).length
-    ).toBe(27)
+    ).toBe(24)
   })
 
   it("applies JDP trades on Catalina Trail Blazer", () => {
@@ -1227,9 +1266,10 @@ describe("filters and sort", () => {
     expect(priced.map((deal) => deal.delta)).toEqual([
       -5252, -3791, -3525, -3461, -2490, -2065, -1971, -1885, -1885, -1805,
       -1595, -1476, -1206, -1195, -1170, -795, -586, -101, -30, -20, 390, 535,
-      573, 659, 1609, 2535, 3195, 5514, 5889, 13165, 22400, 26440, 28866,
+      573, 659, 1609, 2535, 3195, 5514, 5889, 7294, 8356, 13165, 21524, 22400,
+      26440, 28866,
     ])
-    expect(empty.length).toBe(384)
+    expect(empty.length).toBe(381)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
