@@ -187,9 +187,9 @@ export function App() {
                 </li>
                 <li>
                   One row per manufacturer → model → floor plan. Coachmen, East
-                  To West, Forest River, and Jayco 2026 floor plans from RV
-                  Trader facets are listed; OTHER buckets (no floor plans) are
-                  omitted.
+                  To West, Forest River, Jayco, and Keystone 2026 floor plans
+                  from RV Trader facets are listed; OTHER buckets (no floor
+                  plans) are omitted.
                   Ask, dealer, trade, and delta stay blank until a lowest ask is
                   recorded.
                 </li>

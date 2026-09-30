@@ -59,6 +59,71 @@ const JAYCO_FIFTH_WHEELS = [
   ["Pinnacle", "32RLTS"],
 ] as const
 
+const KEYSTONE_FIFTH_WHEELS = [
+  ["Alpine", "3011CK"],
+  ["Alpine", "3100 RE"],
+  ["Alpine", "3100RE"],
+  ["Alpine", "3303CK"],
+  ["Alpine Avalanche Edition", "321RL"],
+  ["Alpine Avalanche Edition", "338GK"],
+  ["Arcadia", "3260RL"],
+  ["Arcadia Select", "21SRK"],
+  ["Arcadia Select", "24SRE"],
+  ["Arcadia Select", "25SRD"],
+  ["Arcadia Select", "27SBH"],
+  ["Arcadia Select", "28SLS"],
+  ["Arcadia Super Lite", "242SLMD"],
+  ["Arcadia Super Lite", "260SLCL"],
+  ["Arcadia Super Lite", "292SLRL"],
+  ["Arcadia Super Lite", "294SLRD"],
+  ["Arcadia Super Lite", "308SLBH"],
+  ["Avalanche", "302RS"],
+  ["Avalanche", "321RL"],
+  ["Cougar", "24RDS"],
+  ["Cougar", "260MLE"],
+  ["Cougar", "27SGS"],
+  ["Cougar", "290RLS"],
+  ["Cougar", "316RLS"],
+  ["Cougar", "320RDS"],
+  ["Cougar", "32BHS"],
+  ["Cougar", "350LLK"],
+  ["Cougar", "355FBS"],
+  ["Cougar", "360MBI"],
+  ["Cougar", "364BHL"],
+  ["Cougar Half-Ton", "23MLE"],
+  ["Cougar Half-Ton", "24RDS"],
+  ["Cougar Half-Ton", "26RES"],
+  ["Cougar Half-Ton", "26RKE"],
+  ["Cougar Half-Ton", "27SGS"],
+  ["Cougar Half-Ton", "28RLI"],
+  ["Cougar Half-Ton", "29MBD"],
+  ["Cougar Half-Ton", "29RLI"],
+  ["Cougar Half-Ton", "30REP"],
+  ["Cougar Half-Ton", "32BHS"],
+  ["Cougar Sport", "2100RK"],
+  ["Cougar Sport", "2400RE"],
+  ["Cougar Sport", "2700BH"],
+  ["Impact", "321LT"],
+  ["Montana", "295RL"],
+  ["Montana", "300RK"],
+  ["Montana", "3100RL"],
+  ["Montana", "3123RL"],
+  ["Montana", "3231CK"],
+  ["Montana", "3532SP"],
+  ["Montana", "3795FK"],
+  ["Montana High Country", "290RL"],
+  ["Montana High Country", "295RL"],
+  ["Montana High Country", "300RK"],
+  ["Montana High Country", "311RD"],
+  ["Montana High Country", "325RK"],
+  ["Montana High Country", "331RL"],
+  ["Montana High Country", "351BH"],
+  ["Sprinter", "3900DBL"],
+  ["Sprinter Limited", "3210RLS"],
+  ["Sprinter Limited", "3520RDS"],
+  ["Sprinter Limited", "3590LFT"],
+] as const
+
 const FOREST_RIVER_FIFTH_WHEELS = [
   ["Cardinal", "32LIVE"],
   ["Cardinal", "33CHEF"],
@@ -131,8 +196,8 @@ const FOREST_RIVER_FIFTH_WHEELS = [
 ] as const
 
 describe("deal data", () => {
-  it("keeps Coachmen, East To West, and Forest River rows and adds Jayco fifth wheels", () => {
-    expect(deals).toHaveLength(355)
+  it("keeps existing rows and adds Keystone fifth wheels", () => {
+    expect(deals).toHaveLength(417)
     expect(
       deals.filter((deal) => deal.manufacturer === "Coachmen")
     ).toHaveLength(262)
@@ -145,8 +210,11 @@ describe("deal data", () => {
     expect(
       deals.filter((deal) => deal.manufacturer === "Jayco")
     ).toHaveLength(20)
+    expect(
+      deals.filter((deal) => deal.manufacturer === "Keystone")
+    ).toHaveLength(62)
     expect(new Set(deals.map((deal) => deal.manufacturer))).toEqual(
-      new Set(["Coachmen", "East To West", "Forest River", "Jayco"])
+      new Set(["Coachmen", "East To West", "Forest River", "Jayco", "Keystone"])
     )
     expect(new Set(deals.map((deal) => deal.year))).toEqual(new Set([2026]))
     expect(deals.some((deal) => deal.model === "Adrenaline")).toBe(true)
@@ -154,7 +222,7 @@ describe("deal data", () => {
     expect(deals.some((deal) => deal.model === "Other")).toBe(false)
   })
 
-  it("lists every Coachmen, East To West, Forest River, and Jayco fifth-wheel floor plan", () => {
+  it("lists every Coachmen, East To West, Forest River, Jayco, and Keystone fifth-wheel floor plan", () => {
     for (const [model, floor] of COACHMEN_FIFTH_WHEELS) {
       expect(
         deals.some(
@@ -214,6 +282,24 @@ describe("deal data", () => {
           deal.notes.length === 0
       )
     ).toBe(true)
+
+    const keystone = deals.filter((deal) => deal.manufacturer === "Keystone")
+    expect(keystone).toHaveLength(KEYSTONE_FIFTH_WHEELS.length)
+    expect(keystone.map((deal) => [deal.model, deal.floor])).toEqual(
+      KEYSTONE_FIFTH_WHEELS.map(([model, floor]) => [model, floor])
+    )
+    expect(
+      keystone.every(
+        (deal) =>
+          deal.year === 2026 &&
+          deal.ask == null &&
+          deal.trade == null &&
+          deal.delta == null &&
+          deal.dealer === "" &&
+          deal.notes.length === 0
+      )
+    ).toBe(true)
+    expect(keystone.some((deal) => deal.model === "Other")).toBe(false)
   })
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
@@ -296,7 +382,7 @@ describe("filters and sort", () => {
     const priced = rows.filter((deal) => deal.delta != null)
     const empty = rows.filter((deal) => deal.delta == null)
     expect(priced.map((deal) => deal.delta)).toEqual([-5252, -586, 13165])
-    expect(empty.length).toBe(352)
+    expect(empty.length).toBe(414)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
@@ -374,6 +460,18 @@ describe("filters and sort", () => {
     )
     expect(byJayco).toHaveLength(20)
     expect(byJayco.every((deal) => deal.manufacturer === "Jayco")).toBe(true)
+
+    const byKeystone = visibleDeals(
+      deals,
+      { manufacturer: "", year: "", model: "" },
+      DEFAULT_SORT_KEY,
+      DEFAULT_SORT_DIR,
+      "keystone"
+    )
+    expect(byKeystone).toHaveLength(62)
+    expect(byKeystone.every((deal) => deal.manufacturer === "Keystone")).toBe(
+      true
+    )
   })
 
   it("ANDs text search with dropdown filters", () => {
@@ -431,6 +529,7 @@ describe("filters and sort", () => {
       "East To West",
       "Forest River",
       "Jayco",
+      "Keystone",
     ])
     expect(options.model).toContain("Flagstaff Classic")
     expect(options.model).toContain("Cherokee Arctic Wolf")
@@ -472,6 +571,7 @@ describe("filters and sort", () => {
       "East To West",
       "Forest River",
       "Jayco",
+      "Keystone",
     ])
     expect(options.model).toEqual([
       "Eagle",
@@ -501,6 +601,63 @@ describe("filters and sort", () => {
       "29RLC",
       "30CRT",
       "31QCD",
+    ])
+  })
+
+  it("cascades Keystone models and keeps those rows unpriced", () => {
+    const options = filterOptions(deals, {
+      manufacturer: "Keystone",
+      year: "",
+      model: "",
+    })
+    expect(options.manufacturer).toEqual([
+      "Coachmen",
+      "East To West",
+      "Forest River",
+      "Jayco",
+      "Keystone",
+    ])
+    expect(options.model).toEqual([
+      "Alpine",
+      "Alpine Avalanche Edition",
+      "Arcadia",
+      "Arcadia Select",
+      "Arcadia Super Lite",
+      "Avalanche",
+      "Cougar",
+      "Cougar Half-Ton",
+      "Cougar Sport",
+      "Impact",
+      "Montana",
+      "Montana High Country",
+      "Sprinter",
+      "Sprinter Limited",
+    ])
+    expect(options.model).not.toContain("Other")
+    expect(options.model).not.toContain("Brookstone")
+    expect(options.model).not.toContain("Eagle")
+
+    const rows = matching(deals, {
+      manufacturer: "Keystone",
+      year: "",
+      model: "Cougar",
+    })
+    expect(rows).toHaveLength(11)
+    expect(rows.every((deal) => deal.ask == null && deal.delta == null)).toBe(
+      true
+    )
+    expect(rows.map((deal) => deal.floor)).toEqual([
+      "24RDS",
+      "260MLE",
+      "27SGS",
+      "290RLS",
+      "316RLS",
+      "320RDS",
+      "32BHS",
+      "350LLK",
+      "355FBS",
+      "360MBI",
+      "364BHL",
     ])
   })
 })
