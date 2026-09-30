@@ -283,11 +283,12 @@ describe("deal data", () => {
       "Sabre|33RLP",
       "Salem Hemisphere|286RL",
       "Salem Hemisphere|301FAM",
+      "Salem Hemisphere|321DRL",
     ])
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(34)
+    expect(pricedForest).toHaveLength(35)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -341,7 +342,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(120)
+    expect(priced).toHaveLength(121)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -2363,10 +2364,10 @@ describe("deal data", () => {
         row.model === "Salem Hemisphere" &&
         row.floor !== "286RL" &&
         row.floor !== "301FAM" &&
+        row.floor !== "321DRL" &&
         row.year === 2026
     )
     expect(siblings.map((row) => row.floor).sort()).toEqual([
-      "321DRL",
       "325RL",
     ])
     expect(
@@ -2454,10 +2455,10 @@ describe("deal data", () => {
         row.model === "Salem Hemisphere" &&
         row.floor !== "286RL" &&
         row.floor !== "301FAM" &&
+        row.floor !== "321DRL" &&
         row.year === 2026
     )
     expect(siblings.map((row) => row.floor).sort()).toEqual([
-      "321DRL",
       "325RL",
     ])
     expect(
@@ -2491,6 +2492,95 @@ describe("deal data", () => {
           row.notes.length === 0
       )
     ).toBe(true)
+  })
+
+  it("applies Salem Hemisphere 321DRL ask and 2026 JDP trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Salem Hemisphere" &&
+        row.floor === "321DRL" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 55338,
+      dealer: "Fun Town RV – Ottawa, KS",
+      trade: 51840,
+      delta: 3498,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $55,338 RV Trader (Fun Town RV – Ottawa, KS); RVT higher at $56,288 (Fun Town RV – Tyler, Mineola TX). RVT $55,338 card 404'd — excluded. Trade = 2026 JDP Low Retail $57,600 × 0.9 = $51,840 (Salem Hemisphere Series M-321DRL)."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Salem+Hemisphere+321DRL-5039276994" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvt.com/buy/details/2026-forest-river-salem-hemisphere-321drl/991d0d27-0bcd-11f1-beaa-02c8259c7411/" &&
+            span.label === "RVT"
+        )
+    ).toBe(true)
+
+    const siblings = deals.filter(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Salem Hemisphere" &&
+        row.floor !== "286RL" &&
+        row.floor !== "301FAM" &&
+        row.floor !== "321DRL" &&
+        row.year === 2026
+    )
+    expect(siblings.map((row) => row.floor).sort()).toEqual(["325RL"])
+    expect(
+      siblings.every(
+        (row) =>
+          row.ask == null &&
+          row.trade == null &&
+          row.delta == null &&
+          row.dealer === "" &&
+          row.notes.length === 0
+      )
+    ).toBe(true)
+
+    const heritageGlenTwin = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Wildwood Heritage Glen" &&
+        row.floor === "321DRL" &&
+        row.year === 2026
+    )
+    expect(heritageGlenTwin).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(heritageGlenTwin?.notes).toEqual([])
   })
 
   it("applies 2025 JDP proxy trades on Coachmen Adrenaline", () => {
@@ -3679,14 +3769,14 @@ describe("filters and sort", () => {
       -10004, -6760, -5628, -5469, -5252, -5190, -3791, -3525, -3461, -2490,
       -2065, -2000, -1971, -1885, -1885, -1862, -1805, -1595, -1476, -1206,
       -1195, -1170, -831, -795, -586, -343, -110, -101, -30, -20, 390, 535, 573,
-      659, 1163, 1340, 1609, 1665, 1919, 2089, 2535, 3005, 3080, 3195, 3435, 3570, 4103, 4310,
+      659, 1163, 1340, 1609, 1665, 1919, 2089, 2535, 3005, 3080, 3195, 3435, 3498, 3570, 4103, 4310,
       4644, 4790, 4875, 4970, 5243, 5480, 5514, 5834, 5889, 5965, 6144, 6471, 6540,
       6554, 6735, 6900, 7201, 7294, 7370, 7709, 7980, 8010, 8356, 8784, 8790, 8828, 9034,
       9073, 9314, 10050, 10859, 10859, 11385, 11736, 11884, 12283, 13013, 13013, 13075, 13165, 13584,
       14139, 15689, 15697, 16667, 16667, 17460, 17664, 17740, 17755, 19530, 21524, 22400, 25615, 25875,
       26440, 26520, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(309)
+    expect(empty.length).toBe(308)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
