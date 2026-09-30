@@ -239,31 +239,25 @@ describe("deal data", () => {
     expect(etw.map((deal) => [deal.model, deal.floor])).toEqual(
       EAST_TO_WEST_FIFTH_WHEELS.map(([model, floor]) => [model, floor])
     )
-    const unpricedEtw = etw.filter(
-      (deal) => deal.floor !== "297MK" && deal.floor !== "325RL"
+    expect(etw.every((deal) => deal.year === 2026 && deal.ask != null)).toBe(
+      true
     )
-    expect(unpricedEtw.map((deal) => [deal.model, deal.floor])).toEqual([
-      ["Ahara", "365RL"],
-      ["Tandara", "235ML"],
-      ["Tandara", "295RL"],
-    ])
-    expect(
-      unpricedEtw.every(
-        (deal) =>
-          deal.ask == null &&
-          deal.trade == null &&
-          deal.delta == null &&
-          deal.dealer === ""
-      )
-    ).toBe(true)
 
     const forest = deals.filter((deal) => deal.manufacturer === "Forest River")
     expect(forest).toHaveLength(FOREST_RIVER_FIFTH_WHEELS.length)
     expect(forest.map((deal) => [deal.model, deal.floor])).toEqual(
       FOREST_RIVER_FIFTH_WHEELS.map(([model, floor]) => [model, floor])
     )
+    const pricedCardinal = new Set(["32LIVE", "33CHEF"])
+    const pricedForest = forest.filter(
+      (deal) => deal.model === "Cardinal" && pricedCardinal.has(deal.floor)
+    )
+    expect(pricedForest).toHaveLength(2)
+    const unpricedForest = forest.filter(
+      (deal) => !(deal.model === "Cardinal" && pricedCardinal.has(deal.floor))
+    )
     expect(
-      forest.every(
+      unpricedForest.every(
         (deal) =>
           deal.year === 2026 &&
           deal.ask == null &&
@@ -312,7 +306,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(83)
+    expect(priced).toHaveLength(88)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -695,6 +689,153 @@ describe("deal data", () => {
             span.label === "RV Trader"
         )
     ).toBe(true)
+  })
+
+  it("applies East To West Tandara/Ahara 365RL and Cardinal 2025 proxy trades", () => {
+    const rows = [
+      [
+        "East To West",
+        "Ahara",
+        "365RL",
+        66999,
+        "Buckeye RV - Jeffersonville, Jeffersonville, OH",
+        53415,
+        13584,
+        "TRADE FROM 2025 (not 2026): J.D. Power Low Retail $59,350 × 0.9 = $53,415 (East To West Ahara Series M-365RL). 2026 unused because Ahara/fifth-wheel series absent from 2026 east-to-west model list on jdpower.com. Source: https://www.jdpower.com/rvs/2025/east-to-west/m-365rl/6638523/values",
+        "m-365rl/6638523",
+        "https://www.rvt.com/buy/details/2026-east-to-west-ahara-365rl/dc02d67c-3920-11f0-ae63-02c8259c7411/",
+        "RVT",
+        "https://www.rvtrader.com/listing/2026-East+To+West-Ahara+365RL-5041180504",
+        "RV Trader",
+      ],
+      [
+        "East To West",
+        "Tandara",
+        "235ML",
+        38204,
+        "Glampers RV",
+        null,
+        null,
+        "J.D. Power Low Retail not found for East To West Tandara 235ML: absent from 2026 east-to-west model list (no fifth-wheel/Tandara series). 2025 Tandara Series lists M-320RL/M-321RL-OK/M-340RD/M-375BH-OK/M-385MB/M-386MB-OK; 2025 Tandara Half-Ton lists M-22RK/M-26RD/M-27BH-OK/M-28RL/M-28RL-OK — no M-235 ML. Trade/delta left blank.",
+        null,
+        "https://www.rvtrader.com/listing/2026-East+To+West-Tandara+235ML-5041758774",
+        "RV Trader",
+        "https://www.rvt.com/buy/details/2026-east-to-west-tandara-235ml/4c303480-08ae-11f1-beaa-02c8259c7411/",
+        "RVT",
+      ],
+      [
+        "East To West",
+        "Tandara",
+        "295RL",
+        54990,
+        "Berryland Campers",
+        null,
+        null,
+        "J.D. Power Low Retail not found for East To West Tandara 295RL: absent from 2026 east-to-west model list (no fifth-wheel/Tandara series). 2025 Tandara Series has M-320RL/M-321RL-OK/M-340RD/M-375BH-OK/M-385MB/M-386MB-OK; Half-Ton has M-22RK/M-26RD/M-27BH-OK/M-28RL/M-28RL-OK — no M-295 RL. Trade/delta left blank.",
+        null,
+        "https://www.rvt.com/buy/details/2026-east-to-west-tandara-295rl/5119194f-6436-11f1-adcf-02f5bff6b341/",
+        "RVT",
+        "https://www.rvtrader.com/listing/2026-East+To+West-Tandara+295RL-5040254119",
+        "RV Trader",
+      ],
+      [
+        "Forest River",
+        "Cardinal",
+        "32LIVE",
+        47115,
+        "Fun Town RV - Anna",
+        29655,
+        17460,
+        "TRADE FROM 2025 (not 2026): J.D. Power Low Retail $32,950 × 0.9 = $29,655 (Cardinal-by-Forest-River M-32LIVE). 2026 cardinal-by-forest-river page returned error/unavailable on scrape; used matching 2025 floor. Source: https://www.jdpower.com/rvs/2025/cardinal-by-forest-river/m-32live/6647567/values",
+        "m-32live/6647567",
+        "https://www.rvt.com/buy/details/2026-forest-river-cardinal-32live/3edfe407-79a4-11f0-b688-02c8259c7411/",
+        "RVT",
+        "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Cardinal+32LIVE-5037477901",
+        "RV Trader",
+      ],
+      [
+        "Forest River",
+        "Cardinal",
+        "33CHEF",
+        49995,
+        "RV Dynasty",
+        30465,
+        19530,
+        "TRADE FROM 2025 (not 2026): J.D. Power Low Retail $33,850 × 0.9 = $30,465 (Cardinal-by-Forest-River M-33CHEF). 2026 cardinal-by-forest-river page returned error/unavailable on scrape; used matching 2025 floor. Source: https://www.jdpower.com/rvs/2025/cardinal-by-forest-river/m-33chef/6647568/values",
+        "m-33chef/6647568",
+        "https://www.rvt.com/buy/details/2026-forest-river-cardinal-33chef/611895bd-b16c-11f0-beaa-02c8259c7411/",
+        "RVT",
+        "https://www.rvtrader.com/listing/2026-Forest+River-CARDINAL+33CHEF-5040815575",
+        "RV Trader",
+      ],
+    ] as const
+    for (const [
+      manufacturer,
+      model,
+      floor,
+      ask,
+      dealer,
+      trade,
+      delta,
+      exactNote,
+      path,
+      askUrl,
+      askLabel,
+      askAltUrl,
+      askAltLabel,
+    ] of rows) {
+      const deal = deals.find(
+        (row) =>
+          row.manufacturer === manufacturer &&
+          row.model === model &&
+          row.floor === floor &&
+          row.year === 2026
+      )
+      expect(deal).toMatchObject({ ask, dealer, trade, delta })
+      expect(
+        deal?.notes
+          .flat()
+          .some((span) => span.type === "text" && span.text === exactNote)
+      ).toBe(true)
+      if (path) {
+        expect(
+          deal?.notes
+            .flat()
+            .some(
+              (span) =>
+                span.type === "link" &&
+                span.href.includes(path) &&
+                span.label === "JDP values"
+            )
+        ).toBe(true)
+      } else {
+        expect(
+          deal?.notes
+            .flat()
+            .some((span) => span.type === "link" && span.label === "JDP values")
+        ).toBe(false)
+      }
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "link" &&
+              span.href === askUrl &&
+              span.label === askLabel
+          )
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "link" &&
+              span.href === askAltUrl &&
+              span.label === askAltLabel
+          )
+      ).toBe(true)
+    }
   })
 
   it("applies 2025 JDP proxy trades on Coachmen Adrenaline", () => {
@@ -1690,7 +1831,10 @@ describe("deal data", () => {
         "Triple H RVs, Haleyville AL",
       ],
       ["Ahara", "297MK", 74849, "RV Value Mart - Asheboro, Franklinville, NC"],
+      ["Tandara", "235ML", 38204, "Glampers RV"],
+      ["Tandara", "295RL", 54990, "Berryland Campers"],
     ] as const
+    const verifiedMiss = new Set(["297MK", "235ML", "295RL"])
     const askNoTrade = deals.filter(
       (deal) => deal.ask != null && deal.trade == null
     )
@@ -1702,7 +1846,7 @@ describe("deal data", () => {
         (row) => row.model === model && row.floor === floor
       )
       expect(deal).toMatchObject({ ask, dealer, trade: null, delta: null })
-      if (floor !== "297MK") {
+      if (!verifiedMiss.has(floor)) {
         expect(
           deal?.notes
             .flat()
@@ -1858,9 +2002,10 @@ describe("filters and sort", () => {
       659, 1163, 1609, 1665, 1919, 2089, 2535, 3195, 3435, 3570, 4310, 4644,
       4790, 4970, 5480, 5514, 5834, 5889, 6144, 6540, 6735, 6900, 7201, 7294,
       7370, 7709, 7980, 8356, 8784, 8790, 9034, 9073, 10050, 11736, 13165,
-      17664, 17740, 21524, 22400, 25615, 25875, 26440, 28866, 29438, 40600,
+      13584, 17460, 17664, 17740, 19530, 21524, 22400, 25615, 25875, 26440,
+      28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(339)
+    expect(empty.length).toBe(336)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
@@ -1980,7 +2125,7 @@ describe("filters and sort", () => {
     expect(empty).toHaveLength(0)
   })
 
-  it("cascades East To West models and prices Ahara 297MK and 325RL", () => {
+  it("cascades East To West models and prices Ahara and Tandara floors", () => {
     const options = filterOptions(deals, {
       manufacturer: "East To West",
       year: "",
@@ -2004,9 +2149,9 @@ describe("filters and sort", () => {
       delta: 17740,
     })
     expect(rows.find((deal) => deal.floor === "365RL")).toMatchObject({
-      ask: null,
-      trade: null,
-      delta: null,
+      ask: 66999,
+      trade: 53415,
+      delta: 13584,
     })
   })
 
