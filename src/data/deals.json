@@ -6451,11 +6451,42 @@
     "manufacturer": "Forest River",
     "model": "Rockwood Signature",
     "floor": "282RK",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 43589,
+    "dealer": "Camping World, Apollo, PA",
+    "trade": 37035,
+    "delta": 6554,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Camping World, Apollo, PA, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-forest-river-rockwood-signature-282rk/ceba381a-ad10-11f1-84f9-020f812d825b/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Forest+River-ROCKWOOD+SIGNATURE+282RK-5042059751",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-09-30."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $43,589 both sites (Camping World Apollo PA), ~28.92 ft New. Trade = 2026 JDP Low Retail $41,150 × 0.9 = $37,035 (Rockwood-by-FR M-282RK)."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
