@@ -629,57 +629,220 @@ describe("deal data", () => {
     })
   })
 
-  it("prices Coachmen Beyond asks without inventing trades", () => {
-    const beyond = [
-      ["22C AWD", 142000, "Delta, OH"],
-      ["22C", 144998, "Reno, NV"],
-      ["22D AWD", 142986, "Albemarle, NC"],
-      ["22D-EB", 139995, "Myrtle Beach, SC"],
-      ["22RB AWD", 141785, "Lewisville, TX"],
-      ["22RBBC", 159985, "Fountain Valley, CA"],
-      ["22RB", 145000, "Delta, OH"],
+  it("applies JDP trades on Coachmen Beyond", () => {
+    const priced = [
+      [
+        "22C AWD",
+        142000,
+        "Delta, OH",
+        115560,
+        26440,
+        "$128,400",
+        "m-22-c-awd-ford/6640384",
+      ],
+      [
+        "22D AWD",
+        142986,
+        "Albemarle, NC",
+        114120,
+        28866,
+        "$126,800",
+        "m-22-d-awd-ford/6640383",
+      ],
+      [
+        "22RB AWD",
+        141785,
+        "Lewisville, TX",
+        119385,
+        22400,
+        "$132,650",
+        "m-22-rb-awd-ford/6640385",
+      ],
     ] as const
-
-    for (const [floor, ask, dealer] of beyond) {
+    for (const [floor, ask, dealer, trade, delta, lowRetail, path] of priced) {
       const deal = deals.find(
         (row) =>
           row.manufacturer === "Coachmen" &&
           row.model === "Beyond" &&
           row.floor === floor
       )
-      expect(deal).toMatchObject({
-        ask,
-        dealer,
-        trade: null,
-        delta: null,
-      })
+      expect(deal).toMatchObject({ ask, dealer, trade, delta })
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "text" &&
+              span.text.includes(`JDP Low Retail ${lowRetail}`)
+          )
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "link" &&
+              span.href.includes(path) &&
+              span.label === "JDP values"
+          )
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some((span) => span.type === "text" && /not found/i.test(span.text))
+      ).toBe(false)
     }
+    expect(deals.filter((deal) => deal.model === "Beyond")).toHaveLength(7)
   })
 
-  it("prices Catalina Legacy Edition asks without inventing trades", () => {
-    const catalina = [
-      ["243RBSLE", 26980, "Eagle Country RV, Eagle River, WI"],
-      ["243RBS", 25495, "RV Dynasty, Bunker Hill, IN"],
-      ["263BHSCK", 28833, "RV Wholesalers, Lakeview, OH"],
-      ["263FKDS", 36519, "Palmetto State RV, Greer SC"],
-      ["273DBHCK", 27495, "RV Dynasty, Bunker Hill, IN"],
-      ["283RKS", 31995, "Alpin Haus - Amsterdam, Amsterdam NY"],
-      ["283RNR", 33995, "Triple H RVs, Haleyville AL"],
-      ["293QBCKLE", 30944, "RV Value Mart - Asheboro, Franklinville NC"],
-      ["293QBCK", 28995, "RV Dynasty, Bunker Hill IN"],
-      ["293TQBSCK", 27999, "Cheyenne Camping Center Co, Walcott IA"],
+  it("applies JDP trades on Catalina Legacy Edition", () => {
+    const priced = [
+      [
+        "243RBS",
+        25495,
+        "RV Dynasty, Bunker Hill, IN",
+        27090,
+        -1595,
+        "$30,100",
+        "m-243-rbs/6648716",
+      ],
+      [
+        "263BHSCK",
+        28833,
+        "RV Wholesalers, Lakeview, OH",
+        28260,
+        573,
+        "$31,400",
+        "m-263-bhsck/6648717",
+      ],
+      [
+        "263FKDS",
+        36519,
+        "Palmetto State RV, Greer SC",
+        31005,
+        5514,
+        "$34,450",
+        "m-263-fkds/6648718",
+      ],
+      [
+        "273DBHCK",
+        27495,
+        "RV Dynasty, Bunker Hill, IN",
+        28665,
+        -1170,
+        "$31,850",
+        "m-273-dbhck/6648719",
+      ],
+      [
+        "283RKS",
+        31995,
+        "Alpin Haus - Amsterdam, Amsterdam NY",
+        28800,
+        3195,
+        "$32,000",
+        "m-283-rks/6648720",
+      ],
+      [
+        "293QBCK",
+        28995,
+        "RV Dynasty, Bunker Hill IN",
+        29025,
+        -30,
+        "$32,250",
+        "m-293-qbck/6648721",
+      ],
+      [
+        "293TQBSCK",
+        27999,
+        "Cheyenne Camping Center Co, Walcott IA",
+        29475,
+        -1476,
+        "$32,750",
+        "m-293-tqbsck/6648722",
+      ],
     ] as const
-    for (const [floor, ask, dealer] of catalina) {
+    for (const [floor, ask, dealer, trade, delta, lowRetail, path] of priced) {
+      const deal = deals.find(
+        (row) => row.model === "Catalina Legacy Edition" && row.floor === floor
+      )
+      expect(deal).toMatchObject({ ask, dealer, trade, delta })
       expect(
-        deals.find(
-          (deal) =>
-            deal.model === "Catalina Legacy Edition" && deal.floor === floor
-        )
-      ).toMatchObject({ ask, dealer, trade: null, delta: null })
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "text" &&
+              span.text.includes(`JDP Low Retail ${lowRetail}`)
+          )
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "link" &&
+              span.href.includes(path) &&
+              span.label === "JDP values"
+          )
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some((span) => span.type === "text" && /not found/i.test(span.text))
+      ).toBe(false)
     }
     expect(
       deals.filter((deal) => deal.model === "Catalina Legacy Edition")
     ).toHaveLength(10)
+  })
+
+  it("leaves verified-missing Legacy and Beyond floors without trade or a not-found claim", () => {
+    const missing = [
+      [
+        "Catalina Legacy Edition",
+        "243RBSLE",
+        26980,
+        "Eagle Country RV, Eagle River, WI",
+      ],
+      [
+        "Catalina Legacy Edition",
+        "283RNR",
+        33995,
+        "Triple H RVs, Haleyville AL",
+      ],
+      [
+        "Catalina Legacy Edition",
+        "293QBCKLE",
+        30944,
+        "RV Value Mart - Asheboro, Franklinville NC",
+      ],
+      ["Beyond", "22C", 144998, "Reno, NV"],
+      ["Beyond", "22D-EB", 139995, "Myrtle Beach, SC"],
+      ["Beyond", "22RBBC", 159985, "Fountain Valley, CA"],
+      ["Beyond", "22RB", 145000, "Delta, OH"],
+    ] as const
+    for (const [model, floor, ask, dealer] of missing) {
+      const deal = deals.find(
+        (row) => row.model === model && row.floor === floor
+      )
+      expect(deal).toMatchObject({ ask, dealer, trade: null, delta: null })
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "text" &&
+              span.text.includes(
+                `Exact floor ${floor} was checked on the 2026 JDP ${model} series page and is not listed`
+              )
+          )
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some((span) => span.type === "text" && /not found/i.test(span.text))
+      ).toBe(false)
+    }
   })
 
   it("applies JDP trades on Catalina Summit Series 7", () => {
@@ -968,7 +1131,7 @@ describe("deal data", () => {
           .flat()
           .some((span) => span.type === "text" && span.text === pending)
       ).length
-    ).toBe(44)
+    ).toBe(27)
   })
 
   it("applies JDP trades on Catalina Trail Blazer", () => {
@@ -1063,10 +1226,10 @@ describe("filters and sort", () => {
     const empty = rows.filter((deal) => deal.delta == null)
     expect(priced.map((deal) => deal.delta)).toEqual([
       -5252, -3791, -3525, -3461, -2490, -2065, -1971, -1885, -1885, -1805,
-      -1206, -1195, -795, -586, -101, -20, 390, 535, 659, 1609, 2535, 5889,
-      13165,
+      -1595, -1476, -1206, -1195, -1170, -795, -586, -101, -30, -20, 390, 535,
+      573, 659, 1609, 2535, 3195, 5514, 5889, 13165, 22400, 26440, 28866,
     ])
-    expect(empty.length).toBe(394)
+    expect(empty.length).toBe(384)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
