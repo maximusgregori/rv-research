@@ -263,11 +263,12 @@ describe("deal data", () => {
       "Cherokee Arctic Wolf|331BH",
       "Crusader|KING33",
       "Impression|235RW",
+      "Impression|315MB",
     ])
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(14)
+    expect(pricedForest).toHaveLength(15)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -321,7 +322,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(100)
+    expect(priced).toHaveLength(101)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -1242,6 +1243,59 @@ describe("deal data", () => {
             span.type === "link" &&
             span.href ===
               "https://www.rvtrader.com/listing/2026-Forest+River-IMPRESSION+235RW-5042064069" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+  })
+
+  it("applies Impression 315MB ask and 2025 proxy trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Impression" &&
+        row.floor === "315MB" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 54999,
+      dealer: "Thrills RV, Columbia City, IN",
+      trade: 40860,
+      delta: 14139,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $54,999 both sites (Thrills RV Columbia City IN), 38 ft New. TRADE FROM 2025 (not 2026): JDP Low Retail $45,400 × 0.9 = $40,860 (Impression-by-FR M-315MB; JDP length 36'6\"). 2026 page HTTP 500."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvt.com/buy/details/2026-forest-river-impression-315mb/29dffee0-8c89-11ef-8bbb-12043a49ed9f/" &&
+            span.label === "RVT"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Forest+River-Impression+315MB-5033721303" &&
             span.label === "RV Trader"
         )
     ).toBe(true)
@@ -2430,10 +2484,10 @@ describe("filters and sort", () => {
       659, 1163, 1340, 1609, 1665, 1919, 2089, 2535, 3195, 3435, 3570, 4310,
       4644, 4790, 4875, 4970, 5243, 5480, 5514, 5834, 5889, 5965, 6144, 6540,
       6735, 6900, 7201, 7294, 7370, 7709, 7980, 8356, 8784, 8790, 8828, 9034,
-      9073, 10050, 11736, 13075, 13165, 13584, 15697, 17460, 17664, 17740, 19530,
-      21524, 22400, 25615, 25875, 26440, 26520, 28866, 29438, 40600,
+      9073, 10050, 11736, 13075, 13165, 13584, 14139, 15697, 17460, 17664, 17740,
+      19530, 21524, 22400, 25615, 25875, 26440, 26520, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(328)
+    expect(empty.length).toBe(327)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
