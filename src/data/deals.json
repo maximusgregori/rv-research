@@ -236,7 +236,7 @@
       [
         {
           "type": "text",
-          "text": "Exact floor 181RB was checked on the 2026 Apex-by-Coachmen J.D. Power list and is not listed, so trade and delta stay blank."
+          "text": "Verified absent from 2026 and 2025 Apex-by-Coachmen Nano lists on jdpower.com; trade left blank."
         }
       ]
     ]
@@ -275,7 +275,7 @@
       [
         {
           "type": "text",
-          "text": "Exact floor 183BH was checked on the 2026 Apex-by-Coachmen J.D. Power list and is not listed, so trade and delta stay blank."
+          "text": "Verified absent from 2026 and 2025 Apex-by-Coachmen Nano lists on jdpower.com; trade left blank."
         }
       ]
     ]
@@ -1046,7 +1046,7 @@
       [
         {
           "type": "text",
-          "text": "Exact floor 244RBS was checked on the 2026 Apex-by-Coachmen J.D. Power list and is not listed, so trade and delta stay blank."
+          "text": "Verified absent from 2026 and 2025 Apex-by-Coachmen Ultra-Lite lists on jdpower.com; trade left blank."
         }
       ]
     ]
@@ -1093,8 +1093,8 @@
     "floor": "26BHX",
     "ask": 27999,
     "dealer": "Bill's Happy Camper RV Sales and Service, Mill Hall, PA",
-    "trade": null,
-    "delta": null,
+    "trade": 23355,
+    "delta": 4644,
     "notes": [
       [
         {
@@ -1129,7 +1129,12 @@
       [
         {
           "type": "text",
-          "text": "Exact floor 26BHX was checked on the 2026 Apex-by-Coachmen J.D. Power list and is not listed, so trade and delta stay blank."
+          "text": "TRADE FROM 2025 (not 2026): J.D. Power Low Retail $25,950 \u00d7 0.9 = $23,355 (Apex-by-Coachmen X Series). 2026 unused because absent from 2026 Apex-by-Coachmen list. Source: https://www.jdpower.com/rvs/2025/apex-by-coachmen/m-26-bhx/6641641/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2025/apex-by-coachmen/m-26-bhx/6641641/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -1168,7 +1173,7 @@
       [
         {
           "type": "text",
-          "text": "Exact floor 289TBSS was checked on the 2026 Apex-by-Coachmen J.D. Power list and is not listed, so trade and delta stay blank."
+          "text": "Verified absent from 2026 Apex Ultra-Lite (2025 has 291 TBSS only, not 289); trade left blank \u2014 no same-floor prior-year proxy."
         }
       ]
     ]
@@ -1180,8 +1185,8 @@
     "floor": "24RBX",
     "ask": 25980,
     "dealer": "Bobby Combs RV, Caldwell, ID",
-    "trade": null,
-    "delta": null,
+    "trade": 22545,
+    "delta": 3435,
     "notes": [
       [
         {
@@ -1216,7 +1221,12 @@
       [
         {
           "type": "text",
-          "text": "Exact floor 24RBX was checked on the 2026 Apex-by-Coachmen J.D. Power list and is not listed, so trade and delta stay blank."
+          "text": "TRADE FROM 2025 (not 2026): J.D. Power Low Retail $25,050 \u00d7 0.9 = $22,545 (Apex-by-Coachmen X Series). 2026 unused because absent from 2026 Apex-by-Coachmen list. Source: https://www.jdpower.com/rvs/2025/apex-by-coachmen/m-24-rbx/6641640/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2025/apex-by-coachmen/m-24-rbx/6641640/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -1228,8 +1238,8 @@
     "floor": "29BHX",
     "ask": 25328,
     "dealer": "Forest River RV Little Rock by Camping World",
-    "trade": null,
-    "delta": null,
+    "trade": 24165,
+    "delta": 1163,
     "notes": [
       [
         {
@@ -1255,7 +1265,12 @@
       [
         {
           "type": "text",
-          "text": "Exact floor 29BHX was checked on the 2026 Apex-by-Coachmen J.D. Power list and is not listed, so trade and delta stay blank."
+          "text": "TRADE FROM 2025 (not 2026): J.D. Power Low Retail $26,850 \u00d7 0.9 = $24,165 (Apex-by-Coachmen X Series). 2026 unused because absent from 2026 Apex-by-Coachmen list. Source: https://www.jdpower.com/rvs/2025/apex-by-coachmen/m-29-bhx/6641642/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2025/apex-by-coachmen/m-29-bhx/6641642/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -1311,8 +1326,8 @@
     "floor": "22C",
     "ask": 144998,
     "dealer": "Reno, NV",
-    "trade": null,
-    "delta": null,
+    "trade": 115560,
+    "delta": 29438,
     "notes": [
       [
         {
@@ -1338,7 +1353,12 @@
       [
         {
           "type": "text",
-          "text": "Exact floor 22C was checked on the 2026 JDP Beyond series page and is not listed, so trade and delta stay blank."
+          "text": "Trade from 2026 J.D. Power Low Retail $128,400 \u00d7 0.9 = $115,560 (Coachmen-by-Forest-River Beyond M-22 C AWD Ford; matched dealer 22C to JDP M-22 C). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-22-c-awd-ford/6640384/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-22-c-awd-ford/6640384/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -1394,8 +1414,8 @@
     "floor": "22D-EB",
     "ask": 139995,
     "dealer": "Myrtle Beach, SC",
-    "trade": null,
-    "delta": null,
+    "trade": 114120,
+    "delta": 25875,
     "notes": [
       [
         {
@@ -1421,7 +1441,12 @@
       [
         {
           "type": "text",
-          "text": "Exact floor 22D-EB was checked on the 2026 JDP Beyond series page and is not listed, so trade and delta stay blank."
+          "text": "Trade from 2026 J.D. Power Low Retail $126,800 \u00d7 0.9 = $114,120 (Coachmen-by-Forest-River Beyond M-22 D AWD Ford; matched dealer 22D-EB to JDP M-22 D (closest 2026 Beyond D floor)). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-22-d-awd-ford/6640383/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-22-d-awd-ford/6640383/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -1504,7 +1529,7 @@
       [
         {
           "type": "text",
-          "text": "Exact floor 22RBBC was checked on the 2026 JDP Beyond series page and is not listed, so trade and delta stay blank."
+          "text": "No exact 22RBBC on 2026 JDP Beyond/Beyond Li (codes are M-22 C/D/RB AWD Ford). Not mapping to Beyond Li 22RB without confirmation; trade left blank."
         }
       ]
     ]
@@ -1516,8 +1541,8 @@
     "floor": "22RB",
     "ask": 145000,
     "dealer": "Delta, OH",
-    "trade": null,
-    "delta": null,
+    "trade": 119385,
+    "delta": 25615,
     "notes": [
       [
         {
@@ -1543,7 +1568,12 @@
       [
         {
           "type": "text",
-          "text": "Exact floor 22RB was checked on the 2026 JDP Beyond series page and is not listed, so trade and delta stay blank."
+          "text": "Trade from 2026 J.D. Power Low Retail $132,650 \u00d7 0.9 = $119,385 (Coachmen-by-Forest-River Beyond M-22 RB AWD Ford; matched dealer 22RB to JDP M-22 RB). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-22-rb-awd-ford/6640385/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-22-rb-awd-ford/6640385/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -1590,8 +1620,8 @@
     "floor": "243RBSLE",
     "ask": 26980,
     "dealer": "Eagle Country RV, Eagle River, WI",
-    "trade": null,
-    "delta": null,
+    "trade": 27090,
+    "delta": -110,
     "notes": [
       [
         {
@@ -1608,7 +1638,12 @@
       [
         {
           "type": "text",
-          "text": "Exact floor 243RBSLE was checked on the 2026 JDP Catalina Legacy Edition series page and is not listed, so trade and delta stay blank."
+          "text": "Trade from 2026 J.D. Power Low Retail $30,100 \u00d7 0.9 = $27,090 (Catalina Legacy M-243 RBS; dealer floor 243RBSLE mapped to JDP M-243 RBS (Legacy; LE suffix not on JDP code)). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-243-rbs/6648716/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-243-rbs/6648716/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -1867,7 +1902,7 @@
       [
         {
           "type": "text",
-          "text": "Exact floor 283RNR was checked on the 2026 JDP Catalina Legacy Edition series page and is not listed, so trade and delta stay blank."
+          "text": "2026 Catalina Legacy has M-283 RKS, not 283RNR; different floor code; trade left blank."
         }
       ]
     ]
@@ -1879,8 +1914,8 @@
     "floor": "293QBCKLE",
     "ask": 30944,
     "dealer": "RV Value Mart - Asheboro, Franklinville NC",
-    "trade": null,
-    "delta": null,
+    "trade": 29025,
+    "delta": 1919,
     "notes": [
       [
         {
@@ -1915,7 +1950,12 @@
       [
         {
           "type": "text",
-          "text": "Exact floor 293QBCKLE was checked on the 2026 JDP Catalina Legacy Edition series page and is not listed, so trade and delta stay blank."
+          "text": "Trade from 2026 J.D. Power Low Retail $32,250 \u00d7 0.9 = $29,025 (Catalina Legacy M-293 QBCK; dealer floor 293QBCKLE mapped to JDP M-293 QBCK (Legacy; LE suffix not on JDP code)). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-293-qbck/6648721/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-293-qbck/6648721/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -2359,8 +2399,8 @@
     "floor": "184BHS",
     "ask": 24995,
     "dealer": "Campers Inn RV of Johnstown",
-    "trade": null,
-    "delta": null,
+    "trade": 20025,
+    "delta": 4970,
     "notes": [
       [
         {
@@ -2386,7 +2426,12 @@
       [
         {
           "type": "text",
-          "text": "Exact floor 184BHS was checked on 2026 JDP Catalina Summit and is not listed, so trade and delta stay blank."
+          "text": "Trade from 2026 J.D. Power Low Retail $22,250 \u00d7 0.9 = $20,025 (Catalina Summit M-184 BHSX; dealer floor 184BHS mapped to closest 2026 Summit M-184 BHSX). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-184-bhsx/6648743/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-184-bhsx/6648743/values",
+          "label": "JDP values"
         }
       ]
     ]
@@ -2469,7 +2514,7 @@
       [
         {
           "type": "text",
-          "text": "Exact floor 184RBS was checked on 2026 JDP Catalina Summit and is not listed, so trade and delta stay blank."
+          "text": "2026 Catalina Summit has M-184 BHSX and M-184 MKS, not 184RBS; trade left blank."
         }
       ]
     ]
@@ -2533,7 +2578,7 @@
       [
         {
           "type": "text",
-          "text": "Exact floor 221MKE was checked on 2026 JDP Catalina Summit and is not listed, so trade and delta stay blank."
+          "text": "2026 Catalina Summit has M-221 EPIC, not 221MKE; trade left blank."
         }
       ]
     ]
@@ -3002,11 +3047,23 @@
     "manufacturer": "Coachmen",
     "model": "Chaparral",
     "floor": "27BAR",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 43851,
+    "dealer": "Carolina RV, Myrtle Beach SC",
+    "trade": 49320,
+    "delta": -5469,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Trade from 2026 J.D. Power Low Retail $54,800 \u00d7 0.9 = $49,320 (Coachmen-by-Forest-River Chaparral Lite M-27 BAR; dealer lists Chaparral 27BAR; JDP 2026 lists this floor under Chaparral Lite (not non-Lite Chaparral)). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-27-bar/6644371/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-27-bar/6644371/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
@@ -3057,11 +3114,23 @@
     "manufacturer": "Coachmen",
     "model": "Chaparral",
     "floor": "30BHS",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 44990,
+    "dealer": "Bobby Combs RV Center, Hayden",
+    "trade": 51750,
+    "delta": -6760,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Trade from 2026 J.D. Power Low Retail $57,500 \u00d7 0.9 = $51,750 (Coachmen-by-Forest-River Chaparral Lite M-30 BHS; dealer lists Chaparral 30BHS; JDP 2026 lists this floor under Chaparral Lite). Source: https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-30-bhs/6644373/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/coachmen-by-forest-river/m-30-bhs/6644373/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
@@ -3114,8 +3183,8 @@
     "floor": "274BH",
     "ask": 46250,
     "dealer": "Byerly RV, Eureka, MO",
-    "trade": null,
-    "delta": null,
+    "trade": 40770,
+    "delta": 5480,
     "notes": [
       [
         {
@@ -3150,7 +3219,12 @@
       [
         {
           "type": "text",
-          "text": "JDP has no 2026 Chaparral Lite 274BH (listed Lite plans include 218SE, 254RLS, 27BAR, 30RLS, 30BHS, 31BH, etc.), so trade and delta stay blank."
+          "text": "TRADE FROM 2025 (not 2026): J.D. Power Low Retail $45,300 \u00d7 0.9 = $40,770 (Chaparral Lite M-274 BH). 2026 unused because floor absent from 2026 Chaparral Lite list (2026 starts at 27BAR/30BHS/etc.). Source: https://www.jdpower.com/rvs/2025/coachmen-by-forest-river/m-274-bh/6643414/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2025/coachmen-by-forest-river/m-274-bh/6643414/values",
+          "label": "JDP values"
         }
       ]
     ]
