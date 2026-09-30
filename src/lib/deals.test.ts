@@ -258,11 +258,14 @@ describe("deal data", () => {
       "Cherokee Arctic Wolf|27SGS",
       "Cherokee Arctic Wolf|285OPT",
       "Cherokee Arctic Wolf|287BH",
+      "Cherokee Arctic Wolf|289PANO",
+      "Cherokee Arctic Wolf|3250 SUITE",
+      "Cherokee Arctic Wolf|331BH",
     ])
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(9)
+    expect(pricedForest).toHaveLength(12)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -316,7 +319,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(95)
+    expect(priced).toHaveLength(98)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -1050,6 +1053,90 @@ describe("deal data", () => {
             span.label === "RV Trader"
         )
     ).toBe(true)
+  })
+
+  it("applies Arctic Wolf 289PANO, 3250 SUITE, and 331BH asks and 2025 proxy trades", () => {
+    const rows = [
+      [
+        "289PANO",
+        45887,
+        "Buckeye RV Jeffersonville, Jeffersonville, OH",
+        null,
+        null,
+        "Ask $45,887 both RVT + RV Trader (Buckeye RV Jeffersonville, OH), 35 ft New. Trade blank: verified 2025 Arctic Wolf has no M-289PANO; 2026 cherokee-by-FR make page has no Arctic Wolf 5th-wheel list. 2027 lists M-289PANO but Low Retail N/A — forward-year proxy NOT applied.",
+        "https://www.rvt.com/buy/details/2026-forest-river-cherokee-arctic-wolf-289pano/3409d404-7b24-11f0-b688-02c8259c7411/",
+        "https://www.rvtrader.com/listing/2026-Forest+River-CHEROKEE+ARCTIC+WOLF+289PANO-5037500494",
+      ],
+      [
+        "3250 SUITE",
+        49930,
+        "Boyer RV Center, Erie, PA",
+        43965,
+        5965,
+        "Ask $49,930 both RVT + RV Trader (Boyer RV Center, Erie PA), 36 ft New (RV Trader; RVT detail re-verified after CAPTCHA). TRADE FROM 2025 (not 2026): J.D. Power Low Retail $48,850 × 0.9 = $43,965 (Cherokee-by-FR Arctic Wolf M-3250SUITE). 2026 cherokee-by-forest-river make page has no Arctic Wolf 5th-wheel list.",
+        "https://www.rvt.com/buy/details/2026-forest-river-cherokee-arctic-wolf-3250-suite/6fb35a58-bcdb-11f1-84c9-020f812d825b/",
+        "https://www.rvtrader.com/listing/2026-Forest+River-Rv+Cherokee+Arctic+Wolf+3250SUITE-5042396612",
+      ],
+      [
+        "331BH",
+        46995,
+        "RV Roadway, Calera, AL",
+        42120,
+        4875,
+        "Ask $46,995 both RVT + RV Trader (RV Roadway, Calera AL), 38 ft New. TRADE FROM 2025 (not 2026): J.D. Power Low Retail $46,800 × 0.9 = $42,120 (Cherokee-by-FR Arctic Wolf M-331BH). 2026 cherokee-by-forest-river make page has no Arctic Wolf 5th-wheel list.",
+        "https://www.rvt.com/buy/details/2026-forest-river-cherokee-arctic-wolf-331bh/394f28f6-9646-11f1-84c9-020f812d825b/",
+        "https://www.rvtrader.com/listing/2026-Forest+River-Cherokee+Arctic+Wolf+331BH-5041696321",
+      ],
+    ] as const
+    for (const [
+      floor,
+      ask,
+      dealer,
+      trade,
+      delta,
+      exactNote,
+      askUrl,
+      askAltUrl,
+    ] of rows) {
+      const deal = deals.find(
+        (row) =>
+          row.manufacturer === "Forest River" &&
+          row.model === "Cherokee Arctic Wolf" &&
+          row.floor === floor &&
+          row.year === 2026
+      )
+      expect(deal).toMatchObject({ ask, dealer, trade, delta })
+      expect(
+        deal?.notes
+          .flat()
+          .some((span) => span.type === "text" && span.text === exactNote)
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some((span) => span.type === "link" && span.label === "JDP values")
+      ).toBe(false)
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "link" &&
+              span.href === askUrl &&
+              span.label === "RVT"
+          )
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "link" &&
+              span.href === askAltUrl &&
+              span.label === "RV Trader"
+          )
+      ).toBe(true)
+    }
   })
 
   it("applies 2025 JDP proxy trades on Coachmen Adrenaline", () => {
@@ -2060,6 +2147,12 @@ describe("deal data", () => {
         38995,
         "Bunker Hill, IN",
       ],
+      [
+        "Cherokee Arctic Wolf",
+        "289PANO",
+        45887,
+        "Buckeye RV Jeffersonville, Jeffersonville, OH",
+      ],
     ] as const
     const verifiedMiss = new Set(["297MK", "235ML", "295RL"])
     const askNoTrade = deals.filter(
@@ -2227,12 +2320,12 @@ describe("filters and sort", () => {
       -2065, -2000, -1971, -1885, -1885, -1862, -1805, -1595, -1476, -1206,
       -1195, -1170, -831, -795, -586, -343, -110, -101, -30, -20, 390, 535, 573,
       659, 1163, 1340, 1609, 1665, 1919, 2089, 2535, 3195, 3435, 3570, 4310,
-      4644, 4790, 4970, 5243, 5480, 5514, 5834, 5889, 6144, 6540, 6735, 6900,
-      7201, 7294, 7370, 7709, 7980, 8356, 8784, 8790, 9034, 9073, 10050, 11736,
-      13165, 13584, 15697, 17460, 17664, 17740, 19530, 21524, 22400, 25615,
-      25875, 26440, 26520, 28866, 29438, 40600,
+      4644, 4790, 4875, 4970, 5243, 5480, 5514, 5834, 5889, 5965, 6144, 6540,
+      6735, 6900, 7201, 7294, 7370, 7709, 7980, 8356, 8784, 8790, 9034, 9073,
+      10050, 11736, 13165, 13584, 15697, 17460, 17664, 17740, 19530, 21524,
+      22400, 25615, 25875, 26440, 26520, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(332)
+    expect(empty.length).toBe(330)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
