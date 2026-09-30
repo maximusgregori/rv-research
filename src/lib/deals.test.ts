@@ -288,11 +288,12 @@ describe("deal data", () => {
       "Sandpiper|3370RLS",
       "Sandstorm|2710",
       "Sanibel|34LOUNGE",
+      "Vengeance Rogue Armored|341GS11",
     ])
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(39)
+    expect(pricedForest).toHaveLength(40)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -346,7 +347,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(125)
+    expect(priced).toHaveLength(126)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -2977,6 +2978,65 @@ describe("deal data", () => {
             span.href ===
               "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Sanibel+34LOUNGE-5039661528" &&
             span.label === "RV Trader"
+        )
+    ).toBe(true)
+  })
+
+  it("applies Vengeance Rogue Armored 341GS11 ask and 2026 JDP trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Vengeance Rogue Armored" &&
+        row.floor === "341GS11" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 67328,
+      dealer: "Forest River RV Little Rock by Camping World, Sherwood, AR",
+      trade: 56835,
+      delta: 10493,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $67,328 RV Trader (Camping World Little Rock / Sherwood AR), 39.92 ft New 341GS11. RVT $69,999 was 40 ft (skipped); lowest RVT under-40 was $74,995. Trade = 2026 JDP Low Retail $63,150 × 0.9 = $56,835. Delta +$10,493."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.jdpower.com/rvs/2026/vengeance-by-forest-river/m-341gs11/6648531/values" &&
+            span.label === "JDP values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Forest+River-ROGUE+ARMORED+341GS11-5042059698" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvt.com/buy/details/2026-forest-river-vengeance-rogue-armored-341gs11/4d9e72af-95de-11ef-b575-12043a49ed9f/" &&
+            span.label === "RVT"
         )
     ).toBe(true)
   })
