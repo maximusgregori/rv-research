@@ -328,11 +328,12 @@ describe("deal data", () => {
       "Eagle|325MKTS",
       "Eagle|335LSTS",
       "Eagle|365UKTS",
+      "Eagle HT|25RUC",
     ])
     const pricedJayco = jayco.filter((deal) =>
       pricedJaycoKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedJayco).toHaveLength(5)
+    expect(pricedJayco).toHaveLength(6)
     const unpricedJayco = jayco.filter(
       (deal) => !pricedJaycoKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -369,7 +370,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(132)
+    expect(priced).toHaveLength(133)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -3545,6 +3546,81 @@ describe("deal data", () => {
     })
   })
 
+  it("applies Jayco Eagle HT 25RUC ask and 2026 JDP trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Jayco" &&
+        row.model === "Eagle HT" &&
+        row.floor === "25RUC" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 42911,
+      dealer: "Bish's RV – Center Point, Urbana, IA",
+      trade: 31185,
+      delta: 11726,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $42,911 Bish's RV Center Point Urbana IA via RV Trader; Trader length garbled (“357 ft”), Jayco official Exterior Length overall 29'9\". RVT CAPTCHA-blocked. Trade from 2026 JDP Low Retail $34,650 × 0.9 = $31,185 (Jayco Eagle HT Series M-25 RUC). Source: https://www.jdpower.com/rvs/2026/jayco/m-25-ruc/6648109/values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.jdpower.com/rvs/2026/jayco/m-25-ruc/6648109/values" &&
+            span.label === "JDP values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Jayco-Eagle+HT+25RUC-5040108553" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes.flat().some((span) => span.type === "link" && span.label === "RVT")
+    ).toBe(false)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Jayco" &&
+        row.model === "Eagle HT" &&
+        row.floor === "26REC" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(sibling?.notes).toEqual([])
+
+    const baseEagle = deals.find(
+      (row) =>
+        row.manufacturer === "Jayco" &&
+        row.model === "Eagle" &&
+        row.floor === "25RUC" &&
+        row.year === 2026
+    )
+    expect(baseEagle).toBeUndefined()
+  })
+
   it("applies Sanibel 34LOUNGE ask and 2026 JDP trade", () => {
     const deal = deals.find(
       (row) =>
@@ -4863,11 +4939,11 @@ describe("filters and sort", () => {
       659, 1163, 1340, 1609, 1665, 1919, 2089, 2535, 3005, 3080, 3195, 3435, 3498, 3570, 4103, 4310,
       4644, 4790, 4875, 4970, 5243, 5480, 5514, 5834, 5889, 5965, 6144, 6438, 6471, 6540,
       6554, 6735, 6900, 7201, 7294, 7370, 7709, 7980, 8010, 8356, 8784, 8790, 8828, 9034,
-      9073, 9314, 9794, 10050, 10308, 10493, 10708, 10859, 10859, 11385, 11736, 11884, 12283, 13013, 13013, 13075, 13165, 13584,
+      9073, 9314, 9794, 10050, 10308, 10493, 10708, 10859, 10859, 11385, 11726, 11736, 11884, 12283, 13013, 13013, 13075, 13165, 13584,
       14139, 14805, 15689, 15697, 16667, 16667, 17460, 17664, 17740, 17755, 19530, 21524, 22400, 22745, 22925, 23268, 25615, 25875,
       26440, 27222, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(299)
+    expect(empty.length).toBe(298)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
@@ -5085,13 +5161,26 @@ describe("filters and sort", () => {
     const rows = matching(deals, {
       manufacturer: "Jayco",
       year: "",
-      model: "Eagle HT",
+      model: "Eagle SLE",
     })
-    expect(rows).toHaveLength(8)
+    expect(rows).toHaveLength(4)
     expect(rows.every((deal) => deal.ask == null && deal.delta == null)).toBe(
       true
     )
     expect(rows.map((deal) => deal.floor)).toEqual([
+      "24MLE",
+      "28BHU",
+      "28RKS",
+      "30RLT",
+    ])
+
+    const eagleHt = matching(deals, {
+      manufacturer: "Jayco",
+      year: "",
+      model: "Eagle HT",
+    })
+    expect(eagleHt).toHaveLength(8)
+    expect(eagleHt.map((deal) => deal.floor)).toEqual([
       "25RUC",
       "26REC",
       "27MLC",
@@ -5101,6 +5190,16 @@ describe("filters and sort", () => {
       "30CRT",
       "31QCD",
     ])
+    expect(eagleHt.find((deal) => deal.floor === "25RUC")).toMatchObject({
+      ask: 42911,
+      trade: 31185,
+      delta: 11726,
+    })
+    expect(
+      eagleHt
+        .filter((deal) => deal.floor !== "25RUC")
+        .every((deal) => deal.ask == null && deal.delta == null)
+    ).toBe(true)
   })
 
   it("cascades Keystone models and keeps those rows unpriced", () => {
