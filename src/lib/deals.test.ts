@@ -290,11 +290,12 @@ describe("deal data", () => {
       "Sanibel|34LOUNGE",
       "Vengeance Rogue Armored|341GS11",
       "Wildcat|36FUN",
+      "Wildcat XL|30BAM",
     ])
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(41)
+    expect(pricedForest).toHaveLength(42)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -348,7 +349,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(127)
+    expect(priced).toHaveLength(128)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -3017,6 +3018,80 @@ describe("deal data", () => {
     expect(chefTwin?.notes).toEqual([])
   })
 
+  it("applies Wildcat XL 30BAM ask and leaves trade/delta blank", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Wildcat XL" &&
+        row.floor === "30BAM" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 64999,
+      dealer: "Ron Hoover RV & Marine – Georgetown, TX",
+      trade: null,
+      delta: null,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $64,999 RV Trader only (Ron Hoover RV & Marine – Georgetown, TX), 35 ft New 30BAM. RVT CAPTCHA blocked. Trade blank: verified JDP miss — no Wildcat XL 30BAM on 2026/2025 JDP (Maxx/One only; wildcat-xl paths 500). Do not invent a trade."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /verified JDP miss/i.test(span.text) &&
+            /no Wildcat XL 30BAM on 2026\/2025 JDP/i.test(span.text) &&
+            /Maxx\/One only/i.test(span.text) &&
+            /wildcat-xl paths 500/i.test(span.text)
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "RVT")
+    ).toBe(false)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Forest+River-Rv-Wildcat+XL+30BAM-5039555993" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+
+    const galley = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Wildcat" &&
+        row.floor === "37GALLEY" &&
+        row.year === 2026
+    )
+    expect(galley).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(galley?.notes).toEqual([])
+  })
+
   it("applies Sanibel 34LOUNGE ask and 2026 JDP trade", () => {
     const deal = deals.find(
       (row) =>
@@ -4160,6 +4235,12 @@ describe("deal data", () => {
         "36FUN",
         71990,
         "Family RV Center, Sweetwater, TX",
+      ],
+      [
+        "Wildcat XL",
+        "30BAM",
+        64999,
+        "Ron Hoover RV & Marine – Georgetown, TX",
       ],
     ] as const
     const verifiedMiss = new Set(["297MK", "235ML", "295RL"])
