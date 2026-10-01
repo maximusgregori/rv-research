@@ -315,7 +315,10 @@ describe("deal data", () => {
             !(deal.model === "Sabre" && deal.floor === "25RLS") &&
             !(
               deal.model === "Columbus River Ranch" && deal.floor === "394RKL"
-            )
+            ) &&
+            !(deal.model === "Sierra" && deal.floor === "3800RK") &&
+            !(deal.model === "Sierra" && deal.floor === "3900HBLR") &&
+            !(deal.model === "Sierra" && deal.floor === "4003MB")
         )
         .every(
           (deal) =>
@@ -372,6 +375,39 @@ describe("deal data", () => {
       delta: null,
     })
     expect(riverRanch394?.notes.length).toBeGreaterThan(0)
+    const sierra3800 = unpricedForest.find(
+      (deal) => deal.model === "Sierra" && deal.floor === "3800RK"
+    )
+    expect(sierra3800).toMatchObject({
+      year: 2026,
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(sierra3800?.notes.length).toBeGreaterThan(0)
+    const sierra3900 = unpricedForest.find(
+      (deal) => deal.model === "Sierra" && deal.floor === "3900HBLR"
+    )
+    expect(sierra3900).toMatchObject({
+      year: 2026,
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(sierra3900?.notes.length).toBeGreaterThan(0)
+    const sierra4003 = unpricedForest.find(
+      (deal) => deal.model === "Sierra" && deal.floor === "4003MB"
+    )
+    expect(sierra4003).toMatchObject({
+      year: 2026,
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(sierra4003?.notes.length).toBeGreaterThan(0)
 
     const jayco = deals.filter((deal) => deal.manufacturer === "Jayco")
     expect(jayco).toHaveLength(JAYCO_FIFTH_WHEELS.length)
@@ -3555,23 +3591,101 @@ describe("deal data", () => {
         )
     ).toBe(true)
 
-    const sierraTwins = deals.filter(
+    const sierra3710 = deals.find(
       (row) =>
         row.manufacturer === "Forest River" &&
         row.model === "Sierra" &&
-        row.floor !== "3370RLS" &&
+        row.floor === "3710HBFB" &&
         row.year === 2026
     )
-    expect(
-      sierraTwins.every(
+    expect(sierra3710).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(sierra3710?.notes).toEqual([])
+  })
+
+  it("records Forest River Sierra 3800RK, 3900HBLR, and 4003MB length-skip notes with no ask", () => {
+    const rows = [
+      {
+        floor: "3800RK",
+        note: "Length-skip: official Forest River Sierra exterior length 44 ft 1 in exceeds under-40-ft filter. Source: https://forestriverinc.com/rvs/print/sierra/3800RK/12044. No marketplace ask used.",
+        length: /44 ft 1 in/i,
+        source:
+          /https:\/\/forestriverinc\.com\/rvs\/print\/sierra\/3800RK\/12044/,
+      },
+      {
+        floor: "3900HBLR",
+        note: "Length-skip: official Forest River Sierra exterior length 42 ft 9 in exceeds under-40-ft filter. Source: https://forestriverinc.com/rvs/sierra-fifth-wheels/3900HBLR/12074. No marketplace ask used.",
+        length: /42 ft 9 in/i,
+        source:
+          /https:\/\/forestriverinc\.com\/rvs\/sierra-fifth-wheels\/3900HBLR\/12074/,
+      },
+      {
+        floor: "4003MB",
+        note: "Length-skip: official Forest River Sierra exterior length 42 ft 9 in exceeds under-40-ft filter. Source: https://forestriverinc.com/rvs/print/sierra/4003MB/12041. No marketplace ask used.",
+        length: /42 ft 9 in/i,
+        source:
+          /https:\/\/forestriverinc\.com\/rvs\/print\/sierra\/4003MB\/12041/,
+      },
+    ] as const
+
+    for (const expected of rows) {
+      const deal = deals.find(
         (row) =>
-          row.ask == null &&
-          row.trade == null &&
-          row.delta == null &&
-          row.dealer === "" &&
-          row.notes.length === 0
+          row.manufacturer === "Forest River" &&
+          row.model === "Sierra" &&
+          row.floor === expected.floor &&
+          row.year === 2026
       )
-    ).toBe(true)
+      expect(deal).toMatchObject({
+        ask: null,
+        dealer: "",
+        trade: null,
+        delta: null,
+      })
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) => span.type === "text" && span.text === expected.note
+          )
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "text" &&
+              /Length-skip/i.test(span.text) &&
+              /official Forest River Sierra exterior length/i.test(span.text) &&
+              expected.length.test(span.text) &&
+              /exceeds under-40-ft filter/i.test(span.text) &&
+              expected.source.test(span.text) &&
+              /No marketplace ask used/i.test(span.text)
+          )
+      ).toBe(true)
+      expect(deal?.notes.flat().some((span) => span.type === "link")).toBe(
+        false
+      )
+    }
+
+    const leftover = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Sierra" &&
+        row.floor === "3710HBFB" &&
+        row.year === 2026
+    )
+    expect(leftover).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(leftover?.notes).toEqual([])
   })
 
   it("applies Sandstorm 2710 ask and leaves trade/delta blank", () => {
