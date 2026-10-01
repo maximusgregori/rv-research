@@ -327,11 +327,12 @@ describe("deal data", () => {
       "Eagle|321RSTS",
       "Eagle|325MKTS",
       "Eagle|335LSTS",
+      "Eagle|365UKTS",
     ])
     const pricedJayco = jayco.filter((deal) =>
       pricedJaycoKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedJayco).toHaveLength(4)
+    expect(pricedJayco).toHaveLength(5)
     const unpricedJayco = jayco.filter(
       (deal) => !pricedJaycoKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -368,7 +369,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(131)
+    expect(priced).toHaveLength(132)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -3476,6 +3477,71 @@ describe("deal data", () => {
       dealer: "Crestview RV – Buda, Buda, TX",
       trade: 44190,
       delta: 14805,
+    })
+  })
+
+  it("applies Jayco Eagle 365UKTS ask and 2026 JDP trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Jayco" &&
+        row.model === "Eagle" &&
+        row.floor === "365UKTS" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 57598,
+      dealer: "Camping World, Georgetown, KY",
+      trade: 46890,
+      delta: 10708,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $57,598 Camping World Georgetown KY via RV Trader, 37.17 ft; RVT cross-check CAPTCHA-blocked. Trade from 2026 JDP Low Retail $52,100 × 0.9 = $46,890 (Jayco Eagle Series M-365 UKTS). Source: https://www.jdpower.com/rvs/2026/jayco/m-365-ukts/6648126/values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.jdpower.com/rvs/2026/jayco/m-365-ukts/6648126/values" &&
+            span.label === "JDP values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Jayco-EAGLE+365UKTS-5042061371" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes.flat().some((span) => span.type === "link" && span.label === "RVT")
+    ).toBe(false)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Jayco" &&
+        row.model === "Eagle" &&
+        row.floor === "335LSTS" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: 57198,
+      dealer: "Camping World, Dothan, AL",
+      trade: 46890,
+      delta: 10308,
     })
   })
 

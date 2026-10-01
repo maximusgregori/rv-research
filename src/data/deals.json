@@ -7761,11 +7761,38 @@
     "manufacturer": "Jayco",
     "model": "Eagle",
     "floor": "365UKTS",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 57598,
+    "dealer": "Camping World, Georgetown, KY",
+    "trade": 46890,
+    "delta": 10708,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Camping World, Georgetown, KY, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Jayco-EAGLE+365UKTS-5042061371",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $57,598 Camping World Georgetown KY via RV Trader, 37.17 ft; RVT cross-check CAPTCHA-blocked. Trade from 2026 JDP Low Retail $52,100 \u00d7 0.9 = $46,890 (Jayco Eagle Series M-365 UKTS). Source: https://www.jdpower.com/rvs/2026/jayco/m-365-ukts/6648126/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/jayco/m-365-ukts/6648126/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
