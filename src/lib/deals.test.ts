@@ -439,6 +439,7 @@ describe("deal data", () => {
       unpricedKeystone
         .filter(
           (deal) =>
+            !(deal.model === "Avalanche" && deal.floor === "302RS") &&
             !(deal.model === "Montana" && deal.floor === "295RL") &&
             !(deal.model === "Sprinter" && deal.floor === "3900DBL")
         )
@@ -452,6 +453,17 @@ describe("deal data", () => {
             deal.notes.length === 0
         )
     ).toBe(true)
+    const avalanche302 = unpricedKeystone.find(
+      (deal) => deal.model === "Avalanche" && deal.floor === "302RS"
+    )
+    expect(avalanche302).toMatchObject({
+      year: 2026,
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(avalanche302?.notes.length).toBeGreaterThan(0)
     const montana295 = unpricedKeystone.find(
       (deal) => deal.model === "Montana" && deal.floor === "295RL"
     )
@@ -5606,7 +5618,7 @@ describe("deal data", () => {
       trade: null,
       delta: null,
     })
-    expect(sibling?.notes).toEqual([])
+    expect(sibling?.notes.length).toBeGreaterThan(0)
 
     const nextCougar = deals.find(
       (row) =>
@@ -5630,6 +5642,74 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(baseAlpine).toBeUndefined()
+  })
+
+  it("records Keystone Avalanche 302RS notes with no ask after Alpine Avalanche Edition-only listings", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Avalanche" &&
+        row.floor === "302RS" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Checked, no organic New 2026 base Avalanche 302RS: RV Trader Dover $67,999 (https://www.rvtrader.com/listing/2026-Keystone+Rv-AVALANCHE+302RS-5037847973#sid=405516) and Turlock $74,995 (https://www.rvtrader.com/listing/2026-Keystone+Rv-Alpine+Avalanche+Edition+302RS-5037397375#sid=742742) are Alpine Avalanche Edition on detail; RVT Turlock $74,995 same Alpine Avalanche Edition. Ask left blank."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /no organic New 2026 base Avalanche 302RS/i.test(span.text) &&
+            /Alpine Avalanche Edition on detail/i.test(span.text) &&
+            /Ask left blank/i.test(span.text)
+        )
+    ).toBe(true)
+    expect(deal?.notes.flat().some((span) => span.type === "link")).toBe(false)
+
+    const editionTwin = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Alpine Avalanche Edition" &&
+        row.floor === "321RL" &&
+        row.year === 2026
+    )
+    expect(editionTwin).toMatchObject({
+      ask: 66988,
+      dealer: "RV Roadway, Calera, AL",
+      trade: 51615,
+      delta: 15373,
+    })
+    expect(editionTwin?.notes.length).toBeGreaterThan(0)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Avalanche" &&
+        row.floor === "321RL" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: 76995,
+      dealer: "Bish's RV – Anderson, IN, Anderson, IN",
+      trade: null,
+      delta: null,
+    })
+    expect(sibling?.notes.length).toBeGreaterThan(0)
   })
 
   it("applies Keystone Arcadia 3260RL ask and 2026 JDP trade", () => {
@@ -6488,7 +6568,7 @@ describe("deal data", () => {
       trade: null,
       delta: null,
     })
-    expect(nextBlank?.notes).toEqual([])
+    expect(nextBlank?.notes.length).toBeGreaterThan(0)
 
     const baseArcadia = deals.find(
       (row) =>
@@ -6725,7 +6805,7 @@ describe("deal data", () => {
       trade: null,
       delta: null,
     })
-    expect(nextBlank?.notes).toEqual([])
+    expect(nextBlank?.notes.length).toBeGreaterThan(0)
 
     const priorPriced = deals.find(
       (row) =>
@@ -6851,7 +6931,7 @@ describe("deal data", () => {
       trade: null,
       delta: null,
     })
-    expect(nextBlank?.notes).toEqual([])
+    expect(nextBlank?.notes.length).toBeGreaterThan(0)
 
     const stillBlank = deals.find(
       (row) =>
@@ -14099,6 +14179,9 @@ describe("filters and sort", () => {
       trade: null,
       delta: null,
     })
+    expect(
+      avalanche.find((deal) => deal.floor === "302RS")?.notes.length
+    ).toBeGreaterThan(0)
 
     const arcadia = matching(deals, {
       manufacturer: "Keystone",
