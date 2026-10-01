@@ -310,7 +310,8 @@ describe("deal data", () => {
               deal.model === "Cherokee Arctic Wolf" &&
               deal.floor === "3550 SUITE"
             ) &&
-            !(deal.model === "Cedar Creek" && deal.floor === "39RKB")
+            !(deal.model === "Cedar Creek" && deal.floor === "39RKB") &&
+            !(deal.model === "Sabre" && deal.floor === "25RLS")
         )
         .every(
           (deal) =>
@@ -345,6 +346,17 @@ describe("deal data", () => {
       delta: null,
     })
     expect(cedarCreek39?.notes.length).toBeGreaterThan(0)
+    const sabre25 = unpricedForest.find(
+      (deal) => deal.model === "Sabre" && deal.floor === "25RLS"
+    )
+    expect(sabre25).toMatchObject({
+      year: 2026,
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(sabre25?.notes.length).toBeGreaterThan(0)
 
     const jayco = deals.filter((deal) => deal.manufacturer === "Jayco")
     expect(jayco).toHaveLength(JAYCO_FIFTH_WHEELS.length)
@@ -1690,6 +1702,62 @@ describe("deal data", () => {
     expect(sibling?.notes.length).toBeGreaterThan(0)
   })
 
+  it("records Forest River Sabre 25RLS none-found notes with no ask", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Sabre" &&
+        row.floor === "25RLS" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Checked, no numeric New 2026 Sabre 25RLS ask: RV Trader Call for price (https://www.rvtrader.com/listing/2026-Forest+River+Rv-Sabre+25RLS-5038627825) and RVT open to offers (https://www.rvt.com/buy/details/2026-forest-river-sabre-25rls/3c7f29f5-d05a-11f0-beaa-02c8259c7411/) both Price Right RV Sterling Heights MI; detail length 29 ft under cut. Ask left blank."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /no numeric New 2026 Sabre 25RLS ask/i.test(span.text) &&
+            /RV Trader Call for price/i.test(span.text) &&
+            /RVT open to offers/i.test(span.text) &&
+            /Price Right RV Sterling Heights MI/i.test(span.text) &&
+            /detail length 29 ft under cut/i.test(span.text) &&
+            /Ask left blank/i.test(span.text)
+        )
+    ).toBe(true)
+    expect(deal?.notes.flat().some((span) => span.type === "link")).toBe(false)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Sabre" &&
+        row.floor === "32GKS" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: 54981,
+      dealer: "Pete’s RV Center–Indiana, Schererville, IN",
+      trade: 48510,
+      delta: 6471,
+    })
+    expect(sibling?.notes.length).toBeGreaterThan(0)
+  })
+
   it("applies Crusader KING33 ask and 2026 JDP trade", () => {
     const deal = deals.find(
       (row) =>
@@ -2898,7 +2966,7 @@ describe("deal data", () => {
       trade: null,
       delta: null,
     })
-    expect(unpricedSibling?.notes).toEqual([])
+    expect(unpricedSibling?.notes.length).toBeGreaterThan(0)
     const pricedSibling = siblings.find((row) => row.floor === "33RLP")
     expect(pricedSibling).toMatchObject({
       ask: 59498,
@@ -2964,7 +3032,7 @@ describe("deal data", () => {
       trade: null,
       delta: null,
     })
-    expect(unpricedSibling?.notes).toEqual([])
+    expect(unpricedSibling?.notes.length).toBeGreaterThan(0)
     const pricedSibling = siblings.find((row) => row.floor === "32GKS")
     expect(pricedSibling).toMatchObject({
       ask: 54981,
