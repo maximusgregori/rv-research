@@ -9131,11 +9131,47 @@
     "manufacturer": "Keystone",
     "model": "Cougar",
     "floor": "260MLE",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 55900,
+    "dealer": "Marlette RV, Marlette, MI",
+    "trade": 44505,
+    "delta": 11395,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Marlette RV, Marlette, MI, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone+Rv-Cougar+260MLE-5040294058",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-keystone-cougar-260mle/9a7b50e8-4469-11f1-adcf-02f5bff6b341/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $55,900 Marlette RV, Marlette, MI via RV Trader (30 ft); RVT direct listing also $55,900 (Marlette); search CAPTCHA skipped. Featured/Premium excluded. Verified base Cougar (not Half-Ton/Sport). 2026 JDP Low Retail $49,450 → trade $44,505. Trade from 2026 JDP Low Retail $49,450 × 0.9 = $44,505. Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-260-mle/6646956/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/keystone-rv/m-260-mle/6646956/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
