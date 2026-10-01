@@ -7490,11 +7490,18 @@
     "manufacturer": "Forest River",
     "model": "Flagstaff Classic",
     "floor": "301RKS",
-    "ask": null,
+    "ask": 52981,
     "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "trade": 39105,
+    "delta": 13876,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Ask $52,981 Keystone RV Center Greencastle PA (RV Trader + RVT). Trade: 2026 Flagstaff Classic M-301RKS JDP Low Retail $43,450 \u00d70.9=$39,105."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,

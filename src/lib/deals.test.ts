@@ -296,11 +296,12 @@ describe("deal data", () => {
       "Wildcat XL|30BAM",
       "Flagstaff Classic|281RK",
       "Flagstaff Classic|290CFK",
+      "Flagstaff Classic|301RKS",
     ])
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(47)
+    expect(pricedForest).toHaveLength(48)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -599,7 +600,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(211)
+    expect(priced).toHaveLength(212)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -2496,6 +2497,68 @@ describe("deal data", () => {
     ).toBe(true)
   })
 
+  it("applies Flagstaff Classic 301RKS ask and 2026 JDP trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Flagstaff Classic" &&
+        row.floor === "301RKS" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 52981,
+      dealer: "",
+      trade: 39105,
+      delta: 13876,
+    })
+    expect(deal?.model).toBe("Flagstaff Classic")
+    expect(deal?.floor).toBe("301RKS")
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $52,981 Keystone RV Center Greencastle PA (RV Trader + RVT). Trade: 2026 Flagstaff Classic M-301RKS JDP Low Retail $43,450 ×0.9=$39,105."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /Ask \$52,981 Keystone RV Center Greencastle PA/i.test(span.text) &&
+            /RV Trader \+ RVT/i.test(span.text) &&
+            /Trade: 2026 Flagstaff Classic M-301RKS JDP Low Retail \$43,450 ×0\.9=\$39,105/i.test(
+              span.text
+            )
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(deal?.notes.flat().some((span) => span.type === "link")).toBe(false)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Flagstaff Classic" &&
+        row.floor === "331RL" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(sibling?.notes).toEqual([])
+  })
+
   it("applies Rockwood Signature 282RK ask and 2026 JDP trade", () => {
     const deal = deals.find(
       (row) =>
@@ -2753,12 +2816,21 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(flagstaff).toMatchObject({
-      ask: null,
+      ask: 52981,
       dealer: "",
-      trade: null,
-      delta: null,
+      trade: 39105,
+      delta: 13876,
     })
-    expect(flagstaff?.notes).toEqual([])
+    expect(
+      flagstaff?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $52,981 Keystone RV Center Greencastle PA (RV Trader + RVT). Trade: 2026 Flagstaff Classic M-301RKS JDP Low Retail $43,450 ×0.9=$39,105."
+        )
+    ).toBe(true)
 
     const twin = deals.find(
       (row) =>
@@ -14604,10 +14676,10 @@ describe("filters and sort", () => {
       4644, 4790, 4875, 4970, 5127, 5178, 5243, 5244, 5385, 5386, 5480, 5514, 5774, 5834, 5889, 5890, 5965, 6144, 6414, 6438, 6471, 6540,
       6554, 6735, 6783, 6900, 7061, 7201, 7294, 7370, 7709, 7811, 7840, 7980, 8010, 8010, 8356, 8670, 8784, 8790, 8814, 8828, 9034,
       9073, 9294, 9314, 9324, 9692, 9794, 9835, 9864, 9865, 9877, 10050, 10308, 10414, 10421, 10493, 10589, 10708, 10859, 10859, 10984, 11385, 11395, 11413, 11685, 11726, 11736, 11884, 12053, 12223, 12283, 12650, 12650, 12731, 12745, 13013, 13013, 13019, 13075, 13165, 13194, 13360, 13584,
-      14139, 14370, 14805, 15072, 15173, 15373, 15379, 15689, 15697, 15863, 16095, 16193, 16546, 16667, 16667, 16859, 16898, 17460, 17577, 17664, 17740, 17755, 18228, 18256, 18256, 19410, 19530, 21524, 21793, 22400, 22745, 22925, 23268, 25615, 25745, 25875,
+      13876, 14139, 14370, 14805, 15072, 15173, 15373, 15379, 15689, 15697, 15863, 16095, 16193, 16546, 16667, 16667, 16859, 16898, 17460, 17577, 17664, 17740, 17755, 18228, 18256, 18256, 19410, 19530, 21524, 21793, 22400, 22745, 22925, 23268, 25615, 25745, 25875,
       26440, 27222, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(239)
+    expect(empty.length).toBe(238)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
@@ -14757,7 +14829,7 @@ describe("filters and sort", () => {
     })
   })
 
-  it("cascades Forest River models and prices Flagstaff Classic 281RK, 282RK, F282RK, and 290CFK", () => {
+  it("cascades Forest River models and prices Flagstaff Classic 281RK, 282RK, F282RK, 290CFK, and 301RKS", () => {
     const options = filterOptions(deals, {
       manufacturer: "Forest River",
       year: "",
@@ -14806,6 +14878,12 @@ describe("filters and sort", () => {
       trade: 43605,
       delta: 12223,
     })
+    expect(rows.find((deal) => deal.floor === "301RKS")).toMatchObject({
+      ask: 52981,
+      dealer: "",
+      trade: 39105,
+      delta: 13876,
+    })
     expect(
       rows
         .filter(
@@ -14813,7 +14891,8 @@ describe("filters and sort", () => {
             deal.floor !== "281RK" &&
             deal.floor !== "282RK" &&
             deal.floor !== "F282RK" &&
-            deal.floor !== "290CFK"
+            deal.floor !== "290CFK" &&
+            deal.floor !== "301RKS"
         )
         .every((deal) => deal.ask == null && deal.delta == null)
     ).toBe(true)
