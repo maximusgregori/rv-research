@@ -9093,11 +9093,38 @@
     "manufacturer": "Keystone",
     "model": "Cougar",
     "floor": "24RDS",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 43434,
+    "dealer": "Camping World (San Diego, CA), San Diego, CA",
+    "trade": 34110,
+    "delta": 9324,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Camping World (San Diego, CA), San Diego, CA, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone-COUGAR+24RDS-5042060579",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $43,434 Camping World (San Diego, CA), San Diego, CA via RV Trader (28.83 ft); RVT CAPTCHA-blocked; Trader-only. Featured/Premium excluded. Verified base Cougar (not Half-Ton/Sport). 2026 JDP Low Retail $37,900 → trade $34,110. Trade from 2026 JDP Low Retail $37,900 × 0.9 = $34,110. Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-24-rds/6646965/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/keystone-rv/m-24-rds/6646965/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
