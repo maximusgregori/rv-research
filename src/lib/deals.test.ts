@@ -3617,7 +3617,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Jayco" &&
         row.model === "Eagle HT" &&
-        row.floor === "29DDB" &&
+        row.floor === "29RLC" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
