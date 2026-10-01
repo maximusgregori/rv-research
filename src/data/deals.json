@@ -9784,11 +9784,33 @@
     "manufacturer": "Keystone",
     "model": "Cougar Half-Ton",
     "floor": "30REP",
-    "ask": null,
-    "dealer": "",
+    "ask": 56900,
+    "dealer": "Marlette RV, Marlette, MI",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Marlette RV, Marlette, MI, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone+Rv-Cougar+Half-Ton+30REP-5040379839",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $56,900 Marlette RV, Marlette, MI via RV Trader (34 ft). Ask only. RVT CAPTCHA-blocked; Trader-only (indexed RVT $59,999+). Featured/Premium excluded. Verified Half-Ton (not base/Sport). Checked, no JDP comparable: no 2026/2025 Cougar Half-Ton or base Cougar M-30 REP entry — trade left blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
