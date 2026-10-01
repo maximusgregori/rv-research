@@ -9875,6 +9875,12 @@ describe("deal data", () => {
         44995,
         "Alpin Haus - Orange County, Middletown, NY",
       ],
+      [
+        "Cougar Half-Ton",
+        "26RES",
+        39981,
+        "Holman Motors, Inc., Batavia, OH",
+      ],
     ] as const
     const verifiedMiss = new Set(["297MK", "235ML", "295RL"])
     const askNoTrade = deals.filter(
