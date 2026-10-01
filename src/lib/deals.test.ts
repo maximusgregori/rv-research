@@ -386,11 +386,12 @@ describe("deal data", () => {
       "Arcadia Super Lite|294SLRD",
       "Arcadia Super Lite|308SLBH",
       "Avalanche|321RL",
+      "Cougar|24RDS",
     ])
     const pricedKeystone = keystone.filter((deal) =>
       pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedKeystone).toHaveLength(18)
+    expect(pricedKeystone).toHaveLength(19)
     const unpricedKeystone = keystone.filter(
       (deal) => !pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -410,7 +411,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(164)
+    expect(priced).toHaveLength(165)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -5539,20 +5540,19 @@ describe("deal data", () => {
     })
     expect(sibling?.notes).toEqual([])
 
-    const nextBlank = deals.find(
+    const nextCougar = deals.find(
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Cougar" &&
         row.floor === "24RDS" &&
         row.year === 2026
     )
-    expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+    expect(nextCougar).toMatchObject({
+      ask: 43434,
+      dealer: "Camping World (San Diego, CA), San Diego, CA",
+      trade: 34110,
+      delta: 9324,
     })
-    expect(nextBlank?.notes).toEqual([])
 
     const baseAlpine = deals.find(
       (row) =>
@@ -6856,6 +6856,129 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(selectTwin).toBeUndefined()
+  })
+
+  it("applies Keystone Cougar 24RDS ask and 2026 JDP trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar" &&
+        row.floor === "24RDS" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 43434,
+      dealer: "Camping World (San Diego, CA), San Diego, CA",
+      trade: 34110,
+      delta: 9324,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $43,434 Camping World (San Diego, CA), San Diego, CA via RV Trader (28.83 ft); RVT CAPTCHA-blocked; Trader-only. Featured/Premium excluded. Verified base Cougar (not Half-Ton/Sport). 2026 JDP Low Retail $37,900 → trade $34,110. Trade from 2026 JDP Low Retail $37,900 × 0.9 = $34,110. Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-24-rds/6646965/values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.jdpower.com/rvs/2026/keystone-rv/m-24-rds/6646965/values" &&
+            span.label === "JDP values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Keystone-COUGAR+24RDS-5042060579" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes.flat().some((span) => span.type === "link" && span.label === "RVT")
+    ).toBe(false)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Avalanche" &&
+        row.floor === "321RL" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: 76995,
+      dealer: "Bish's RV – Anderson, IN, Anderson, IN",
+      trade: null,
+      delta: null,
+    })
+
+    const nextBlank = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar" &&
+        row.floor === "260MLE" &&
+        row.year === 2026
+    )
+    expect(nextBlank).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(nextBlank?.notes).toEqual([])
+
+    const halfTonTwin = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar Half-Ton" &&
+        row.floor === "24RDS" &&
+        row.year === 2026
+    )
+    expect(halfTonTwin).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(halfTonTwin?.notes).toEqual([])
+
+    const sportTwin = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar Sport" &&
+        row.floor === "24RDS" &&
+        row.year === 2026
+    )
+    expect(sportTwin).toBeUndefined()
+
+    const otherCougar = deals.filter(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar" &&
+        row.year === 2026
+    )
+    expect(
+      otherCougar
+        .filter((row) => row.floor !== "24RDS")
+        .every(
+          (row) =>
+            row.ask == null &&
+            row.trade == null &&
+            row.delta == null &&
+            row.dealer === "" &&
+            row.notes.length === 0
+        )
+    ).toBe(true)
   })
 
   it("applies Sanibel 34LOUNGE ask and 2026 JDP trade", () => {
@@ -8182,11 +8305,11 @@ describe("filters and sort", () => {
       659, 1163, 1340, 1609, 1665, 1919, 2089, 2535, 3005, 3080, 3149, 3185, 3195, 3435, 3498, 3570, 4103, 4310,
       4644, 4790, 4875, 4970, 5127, 5243, 5385, 5386, 5480, 5514, 5774, 5834, 5889, 5890, 5965, 6144, 6414, 6438, 6471, 6540,
       6554, 6735, 6900, 7201, 7294, 7370, 7709, 7811, 7840, 7980, 8010, 8356, 8670, 8784, 8790, 8814, 8828, 9034,
-      9073, 9314, 9794, 9835, 9865, 9877, 10050, 10308, 10493, 10708, 10859, 10859, 11385, 11413, 11726, 11736, 11884, 12053, 12283, 12731, 12745, 13013, 13013, 13019, 13075, 13165, 13584,
+      9073, 9314, 9324, 9794, 9835, 9865, 9877, 10050, 10308, 10493, 10708, 10859, 10859, 11385, 11413, 11726, 11736, 11884, 12053, 12283, 12731, 12745, 13013, 13013, 13019, 13075, 13165, 13584,
       14139, 14370, 14805, 15072, 15373, 15379, 15689, 15697, 16193, 16667, 16667, 16859, 16898, 17460, 17664, 17740, 17755, 18256, 18256, 19530, 21524, 21793, 22400, 22745, 22925, 23268, 25615, 25875,
       26440, 27222, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(268)
+    expect(empty.length).toBe(267)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
@@ -8808,9 +8931,17 @@ describe("filters and sort", () => {
       model: "Cougar",
     })
     expect(rows).toHaveLength(11)
-    expect(rows.every((deal) => deal.ask == null && deal.delta == null)).toBe(
-      true
-    )
+    expect(rows.find((deal) => deal.floor === "24RDS")).toMatchObject({
+      ask: 43434,
+      dealer: "Camping World (San Diego, CA), San Diego, CA",
+      trade: 34110,
+      delta: 9324,
+    })
+    expect(
+      rows
+        .filter((deal) => deal.floor !== "24RDS")
+        .every((deal) => deal.ask == null && deal.delta == null)
+    ).toBe(true)
     expect(rows.map((deal) => deal.floor)).toEqual([
       "24RDS",
       "260MLE",
