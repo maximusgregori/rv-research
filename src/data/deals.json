@@ -8074,11 +8074,38 @@
     "manufacturer": "Jayco",
     "model": "Eagle HT",
     "floor": "31QCD",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 50050,
+    "dealer": "CW Direct By Camping World, Elkhart, IN",
+    "trade": 37305,
+    "delta": 12745,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was CW Direct By Camping World, Elkhart, IN, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Jayco-EAGLE+HT+31QCD-5042061420",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $50,050 CW Direct Camping World Elkhart IN via RV Trader, 36.67 ft; RVT CAPTCHA-blocked. Trade from 2026 JDP Low Retail $41,450 \u00d7 0.9 = $37,305 (Jayco Eagle HT Series M-31 QCD). Source: https://www.jdpower.com/rvs/2026/jayco/m-31-qcd/6648116/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/jayco/m-31-qcd/6648116/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
