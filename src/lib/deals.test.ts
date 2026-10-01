@@ -390,7 +390,7 @@ describe("deal data", () => {
     const pricedKeystone = keystone.filter((deal) =>
       pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedKeystone).toHaveLength(17)
+    expect(pricedKeystone).toHaveLength(18)
     const unpricedKeystone = keystone.filter(
       (deal) => !pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -410,7 +410,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(163)
+    expect(priced).toHaveLength(164)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
