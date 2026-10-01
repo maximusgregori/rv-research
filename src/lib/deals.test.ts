@@ -429,7 +429,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(182)
+    expect(priced).toHaveLength(183)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -10555,6 +10555,12 @@ describe("deal data", () => {
         "29MBD",
         49966,
         "Camping World, Roscoe, IL",
+      ],
+      [
+        "Cougar Half-Ton",
+        "29RLI",
+        53998,
+        "Leach Camper Sales of Lincoln, Lincoln, NE",
       ],
     ] as const
     const verifiedMiss = new Set(["297MK", "235ML", "295RL"])
