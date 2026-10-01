@@ -10278,11 +10278,33 @@
     "manufacturer": "Keystone",
     "model": "Montana High Country",
     "floor": "295RL",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 59999,
+    "dealer": "Buckeye RV Wilmington, Wilmington, OH",
+    "trade": 49410,
+    "delta": 10589,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Buckeye RV Wilmington, Wilmington, OH, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone-MONTANA+HIGH+COUNTRY+295RL-5037019504",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Organic New High Country 295RL; 34 ft; RVT image CAPTCHA blocked cross-check. Trade from real 2026 Montana High Country Series M-295 RL Low Retail $54,900 \u00d7 0.9."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
