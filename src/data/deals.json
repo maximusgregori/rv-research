@@ -10311,11 +10311,33 @@
     "manufacturer": "Keystone",
     "model": "Montana High Country",
     "floor": "300RK",
-    "ask": null,
-    "dealer": "",
+    "ask": 78989,
+    "dealer": "Buckeye RV Wilmington, Wilmington, OH",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Buckeye RV Wilmington, Wilmington, OH, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone-MONTANA+HIGH+COUNTRY+300RK-5040643469",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Organic New High Country 300RK; 34.92 ft; RVT human-verification blocked cross-check. Trade blank: verified JDP miss — no 2026 or 2025 Montana High Country M-300 RK/300RK (2025 direct URL 404); base Montana not used as proxy."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
