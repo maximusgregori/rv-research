@@ -9685,11 +9685,33 @@
     "manufacturer": "Keystone",
     "model": "Cougar Half-Ton",
     "floor": "28RLI",
-    "ask": null,
-    "dealer": "",
+    "ask": 51997,
+    "dealer": "Camping World, Akron, OH",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Camping World, Akron, OH, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone-COUGAR+28RLI-5042068484",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $51,997 Camping World, Akron, OH via RV Trader (32.67 ft). Ask only. RVT CAPTCHA-blocked; Trader-only. Featured Colbert skipped. Featured/Premium excluded. Verified Half-Ton via filter (not base/Sport). Checked, no JDP comparable: 2026 M-28 RLI labeled Cougar Series only; 2025 no Half-Ton entry \u2014 wrong-line proxy excluded."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
