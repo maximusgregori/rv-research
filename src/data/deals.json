@@ -9553,11 +9553,33 @@
     "manufacturer": "Keystone",
     "model": "Cougar Half-Ton",
     "floor": "24RDS",
-    "ask": null,
-    "dealer": "",
+    "ask": 44995,
+    "dealer": "Alpin Haus - Orange County, Middletown, NY",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Alpin Haus - Orange County, Middletown, NY, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone+Rv-Cougar+Half-Ton+24RDS-5039502633",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $44,995 Alpin Haus - Orange County, Middletown, NY via RV Trader (28 ft). Ask only. RVT CAPTCHA-blocked; Trader-only. Featured/Premium excluded. Verified Half-Ton (not base/Sport). Checked, no JDP comparable: 2026/2025 M-24 RDS exists only as base Cougar Series — wrong-line proxy excluded."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
