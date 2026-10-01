@@ -8300,11 +8300,47 @@
     "manufacturer": "Jayco",
     "model": "North Point",
     "floor": "310RLTS",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 77798,
+    "dealer": "Camping World, Georgetown, KY",
+    "trade": 61605,
+    "delta": 16193,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Camping World, Georgetown, KY, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Jayco-NORTH+POINT+310RLTS-5042061094",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-jayco-north-point-310rlts/7e00aeb6-ad11-11f1-84c9-020f812d825b/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $77,798 Camping World Georgetown KY via RV Trader + RVT (same inventory, 36 ft; Jayco official 36'0\"). Excluded featured $79,991/$82,999 and sold listings. Trade from 2026 JDP Low Retail $68,450 × 0.9 = $61,605 (Jayco North Point Series M-310 RLTS). Source: https://www.jdpower.com/rvs/2026/jayco/m-310-rlts/6648129/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/jayco/m-310-rlts/6648129/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
