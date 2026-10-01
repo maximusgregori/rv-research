@@ -298,13 +298,14 @@ describe("deal data", () => {
       "Flagstaff Classic|290CFK",
       "Flagstaff Classic|301RKS",
       "Flagstaff Classic|331RL",
+      "Flagstaff Classic|361RLS",
       "Flagstaff Classic|371RK",
       "Flagstaff Classic|374DBH",
     ])
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(51)
+    expect(pricedForest).toHaveLength(52)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -603,7 +604,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(215)
+    expect(priced).toHaveLength(216)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -2550,7 +2551,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Forest River" &&
         row.model === "Flagstaff Classic" &&
-        row.floor === "361RLS" &&
+        row.floor === "372RL" &&
         row.year === 2026
     )
     expect(sibling).toMatchObject({
@@ -2612,7 +2613,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Forest River" &&
         row.model === "Flagstaff Classic" &&
-        row.floor === "361RLS" &&
+        row.floor === "372RL" &&
         row.year === 2026
     )
     expect(sibling).toMatchObject({
@@ -3342,12 +3343,83 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(flagstaff).toMatchObject({
+      ask: 61698,
+      dealer: "",
+      trade: 49320,
+      delta: 12378,
+    })
+    expect(
+      flagstaff?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $61,698 Camping World St. Augustine FL (RV Trader; RVT lowest $64,877). Trade: 2026 Flagstaff Classic M-361RLS JDP Low Retail $54,800 ×0.9=$49,320."
+        )
+    ).toBe(true)
+  })
+
+  it("applies Flagstaff Classic 361RLS ask and 2026 JDP trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Flagstaff Classic" &&
+        row.floor === "361RLS" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 61698,
+      dealer: "",
+      trade: 49320,
+      delta: 12378,
+    })
+    expect(deal?.model).toBe("Flagstaff Classic")
+    expect(deal?.floor).toBe("361RLS")
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $61,698 Camping World St. Augustine FL (RV Trader; RVT lowest $64,877). Trade: 2026 Flagstaff Classic M-361RLS JDP Low Retail $54,800 ×0.9=$49,320."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /Ask \$61,698 Camping World St\. Augustine FL/i.test(span.text) &&
+            /RV Trader; RVT lowest \$64,877/i.test(span.text) &&
+            /Trade: 2026 Flagstaff Classic M-361RLS JDP Low Retail \$54,800 ×0\.9=\$49,320/i.test(
+              span.text
+            )
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(deal?.notes.flat().some((span) => span.type === "link")).toBe(false)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Flagstaff Classic" &&
+        row.floor === "372RL" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
       ask: null,
       dealer: "",
       trade: null,
       delta: null,
     })
-    expect(flagstaff?.notes).toEqual([])
+    expect(sibling?.notes).toEqual([])
   })
 
   it("applies Rockwood Signature 371RK ask and 2026 JDP trade", () => {
@@ -14918,11 +14990,11 @@ describe("filters and sort", () => {
       659, 1163, 1340, 1609, 1665, 1919, 2089, 2535, 3005, 3080, 3149, 3185, 3195,       3435, 3498, 3570, 4103, 4310, 4552,
       4644, 4790, 4875, 4970, 5127, 5178, 5243, 5244, 5385, 5386, 5480, 5514, 5774, 5834, 5889, 5890, 5965, 6144, 6414, 6438, 6471, 6540,
       6554, 6735, 6783, 6900, 7061, 7201, 7294, 7370, 7709, 7811, 7840, 7980, 8010, 8010, 8356, 8670, 8784, 8790, 8814, 8828, 9034,
-      9073, 9294, 9314, 9324, 9692, 9794, 9835, 9864, 9865, 9877, 9960, 10050, 10308, 10414, 10421, 10493, 10589, 10708, 10859, 10859, 10984, 11385, 11395, 11413, 11685, 11726, 11736, 11884, 12053, 12223, 12283, 12650, 12650, 12731, 12745, 13013, 13013, 13019, 13075, 13165, 13194, 13360, 13584,
+      9073, 9294, 9314, 9324, 9692, 9794, 9835, 9864, 9865, 9877, 9960, 10050, 10308, 10414, 10421, 10493, 10589, 10708, 10859, 10859, 10984, 11385, 11395, 11413, 11685, 11726, 11736, 11884, 12053, 12223, 12283, 12378, 12650, 12650, 12731, 12745, 13013, 13013, 13019, 13075, 13165, 13194, 13360, 13584,
       13876, 14139, 14370, 14805, 15072, 15173, 15373, 15379, 15689, 15697, 15863, 16095, 16193, 16546, 16667, 16667, 16750, 16859, 16885, 16898, 17460, 17577, 17664, 17740, 17755, 18228, 18256, 18256, 19410, 19530, 21524, 21793, 22400, 22745, 22925, 23268, 25615, 25745, 25875,
       26440, 27222, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(235)
+    expect(empty.length).toBe(234)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
@@ -15072,7 +15144,7 @@ describe("filters and sort", () => {
     })
   })
 
-  it("cascades Forest River models and prices Flagstaff Classic 281RK, 282RK, F282RK, 290CFK, 301RKS, 331RL, 371RK, and 374DBH", () => {
+  it("cascades Forest River models and prices Flagstaff Classic 281RK, 282RK, F282RK, 290CFK, 301RKS, 331RL, 361RLS, 371RK, and 374DBH", () => {
     const options = filterOptions(deals, {
       manufacturer: "Forest River",
       year: "",
@@ -15133,6 +15205,12 @@ describe("filters and sort", () => {
       trade: 46035,
       delta: 9960,
     })
+    expect(rows.find((deal) => deal.floor === "361RLS")).toMatchObject({
+      ask: 61698,
+      dealer: "",
+      trade: 49320,
+      delta: 12378,
+    })
     expect(rows.find((deal) => deal.floor === "371RK")).toMatchObject({
       ask: 64990,
       dealer: "",
@@ -15155,6 +15233,7 @@ describe("filters and sort", () => {
             deal.floor !== "290CFK" &&
             deal.floor !== "301RKS" &&
             deal.floor !== "331RL" &&
+            deal.floor !== "361RLS" &&
             deal.floor !== "371RK" &&
             deal.floor !== "374DBH"
         )
