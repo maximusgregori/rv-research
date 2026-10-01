@@ -372,11 +372,12 @@ describe("deal data", () => {
       "Alpine|3100 RE",
       "Alpine|3100RE",
       "Alpine|3303CK",
+      "Alpine Avalanche Edition|321RL",
     ])
     const pricedKeystone = keystone.filter((deal) =>
       pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedKeystone).toHaveLength(4)
+    expect(pricedKeystone).toHaveLength(5)
     const unpricedKeystone = keystone.filter(
       (deal) => !pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -396,7 +397,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(150)
+    expect(priced).toHaveLength(151)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -3639,7 +3640,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Alpine Avalanche Edition" &&
-        row.floor === "321RL" &&
+        row.floor === "338GK" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -3912,7 +3913,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Alpine Avalanche Edition" &&
-        row.floor === "321RL" &&
+        row.floor === "338GK" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -4094,7 +4095,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Alpine Avalanche Edition" &&
-        row.floor === "321RL" &&
+        row.floor === "338GK" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -4183,7 +4184,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Alpine Avalanche Edition" &&
-        row.floor === "321RL" &&
+        row.floor === "338GK" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -4272,7 +4273,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Alpine Avalanche Edition" &&
-        row.floor === "321RL" &&
+        row.floor === "338GK" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -4369,7 +4370,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Alpine Avalanche Edition" &&
-        row.floor === "321RL" &&
+        row.floor === "338GK" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -4475,7 +4476,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Alpine Avalanche Edition" &&
-        row.floor === "321RL" &&
+        row.floor === "338GK" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -4581,7 +4582,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Alpine Avalanche Edition" &&
-        row.floor === "321RL" &&
+        row.floor === "338GK" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -4687,7 +4688,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Alpine Avalanche Edition" &&
-        row.floor === "321RL" &&
+        row.floor === "338GK" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -4793,7 +4794,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Alpine Avalanche Edition" &&
-        row.floor === "321RL" &&
+        row.floor === "338GK" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -4899,7 +4900,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Alpine Avalanche Edition" &&
-        row.floor === "321RL" &&
+        row.floor === "338GK" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -4997,7 +4998,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Alpine Avalanche Edition" &&
-        row.floor === "321RL" &&
+        row.floor === "338GK" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -5035,7 +5036,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Alpine Avalanche Edition" &&
-        row.floor === "321RL" &&
+        row.floor === "338GK" &&
         row.year === 2026
     )
     expect(avalanche321).toMatchObject({
@@ -5110,7 +5111,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Alpine Avalanche Edition" &&
-        row.floor === "321RL" &&
+        row.floor === "338GK" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -5204,7 +5205,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Alpine Avalanche Edition" &&
-        row.floor === "321RL" &&
+        row.floor === "338GK" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -5238,6 +5239,118 @@ describe("deal data", () => {
       delta: null,
     })
     expect(avalanche338?.notes).toEqual([])
+  })
+
+  it("applies Keystone Alpine Avalanche Edition 321RL ask and 2026 JDP trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Alpine Avalanche Edition" &&
+        row.floor === "321RL" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 66988,
+      dealer: "RV Roadway, Calera, AL",
+      trade: 51615,
+      delta: 15373,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $66,988 RV Roadway Calera AL via RV Trader + RVT (same inventory, 37 ft); Avalanche Edition confirmed. Trade from 2026 JDP Low Retail $57,350 × 0.9 = $51,615 (Keystone Alpine Avalanche Edition Series M-321 RL). Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-321-rl/6646771/values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.jdpower.com/rvs/2026/keystone-rv/m-321-rl/6646771/values" &&
+            span.label === "JDP values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Keystone-Alpine+Avalanche+Edition+321RL-5040718397" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvt.com/buy/details/2026-keystone-alpine-avalanche-edition-321rl/c80b62ea-563a-11f1-adcf-02f5bff6b341/" &&
+            span.label === "RVT"
+        )
+    ).toBe(true)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Alpine" &&
+        row.floor === "3303CK" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: 75524,
+      dealer: "Camping World, Tyler, TX",
+      trade: 62505,
+      delta: 13019,
+    })
+
+    const nextBlank = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Alpine Avalanche Edition" &&
+        row.floor === "338GK" &&
+        row.year === 2026
+    )
+    expect(nextBlank).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(nextBlank?.notes).toEqual([])
+
+    const baseAlpine = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Alpine" &&
+        row.floor === "321RL" &&
+        row.year === 2026
+    )
+    expect(baseAlpine).toBeUndefined()
+
+    const plainAvalanche = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Avalanche" &&
+        row.floor === "321RL" &&
+        row.year === 2026
+    )
+    expect(plainAvalanche).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(plainAvalanche?.notes).toEqual([])
   })
 
   it("applies Sanibel 34LOUNGE ask and 2026 JDP trade", () => {
@@ -6559,10 +6672,10 @@ describe("filters and sort", () => {
       4644, 4790, 4875, 4970, 5243, 5386, 5480, 5514, 5834, 5889, 5965, 6144, 6438, 6471, 6540,
       6554, 6735, 6900, 7201, 7294, 7370, 7709, 7811, 7840, 7980, 8010, 8356, 8784, 8790, 8814, 8828, 9034,
       9073, 9314, 9794, 9865, 10050, 10308, 10493, 10708, 10859, 10859, 11385, 11726, 11736, 11884, 12053, 12283, 12731, 12745, 13013, 13013, 13019, 13075, 13165, 13584,
-      14139, 14370, 14805, 15072, 15379, 15689, 15697, 16193, 16667, 16667, 16859, 17460, 17664, 17740, 17755, 18256, 18256, 19530, 21524, 21793, 22400, 22745, 22925, 23268, 25615, 25875,
+      14139, 14370, 14805, 15072, 15373, 15379, 15689, 15697, 16193, 16667, 16667, 16859, 17460, 17664, 17740, 17755, 18256, 18256, 19530, 21524, 21793, 22400, 22745, 22925, 23268, 25615, 25875,
       26440, 27222, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(281)
+    expect(empty.length).toBe(280)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
@@ -7002,6 +7115,29 @@ describe("filters and sort", () => {
         )
         .every((deal) => deal.ask == null && deal.delta == null)
     ).toBe(true)
+
+    const avalancheEdition = matching(deals, {
+      manufacturer: "Keystone",
+      year: "",
+      model: "Alpine Avalanche Edition",
+    })
+    expect(avalancheEdition).toHaveLength(2)
+    expect(avalancheEdition.map((deal) => deal.floor)).toEqual([
+      "321RL",
+      "338GK",
+    ])
+    expect(avalancheEdition.find((deal) => deal.floor === "321RL")).toMatchObject({
+      ask: 66988,
+      dealer: "RV Roadway, Calera, AL",
+      trade: 51615,
+      delta: 15373,
+    })
+    expect(avalancheEdition.find((deal) => deal.floor === "338GK")).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
 
     const rows = matching(deals, {
       manufacturer: "Keystone",
