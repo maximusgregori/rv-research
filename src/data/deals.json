@@ -9586,11 +9586,33 @@
     "manufacturer": "Keystone",
     "model": "Cougar Half-Ton",
     "floor": "26RES",
-    "ask": null,
-    "dealer": "",
+    "ask": 39981,
+    "dealer": "Holman Motors, Inc., Batavia, OH",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Holman Motors, Inc., Batavia, OH, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone+Rv-Cougar+Half+Ton+26RES-5038043357",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $39,981 Holman Motors, Inc., Batavia, OH via RV Trader (30 ft). Ask only. RVT CAPTCHA-blocked; Trader-only. Featured/Premium excluded. Verified Half-Ton (not base/Sport). Checked, no JDP comparable: 2026 M-26 RES only under base Cougar; 2025 no Half-Ton entry — wrong-line proxy excluded."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
