@@ -8036,11 +8036,38 @@
     "manufacturer": "Jayco",
     "model": "Eagle HT",
     "floor": "30CRT",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 49988,
+    "dealer": "Jayco Carolinas, Monroe, NC",
+    "trade": 37935,
+    "delta": 12053,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Jayco Carolinas, Monroe, NC, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Jayco-Eagle+HT+30CRT-5039772643",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $49,988 Jayco Carolinas Monroe NC via RV Trader, 34 ft; RVT CAPTCHA-blocked. Trade from 2026 JDP Low Retail $42,150 \u00d7 0.9 = $37,935 (Jayco Eagle HT Series M-30 CRT). Source: https://www.jdpower.com/rvs/2026/jayco/m-30-crt/6648115/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/jayco/m-30-crt/6648115/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
