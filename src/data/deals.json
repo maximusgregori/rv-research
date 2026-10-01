@@ -10161,11 +10161,33 @@
     "manufacturer": "Keystone",
     "model": "Montana",
     "floor": "3532SP",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 71827,
+    "dealer": "Fun Town RV - San Angelo, San Angelo, TX",
+    "trade": 67275,
+    "delta": 4552,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Fun Town RV - San Angelo, San Angelo, TX, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone+Rv-Montana+3532SP-5038249621",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $71,827 Fun Town RV - San Angelo, San Angelo, TX via RV Trader (39 ft). Organic New base Montana 3532SP; High Country not indicated. RVT Human Verification blocked cross-check. Trade from real 2026 Montana Series M-3532 SP Low Retail $74,750 \u00d7 0.9."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
