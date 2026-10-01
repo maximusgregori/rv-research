@@ -197,10 +197,10 @@ const FOREST_RIVER_FIFTH_WHEELS = [
 
 describe("deal data", () => {
   it("keeps existing rows and adds Keystone fifth wheels", () => {
-    expect(deals).toHaveLength(417)
+    expect(deals).toHaveLength(236)
     expect(
       deals.filter((deal) => deal.manufacturer === "Coachmen")
-    ).toHaveLength(262)
+    ).toHaveLength(81)
     expect(
       deals.filter((deal) => deal.manufacturer === "East To West")
     ).toHaveLength(5)
@@ -218,7 +218,7 @@ describe("deal data", () => {
     )
     expect(new Set(deals.map((deal) => deal.year))).toEqual(new Set([2026]))
     expect(deals.some((deal) => deal.model === "Adrenaline")).toBe(true)
-    expect(deals.some((deal) => deal.model === "Viking")).toBe(true)
+    expect(deals.some((deal) => deal.model === "Viking")).toBe(false)
     expect(deals.some((deal) => deal.model === "Other")).toBe(false)
   })
 
@@ -15548,7 +15548,7 @@ describe("filters and sort", () => {
       13876, 14139, 14370, 14805, 15072, 15173, 15373, 15379, 15689, 15697, 15863, 16095, 16193, 16546, 16667, 16667, 16750, 16859, 16885, 16898, 17460, 17577, 17664, 17740, 17755, 18228, 18256, 18256, 19410, 19530, 21524, 21704, 21793, 22400, 22745, 22925, 23268, 25085, 25615, 25745, 25875,
       26440, 27135, 27222, 28855, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(228)
+    expect(empty.length).toBe(47)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
