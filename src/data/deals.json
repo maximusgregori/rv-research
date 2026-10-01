@@ -9216,11 +9216,38 @@
     "manufacturer": "Keystone",
     "model": "Cougar",
     "floor": "290RLS",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 61995,
+    "dealer": "Crestview RV Superstore, Selma, TX",
+    "trade": 45900,
+    "delta": 16095,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Crestview RV Superstore, Selma, TX, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone+Rv-Cougar+290RLS-5038525826",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $61,995 Crestview RV Superstore, Selma, TX via RV Trader (33 ft); RVT CAPTCHA-blocked; Trader-only. Featured/Premium excluded. Verified base Cougar (not Half-Ton/Sport). 2026 JDP Low Retail $51,000 → trade $45,900. Trade from 2026 JDP Low Retail $51,000 × 0.9 = $45,900. Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-290-rls/6646957/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/keystone-rv/m-290-rls/6646957/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
