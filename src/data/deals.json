@@ -10527,11 +10527,46 @@
     "manufacturer": "Keystone",
     "model": "Sprinter Limited",
     "floor": "3520RDS",
-    "ask": null,
-    "dealer": "",
+    "ask": 59995,
+    "dealer": "Uncharted Recreation, Meridian, ID",
     "trade": null,
     "delta": null,
-    "notes": []
+    "lengthFt": 39.42,
+    "askSite": "rvt",
+    "askUrl": "https://www.rvtrader.com/listing/2026-Keystone-SPRINTER+3520RDS-5042061344",
+    "askUrlRvt": "https://www.rvt.com/buy/details/2026-keystone-sprinter-limited-3520rds/b633d959-48dc-11f0-808c-02c8259c7411/",
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Uncharted Recreation, Meridian, ID, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone-SPRINTER+3520RDS-5042061344",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-keystone-sprinter-limited-3520rds/b633d959-48dc-11f0-808c-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Organic New Sprinter Limited 3520RDS; RVT $59,995 Meridian ID cheaper than Trader $60,398; 39.42 ft. Trade blank: verified JDP miss (2026+2025 M-3520 RDS only under base Sprinter, not Limited; no wrong-line proxy)."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
