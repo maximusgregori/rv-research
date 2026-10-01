@@ -9520,11 +9520,33 @@
     "manufacturer": "Keystone",
     "model": "Cougar Half-Ton",
     "floor": "23MLE",
-    "ask": null,
-    "dealer": "",
+    "ask": 41745,
+    "dealer": "Dad's Camper Outlet, Picayune, MS",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Dad's Camper Outlet, Picayune, MS, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone+Rv-Cougar+Half-Ton+23MLE+Half+Ton+Towable-5042349814",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $41,745 Dad's Camper Outlet, Picayune, MS via RV Trader (27.92 ft). Ask only. RVT CAPTCHA-blocked; Trader-only. Featured/Premium excluded. Verified Half-Ton (not base/Sport). Detail length malformed on Trader; used 27.92 ft spec. Verified JDP miss: no 2026/2025 Cougar Half-Ton M-23 MLE; base Cougar Series entry excluded as wrong-line proxy; trade left blank (no wrong-line proxy)."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
