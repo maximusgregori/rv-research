@@ -8859,11 +8859,38 @@
     "manufacturer": "Keystone",
     "model": "Arcadia Super Lite",
     "floor": "242SLMD",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 43692,
+    "dealer": "Buckeye RV Jeffersonville, Jeffersonville, OH",
+    "trade": 38565,
+    "delta": 5127,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Buckeye RV Jeffersonville, Jeffersonville, OH, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone-ARCADIA+SUPER+LITE+242SLMD-5037875238",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $43,692 Buckeye RV Jeffersonville OH via RV Trader (RVT CAPTCHA; indexed RVT $43,857 not cheaper). Trade from 2026 JDP Low Retail $42,850 × 0.9 = $38,565. Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-242-slmd/6646783/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/keystone-rv/m-242-slmd/6646783/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
