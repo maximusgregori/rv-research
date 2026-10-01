@@ -9817,11 +9817,33 @@
     "manufacturer": "Keystone",
     "model": "Cougar Half-Ton",
     "floor": "32BHS",
-    "ask": null,
-    "dealer": "",
+    "ask": 58995,
+    "dealer": "Pontiac RV Inc, Pontiac, IL",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Pontiac RV Inc, Pontiac, IL, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone+Rv-Cougar+Half-Ton+32BHS-5039459430",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $58,995 Pontiac RV Inc, Pontiac, IL via RV Trader (35 ft). Ask only. RVT detail CAPTCHA on higher Jerome ID listing; Trader cheaper. Featured/Premium excluded. Verified Half-Ton (not base/Sport). Checked, no JDP comparable: no 2026/2025 Cougar Half-Ton M-32 BHS; base Cougar Series M-32 BHS Low Retail ($44,300 / $40,700) — wrong-line proxy excluded."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
