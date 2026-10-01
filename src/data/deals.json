@@ -7558,11 +7558,33 @@
     "manufacturer": "Forest River",
     "model": "Wildcat XL",
     "floor": "30BAM",
-    "ask": null,
-    "dealer": "",
+    "ask": 64999,
+    "dealer": "Ron Hoover RV & Marine – Georgetown, TX",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Ron Hoover RV & Marine – Georgetown, TX, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Forest+River-Rv-Wildcat+XL+30BAM-5039555993",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $64,999 RV Trader only (Ron Hoover RV & Marine – Georgetown, TX), 35 ft New 30BAM. RVT CAPTCHA blocked. Trade blank: verified JDP miss — no Wildcat XL 30BAM on 2026/2025 JDP (Maxx/One only; wildcat-xl paths 500). Do not invent a trade."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
