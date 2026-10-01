@@ -413,11 +413,12 @@ describe("deal data", () => {
       "Impact|321LT",
       "Montana|300RK",
       "Montana|3100RL",
+      "Montana|3123RL",
     ])
     const pricedKeystone = keystone.filter((deal) =>
       pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedKeystone).toHaveLength(45)
+    expect(pricedKeystone).toHaveLength(46)
     const unpricedKeystone = keystone.filter(
       (deal) => !pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -10121,7 +10122,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Montana" &&
-        row.floor === "3123RL" &&
+        row.floor === "3231CK" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -10201,7 +10202,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Montana" &&
-        row.floor === "3123RL" &&
+        row.floor === "3231CK" &&
         row.year === 2026
     )
     expect(sibling).toMatchObject({
@@ -10314,7 +10315,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Montana" &&
-        row.floor === "3123RL" &&
+        row.floor === "3231CK" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -10440,7 +10441,112 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Montana" &&
+        row.floor === "3231CK" &&
+        row.year === 2026
+    )
+    expect(nextBlank).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(nextBlank?.notes).toEqual([])
+  })
+
+  it("applies Keystone Montana 3123RL ask and 2026 JDP trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Montana" &&
         row.floor === "3123RL" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 77224,
+      dealer: "Camping World, Ridgeland, SC",
+      trade: 66240,
+      delta: 10984,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $77,224 Camping World, Ridgeland, SC via RV Trader (35.08 ft). Organic New Montana (not High Country) FW; Featured/Premium excluded; RVT captcha; indexed RVT higher. Trade from 2026 J.D. Power Low Retail $73,600 × 0.9 = $66,240 (Montana Series M-3123 RL). Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-3123-rl/6646887/values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /Organic New Montana \(not High Country\) FW/i.test(span.text) &&
+            /Featured\/Premium excluded/i.test(span.text) &&
+            /RVT captcha/i.test(span.text) &&
+            /indexed RVT higher/i.test(span.text) &&
+            /Trade from 2026 J\.D\. Power Low Retail \$73,600 × 0\.9 = \$66,240/i.test(
+              span.text
+            ) &&
+            /Montana Series M-3123 RL/i.test(span.text)
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.jdpower.com/rvs/2026/keystone-rv/m-3123-rl/6646887/values" &&
+            span.label === "JDP values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Keystone-MONTANA+3123RL-5042062242" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes.flat().some((span) => span.type === "link" && span.label === "RVT")
+    ).toBe(false)
+
+    const highCountryTwin = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Montana High Country" &&
+        row.floor === "3123RL" &&
+        row.year === 2026
+    )
+    expect(highCountryTwin).toBeUndefined()
+
+    const priorPriced = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Montana" &&
+        row.floor === "3100RL" &&
+        row.year === 2026
+    )
+    expect(priorPriced).toMatchObject({
+      ask: 97995,
+      dealer: "RV Roadway Opelika, Opelika, AL",
+      trade: null,
+      delta: null,
+    })
+
+    const nextBlank = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Montana" &&
+        row.floor === "3231CK" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -11854,11 +11960,11 @@ describe("filters and sort", () => {
       659, 1163, 1340, 1609, 1665, 1919, 2089, 2535, 3005, 3080, 3149, 3185, 3195, 3435, 3498, 3570, 4103, 4310,
       4644, 4790, 4875, 4970, 5127, 5178, 5243, 5385, 5386, 5480, 5514, 5774, 5834, 5889, 5890, 5965, 6144, 6414, 6438, 6471, 6540,
       6554, 6735, 6900, 7201, 7294, 7370, 7709, 7811, 7840, 7980, 8010, 8356, 8670, 8784, 8790, 8814, 8828, 9034,
-      9073, 9294, 9314, 9324, 9692, 9794, 9835, 9864, 9865, 9877, 10050, 10308, 10414, 10421, 10493, 10708, 10859, 10859, 11385, 11395, 11413, 11726, 11736, 11884, 12053, 12283, 12731, 12745, 13013, 13013, 13019, 13075, 13165, 13194, 13360, 13584,
+      9073, 9294, 9314, 9324, 9692, 9794, 9835, 9864, 9865, 9877, 10050, 10308, 10414, 10421, 10493, 10708, 10859, 10859, 10984, 11385, 11395, 11413, 11726, 11736, 11884, 12053, 12283, 12731, 12745, 13013, 13013, 13019, 13075, 13165, 13194, 13360, 13584,
       14139, 14370, 14805, 15072, 15173, 15373, 15379, 15689, 15697, 16095, 16193, 16667, 16667, 16859, 16898, 17460, 17577, 17664, 17740, 17755, 18228, 18256, 18256, 19530, 21524, 21793, 22400, 22745, 22925, 23268, 25615, 25875,
       26440, 27222, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(254)
+    expect(empty.length).toBe(253)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
@@ -12764,13 +12870,20 @@ describe("filters and sort", () => {
       trade: null,
       delta: null,
     })
+    expect(montana.find((deal) => deal.floor === "3123RL")).toMatchObject({
+      ask: 77224,
+      dealer: "Camping World, Ridgeland, SC",
+      trade: 66240,
+      delta: 10984,
+    })
     expect(
       montana
         .filter(
           (deal) =>
             deal.floor !== "295RL" &&
             deal.floor !== "300RK" &&
-            deal.floor !== "3100RL"
+            deal.floor !== "3100RL" &&
+            deal.floor !== "3123RL"
         )
         .every(
           (deal) =>
