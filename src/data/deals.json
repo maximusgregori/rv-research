@@ -7837,11 +7837,47 @@
     "manufacturer": "Jayco",
     "model": "Eagle HT",
     "floor": "26REC",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 39999,
+    "dealer": "Terry Town Travel Center, Grand Rapids, MI",
+    "trade": 31185,
+    "delta": 8814,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Terry Town Travel Center, Grand Rapids, MI, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Jayco-Eagle+HT+26REC-5040249039",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-jayco-eagle-ht-26rec/33314549-43dc-11f1-adcf-02f5bff6b341/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $39,999 Terry Town Travel Center Grand Rapids MI (Trade Winds Clio MI same price); 29 ft; both sites. Excluded RVT Bourbon MO $39,982 (Used). Trade from 2026 JDP Low Retail $34,650 \u00d7 0.9 = $31,185 (Jayco Eagle HT Series M-26 REC). Source: https://www.jdpower.com/rvs/2026/jayco/m-26-rec/6648110/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/jayco/m-26-rec/6648110/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
