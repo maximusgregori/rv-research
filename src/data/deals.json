@@ -7703,11 +7703,18 @@
     "manufacturer": "Forest River",
     "model": "Wildcat",
     "floor": "37GALLEY",
-    "ask": null,
-    "dealer": "",
+    "ask": 69991,
+    "dealer": "Family RV Center",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Ask $69,991 Family RV Center Sweetwater TX (RV Trader + RVT same listing), 38 ft New. Trade blank: verified JDP miss — 2026 Wildcat brand index HTTP 500 / M-37GALLEY undefined; 2025 index has M-37BEST not M-37GALLEY and direct 2025 M-37GALLEY undefined; no same-floor proxy; not XL; no 2027."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,

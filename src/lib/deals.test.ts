@@ -305,11 +305,12 @@ describe("deal data", () => {
       "Wildcat|32LIVE",
       "Wildcat|33CHEF",
       "Wildcat|35FL",
+      "Wildcat|37GALLEY",
     ])
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(56)
+    expect(pricedForest).toHaveLength(57)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -608,7 +609,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(220)
+    expect(priced).toHaveLength(221)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -1446,6 +1447,64 @@ describe("deal data", () => {
         .some((span) => span.type === "link" && span.label === "JDP values")
     ).toBe(false)
     expect(deal?.notes.flat().some((span) => span.type === "link")).toBe(false)
+  })
+
+  it("applies Wildcat 37GALLEY ask and leaves trade/delta blank", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Wildcat" &&
+        row.floor === "37GALLEY" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 69991,
+      dealer: "Family RV Center",
+      trade: null,
+      delta: null,
+    })
+    expect(deal?.model).toBe("Wildcat")
+    expect(deal?.floor).toBe("37GALLEY")
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $69,991 Family RV Center Sweetwater TX (RV Trader + RVT same listing), 38 ft New. Trade blank: verified JDP miss — 2026 Wildcat brand index HTTP 500 / M-37GALLEY undefined; 2025 index has M-37BEST not M-37GALLEY and direct 2025 M-37GALLEY undefined; no same-floor proxy; not XL; no 2027."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /Ask \$69,991 Family RV Center Sweetwater TX/i.test(span.text) &&
+            /RV Trader \+ RVT same listing/i.test(span.text) &&
+            /Trade blank: verified JDP miss/i.test(span.text) &&
+            /2026 Wildcat brand index HTTP 500 \/ M-37GALLEY undefined/i.test(
+              span.text
+            ) &&
+            /2025 index has M-37BEST not M-37GALLEY/i.test(span.text) &&
+            /direct 2025 M-37GALLEY undefined/i.test(span.text) &&
+            /no same-floor proxy/i.test(span.text) &&
+            /not XL/i.test(span.text) &&
+            /no 2027/i.test(span.text) &&
+            !/trade from/i.test(span.text) &&
+            !/× 0\.9/.test(span.text)
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(deal?.notes.flat().some((span) => span.type === "link")).toBe(false)
+    expect(deal?.trade).toBeNull()
+    expect(deal?.delta).toBeNull()
+    expect(deal?.trade).not.toBe(0)
   })
 
   it("applies Cedar Creek and Arctic Wolf 27SGS asks and proxy trades", () => {
@@ -4877,12 +4936,21 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(galley).toMatchObject({
-      ask: null,
-      dealer: "",
+      ask: 69991,
+      dealer: "Family RV Center",
       trade: null,
       delta: null,
     })
-    expect(galley?.notes).toEqual([])
+    expect(
+      galley?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $69,991 Family RV Center Sweetwater TX (RV Trader + RVT same listing), 38 ft New. Trade blank: verified JDP miss — 2026 Wildcat brand index HTTP 500 / M-37GALLEY undefined; 2025 index has M-37BEST not M-37GALLEY and direct 2025 M-37GALLEY undefined; no same-floor proxy; not XL; no 2027."
+        )
+    ).toBe(true)
   })
 
   it("applies Jayco Eagle 28CRT ask and leaves trade/delta blank", () => {
@@ -14991,6 +15059,12 @@ describe("deal data", () => {
         "36FUN",
         71990,
         "Family RV Center, Sweetwater, TX",
+      ],
+      [
+        "Wildcat",
+        "37GALLEY",
+        69991,
+        "Family RV Center",
       ],
       [
         "Wildcat XL",
