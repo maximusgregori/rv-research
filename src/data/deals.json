@@ -9751,11 +9751,33 @@
     "manufacturer": "Keystone",
     "model": "Cougar Half-Ton",
     "floor": "29RLI",
-    "ask": null,
-    "dealer": "",
+    "ask": 53998,
+    "dealer": "Leach Camper Sales of Lincoln, Lincoln, NE",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Leach Camper Sales of Lincoln, Lincoln, NE, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone+Rv-Cougar+Half-Ton+29RLI-5039872898",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $53,998 Leach Camper Sales of Lincoln, Lincoln, NE via RV Trader and RVT (32 ft). Ask only. Same $53,998 on RV Trader and RVT. Featured/Premium excluded. Verified Half-Ton (not base/Sport). Checked, no JDP comparable: no 2026/2025 Cougar Half-Ton M-29 RLI; base Cougar Series M-29 RLI Low Retail exists ($43,750 / $40,200) \u2014 wrong-line proxy excluded."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
