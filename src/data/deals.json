@@ -9899,11 +9899,38 @@
     "manufacturer": "Keystone",
     "model": "Cougar Sport",
     "floor": "2700BH",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 36512,
+    "dealer": "Bankston Motor Homes of Huntsville, Huntsville, AL",
+    "trade": 26820,
+    "delta": 9692,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Bankston Motor Homes of Huntsville, Huntsville, AL, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone+Rv-Cougar+Sport+2700BH-5037069992",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $36,512 Bankston Motor Homes of Huntsville, Huntsville, AL via RV Trader (32 ft); RVT detail CAPTCHA; Trader-only. Featured/Premium excluded. Verified Cougar Sport (not base/Half-Ton). JDP 2026 Cougar Sport Series M-2700 BH Low Retail $29,800 \u00d7 0.9 = $26,820. Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-2700-bh/6646988/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/keystone-rv/m-2700-bh/6646988/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
