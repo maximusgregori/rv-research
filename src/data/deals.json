@@ -8593,11 +8593,38 @@
     "manufacturer": "Keystone",
     "model": "Alpine Avalanche Edition",
     "floor": "338GK",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 69998,
+    "dealer": "Fun Town RV – Amarillo, Amarillo, TX",
+    "trade": 53100,
+    "delta": 16898,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Fun Town RV – Amarillo, Amarillo, TX, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone+Rv-Alpine+Avalanche+Edition+338GK-5041565134#sid=195275",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $69,998 Fun Town RV Amarillo TX via RV Trader (RVT CAPTCHA). Avalanche Edition confirmed. Trade from 2026 JDP Low Retail $59,000 \u00d7 0.9 = $53,100. Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-338-gk/6646772/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/keystone-rv/m-338-gk/6646772/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
