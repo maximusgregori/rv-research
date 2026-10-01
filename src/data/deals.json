@@ -7665,11 +7665,47 @@
     "manufacturer": "Jayco",
     "model": "Eagle",
     "floor": "325MKTS",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 58995,
+    "dealer": "Crestview RV – Buda, Buda, TX",
+    "trade": 44190,
+    "delta": 14805,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Crestview RV – Buda, Buda, TX, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Jayco-Eagle+325MKTS-5037885983",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-jayco-eagle-325mkts/b27b1fe5-96b6-11f0-beaa-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $58,995 Crestview RV Buda TX (mirrored RV Trader + RVT), 34 ft. Trade from 2026 JDP Low Retail $49,100 × 0.9 = $44,190 (Jayco Eagle Series M-325 MKTS). Source: https://www.jdpower.com/rvs/2026/jayco/m-325-mkts/6648122/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/jayco/m-325-mkts/6648122/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
