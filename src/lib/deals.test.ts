@@ -288,6 +288,7 @@ describe("deal data", () => {
       "Sandpiper|3370RLS",
       "Sierra|3370RLS",
       "Flagstaff Classic|282RK",
+      "Flagstaff Classic|F282RK",
       "Sandstorm|2710",
       "Sanibel|34LOUNGE",
       "Vengeance Rogue Armored|341GS11",
@@ -299,7 +300,7 @@ describe("deal data", () => {
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(46)
+    expect(pricedForest).toHaveLength(47)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -598,7 +599,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(210)
+    expect(priced).toHaveLength(211)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -2573,58 +2574,46 @@ describe("deal data", () => {
   })
 
   it("applies Flagstaff Classic 282RK ask and 2026 JDP trade", () => {
-    const deal = deals.find(
-      (row) =>
-        row.manufacturer === "Forest River" &&
-        row.model === "Flagstaff Classic" &&
-        row.floor === "282RK" &&
-        row.year === 2026
-    )
-    expect(deal).toMatchObject({
-      ask: 49685,
-      dealer: "",
-      trade: 37035,
-      delta: 12650,
-    })
-    expect(
-      deal?.notes
-        .flat()
-        .some(
-          (span) =>
-            span.type === "text" &&
-            span.text ===
-              "Ask $49,685 McKee RV Perry IA (RV Trader + RVT). Trade: 2026 Flagstaff Classic M-282RK JDP Low Retail $41,150 ×0.9=$37,035."
-        )
-    ).toBe(true)
-    expect(
-      deal?.notes
-        .flat()
-        .some(
-          (span) =>
-            span.type === "text" &&
-            /Ask \$49,685 McKee RV Perry IA \(RV Trader \+ RVT\)/i.test(
-              span.text
-            ) &&
-            /2026 Flagstaff Classic M-282RK JDP Low Retail \$41,150 ×0\.9=\$37,035/i.test(
-              span.text
-            )
-        )
-    ).toBe(true)
-
-    const flagstaffF282rk = deals.find(
-      (row) =>
-        row.manufacturer === "Forest River" &&
-        row.model === "Flagstaff Classic" &&
-        row.floor === "F282RK" &&
-        row.year === 2026
-    )
-    expect(flagstaffF282rk).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
-    })
-    expect(flagstaffF282rk?.notes).toEqual([])
+    const floors = ["282RK", "F282RK"]
+    for (const floor of floors) {
+      const deal = deals.find(
+        (row) =>
+          row.manufacturer === "Forest River" &&
+          row.model === "Flagstaff Classic" &&
+          row.floor === floor &&
+          row.year === 2026
+      )
+      expect(deal).toMatchObject({
+        ask: 49685,
+        dealer: "",
+        trade: 37035,
+        delta: 12650,
+      })
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "text" &&
+              span.text ===
+                "Ask $49,685 McKee RV Perry IA (RV Trader + RVT). Trade: 2026 Flagstaff Classic M-282RK JDP Low Retail $41,150 ×0.9=$37,035."
+          )
+      ).toBe(true)
+      expect(
+        deal?.notes
+          .flat()
+          .some(
+            (span) =>
+              span.type === "text" &&
+              /Ask \$49,685 McKee RV Perry IA \(RV Trader \+ RVT\)/i.test(
+                span.text
+              ) &&
+              /2026 Flagstaff Classic M-282RK JDP Low Retail \$41,150 ×0\.9=\$37,035/i.test(
+                span.text
+              )
+          )
+      ).toBe(true)
+    }
   })
 
   it("applies Rockwood Signature 290SFK ask and 2026 JDP trade", () => {
@@ -2893,12 +2882,21 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(flagstaffF282rk).toMatchObject({
-      ask: null,
+      ask: 49685,
       dealer: "",
-      trade: null,
-      delta: null,
+      trade: 37035,
+      delta: 12650,
     })
-    expect(flagstaffF282rk?.notes).toEqual([])
+    expect(
+      flagstaffF282rk?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $49,685 McKee RV Perry IA (RV Trader + RVT). Trade: 2026 Flagstaff Classic M-282RK JDP Low Retail $41,150 ×0.9=$37,035."
+        )
+    ).toBe(true)
 
     const catalogMatches = deals.filter(
       (row) =>
@@ -14605,11 +14603,11 @@ describe("filters and sort", () => {
       659, 1163, 1340, 1609, 1665, 1919, 2089, 2535, 3005, 3080, 3149, 3185, 3195,       3435, 3498, 3570, 4103, 4310, 4552,
       4644, 4790, 4875, 4970, 5127, 5178, 5243, 5244, 5385, 5386, 5480, 5514, 5774, 5834, 5889, 5890, 5965, 6144, 6414, 6438, 6471, 6540,
       6554, 6735, 6783, 6900, 7061, 7201, 7294, 7370, 7709, 7811, 7840, 7980, 8010, 8010, 8356, 8670, 8784, 8790, 8814, 8828, 9034,
-      9073, 9294, 9314, 9324, 9692, 9794, 9835, 9864, 9865, 9877, 10050, 10308, 10414, 10421, 10493, 10589, 10708, 10859, 10859, 10984, 11385, 11395, 11413, 11685, 11726, 11736, 11884, 12053, 12223, 12283, 12650, 12731, 12745, 13013, 13013, 13019, 13075, 13165, 13194, 13360, 13584,
+      9073, 9294, 9314, 9324, 9692, 9794, 9835, 9864, 9865, 9877, 10050, 10308, 10414, 10421, 10493, 10589, 10708, 10859, 10859, 10984, 11385, 11395, 11413, 11685, 11726, 11736, 11884, 12053, 12223, 12283, 12650, 12650, 12731, 12745, 13013, 13013, 13019, 13075, 13165, 13194, 13360, 13584,
       14139, 14370, 14805, 15072, 15173, 15373, 15379, 15689, 15697, 15863, 16095, 16193, 16546, 16667, 16667, 16859, 16898, 17460, 17577, 17664, 17740, 17755, 18228, 18256, 18256, 19410, 19530, 21524, 21793, 22400, 22745, 22925, 23268, 25615, 25745, 25875,
       26440, 27222, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(240)
+    expect(empty.length).toBe(239)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
@@ -14759,7 +14757,7 @@ describe("filters and sort", () => {
     })
   })
 
-  it("cascades Forest River models and prices Flagstaff Classic 281RK, 282RK, and 290CFK", () => {
+  it("cascades Forest River models and prices Flagstaff Classic 281RK, 282RK, F282RK, and 290CFK", () => {
     const options = filterOptions(deals, {
       manufacturer: "Forest River",
       year: "",
@@ -14796,6 +14794,12 @@ describe("filters and sort", () => {
       trade: 37035,
       delta: 12650,
     })
+    expect(rows.find((deal) => deal.floor === "F282RK")).toMatchObject({
+      ask: 49685,
+      dealer: "",
+      trade: 37035,
+      delta: 12650,
+    })
     expect(rows.find((deal) => deal.floor === "290CFK")).toMatchObject({
       ask: 55828,
       dealer: "Buckeye RV Jeffersonville, Jeffersonville, OH",
@@ -14808,6 +14812,7 @@ describe("filters and sort", () => {
           (deal) =>
             deal.floor !== "281RK" &&
             deal.floor !== "282RK" &&
+            deal.floor !== "F282RK" &&
             deal.floor !== "290CFK"
         )
         .every((deal) => deal.ask == null && deal.delta == null)

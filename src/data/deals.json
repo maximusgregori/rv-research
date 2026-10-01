@@ -7556,11 +7556,18 @@
     "manufacturer": "Forest River",
     "model": "Flagstaff Classic",
     "floor": "F282RK",
-    "ask": null,
+    "ask": 49685,
     "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "trade": 37035,
+    "delta": 12650,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Ask $49,685 McKee RV Perry IA (RV Trader + RVT). Trade: 2026 Flagstaff Classic M-282RK JDP Low Retail $41,150 ×0.9=$37,035."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
