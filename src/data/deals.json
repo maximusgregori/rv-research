@@ -7772,11 +7772,18 @@
     "manufacturer": "Forest River",
     "model": "Wildwood Heritage Glen",
     "floor": "321DRL",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 58718,
+    "dealer": "San Antonio RVs",
+    "trade": 57870,
+    "delta": 848,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Ask $58,718 San Antonio RVs Seguin TX (RV Trader + RVT same listing), 36 ft New. Trade $57,870 = 2026 JDP Low Retail $64,300 \u00d7 0.9 (Wildwood Heritage Glen M-321DRL exact)."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
