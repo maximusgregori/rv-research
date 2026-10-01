@@ -10081,11 +10081,38 @@
     "manufacturer": "Keystone",
     "model": "Montana",
     "floor": "3123RL",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 77224,
+    "dealer": "Camping World, Ridgeland, SC",
+    "trade": 66240,
+    "delta": 10984,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Camping World, Ridgeland, SC, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone-MONTANA+3123RL-5042062242",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $77,224 Camping World, Ridgeland, SC via RV Trader (35.08 ft). Organic New Montana (not High Country) FW; Featured/Premium excluded; RVT captcha; indexed RVT higher. Trade from 2026 J.D. Power Low Retail $73,600 \u00d7 0.9 = $66,240 (Montana Series M-3123 RL). Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-3123-rl/6646887/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/keystone-rv/m-3123-rl/6646887/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
