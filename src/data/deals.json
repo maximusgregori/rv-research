@@ -10439,11 +10439,33 @@
     "manufacturer": "Keystone",
     "model": "Montana High Country",
     "floor": "351BH",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 71888,
+    "dealer": "RCD RV Sales - Pataskala, Pataskala, OH",
+    "trade": 56025,
+    "delta": 15863,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was RCD RV Sales - Pataskala, Pataskala, OH, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone-Rv-Montana-High-Country-351BH-5038884187",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Organic New High Country 351BH; 39 ft; RVT human-verification blocked cross-check (Max will clear on next block ping). Trade from real 2026 Montana High Country Series M-351 BH Low Retail $62,250 \u00d7 0.9."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
