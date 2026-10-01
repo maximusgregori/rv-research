@@ -424,12 +424,13 @@ describe("deal data", () => {
       "Montana High Country|325RK",
       "Montana High Country|331RL",
       "Montana High Country|351BH",
+      "Sprinter Limited|3210RLS",
       "Sprinter Limited|3520RDS",
     ])
     const pricedKeystone = keystone.filter((deal) =>
       pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedKeystone).toHaveLength(57)
+    expect(pricedKeystone).toHaveLength(58)
     const unpricedKeystone = keystone.filter(
       (deal) => !pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -477,7 +478,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(203)
+    expect(priced).toHaveLength(204)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -10146,7 +10147,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Sprinter Limited" &&
-        row.floor === "3210RLS" &&
+        row.floor === "3590LFT" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -10339,7 +10340,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Sprinter Limited" &&
-        row.floor === "3210RLS" &&
+        row.floor === "3590LFT" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -10466,7 +10467,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Sprinter Limited" &&
-        row.floor === "3210RLS" &&
+        row.floor === "3590LFT" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -10571,7 +10572,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Sprinter Limited" &&
-        row.floor === "3210RLS" &&
+        row.floor === "3590LFT" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -10676,7 +10677,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Sprinter Limited" &&
-        row.floor === "3210RLS" &&
+        row.floor === "3590LFT" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -10773,7 +10774,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Sprinter Limited" &&
-        row.floor === "3210RLS" &&
+        row.floor === "3590LFT" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -10879,7 +10880,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Sprinter Limited" &&
-        row.floor === "3210RLS" &&
+        row.floor === "3590LFT" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -11219,7 +11220,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Sprinter Limited" &&
-        row.floor === "3210RLS" &&
+        row.floor === "3590LFT" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -11327,7 +11328,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Sprinter Limited" &&
-        row.floor === "3210RLS" &&
+        row.floor === "3590LFT" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -11452,7 +11453,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Sprinter Limited" &&
-        row.floor === "3210RLS" &&
+        row.floor === "3590LFT" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -11567,7 +11568,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Sprinter Limited" &&
-        row.floor === "3210RLS" &&
+        row.floor === "3590LFT" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -11667,7 +11668,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Sprinter Limited" &&
-        row.floor === "3210RLS" &&
+        row.floor === "3590LFT" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -11733,7 +11734,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Sprinter Limited" &&
-        row.floor === "3210RLS" &&
+        row.floor === "3590LFT" &&
         row.year === 2026
     )
     expect(sibling).toMatchObject({
@@ -11743,6 +11744,152 @@ describe("deal data", () => {
       delta: null,
     })
     expect(sibling?.notes).toEqual([])
+  })
+
+  it("applies Keystone Sprinter Limited 3210RLS ask and leaves trade/delta blank", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Sprinter Limited" &&
+        row.floor === "3210RLS" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 54995,
+      dealer: "Schieks RV - Manitowoc WI",
+      trade: null,
+      delta: null,
+    })
+    expect(deal?.model).toBe("Sprinter Limited")
+    expect(deal?.floor).toBe("3210RLS")
+    expect(
+      (deal as { lengthFt?: number; askSite?: string; askUrl?: string; askUrlRvt?: string })
+        .lengthFt
+    ).toBe(37)
+    expect(
+      deal as { askSite?: string; askUrl?: string; askUrlRvt?: string }
+    ).toMatchObject({
+      askSite: "both",
+      askUrl:
+        "https://www.rvtrader.com/listing/2026-Keystone+Rv-Sprinter+3210RLS-5040632804#sid=277613",
+      askUrlRvt:
+        "https://www.rvt.com/buy/details/2026-keystone-sprinter-limited-3210rls/49bbf521-5032-11f1-adcf-02f5bff6b341/",
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Organic New Sprinter Limited 3210RLS; both sites $54,995; 37 ft. Trade blank: verified JDP miss (2026+2025 M-3210 RLS only under base Sprinter, not Limited; no wrong-line proxy)."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /Organic New Sprinter Limited 3210RLS/i.test(span.text) &&
+            /both sites \$54,995/i.test(span.text) &&
+            /37 ft/i.test(span.text) &&
+            /Trade blank: verified JDP miss/i.test(span.text) &&
+            /2026\+2025 M-3210 RLS only under base Sprinter, not Limited/i.test(
+              span.text
+            ) &&
+            /no wrong-line proxy/i.test(span.text) &&
+            !/trade from/i.test(span.text) &&
+            !/× 0\.9/.test(span.text)
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Keystone+Rv-Sprinter+3210RLS-5040632804#sid=277613" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvt.com/buy/details/2026-keystone-sprinter-limited-3210rls/49bbf521-5032-11f1-adcf-02f5bff6b341/" &&
+            span.label === "RVT"
+        )
+    ).toBe(true)
+
+    expect(deal?.trade).toBeNull()
+    expect(deal?.delta).toBeNull()
+    expect(deal?.trade).not.toBe(0)
+
+    const baseSprinterTwin = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Sprinter" &&
+        row.floor === "3210RLS" &&
+        row.year === 2026
+    )
+    expect(baseSprinterTwin).toBeUndefined()
+
+    const baseSprinter = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Sprinter" &&
+        row.floor === "3900DBL" &&
+        row.year === 2026
+    )
+    expect(baseSprinter).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(baseSprinter?.notes.length).toBeGreaterThan(0)
+    expect(deal?.ask).not.toBe(63995)
+    expect(deal?.dealer).not.toBe("Uncharted Recreation, Meridian ID")
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Sprinter Limited" &&
+        row.floor === "3520RDS" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: 59995,
+      dealer: "Uncharted Recreation, Meridian, ID",
+      trade: null,
+      delta: null,
+    })
+    expect(sibling?.notes.length).toBeGreaterThan(0)
+
+    const nextBlank = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Sprinter Limited" &&
+        row.floor === "3590LFT" &&
+        row.year === 2026
+    )
+    expect(nextBlank).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(nextBlank?.notes).toEqual([])
   })
 
   it("applies Keystone Sprinter Limited 3520RDS ask and leaves trade/delta blank", () => {
@@ -11859,12 +12006,12 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(sibling).toMatchObject({
-      ask: null,
-      dealer: "",
+      ask: 54995,
+      dealer: "Schieks RV - Manitowoc WI",
       trade: null,
       delta: null,
     })
-    expect(sibling?.notes).toEqual([])
+    expect(sibling?.notes.length).toBeGreaterThan(0)
 
     const nextBlank = deals.find(
       (row) =>
@@ -13123,6 +13270,12 @@ describe("deal data", () => {
       ],
       [
         "Sprinter Limited",
+        "3210RLS",
+        54995,
+        "Schieks RV - Manitowoc WI",
+      ],
+      [
+        "Sprinter Limited",
         "3520RDS",
         59995,
         "Uncharted Recreation, Meridian, ID",
@@ -14357,6 +14510,12 @@ describe("filters and sort", () => {
       "3520RDS",
       "3590LFT",
     ])
+    expect(sprinterLimited.find((deal) => deal.floor === "3210RLS")).toMatchObject({
+      ask: 54995,
+      dealer: "Schieks RV - Manitowoc WI",
+      trade: null,
+      delta: null,
+    })
     expect(sprinterLimited.find((deal) => deal.floor === "3520RDS")).toMatchObject({
       ask: 59995,
       dealer: "Uncharted Recreation, Meridian, ID",
@@ -14365,7 +14524,7 @@ describe("filters and sort", () => {
     })
     expect(
       sprinterLimited
-        .filter((deal) => deal.floor !== "3520RDS")
+        .filter((deal) => deal.floor !== "3210RLS" && deal.floor !== "3520RDS")
         .every(
           (deal) =>
             deal.ask == null &&

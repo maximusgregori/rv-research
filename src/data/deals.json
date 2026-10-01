@@ -10516,11 +10516,46 @@
     "manufacturer": "Keystone",
     "model": "Sprinter Limited",
     "floor": "3210RLS",
-    "ask": null,
-    "dealer": "",
+    "ask": 54995,
+    "dealer": "Schieks RV - Manitowoc WI",
     "trade": null,
     "delta": null,
-    "notes": []
+    "lengthFt": 37,
+    "askSite": "both",
+    "askUrl": "https://www.rvtrader.com/listing/2026-Keystone+Rv-Sprinter+3210RLS-5040632804#sid=277613",
+    "askUrlRvt": "https://www.rvt.com/buy/details/2026-keystone-sprinter-limited-3210rls/49bbf521-5032-11f1-adcf-02f5bff6b341/",
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Schieks RV - Manitowoc WI, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone+Rv-Sprinter+3210RLS-5040632804#sid=277613",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-keystone-sprinter-limited-3210rls/49bbf521-5032-11f1-adcf-02f5bff6b341/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Organic New Sprinter Limited 3210RLS; both sites $54,995; 37 ft. Trade blank: verified JDP miss (2026+2025 M-3210 RLS only under base Sprinter, not Limited; no wrong-line proxy)."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
