@@ -9444,11 +9444,38 @@
     "manufacturer": "Keystone",
     "model": "Cougar",
     "floor": "360MBI",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 66698,
+    "dealer": "Camping World, Oshkosh, WI",
+    "trade": 51525,
+    "delta": 15173,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Camping World, Oshkosh, WI, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone-COUGAR+360MBI-5042062259",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $66,698 Camping World, Oshkosh, WI via RV Trader (39.25 ft); RVT CAPTCHA-blocked; Trader-only. Featured/Premium excluded. Verified base Cougar (not Half-Ton/Sport). 2026 JDP Low Retail $57,250 → trade $51,525. Trade from 2026 JDP Low Retail $57,250 × 0.9 = $51,525. Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-360-mbi/6646962/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/keystone-rv/m-360-mbi/6646962/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
