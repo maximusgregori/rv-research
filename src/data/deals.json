@@ -9292,11 +9292,38 @@
     "manufacturer": "Keystone",
     "model": "Cougar",
     "floor": "320RDS",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 58796,
+    "dealer": "Buckeye RV Wilmington, Wilmington, OH",
+    "trade": 48375,
+    "delta": 10421,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Buckeye RV Wilmington, Wilmington, OH, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone-COUGAR+320RDS-5038838740",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $58,796 Buckeye RV Wilmington, Wilmington, OH via RV Trader (37 ft); RVT CAPTCHA-blocked; Trader-only. Featured/Premium excluded. Verified base Cougar (not Half-Ton/Sport). 2026 JDP Low Retail $53,750 → trade $48,375. Trade from 2026 JDP Low Retail $53,750 × 0.9 = $48,375. Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-320-rds/6646959/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/keystone-rv/m-320-rds/6646959/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,

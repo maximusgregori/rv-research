@@ -6978,7 +6978,8 @@ describe("deal data", () => {
             row.floor !== "260MLE" &&
             row.floor !== "27SGS" &&
             row.floor !== "290RLS" &&
-            row.floor !== "316RLS"
+            row.floor !== "316RLS" &&
+            row.floor !== "320RDS"
         )
         .every(
           (row) =>
@@ -7067,7 +7068,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Cougar" &&
-        row.floor === "320RDS" &&
+        row.floor === "32BHS" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -7125,7 +7126,8 @@ describe("deal data", () => {
             row.floor !== "260MLE" &&
             row.floor !== "27SGS" &&
             row.floor !== "290RLS" &&
-            row.floor !== "316RLS"
+            row.floor !== "316RLS" &&
+            row.floor !== "320RDS"
         )
         .every(
           (row) =>
@@ -7206,7 +7208,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Cougar" &&
-        row.floor === "320RDS" &&
+        row.floor === "32BHS" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -7255,7 +7257,8 @@ describe("deal data", () => {
             row.floor !== "260MLE" &&
             row.floor !== "27SGS" &&
             row.floor !== "290RLS" &&
-            row.floor !== "316RLS"
+            row.floor !== "316RLS" &&
+            row.floor !== "320RDS"
         )
         .every(
           (row) =>
@@ -7336,7 +7339,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Cougar" &&
-        row.floor === "320RDS" &&
+        row.floor === "32BHS" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -7379,7 +7382,8 @@ describe("deal data", () => {
             row.floor !== "260MLE" &&
             row.floor !== "27SGS" &&
             row.floor !== "290RLS" &&
-            row.floor !== "316RLS"
+            row.floor !== "316RLS" &&
+            row.floor !== "320RDS"
         )
         .every(
           (row) =>
@@ -7460,7 +7464,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Cougar" &&
-        row.floor === "320RDS" &&
+        row.floor === "32BHS" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -7503,7 +7507,133 @@ describe("deal data", () => {
             row.floor !== "260MLE" &&
             row.floor !== "27SGS" &&
             row.floor !== "290RLS" &&
-            row.floor !== "316RLS"
+            row.floor !== "316RLS" &&
+            row.floor !== "320RDS"
+        )
+        .every(
+          (row) =>
+            row.ask == null &&
+            row.trade == null &&
+            row.delta == null &&
+            row.dealer === "" &&
+            row.notes.length === 0
+        )
+    ).toBe(true)
+  })
+
+  it("applies Keystone Cougar 320RDS ask and 2026 JDP trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar" &&
+        row.floor === "320RDS" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 58796,
+      dealer: "Buckeye RV Wilmington, Wilmington, OH",
+      trade: 48375,
+      delta: 10421,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $58,796 Buckeye RV Wilmington, Wilmington, OH via RV Trader (37 ft); RVT CAPTCHA-blocked; Trader-only. Featured/Premium excluded. Verified base Cougar (not Half-Ton/Sport). 2026 JDP Low Retail $53,750 → trade $48,375. Trade from 2026 JDP Low Retail $53,750 × 0.9 = $48,375. Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-320-rds/6646959/values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.jdpower.com/rvs/2026/keystone-rv/m-320-rds/6646959/values" &&
+            span.label === "JDP values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Keystone-COUGAR+320RDS-5038838740" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes.flat().some((span) => span.type === "link" && span.label === "RVT")
+    ).toBe(false)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar" &&
+        row.floor === "316RLS" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: 57204,
+      dealer: "Bayird RV - Outdoor & Marine, Mountain Home, AR",
+      trade: 47340,
+      delta: 9864,
+    })
+
+    const nextBlank = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar" &&
+        row.floor === "32BHS" &&
+        row.year === 2026
+    )
+    expect(nextBlank).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(nextBlank?.notes).toEqual([])
+
+    const halfTonTwin = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar Half-Ton" &&
+        row.floor === "320RDS" &&
+        row.year === 2026
+    )
+    expect(halfTonTwin).toBeUndefined()
+
+    const sportTwin = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar Sport" &&
+        row.floor === "320RDS" &&
+        row.year === 2026
+    )
+    expect(sportTwin).toBeUndefined()
+
+    const otherCougar = deals.filter(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar" &&
+        row.year === 2026
+    )
+    expect(
+      otherCougar
+        .filter(
+          (row) =>
+            row.floor !== "24RDS" &&
+            row.floor !== "260MLE" &&
+            row.floor !== "27SGS" &&
+            row.floor !== "290RLS" &&
+            row.floor !== "316RLS" &&
+            row.floor !== "320RDS"
         )
         .every(
           (row) =>
@@ -9496,6 +9626,12 @@ describe("filters and sort", () => {
       trade: 47340,
       delta: 9864,
     })
+    expect(rows.find((deal) => deal.floor === "320RDS")).toMatchObject({
+      ask: 58796,
+      dealer: "Buckeye RV Wilmington, Wilmington, OH",
+      trade: 48375,
+      delta: 10421,
+    })
     expect(
       rows
         .filter(
@@ -9504,7 +9640,8 @@ describe("filters and sort", () => {
             deal.floor !== "260MLE" &&
             deal.floor !== "27SGS" &&
             deal.floor !== "290RLS" &&
-            deal.floor !== "316RLS"
+            deal.floor !== "316RLS" &&
+            deal.floor !== "320RDS"
         )
         .every((deal) => deal.ask == null && deal.delta == null)
     ).toBe(true)
