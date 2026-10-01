@@ -7537,11 +7537,18 @@
     "manufacturer": "Forest River",
     "model": "Flagstaff Classic",
     "floor": "371RK",
-    "ask": null,
+    "ask": 64990,
     "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "trade": 48240,
+    "delta": 16750,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Ask $64,990 All Seasons Rv Centers Inc (RV Trader; RVT lowest $69,999). Trade: 2026 Flagstaff Classic M-371RK JDP Low Retail $53,600 \u00d70.9=$48,240."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
