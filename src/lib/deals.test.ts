@@ -311,7 +311,10 @@ describe("deal data", () => {
               deal.floor === "3550 SUITE"
             ) &&
             !(deal.model === "Cedar Creek" && deal.floor === "39RKB") &&
-            !(deal.model === "Sabre" && deal.floor === "25RLS")
+            !(deal.model === "Sabre" && deal.floor === "25RLS") &&
+            !(
+              deal.model === "Columbus River Ranch" && deal.floor === "394RKL"
+            )
         )
         .every(
           (deal) =>
@@ -357,6 +360,17 @@ describe("deal data", () => {
       delta: null,
     })
     expect(sabre25?.notes.length).toBeGreaterThan(0)
+    const riverRanch394 = unpricedForest.find(
+      (deal) => deal.model === "Columbus River Ranch" && deal.floor === "394RKL"
+    )
+    expect(riverRanch394).toMatchObject({
+      year: 2026,
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(riverRanch394?.notes.length).toBeGreaterThan(0)
 
     const jayco = deals.filter((deal) => deal.manufacturer === "Jayco")
     expect(jayco).toHaveLength(JAYCO_FIFTH_WHEELS.length)
@@ -1409,6 +1423,78 @@ describe("deal data", () => {
       delta: null,
     })
     expect(silverback?.notes.length).toBeGreaterThan(0)
+  })
+
+  it("records Forest River Columbus River Ranch 394RKL length-skip notes with no ask", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Columbus River Ranch" &&
+        row.floor === "394RKL" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Length skip: Forest River Columbus River Ranch 394RKL exterior length 42 ft 7 in (official specs https://www.forestriverinc.com/rvs/print/river-ranch/394RKL/13010) — exceeds under-40-ft filter. Dealer examples not used as table ask: General RV Fort Pierce FL $99,999; Kunes Lake Mills WI $100,594. No ask fill."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /Length skip/i.test(span.text) &&
+            /Columbus River Ranch 394RKL/i.test(span.text) &&
+            /42 ft 7 in/i.test(span.text) &&
+            /exceeds under-40-ft filter/i.test(span.text) &&
+            /General RV Fort Pierce FL \$99,999/i.test(span.text) &&
+            /Kunes Lake Mills WI \$100,594/i.test(span.text) &&
+            /No ask fill/i.test(span.text)
+        )
+    ).toBe(true)
+    expect(deal?.notes.flat().some((span) => span.type === "link")).toBe(false)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Cherokee Arctic Wolf" &&
+        row.floor === "3550 SUITE" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(sibling?.notes.length).toBeGreaterThan(0)
+
+    const nextPriced = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Crusader" &&
+        row.floor === "KING33" &&
+        row.year === 2026
+    )
+    expect(nextPriced).toMatchObject({
+      ask: 52495,
+      dealer: "Roth RV - Grand Rapids, Grand Rapids, MN",
+      trade: 39420,
+      delta: 13075,
+    })
+    expect(nextPriced?.notes.length).toBeGreaterThan(0)
   })
 
   it("applies Cedar Creek Experience 35RL ask and 2025 JDP proxy trade", () => {
