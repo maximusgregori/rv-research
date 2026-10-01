@@ -332,11 +332,12 @@ describe("deal data", () => {
       "Eagle HT|26REC",
       "Eagle HT|27MLC",
       "Eagle HT|28CRT",
+      "Eagle HT|29DDB",
     ])
     const pricedJayco = jayco.filter((deal) =>
       pricedJaycoKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedJayco).toHaveLength(9)
+    expect(pricedJayco).toHaveLength(10)
     const unpricedJayco = jayco.filter(
       (deal) => !pricedJaycoKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -373,7 +374,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(136)
+    expect(priced).toHaveLength(137)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -3616,7 +3617,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Jayco" &&
         row.model === "Eagle HT" &&
-        row.floor === "29DDB" &&
+        row.floor === "29RLC" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -3889,7 +3890,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Jayco" &&
         row.model === "Eagle HT" &&
-        row.floor === "29DDB" &&
+        row.floor === "29RLC" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -3913,6 +3914,95 @@ describe("deal data", () => {
       trade: null,
       delta: null,
     })
+  })
+
+  it("applies Jayco Eagle HT 29DDB ask and 2026 JDP trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Jayco" &&
+        row.model === "Eagle HT" &&
+        row.floor === "29DDB" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 39991,
+      dealer: "Great American RV SuperStores – Hammond, Hammond, LA",
+      trade: 34605,
+      delta: 5386,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $39,991 Great American RV Hammond LA via RV Trader, 35 ft; RVT CAPTCHA-blocked. Trade from 2026 JDP Low Retail $38,450 × 0.9 = $34,605 (Jayco Eagle HT Series M-29 DDB). Source: https://www.jdpower.com/rvs/2026/jayco/m-29-ddb/6648114/values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.jdpower.com/rvs/2026/jayco/m-29-ddb/6648114/values" &&
+            span.label === "JDP values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Jayco-Eagle+HT+29DDB-5039625011" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes.flat().some((span) => span.type === "link" && span.label === "RVT")
+    ).toBe(false)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Jayco" &&
+        row.model === "Eagle HT" &&
+        row.floor === "29RLC" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(sibling?.notes).toEqual([])
+
+    const prior = deals.find(
+      (row) =>
+        row.manufacturer === "Jayco" &&
+        row.model === "Eagle HT" &&
+        row.floor === "28CRT" &&
+        row.year === 2026
+    )
+    expect(prior).toMatchObject({
+      ask: 52999,
+      dealer: "Terry Town Travel Center, Grand Rapids, MI",
+      trade: 37620,
+      delta: 15379,
+    })
+
+    const baseEagle = deals.find(
+      (row) =>
+        row.manufacturer === "Jayco" &&
+        row.model === "Eagle" &&
+        row.floor === "29DDB" &&
+        row.year === 2026
+    )
+    expect(baseEagle).toBeUndefined()
   })
 
   it("applies Sanibel 34LOUNGE ask and 2026 JDP trade", () => {
@@ -5231,13 +5321,13 @@ describe("filters and sort", () => {
       -2065, -2000, -1971, -1885, -1885, -1862, -1805, -1595, -1476, -1206,
       -1195, -1170, -831, -795, -586, -343, -110, -101, -30, -20, 390, 535, 573,
       659, 1163, 1340, 1609, 1665, 1919, 2089, 2535, 3005, 3080, 3195, 3435, 3498, 3570, 4103, 4310,
-      4644, 4790, 4875, 4970, 5243, 5480, 5514, 5834, 5889, 5965, 6144, 6438, 6471, 6540,
+      4644, 4790, 4875, 4970, 5243, 5386, 5480, 5514, 5834, 5889, 5965, 6144, 6438, 6471, 6540,
       6554, 6735, 6900, 7201, 7294, 7370, 7709, 7980, 8010, 8356, 8784, 8790, 8814, 8828, 9034,
       9073, 9314, 9794, 9865, 10050, 10308, 10493, 10708, 10859, 10859, 11385, 11726, 11736, 11884, 12283, 13013, 13013, 13075, 13165, 13584,
       14139, 14805, 15379, 15689, 15697, 16667, 16667, 17460, 17664, 17740, 17755, 19530, 21524, 22400, 22745, 22925, 23268, 25615, 25875,
       26440, 27222, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(295)
+    expect(empty.length).toBe(294)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
@@ -5504,6 +5594,11 @@ describe("filters and sort", () => {
       trade: 37620,
       delta: 15379,
     })
+    expect(eagleHt.find((deal) => deal.floor === "29DDB")).toMatchObject({
+      ask: 39991,
+      trade: 34605,
+      delta: 5386,
+    })
     expect(
       eagleHt
         .filter(
@@ -5511,7 +5606,8 @@ describe("filters and sort", () => {
             deal.floor !== "25RUC" &&
             deal.floor !== "26REC" &&
             deal.floor !== "27MLC" &&
-            deal.floor !== "28CRT"
+            deal.floor !== "28CRT" &&
+            deal.floor !== "29DDB"
         )
         .every((deal) => deal.ask == null && deal.delta == null)
     ).toBe(true)
