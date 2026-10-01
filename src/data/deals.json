@@ -7321,7 +7321,14 @@
     "dealer": "",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Length-skip: official Forest River exterior length 42 ft 9 in exceeds under-40-ft filter. Dealer examples only (not table ask): Colaw RV Carthage MO $64,482 on RV Trader. Both RVT.com and RV Trader later returned CloudFront 403."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,

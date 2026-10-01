@@ -316,6 +316,7 @@ describe("deal data", () => {
             !(
               deal.model === "Columbus River Ranch" && deal.floor === "394RKL"
             ) &&
+            !(deal.model === "Sierra" && deal.floor === "3710HBFB") &&
             !(deal.model === "Sierra" && deal.floor === "3800RK") &&
             !(deal.model === "Sierra" && deal.floor === "3900HBLR") &&
             !(deal.model === "Sierra" && deal.floor === "4003MB")
@@ -375,6 +376,17 @@ describe("deal data", () => {
       delta: null,
     })
     expect(riverRanch394?.notes.length).toBeGreaterThan(0)
+    const sierra3710 = unpricedForest.find(
+      (deal) => deal.model === "Sierra" && deal.floor === "3710HBFB"
+    )
+    expect(sierra3710).toMatchObject({
+      year: 2026,
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(sierra3710?.notes.length).toBeGreaterThan(0)
     const sierra3800 = unpricedForest.find(
       (deal) => deal.model === "Sierra" && deal.floor === "3800RK"
     )
@@ -1877,6 +1889,64 @@ describe("deal data", () => {
       dealer: "Pete’s RV Center–Indiana, Schererville, IN",
       trade: 48510,
       delta: 6471,
+    })
+    expect(sibling?.notes.length).toBeGreaterThan(0)
+  })
+
+  it("records Forest River Sierra 3710HBFB length-skip notes with no ask", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Sierra" &&
+        row.floor === "3710HBFB" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Length-skip: official Forest River exterior length 42 ft 9 in exceeds under-40-ft filter. Dealer examples only (not table ask): Colaw RV Carthage MO $64,482 on RV Trader. Both RVT.com and RV Trader later returned CloudFront 403."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /Length-skip/i.test(span.text) &&
+            /official Forest River exterior length 42 ft 9 in/i.test(
+              span.text
+            ) &&
+            /exceeds under-40-ft filter/i.test(span.text) &&
+            /Dealer examples only \(not table ask\)/i.test(span.text) &&
+            /Colaw RV Carthage MO \$64,482 on RV Trader/i.test(span.text) &&
+            /CloudFront 403/i.test(span.text)
+        )
+    ).toBe(true)
+    expect(deal?.notes.flat().some((span) => span.type === "link")).toBe(false)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Sierra" &&
+        row.floor === "3800RK" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
     })
     expect(sibling?.notes.length).toBeGreaterThan(0)
   })
@@ -3604,7 +3674,7 @@ describe("deal data", () => {
       trade: null,
       delta: null,
     })
-    expect(sierra3710?.notes).toEqual([])
+    expect(sierra3710?.notes.length).toBeGreaterThan(0)
   })
 
   it("records Forest River Sierra 3800RK, 3900HBLR, and 4003MB length-skip notes with no ask", () => {
@@ -3685,7 +3755,7 @@ describe("deal data", () => {
       trade: null,
       delta: null,
     })
-    expect(leftover?.notes).toEqual([])
+    expect(leftover?.notes.length).toBeGreaterThan(0)
   })
 
   it("applies Sandstorm 2710 ask and leaves trade/delta blank", () => {
