@@ -434,7 +434,9 @@ describe("deal data", () => {
     expect(
       unpricedKeystone
         .filter(
-          (deal) => !(deal.model === "Montana" && deal.floor === "295RL")
+          (deal) =>
+            !(deal.model === "Montana" && deal.floor === "295RL") &&
+            !(deal.model === "Sprinter" && deal.floor === "3900DBL")
         )
         .every(
           (deal) =>
@@ -457,6 +459,17 @@ describe("deal data", () => {
       delta: null,
     })
     expect(montana295?.notes.length).toBeGreaterThan(0)
+    const sprinter3900 = unpricedKeystone.find(
+      (deal) => deal.model === "Sprinter" && deal.floor === "3900DBL"
+    )
+    expect(sprinter3900).toMatchObject({
+      year: 2026,
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(sprinter3900?.notes.length).toBeGreaterThan(0)
     expect(keystone.some((deal) => deal.model === "Other")).toBe(false)
   })
 
@@ -11520,8 +11533,8 @@ describe("deal data", () => {
     const nextBlank = deals.find(
       (row) =>
         row.manufacturer === "Keystone" &&
-        row.model === "Sprinter" &&
-        row.floor === "3900DBL" &&
+        row.model === "Sprinter Limited" &&
+        row.floor === "3210RLS" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -11531,6 +11544,72 @@ describe("deal data", () => {
       delta: null,
     })
     expect(nextBlank?.notes).toEqual([])
+  })
+
+  it("records Keystone Sprinter 3900DBL length-skip notes with no ask", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Sprinter" &&
+        row.floor === "3900DBL" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(
+      (deal as { lengthFt?: number; askSite?: null; askUrl?: null; askUrlRvt?: null })
+        .lengthFt
+    ).toBe(43.5)
+    expect(
+      deal as { askSite?: null; askUrl?: null; askUrlRvt?: null }
+    ).toMatchObject({
+      askSite: null,
+      askUrl: null,
+      askUrlRvt: null,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Length skip: lowest New ask $63,995 both sites (Uncharted Recreation, Meridian ID) but exterior length 43 ft 6 in exceeds under-40-ft filter. No fill."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /Length skip/i.test(span.text) &&
+            /lowest New ask \$63,995 both sites/i.test(span.text) &&
+            /Uncharted Recreation, Meridian ID/i.test(span.text) &&
+            /43 ft 6 in exceeds under-40-ft filter/i.test(span.text) &&
+            /No fill/i.test(span.text)
+        )
+    ).toBe(true)
+    expect(deal?.notes.flat().some((span) => span.type === "link")).toBe(false)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Sprinter Limited" &&
+        row.floor === "3210RLS" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(sibling?.notes).toEqual([])
   })
 
   it("applies Sanibel 34LOUNGE ask and 2026 JDP trade", () => {

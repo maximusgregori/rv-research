@@ -10476,7 +10476,18 @@
     "dealer": "",
     "trade": null,
     "delta": null,
-    "notes": []
+    "lengthFt": 43.5,
+    "askSite": null,
+    "askUrl": null,
+    "askUrlRvt": null,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Length skip: lowest New ask $63,995 both sites (Uncharted Recreation, Meridian ID) but exterior length 43 ft 6 in exceeds under-40-ft filter. No fill."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
