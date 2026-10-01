@@ -410,11 +410,12 @@ describe("deal data", () => {
       "Cougar Sport|2100RK",
       "Cougar Sport|2400RE",
       "Cougar Sport|2700BH",
+      "Impact|321LT",
     ])
     const pricedKeystone = keystone.filter((deal) =>
       pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedKeystone).toHaveLength(42)
+    expect(pricedKeystone).toHaveLength(43)
     const unpricedKeystone = keystone.filter(
       (deal) => !pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -434,7 +435,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(188)
+    expect(priced).toHaveLength(189)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -10017,6 +10018,112 @@ describe("deal data", () => {
     expect(halfTonTwin).toBeUndefined()
   })
 
+  it("applies Keystone Impact 321LT ask and leaves trade/delta blank", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Impact" &&
+        row.floor === "321LT" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 49995,
+      dealer: "Uncharted Recreation, Meridian, ID",
+      trade: null,
+      delta: null,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $49,995 Uncharted Recreation, Meridian, ID via RV Trader and RVT (36.7 ft). Ask only. Organic New Impact 321LT FW toy hauler; both sites $49,995; length 36.7 ft from model/dealer specs. Featured/Premium excluded. Checked, no JDP comparable: no 2026/2025 Impact / Fuzion Impact / Impact Edition 321LT or M-321 LT; 2026 Keystone index showed Raptor Carbon only; 2025 Fuzion Impact floors were M-337/M-367/M-415 — wrong floors; plain Fuzion / Raptor excluded as wrong-line proxies."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /Checked, no JDP comparable/i.test(span.text) &&
+            /no 2026\/2025 Impact \/ Fuzion Impact \/ Impact Edition 321LT or M-321 LT/i.test(
+              span.text
+            ) &&
+            /2026 Keystone index showed Raptor Carbon only/i.test(span.text) &&
+            /2025 Fuzion Impact floors were M-337\/M-367\/M-415/i.test(
+              span.text
+            ) &&
+            /plain Fuzion \/ Raptor excluded as wrong-line proxies/i.test(
+              span.text
+            ) &&
+            !/trade from/i.test(span.text) &&
+            !/× 0\.9/.test(span.text)
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(
+      deal?.notes.flat().some((span) => span.type === "link" && span.label === "RVT")
+    ).toBe(false)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Keystone-IMPACT+321LT-5037093158" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+
+    expect(deal?.trade).toBeNull()
+    expect(deal?.delta).toBeNull()
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar Sport" &&
+        row.floor === "2700BH" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: 36512,
+      dealer: "Bankston Motor Homes of Huntsville, Huntsville, AL",
+      trade: 26820,
+      delta: 9692,
+    })
+
+    const nextBlank = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Montana" &&
+        row.floor === "295RL" &&
+        row.year === 2026
+    )
+    expect(nextBlank).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(nextBlank?.notes).toEqual([])
+
+    const fuzionProxy = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        /fuzion|raptor/i.test(row.model)
+    )
+    expect(fuzionProxy).toBeUndefined()
+    expect(deal?.trade).not.toBe(0)
+  })
+
   it("applies Sanibel 34LOUNGE ask and 2026 JDP trade", () => {
     const deal = deals.find(
       (row) =>
@@ -11232,6 +11339,12 @@ describe("deal data", () => {
         58995,
         "Pontiac RV Inc, Pontiac, IL",
       ],
+      [
+        "Impact",
+        "321LT",
+        49995,
+        "Uncharted Recreation, Meridian, ID",
+      ],
     ] as const
     const verifiedMiss = new Set(["297MK", "235ML", "295RL"])
     const askNoTrade = deals.filter(
@@ -12260,6 +12373,20 @@ describe("filters and sort", () => {
       "2400RE",
       "2700BH",
     ])
+
+    const impact = matching(deals, {
+      manufacturer: "Keystone",
+      year: "",
+      model: "Impact",
+    })
+    expect(impact).toHaveLength(1)
+    expect(impact.map((deal) => deal.floor)).toEqual(["321LT"])
+    expect(impact[0]).toMatchObject({
+      ask: 49995,
+      dealer: "Uncharted Recreation, Meridian, ID",
+      trade: null,
+      delta: null,
+    })
   })
 })
 

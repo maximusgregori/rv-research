@@ -9964,11 +9964,33 @@
     "manufacturer": "Keystone",
     "model": "Impact",
     "floor": "321LT",
-    "ask": null,
-    "dealer": "",
+    "ask": 49995,
+    "dealer": "Uncharted Recreation, Meridian, ID",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Uncharted Recreation, Meridian, ID, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone-IMPACT+321LT-5037093158",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $49,995 Uncharted Recreation, Meridian, ID via RV Trader and RVT (36.7 ft). Ask only. Organic New Impact 321LT FW toy hauler; both sites $49,995; length 36.7 ft from model/dealer specs. Featured/Premium excluded. Checked, no JDP comparable: no 2026/2025 Impact / Fuzion Impact / Impact Edition 321LT or M-321 LT; 2026 Keystone index showed Raptor Carbon only; 2025 Fuzion Impact floors were M-337/M-367/M-415 — wrong floors; plain Fuzion / Raptor excluded as wrong-line proxies."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
