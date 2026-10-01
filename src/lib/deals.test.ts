@@ -371,7 +371,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(133)
+    expect(priced).toHaveLength(134)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -5050,12 +5050,12 @@ describe("filters and sort", () => {
       -1195, -1170, -831, -795, -586, -343, -110, -101, -30, -20, 390, 535, 573,
       659, 1163, 1340, 1609, 1665, 1919, 2089, 2535, 3005, 3080, 3195, 3435, 3498, 3570, 4103, 4310,
       4644, 4790, 4875, 4970, 5243, 5480, 5514, 5834, 5889, 5965, 6144, 6438, 6471, 6540,
-      6554, 6735, 6900, 7201, 7294, 7370, 7709, 7980, 8010, 8356, 8784, 8790, 8828, 9034,
+      6554, 6735, 6900, 7201, 7294, 7370, 7709, 7980, 8010, 8356, 8784, 8790, 8814, 8828, 9034,
       9073, 9314, 9794, 10050, 10308, 10493, 10708, 10859, 10859, 11385, 11726, 11736, 11884, 12283, 13013, 13013, 13075, 13165, 13584,
       14139, 14805, 15689, 15697, 16667, 16667, 17460, 17664, 17740, 17755, 19530, 21524, 22400, 22745, 22925, 23268, 25615, 25875,
       26440, 27222, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(298)
+    expect(empty.length).toBe(297)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
