@@ -8783,11 +8783,38 @@
     "manufacturer": "Keystone",
     "model": "Arcadia Select",
     "floor": "27SBH",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 33999,
+    "dealer": "Gillette Interstate RV, Haslett, MI",
+    "trade": 27585,
+    "delta": 6414,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Gillette Interstate RV, Haslett, MI, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone-Arcadia+Select+27SBH-5040248450",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $33,999 Gillette Interstate RV Haslett MI via RV Trader (RVT CAPTCHA). Trade from 2026 JDP Low Retail $30,650 × 0.9 = $27,585. Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-27-sbh/6646781/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/keystone-rv/m-27-sbh/6646781/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,

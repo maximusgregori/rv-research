@@ -378,11 +378,12 @@ describe("deal data", () => {
       "Arcadia Select|21SRK",
       "Arcadia Select|24SRE",
       "Arcadia Select|25SRD",
+      "Arcadia Select|27SBH",
     ])
     const pricedKeystone = keystone.filter((deal) =>
       pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedKeystone).toHaveLength(10)
+    expect(pricedKeystone).toHaveLength(11)
     const unpricedKeystone = keystone.filter(
       (deal) => !pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -402,7 +403,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(156)
+    expect(priced).toHaveLength(157)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -3645,7 +3646,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Arcadia Select" &&
-        row.floor === "27SBH" &&
+        row.floor === "28SLS" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -3918,7 +3919,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Arcadia Select" &&
-        row.floor === "27SBH" &&
+        row.floor === "28SLS" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -4100,7 +4101,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Arcadia Select" &&
-        row.floor === "27SBH" &&
+        row.floor === "28SLS" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -4189,7 +4190,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Arcadia Select" &&
-        row.floor === "27SBH" &&
+        row.floor === "28SLS" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -4278,7 +4279,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Arcadia Select" &&
-        row.floor === "27SBH" &&
+        row.floor === "28SLS" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -4375,7 +4376,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Arcadia Select" &&
-        row.floor === "27SBH" &&
+        row.floor === "28SLS" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -4481,7 +4482,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Arcadia Select" &&
-        row.floor === "27SBH" &&
+        row.floor === "28SLS" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -4587,7 +4588,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Arcadia Select" &&
-        row.floor === "27SBH" &&
+        row.floor === "28SLS" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -4693,7 +4694,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Arcadia Select" &&
-        row.floor === "27SBH" &&
+        row.floor === "28SLS" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -4799,7 +4800,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Arcadia Select" &&
-        row.floor === "27SBH" &&
+        row.floor === "28SLS" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -4905,7 +4906,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Arcadia Select" &&
-        row.floor === "27SBH" &&
+        row.floor === "28SLS" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -5003,7 +5004,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Arcadia Select" &&
-        row.floor === "27SBH" &&
+        row.floor === "28SLS" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -5115,7 +5116,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Arcadia Select" &&
-        row.floor === "27SBH" &&
+        row.floor === "28SLS" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -5209,7 +5210,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Arcadia Select" &&
-        row.floor === "27SBH" &&
+        row.floor === "28SLS" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -5320,7 +5321,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Arcadia Select" &&
-        row.floor === "27SBH" &&
+        row.floor === "28SLS" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -5424,7 +5425,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Arcadia Select" &&
-        row.floor === "27SBH" &&
+        row.floor === "28SLS" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -5536,7 +5537,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Arcadia Select" &&
-        row.floor === "27SBH" &&
+        row.floor === "28SLS" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -5755,7 +5756,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Arcadia Select" &&
-        row.floor === "27SBH" &&
+        row.floor === "28SLS" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -5853,7 +5854,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Arcadia Select" &&
-        row.floor === "27SBH" &&
+        row.floor === "28SLS" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -5878,6 +5879,104 @@ describe("deal data", () => {
         row.manufacturer === "Keystone" &&
         row.model === "Arcadia Super Lite" &&
         row.floor === "25SRD" &&
+        row.year === 2026
+    )
+    expect(superLite).toBeUndefined()
+  })
+
+  it("applies Keystone Arcadia Select 27SBH ask and 2026 JDP trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Arcadia Select" &&
+        row.floor === "27SBH" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 33999,
+      dealer: "Gillette Interstate RV, Haslett, MI",
+      trade: 27585,
+      delta: 6414,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $33,999 Gillette Interstate RV Haslett MI via RV Trader (RVT CAPTCHA). Trade from 2026 JDP Low Retail $30,650 × 0.9 = $27,585. Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-27-sbh/6646781/values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.jdpower.com/rvs/2026/keystone-rv/m-27-sbh/6646781/values" &&
+            span.label === "JDP values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Keystone-Arcadia+Select+27SBH-5040248450" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes.flat().some((span) => span.type === "link" && span.label === "RVT")
+    ).toBe(false)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Arcadia Select" &&
+        row.floor === "25SRD" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: 32800,
+      dealer: "Zoomers RV, Wabash, IN",
+      trade: 26910,
+      delta: 5890,
+    })
+
+    const nextBlank = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Arcadia Select" &&
+        row.floor === "28SLS" &&
+        row.year === 2026
+    )
+    expect(nextBlank).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(nextBlank?.notes).toEqual([])
+
+    const baseArcadia = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Arcadia" &&
+        row.floor === "27SBH" &&
+        row.year === 2026
+    )
+    expect(baseArcadia).toBeUndefined()
+
+    const superLite = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Arcadia Super Lite" &&
+        row.floor === "27SBH" &&
         row.year === 2026
     )
     expect(superLite).toBeUndefined()
@@ -7199,13 +7298,13 @@ describe("filters and sort", () => {
       -2065, -2000, -1971, -1885, -1885, -1862, -1805, -1595, -1476, -1206,
       -1195, -1170, -831, -795, -586, -343, -110, -101, -30, -20, 390, 535, 573,
       659, 1163, 1340, 1609, 1665, 1919, 2089, 2535, 3005, 3080, 3195, 3435, 3498, 3570, 4103, 4310,
-      4644, 4790, 4875, 4970, 5243, 5386, 5480, 5514, 5834, 5889, 5890, 5965, 6144, 6438, 6471, 6540,
+      4644, 4790, 4875, 4970, 5243, 5386, 5480, 5514, 5834, 5889, 5890, 5965, 6144, 6414, 6438, 6471, 6540,
       6554, 6735, 6900, 7201, 7294, 7370, 7709, 7811, 7840, 7980, 8010, 8356, 8670, 8784, 8790, 8814, 8828, 9034,
       9073, 9314, 9794, 9865, 9877, 10050, 10308, 10493, 10708, 10859, 10859, 11385, 11413, 11726, 11736, 11884, 12053, 12283, 12731, 12745, 13013, 13013, 13019, 13075, 13165, 13584,
       14139, 14370, 14805, 15072, 15373, 15379, 15689, 15697, 16193, 16667, 16667, 16859, 16898, 17460, 17664, 17740, 17755, 18256, 18256, 19530, 21524, 21793, 22400, 22745, 22925, 23268, 25615, 25875,
       26440, 27222, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(275)
+    expect(empty.length).toBe(274)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
@@ -7714,13 +7813,20 @@ describe("filters and sort", () => {
       trade: 26910,
       delta: 5890,
     })
+    expect(arcadiaSelect.find((deal) => deal.floor === "27SBH")).toMatchObject({
+      ask: 33999,
+      dealer: "Gillette Interstate RV, Haslett, MI",
+      trade: 27585,
+      delta: 6414,
+    })
     expect(
       arcadiaSelect
         .filter(
           (deal) =>
             deal.floor !== "21SRK" &&
             deal.floor !== "24SRE" &&
-            deal.floor !== "25SRD"
+            deal.floor !== "25SRD" &&
+            deal.floor !== "27SBH"
         )
         .every((deal) => deal.ask == null && deal.delta == null)
     ).toBe(true)
