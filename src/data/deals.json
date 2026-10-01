@@ -9850,11 +9850,38 @@
     "manufacturer": "Keystone",
     "model": "Cougar Sport",
     "floor": "2100RK",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 34899,
+    "dealer": "Camping World, Marysville, WA",
+    "trade": 25605,
+    "delta": 9294,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Camping World, Marysville, WA, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone-COUGAR+SPORT+2100RK-5042061767",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $34,899 Camping World, Marysville, WA via RV Trader (26.25 ft); RVT CAPTCHA-blocked; Trader-only. Featured/Premium excluded. Verified Cougar Sport (not base/Half-Ton). JDP 2026 Cougar Sport Series M-2100 RK Low Retail $28,450 \u00d7 0.9 = $25,605. Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-2100-rk/6646986/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/keystone-rv/m-2100-rk/6646986/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
