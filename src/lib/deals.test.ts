@@ -270,6 +270,7 @@ describe("deal data", () => {
       "Rockwood Signature|282RK",
       "Rockwood Signature|290SFK",
       "Rockwood Signature|301RKS",
+      "Rockwood Signature|301RK",
       "Rockwood Signature|331RL",
       "Rockwood Signature|361RL",
       "Rockwood Signature|371RK",
@@ -294,7 +295,7 @@ describe("deal data", () => {
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(41)
+    expect(pricedForest).toHaveLength(42)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -2290,6 +2291,124 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(twin).toBeUndefined()
+  })
+
+  it("applies Rockwood Signature 301RK ask and 2026 JDP trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Rockwood Signature" &&
+        row.floor === "301RK" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 47115,
+      dealer: "Fun Town RV - North Detroit, North Branch, MI",
+      trade: 39105,
+      delta: 8010,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Organic New Rockwood Signature R301RKS/301RK; Trader $47,115 Fun Town North Branch MI cheaper than RVT $51,649+; 31 ft. Trade from 2026 JDP Low Retail $43,450 × 0.9 = $39,105 (Rockwood-by-Forest-River Signature Series M-301RKS). Source: https://www.jdpower.com/rvs/2026/rockwood-by-forest-river/m-301rks/6643728/values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /Organic New Rockwood Signature R301RKS\/301RK/i.test(span.text) &&
+            /Trader \$47,115 Fun Town North Branch MI cheaper than RVT \$51,649\+/i.test(
+              span.text
+            ) &&
+            /31 ft/i.test(span.text) &&
+            /Trade from 2026 JDP Low Retail \$43,450 × 0\.9 = \$39,105/i.test(
+              span.text
+            ) &&
+            /Rockwood-by-Forest-River Signature Series M-301RKS/i.test(
+              span.text
+            )
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.jdpower.com/rvs/2026/rockwood-by-forest-river/m-301rks/6643728/values" &&
+            span.label === "JDP values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Forest+River-Rockwood+Signature+R301RKS-5037952722" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes.flat().some((span) => span.type === "link" && span.label === "RVT")
+    ).toBe(false)
+
+    const sibling301rks = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Rockwood Signature" &&
+        row.floor === "301RKS" &&
+        row.year === 2026
+    )
+    expect(sibling301rks).toMatchObject({
+      ask: 47115,
+      dealer: "Fun Town RV - North Detroit, North Branch, MI",
+      trade: 39105,
+      delta: 8010,
+    })
+    expect(
+      sibling301rks?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $47,115 RV Trader (Fun Town RV - North Detroit, North Branch MI), listed as R301RKS, 31 ft New; RVT organic $50,308 (Fun Town RV Houston / Wharton TX). Trade = 2026 JDP Low Retail $43,450 × 0.9 = $39,105 (Rockwood-by-FR Signature Series M-301RKS)."
+        )
+    ).toBe(true)
+
+    const flagstaffF282rk = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Flagstaff Classic" &&
+        row.floor === "F282RK" &&
+        row.year === 2026
+    )
+    expect(flagstaffF282rk).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(flagstaffF282rk?.notes).toEqual([])
+
+    const catalogMatches = deals.filter(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Rockwood Signature" &&
+        row.floor === "301RK" &&
+        row.year === 2026
+    )
+    expect(catalogMatches).toHaveLength(1)
   })
 
   it("applies Rockwood Signature 331RL ask and 2026 JDP trade", () => {
