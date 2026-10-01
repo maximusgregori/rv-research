@@ -7508,11 +7508,18 @@
     "manufacturer": "Forest River",
     "model": "Flagstaff Classic",
     "floor": "331RL",
-    "ask": null,
+    "ask": 55995,
     "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "trade": 46035,
+    "delta": 9960,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Ask $55,995 Rv Travel World Roseville CA (F331RL on RV Trader; RVT cross-check). Trade: 2026 Flagstaff Classic M-331RL JDP Low Retail $51,150 \u00d70.9=$46,035."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,

@@ -297,11 +297,12 @@ describe("deal data", () => {
       "Flagstaff Classic|281RK",
       "Flagstaff Classic|290CFK",
       "Flagstaff Classic|301RKS",
+      "Flagstaff Classic|331RL",
     ])
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(48)
+    expect(pricedForest).toHaveLength(49)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -2547,7 +2548,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Forest River" &&
         row.model === "Flagstaff Classic" &&
-        row.floor === "331RL" &&
+        row.floor === "361RLS" &&
         row.year === 2026
     )
     expect(sibling).toMatchObject({
@@ -2557,6 +2558,77 @@ describe("deal data", () => {
       delta: null,
     })
     expect(sibling?.notes).toEqual([])
+  })
+
+  it("applies Flagstaff Classic 331RL ask and 2026 JDP trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Flagstaff Classic" &&
+        row.floor === "331RL" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 55995,
+      dealer: "",
+      trade: 46035,
+      delta: 9960,
+    })
+    expect(deal?.model).toBe("Flagstaff Classic")
+    expect(deal?.floor).toBe("331RL")
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $55,995 Rv Travel World Roseville CA (F331RL on RV Trader; RVT cross-check). Trade: 2026 Flagstaff Classic M-331RL JDP Low Retail $51,150 ×0.9=$46,035."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /Ask \$55,995 Rv Travel World Roseville CA/i.test(span.text) &&
+            /F331RL on RV Trader; RVT cross-check/i.test(span.text) &&
+            /Trade: 2026 Flagstaff Classic M-331RL JDP Low Retail \$51,150 ×0\.9=\$46,035/i.test(
+              span.text
+            )
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(deal?.notes.flat().some((span) => span.type === "link")).toBe(false)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Flagstaff Classic" &&
+        row.floor === "361RLS" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(sibling?.notes).toEqual([])
+
+    const prefixed = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Flagstaff Classic" &&
+        row.floor === "F331RL" &&
+        row.year === 2026
+    )
+    expect(prefixed).toBeUndefined()
   })
 
   it("applies Rockwood Signature 282RK ask and 2026 JDP trade", () => {
@@ -3043,12 +3115,21 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(flagstaff).toMatchObject({
-      ask: null,
+      ask: 55995,
       dealer: "",
-      trade: null,
-      delta: null,
+      trade: 46035,
+      delta: 9960,
     })
-    expect(flagstaff?.notes).toEqual([])
+    expect(
+      flagstaff?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $55,995 Rv Travel World Roseville CA (F331RL on RV Trader; RVT cross-check). Trade: 2026 Flagstaff Classic M-331RL JDP Low Retail $51,150 ×0.9=$46,035."
+        )
+    ).toBe(true)
   })
 
   it("applies Rockwood Signature 361RL ask and 2026 JDP trade", () => {
@@ -14829,7 +14910,7 @@ describe("filters and sort", () => {
     })
   })
 
-  it("cascades Forest River models and prices Flagstaff Classic 281RK, 282RK, F282RK, 290CFK, and 301RKS", () => {
+  it("cascades Forest River models and prices Flagstaff Classic 281RK, 282RK, F282RK, 290CFK, 301RKS, and 331RL", () => {
     const options = filterOptions(deals, {
       manufacturer: "Forest River",
       year: "",
@@ -14884,6 +14965,12 @@ describe("filters and sort", () => {
       trade: 39105,
       delta: 13876,
     })
+    expect(rows.find((deal) => deal.floor === "331RL")).toMatchObject({
+      ask: 55995,
+      dealer: "",
+      trade: 46035,
+      delta: 9960,
+    })
     expect(
       rows
         .filter(
@@ -14892,7 +14979,8 @@ describe("filters and sort", () => {
             deal.floor !== "282RK" &&
             deal.floor !== "F282RK" &&
             deal.floor !== "290CFK" &&
-            deal.floor !== "301RKS"
+            deal.floor !== "301RKS" &&
+            deal.floor !== "331RL"
         )
         .every((deal) => deal.ask == null && deal.delta == null)
     ).toBe(true)
