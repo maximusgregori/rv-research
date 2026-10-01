@@ -304,6 +304,10 @@ describe("deal data", () => {
           (deal) =>
             !(
               deal.model === "Cedar Creek Silverback" && deal.floor === "29RL"
+            ) &&
+            !(
+              deal.model === "Cherokee Arctic Wolf" &&
+              deal.floor === "3550 SUITE"
             )
         )
         .every(
@@ -316,6 +320,18 @@ describe("deal data", () => {
             deal.notes.length === 0
         )
     ).toBe(true)
+    const arcticWolf3550 = unpricedForest.find(
+      (deal) =>
+        deal.model === "Cherokee Arctic Wolf" && deal.floor === "3550 SUITE"
+    )
+    expect(arcticWolf3550).toMatchObject({
+      year: 2026,
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(arcticWolf3550?.notes.length).toBeGreaterThan(0)
 
     const jayco = deals.filter((deal) => deal.manufacturer === "Jayco")
     expect(jayco).toHaveLength(JAYCO_FIFTH_WHEELS.length)
@@ -1526,6 +1542,66 @@ describe("deal data", () => {
           )
       ).toBe(true      )
     }
+  })
+
+  it("records Forest River Cherokee Arctic Wolf 3550 SUITE none-found notes with no ask", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Cherokee Arctic Wolf" &&
+        row.floor === "3550 SUITE" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Checked, no organic New 2026 Cherokee Arctic Wolf 3550 SUITE: not listed in Forest River 2026 Arctic Wolf brochure (suite models 3250/3650/3750/3950 only — https://forestriverinc.com/brochures/2026/2026arcticwolfbrochure.pdf). RV Trader/RVT searches surfaced no exact 2026 3550 SUITE New detail listing. Ask left blank."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /no organic New 2026 Cherokee Arctic Wolf 3550 SUITE/i.test(
+              span.text
+            ) &&
+            /not listed in Forest River 2026 Arctic Wolf brochure/i.test(
+              span.text
+            ) &&
+            /suite models 3250\/3650\/3750\/3950 only/i.test(span.text) &&
+            /2026arcticwolfbrochure\.pdf/i.test(span.text) &&
+            /no exact 2026 3550 SUITE New detail listing/i.test(span.text) &&
+            /Ask left blank/i.test(span.text)
+        )
+    ).toBe(true)
+    expect(deal?.notes.flat().some((span) => span.type === "link")).toBe(false)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Cherokee Arctic Wolf" &&
+        row.floor === "331BH" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: 46995,
+      dealer: "RV Roadway, Calera, AL",
+      trade: 42120,
+      delta: 4875,
+    })
+    expect(sibling?.notes.length).toBeGreaterThan(0)
   })
 
   it("applies Crusader KING33 ask and 2026 JDP trade", () => {
