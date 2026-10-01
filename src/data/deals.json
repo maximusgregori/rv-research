@@ -7618,11 +7618,47 @@
     "manufacturer": "Jayco",
     "model": "Eagle",
     "floor": "321RSTS",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 52698,
+    "dealer": "Jayco Brooksville, Brooksville, FL",
+    "trade": 46260,
+    "delta": 6438,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Jayco Brooksville, Brooksville, FL, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Jayco-EAGLE+321RSTS-5042060324",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-jayco-eagle-321rsts/4de5c488-1e4f-11f1-beaa-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $52,698 RV Trader (Jayco Brooksville, FL), 35.83 ft; RVT organic $54,991 Hammond. Trade from 2026 JDP Low Retail $51,400 \u00d7 0.9 = $46,260 (Jayco Eagle Series M-321 RSTS). Source: https://www.jdpower.com/rvs/2026/jayco/m-321-rsts/6648121/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/jayco/m-321-rsts/6648121/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
