@@ -10386,11 +10386,42 @@
     "manufacturer": "Keystone",
     "model": "Montana High Country",
     "floor": "325RK",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 59981,
+    "dealer": "Pete's RV Center - Indiana, Schererville, IN",
+    "trade": 52920,
+    "delta": 7061,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Pete's RV Center - Indiana, Schererville, IN, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone+Rv-Montana+High+Country+325RK-5038730532",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-keystone-montana-high-country-325rk/decbdf34-c08a-11f0-beaa-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Organic New High Country 325RK; RVT $59,981 Schererville IN cheaper than RV Trader organic $65,365 Huntsville AL; 36.58 ft. Trade from real 2026 Montana High Country Series M-325 RK Low Retail $58,800 \u00d7 0.9."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
