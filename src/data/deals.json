@@ -9053,7 +9053,14 @@
     "dealer": "",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Checked, no organic New 2026 base Avalanche 302RS: RV Trader Dover $67,999 (https://www.rvtrader.com/listing/2026-Keystone+Rv-AVALANCHE+302RS-5037847973#sid=405516) and Turlock $74,995 (https://www.rvtrader.com/listing/2026-Keystone+Rv-Alpine+Avalanche+Edition+302RS-5037397375#sid=742742) are Alpine Avalanche Edition on detail; RVT Turlock $74,995 same Alpine Avalanche Edition. Ask left blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
