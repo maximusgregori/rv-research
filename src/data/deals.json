@@ -7332,7 +7332,14 @@
     "dealer": "",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Length-skip: official Forest River Sierra exterior length 44 ft 1 in exceeds under-40-ft filter. Source: https://forestriverinc.com/rvs/print/sierra/3800RK/12044. No marketplace ask used."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
@@ -7343,7 +7350,14 @@
     "dealer": "",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Length-skip: official Forest River Sierra exterior length 42 ft 9 in exceeds under-40-ft filter. Source: https://forestriverinc.com/rvs/sierra-fifth-wheels/3900HBLR/12074. No marketplace ask used."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
@@ -7354,7 +7368,14 @@
     "dealer": "",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Length-skip: official Forest River Sierra exterior length 42 ft 9 in exceeds under-40-ft filter. Source: https://forestriverinc.com/rvs/print/sierra/4003MB/12041. No marketplace ask used."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
