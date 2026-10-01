@@ -412,11 +412,12 @@ describe("deal data", () => {
       "Cougar Sport|2700BH",
       "Impact|321LT",
       "Montana|300RK",
+      "Montana|3100RL",
     ])
     const pricedKeystone = keystone.filter((deal) =>
       pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedKeystone).toHaveLength(44)
+    expect(pricedKeystone).toHaveLength(45)
     const unpricedKeystone = keystone.filter(
       (deal) => !pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -451,7 +452,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(190)
+    expect(priced).toHaveLength(191)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -10120,7 +10121,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Montana" &&
-        row.floor === "3100RL" &&
+        row.floor === "3123RL" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -10200,7 +10201,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Montana" &&
-        row.floor === "3100RL" &&
+        row.floor === "3123RL" &&
         row.year === 2026
     )
     expect(sibling).toMatchObject({
@@ -10313,7 +10314,133 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Montana" &&
+        row.floor === "3123RL" &&
+        row.year === 2026
+    )
+    expect(nextBlank).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(nextBlank?.notes).toEqual([])
+  })
+
+  it("applies Keystone Montana 3100RL ask and leaves trade/delta blank", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Montana" &&
         row.floor === "3100RL" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 97995,
+      dealer: "RV Roadway Opelika, Opelika, AL",
+      trade: null,
+      delta: null,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $97,995 RV Roadway Opelika, Opelika, AL via RV Trader (36 ft). Ask only. Organic New Montana (not High Country) FW; RVT detail CAPTCHA on matching Opelika listing. Featured/Premium excluded. Checked, no JDP comparable: no 2026/2025 base Montana M-3100 RL; Montana High Country M-331 RL Low Retail ($57,950 / $53,200) — wrong-line proxy excluded."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /Ask \$97,995/i.test(span.text) &&
+            /Organic New Montana \(not High Country\) FW/i.test(span.text) &&
+            /RVT detail CAPTCHA on matching Opelika listing/i.test(span.text) &&
+            /Featured\/Premium excluded/i.test(span.text) &&
+            /Checked, no JDP comparable/i.test(span.text) &&
+            /no 2026\/2025 base Montana M-3100 RL/i.test(span.text) &&
+            /Montana High Country M-331 RL Low Retail/i.test(span.text) &&
+            /wrong-line proxy excluded/i.test(span.text) &&
+            !/trade from/i.test(span.text) &&
+            !/× 0\.9/.test(span.text)
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(
+      deal?.notes.flat().some((span) => span.type === "link" && span.label === "RVT")
+    ).toBe(false)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Keystone-Montana+3100RL-5040368564" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+
+    expect(deal?.trade).toBeNull()
+    expect(deal?.delta).toBeNull()
+    expect(deal?.trade).not.toBe(0)
+
+    const highCountryWrongLine = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Montana High Country" &&
+        row.floor === "331RL" &&
+        row.year === 2026
+    )
+    expect(highCountryWrongLine).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(highCountryWrongLine?.notes).toEqual([])
+
+    const priorPriced = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Montana" &&
+        row.floor === "300RK" &&
+        row.year === 2026
+    )
+    expect(priorPriced).toMatchObject({
+      ask: 92995,
+      dealer: "General RV Center - North Canton OH, North Canton, OH",
+      trade: null,
+      delta: null,
+    })
+
+    const priorNotes = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Montana" &&
+        row.floor === "295RL" &&
+        row.year === 2026
+    )
+    expect(priorNotes).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(priorNotes?.notes.length).toBeGreaterThan(0)
+
+    const nextBlank = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Montana" &&
+        row.floor === "3123RL" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -12625,9 +12752,20 @@ describe("filters and sort", () => {
       trade: null,
       delta: null,
     })
+    expect(montana.find((deal) => deal.floor === "3100RL")).toMatchObject({
+      ask: 97995,
+      dealer: "RV Roadway Opelika, Opelika, AL",
+      trade: null,
+      delta: null,
+    })
     expect(
       montana
-        .filter((deal) => deal.floor !== "295RL" && deal.floor !== "300RK")
+        .filter(
+          (deal) =>
+            deal.floor !== "295RL" &&
+            deal.floor !== "300RK" &&
+            deal.floor !== "3100RL"
+        )
         .every(
           (deal) =>
             deal.ask == null &&
