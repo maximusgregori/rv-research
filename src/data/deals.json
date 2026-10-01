@@ -8253,11 +8253,47 @@
     "manufacturer": "Jayco",
     "model": "Eagle SLE",
     "floor": "30RLT",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 44250,
+    "dealer": "CW Direct by Camping World, Elkhart, IN",
+    "trade": 29880,
+    "delta": 14370,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was CW Direct by Camping World, Elkhart, IN, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Jayco-EAGLE+SLE+30RLT-5042064391",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-jayco-eagle-sle-30rlt/0b041c57-4b76-11f1-beaa-02f5bff6b341/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $44,250 CW Direct by Camping World Elkhart IN via RV Trader (34 ft); RVT cross-check $44,888 Chesaco RV Frederick MD. Excluded used $39,000. Trade from 2026 JDP Low Retail $33,200 × 0.9 = $29,880 (Jayco Eagle SLE Series M-30 RLT). Source: https://www.jdpower.com/rvs/2026/jayco/m-30-rlt/6648120/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/jayco/m-30-rlt/6648120/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
