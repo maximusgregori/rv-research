@@ -8347,11 +8347,47 @@
     "manufacturer": "Jayco",
     "model": "Pinnacle",
     "floor": "32RLTS",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 84179,
+    "dealer": "Camping World, Davenport, IA",
+    "trade": 67320,
+    "delta": 16859,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Camping World, Davenport, IA, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Jayco-PINNACLE+32RLTS-5042061236",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-jayco-pinnacle-32rlts/8d189ccd-ad11-11f1-84c9-020f812d825b/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $84,179 Camping World Davenport IA via RV Trader + RVT (same inventory; detail 36.33 ft, Jayco official ~36'0\"). Excluded featured $89,888 and used $89,911. Trade from 2026 JDP Low Retail $74,800 × 0.9 = $67,320 (Jayco Pinnacle Series M-32 RLTS). Source: https://www.jdpower.com/rvs/2026/jayco/m-32-rlts/6648137/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/jayco/m-32-rlts/6648137/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,

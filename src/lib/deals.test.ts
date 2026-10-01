@@ -341,11 +341,12 @@ describe("deal data", () => {
       "Eagle SLE|28RKS",
       "Eagle SLE|30RLT",
       "North Point|310RLTS",
+      "Pinnacle|32RLTS",
     ])
     const pricedJayco = jayco.filter((deal) =>
       pricedJaycoKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedJayco).toHaveLength(18)
+    expect(pricedJayco).toHaveLength(19)
     const unpricedJayco = jayco.filter(
       (deal) => !pricedJaycoKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -382,7 +383,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(145)
+    expect(priced).toHaveLength(146)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -3623,9 +3624,9 @@ describe("deal data", () => {
 
     const nextBlank = deals.find(
       (row) =>
-        row.manufacturer === "Jayco" &&
-        row.model === "Pinnacle" &&
-        row.floor === "32RLTS" &&
+        row.manufacturer === "Keystone" &&
+        row.model === "Alpine" &&
+        row.floor === "3011CK" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -3896,9 +3897,9 @@ describe("deal data", () => {
 
     const nextBlank = deals.find(
       (row) =>
-        row.manufacturer === "Jayco" &&
-        row.model === "Pinnacle" &&
-        row.floor === "32RLTS" &&
+        row.manufacturer === "Keystone" &&
+        row.model === "Alpine" &&
+        row.floor === "3011CK" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -4078,9 +4079,9 @@ describe("deal data", () => {
 
     const nextBlank = deals.find(
       (row) =>
-        row.manufacturer === "Jayco" &&
-        row.model === "Pinnacle" &&
-        row.floor === "32RLTS" &&
+        row.manufacturer === "Keystone" &&
+        row.model === "Alpine" &&
+        row.floor === "3011CK" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -4167,9 +4168,9 @@ describe("deal data", () => {
 
     const nextBlank = deals.find(
       (row) =>
-        row.manufacturer === "Jayco" &&
-        row.model === "Pinnacle" &&
-        row.floor === "32RLTS" &&
+        row.manufacturer === "Keystone" &&
+        row.model === "Alpine" &&
+        row.floor === "3011CK" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -4256,9 +4257,9 @@ describe("deal data", () => {
 
     const nextBlank = deals.find(
       (row) =>
-        row.manufacturer === "Jayco" &&
-        row.model === "Pinnacle" &&
-        row.floor === "32RLTS" &&
+        row.manufacturer === "Keystone" &&
+        row.model === "Alpine" &&
+        row.floor === "3011CK" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -4353,9 +4354,9 @@ describe("deal data", () => {
 
     const nextBlank = deals.find(
       (row) =>
-        row.manufacturer === "Jayco" &&
-        row.model === "Pinnacle" &&
-        row.floor === "32RLTS" &&
+        row.manufacturer === "Keystone" &&
+        row.model === "Alpine" &&
+        row.floor === "3011CK" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -4459,9 +4460,9 @@ describe("deal data", () => {
 
     const nextBlank = deals.find(
       (row) =>
-        row.manufacturer === "Jayco" &&
-        row.model === "Pinnacle" &&
-        row.floor === "32RLTS" &&
+        row.manufacturer === "Keystone" &&
+        row.model === "Alpine" &&
+        row.floor === "3011CK" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -4565,9 +4566,9 @@ describe("deal data", () => {
 
     const nextBlank = deals.find(
       (row) =>
-        row.manufacturer === "Jayco" &&
-        row.model === "Pinnacle" &&
-        row.floor === "32RLTS" &&
+        row.manufacturer === "Keystone" &&
+        row.model === "Alpine" &&
+        row.floor === "3011CK" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -4671,9 +4672,9 @@ describe("deal data", () => {
 
     const nextBlank = deals.find(
       (row) =>
-        row.manufacturer === "Jayco" &&
-        row.model === "Pinnacle" &&
-        row.floor === "32RLTS" &&
+        row.manufacturer === "Keystone" &&
+        row.model === "Alpine" &&
+        row.floor === "3011CK" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -4777,9 +4778,9 @@ describe("deal data", () => {
 
     const nextBlank = deals.find(
       (row) =>
-        row.manufacturer === "Jayco" &&
-        row.model === "Pinnacle" &&
-        row.floor === "32RLTS" &&
+        row.manufacturer === "Keystone" &&
+        row.model === "Alpine" &&
+        row.floor === "3011CK" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -4807,6 +4808,112 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(eagleHt).toBeUndefined()
+  })
+
+  it("applies Jayco Pinnacle 32RLTS ask and 2026 JDP trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Jayco" &&
+        row.model === "Pinnacle" &&
+        row.floor === "32RLTS" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 84179,
+      dealer: "Camping World, Davenport, IA",
+      trade: 67320,
+      delta: 16859,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $84,179 Camping World Davenport IA via RV Trader + RVT (same inventory; detail 36.33 ft, Jayco official ~36'0\"). Excluded featured $89,888 and used $89,911. Trade from 2026 JDP Low Retail $74,800 × 0.9 = $67,320 (Jayco Pinnacle Series M-32 RLTS). Source: https://www.jdpower.com/rvs/2026/jayco/m-32-rlts/6648137/values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.jdpower.com/rvs/2026/jayco/m-32-rlts/6648137/values" &&
+            span.label === "JDP values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Jayco-PINNACLE+32RLTS-5042061236" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvt.com/buy/details/2026-jayco-pinnacle-32rlts/8d189ccd-ad11-11f1-84c9-020f812d825b/" &&
+            span.label === "RVT"
+        )
+    ).toBe(true)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Jayco" &&
+        row.model === "North Point" &&
+        row.floor === "310RLTS" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: 77798,
+      dealer: "Camping World, Georgetown, KY",
+      trade: 61605,
+      delta: 16193,
+    })
+
+    const nextBlank = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Alpine" &&
+        row.floor === "3011CK" &&
+        row.year === 2026
+    )
+    expect(nextBlank).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(nextBlank?.notes).toEqual([])
+
+    const northPointTwin = deals.find(
+      (row) =>
+        row.manufacturer === "Jayco" &&
+        row.model === "North Point" &&
+        row.floor === "32RLTS" &&
+        row.year === 2026
+    )
+    expect(northPointTwin).toBeUndefined()
+
+    const eagleTwin = deals.find(
+      (row) =>
+        row.manufacturer === "Jayco" &&
+        row.model === "Eagle" &&
+        row.floor === "32RLTS" &&
+        row.year === 2026
+    )
+    expect(eagleTwin).toBeUndefined()
   })
 
   it("applies Sanibel 34LOUNGE ask and 2026 JDP trade", () => {
@@ -6128,10 +6235,10 @@ describe("filters and sort", () => {
       4644, 4790, 4875, 4970, 5243, 5386, 5480, 5514, 5834, 5889, 5965, 6144, 6438, 6471, 6540,
       6554, 6735, 6900, 7201, 7294, 7370, 7709, 7811, 7840, 7980, 8010, 8356, 8784, 8790, 8814, 8828, 9034,
       9073, 9314, 9794, 9865, 10050, 10308, 10493, 10708, 10859, 10859, 11385, 11726, 11736, 11884, 12053, 12283, 12731, 12745, 13013, 13013, 13075, 13165, 13584,
-      14139, 14370, 14805, 15072, 15379, 15689, 15697, 16193, 16667, 16667, 17460, 17664, 17740, 17755, 19530, 21524, 22400, 22745, 22925, 23268, 25615, 25875,
+      14139, 14370, 14805, 15072, 15379, 15689, 15697, 16193, 16667, 16667, 16859, 17460, 17664, 17740, 17755, 19530, 21524, 22400, 22745, 22925, 23268, 25615, 25875,
       26440, 27222, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(286)
+    expect(empty.length).toBe(285)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
@@ -6323,7 +6430,7 @@ describe("filters and sort", () => {
     ])
   })
 
-  it("cascades Jayco models and prices Eagle HT, Eagle SLE, and North Point 310RLTS", () => {
+  it("cascades Jayco models and prices Eagle HT, Eagle SLE, North Point 310RLTS, and Pinnacle 32RLTS", () => {
     const options = filterOptions(deals, {
       manufacturer: "Jayco",
       year: "",
@@ -6474,6 +6581,20 @@ describe("filters and sort", () => {
       dealer: "Camping World, Georgetown, KY",
       trade: 61605,
       delta: 16193,
+    })
+
+    const pinnacle = matching(deals, {
+      manufacturer: "Jayco",
+      year: "",
+      model: "Pinnacle",
+    })
+    expect(pinnacle).toHaveLength(1)
+    expect(pinnacle.map((deal) => deal.floor)).toEqual(["32RLTS"])
+    expect(pinnacle[0]).toMatchObject({
+      ask: 84179,
+      dealer: "Camping World, Davenport, IA",
+      trade: 67320,
+      delta: 16859,
     })
   })
 
