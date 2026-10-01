@@ -381,6 +381,7 @@ describe("deal data", () => {
       "Arcadia Select|27SBH",
       "Arcadia Select|28SLS",
       "Arcadia Super Lite|242SLMD",
+      "Arcadia Super Lite|260SLCL",
       "Arcadia Super Lite|292SLRL",
       "Arcadia Super Lite|294SLRD",
       "Arcadia Super Lite|308SLBH",
@@ -388,7 +389,7 @@ describe("deal data", () => {
     const pricedKeystone = keystone.filter((deal) =>
       pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedKeystone).toHaveLength(16)
+    expect(pricedKeystone).toHaveLength(17)
     const unpricedKeystone = keystone.filter(
       (deal) => !pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -408,7 +409,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(162)
+    expect(priced).toHaveLength(163)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -3655,12 +3656,11 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 43694,
+      dealer: "Camping World, Scott City, MO",
+      trade: 40545,
+      delta: 3149,
     })
-    expect(nextBlank?.notes).toEqual([])
 
     const baseEagle = deals.find(
       (row) =>
@@ -3928,12 +3928,11 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 43694,
+      dealer: "Camping World, Scott City, MO",
+      trade: 40545,
+      delta: 3149,
     })
-    expect(nextBlank?.notes).toEqual([])
 
     const baseEagle = deals.find(
       (row) =>
@@ -4110,12 +4109,11 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 43694,
+      dealer: "Camping World, Scott City, MO",
+      trade: 40545,
+      delta: 3149,
     })
-    expect(nextBlank?.notes).toEqual([])
 
     const baseEagle = deals.find(
       (row) =>
@@ -4199,12 +4197,11 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 43694,
+      dealer: "Camping World, Scott City, MO",
+      trade: 40545,
+      delta: 3149,
     })
-    expect(nextBlank?.notes).toEqual([])
 
     const baseEagle = deals.find(
       (row) =>
@@ -4288,12 +4285,11 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 43694,
+      dealer: "Camping World, Scott City, MO",
+      trade: 40545,
+      delta: 3149,
     })
-    expect(nextBlank?.notes).toEqual([])
 
     const baseEagle = deals.find(
       (row) =>
@@ -4385,12 +4381,11 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 43694,
+      dealer: "Camping World, Scott City, MO",
+      trade: 40545,
+      delta: 3149,
     })
-    expect(nextBlank?.notes).toEqual([])
 
     const baseEagle = deals.find(
       (row) =>
@@ -4491,12 +4486,11 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 43694,
+      dealer: "Camping World, Scott City, MO",
+      trade: 40545,
+      delta: 3149,
     })
-    expect(nextBlank?.notes).toEqual([])
 
     const baseEagle = deals.find(
       (row) =>
@@ -4597,12 +4591,11 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 43694,
+      dealer: "Camping World, Scott City, MO",
+      trade: 40545,
+      delta: 3149,
     })
-    expect(nextBlank?.notes).toEqual([])
 
     const baseEagle = deals.find(
       (row) =>
@@ -4703,12 +4696,11 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 43694,
+      dealer: "Camping World, Scott City, MO",
+      trade: 40545,
+      delta: 3149,
     })
-    expect(nextBlank?.notes).toEqual([])
 
     const baseEagle = deals.find(
       (row) =>
@@ -4809,12 +4801,11 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 43694,
+      dealer: "Camping World, Scott City, MO",
+      trade: 40545,
+      delta: 3149,
     })
-    expect(nextBlank?.notes).toEqual([])
 
     const baseEagle = deals.find(
       (row) =>
@@ -4915,12 +4906,11 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 43694,
+      dealer: "Camping World, Scott City, MO",
+      trade: 40545,
+      delta: 3149,
     })
-    expect(nextBlank?.notes).toEqual([])
 
     const northPointTwin = deals.find(
       (row) =>
@@ -5013,12 +5003,11 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 43694,
+      dealer: "Camping World, Scott City, MO",
+      trade: 40545,
+      delta: 3149,
     })
-    expect(nextBlank?.notes).toEqual([])
 
     const alpine3100re = deals.find(
       (row) =>
@@ -5125,12 +5114,11 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 43694,
+      dealer: "Camping World, Scott City, MO",
+      trade: 40545,
+      delta: 3149,
     })
-    expect(nextBlank?.notes).toEqual([])
 
     const alpine3011 = deals.find(
       (row) =>
@@ -5219,12 +5207,11 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 43694,
+      dealer: "Camping World, Scott City, MO",
+      trade: 40545,
+      delta: 3149,
     })
-    expect(nextBlank?.notes).toEqual([])
 
     const avalancheTwin = deals.find(
       (row) =>
@@ -5330,12 +5317,11 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 43694,
+      dealer: "Camping World, Scott City, MO",
+      trade: 40545,
+      delta: 3149,
     })
-    expect(nextBlank?.notes).toEqual([])
 
     const baseAlpine = deals.find(
       (row) =>
@@ -5434,12 +5420,11 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 43694,
+      dealer: "Camping World, Scott City, MO",
+      trade: 40545,
+      delta: 3149,
     })
-    expect(nextBlank?.notes).toEqual([])
 
     const baseAlpine = deals.find(
       (row) =>
@@ -5546,12 +5531,11 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 43694,
+      dealer: "Camping World, Scott City, MO",
+      trade: 40545,
+      delta: 3149,
     })
-    expect(nextBlank?.notes).toEqual([])
 
     const selectTwin = deals.find(
       (row) =>
@@ -5575,11 +5559,18 @@ describe("deal data", () => {
       trade: 38565,
       delta: 5127,
     })
+    expect(superLite.find((row) => row.floor === "260SLCL")).toMatchObject({
+      ask: 43694,
+      dealer: "Camping World, Scott City, MO",
+      trade: 40545,
+      delta: 3149,
+    })
     expect(
       superLite
         .filter(
           (row) =>
             row.floor !== "242SLMD" &&
+            row.floor !== "260SLCL" &&
             row.floor !== "292SLRL" &&
             row.floor !== "294SLRD" &&
             row.floor !== "308SLBH"
@@ -5667,12 +5658,11 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 43694,
+      dealer: "Camping World, Scott City, MO",
+      trade: 40545,
+      delta: 3149,
     })
-    expect(nextBlank?.notes).toEqual([])
 
     const baseArcadia = deals.find(
       (row) =>
@@ -5779,12 +5769,11 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 43694,
+      dealer: "Camping World, Scott City, MO",
+      trade: 40545,
+      delta: 3149,
     })
-    expect(nextBlank?.notes).toEqual([])
 
     const baseArcadia = deals.find(
       (row) =>
@@ -5877,12 +5866,11 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 43694,
+      dealer: "Camping World, Scott City, MO",
+      trade: 40545,
+      delta: 3149,
     })
-    expect(nextBlank?.notes).toEqual([])
 
     const baseArcadia = deals.find(
       (row) =>
@@ -5975,12 +5963,11 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 43694,
+      dealer: "Camping World, Scott City, MO",
+      trade: 40545,
+      delta: 3149,
     })
-    expect(nextBlank?.notes).toEqual([])
 
     const filled28sls = deals.find(
       (row) =>
@@ -6087,12 +6074,11 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 43694,
+      dealer: "Camping World, Scott City, MO",
+      trade: 40545,
+      delta: 3149,
     })
-    expect(nextBlank?.notes).toEqual([])
 
     const baseArcadia = deals.find(
       (row) =>
@@ -6185,12 +6171,11 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 43694,
+      dealer: "Camping World, Scott City, MO",
+      trade: 40545,
+      delta: 3149,
     })
-    expect(nextBlank?.notes).toEqual([])
 
     const laterPriced = deals.find(
       (row) =>
@@ -6220,6 +6205,118 @@ describe("deal data", () => {
         row.manufacturer === "Keystone" &&
         row.model === "Arcadia Select" &&
         row.floor === "242SLMD" &&
+        row.year === 2026
+    )
+    expect(selectTwin).toBeUndefined()
+  })
+
+  it("applies Keystone Arcadia Super Lite 260SLCL ask and 2026 JDP trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Arcadia Super Lite" &&
+        row.floor === "260SLCL" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 43694,
+      dealer: "Camping World, Scott City, MO",
+      trade: 40545,
+      delta: 3149,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $43,694 Camping World Scott City MO via RV Trader (RVT CAPTCHA; includes freight/prep/docs). Trade from 2026 JDP Low Retail $45,050 × 0.9 = $40,545. Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-260-slcl/6646784/values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.jdpower.com/rvs/2026/keystone-rv/m-260-slcl/6646784/values" &&
+            span.label === "JDP values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Keystone-ARCADIA+SUPER+LITE+260SLCL-5042059662" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes.flat().some((span) => span.type === "link" && span.label === "RVT")
+    ).toBe(false)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Arcadia Super Lite" &&
+        row.floor === "242SLMD" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: 43692,
+      dealer: "Buckeye RV Jeffersonville, Jeffersonville, OH",
+      trade: 38565,
+      delta: 5127,
+    })
+
+    const laterPriced = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Arcadia Super Lite" &&
+        row.floor === "308SLBH" &&
+        row.year === 2026
+    )
+    expect(laterPriced).toMatchObject({
+      ask: 47995,
+      dealer: "Ski's Truck & RV Sales, Rockville, IN",
+      trade: 38160,
+      delta: 9835,
+    })
+
+    const nextBlank = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Avalanche" &&
+        row.floor === "302RS" &&
+        row.year === 2026
+    )
+    expect(nextBlank).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(nextBlank?.notes).toEqual([])
+
+    const baseArcadia = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Arcadia" &&
+        row.floor === "260SLCL" &&
+        row.year === 2026
+    )
+    expect(baseArcadia).toBeUndefined()
+
+    const selectTwin = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Arcadia Select" &&
+        row.floor === "260SLCL" &&
         row.year === 2026
     )
     expect(selectTwin).toBeUndefined()
@@ -6311,12 +6408,11 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(priorBlank).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 43694,
+      dealer: "Camping World, Scott City, MO",
+      trade: 40545,
+      delta: 3149,
     })
-    expect(priorBlank?.notes).toEqual([])
 
     const filled294 = deals.find(
       (row) =>
@@ -6466,12 +6562,11 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(stillBlank).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 43694,
+      dealer: "Camping World, Scott City, MO",
+      trade: 40545,
+      delta: 3149,
     })
-    expect(stillBlank?.notes).toEqual([])
 
     const baseArcadia = deals.find(
       (row) =>
@@ -6579,12 +6674,11 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(stillBlank).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 43694,
+      dealer: "Camping World, Scott City, MO",
+      trade: 40545,
+      delta: 3149,
     })
-    expect(stillBlank?.notes).toEqual([])
 
     const otherSuperLite = deals.filter(
       (row) =>
@@ -6597,6 +6691,7 @@ describe("deal data", () => {
         .filter(
           (row) =>
             row.floor !== "242SLMD" &&
+            row.floor !== "260SLCL" &&
             row.floor !== "292SLRL" &&
             row.floor !== "294SLRD" &&
             row.floor !== "308SLBH"
@@ -7959,14 +8054,14 @@ describe("filters and sort", () => {
       -10004, -6760, -5628, -5469, -5252, -5190, -3791, -3525, -3461, -2490,
       -2065, -2000, -1971, -1885, -1885, -1862, -1805, -1595, -1476, -1206,
       -1195, -1170, -831, -795, -586, -343, -110, -101, -30, -20, 390, 535, 573,
-      659, 1163, 1340, 1609, 1665, 1919, 2089, 2535, 3005, 3080, 3185, 3195, 3435, 3498, 3570, 4103, 4310,
+      659, 1163, 1340, 1609, 1665, 1919, 2089, 2535, 3005, 3080, 3149, 3185, 3195, 3435, 3498, 3570, 4103, 4310,
       4644, 4790, 4875, 4970, 5127, 5243, 5385, 5386, 5480, 5514, 5774, 5834, 5889, 5890, 5965, 6144, 6414, 6438, 6471, 6540,
       6554, 6735, 6900, 7201, 7294, 7370, 7709, 7811, 7840, 7980, 8010, 8356, 8670, 8784, 8790, 8814, 8828, 9034,
       9073, 9314, 9794, 9835, 9865, 9877, 10050, 10308, 10493, 10708, 10859, 10859, 11385, 11413, 11726, 11736, 11884, 12053, 12283, 12731, 12745, 13013, 13013, 13019, 13075, 13165, 13584,
       14139, 14370, 14805, 15072, 15373, 15379, 15689, 15697, 16193, 16667, 16667, 16859, 16898, 17460, 17664, 17740, 17755, 18256, 18256, 19530, 21524, 21793, 22400, 22745, 22925, 23268, 25615, 25875,
       26440, 27222, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(269)
+    expect(empty.length).toBe(268)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
@@ -8520,6 +8615,14 @@ describe("filters and sort", () => {
       delta: 5127,
     })
     expect(
+      arcadiaSuperLite.find((deal) => deal.floor === "260SLCL")
+    ).toMatchObject({
+      ask: 43694,
+      dealer: "Camping World, Scott City, MO",
+      trade: 40545,
+      delta: 3149,
+    })
+    expect(
       arcadiaSuperLite.find((deal) => deal.floor === "292SLRL")
     ).toMatchObject({
       ask: 46295,
@@ -8546,6 +8649,7 @@ describe("filters and sort", () => {
         .filter(
           (deal) =>
             deal.floor !== "242SLMD" &&
+            deal.floor !== "260SLCL" &&
             deal.floor !== "292SLRL" &&
             deal.floor !== "294SLRD" &&
             deal.floor !== "308SLBH"
