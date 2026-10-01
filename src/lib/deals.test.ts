@@ -471,16 +471,31 @@ describe("deal data", () => {
       (deal) => !pricedJaycoKeys.has(`${deal.model}|${deal.floor}`)
     )
     expect(
-      unpricedJayco.every(
-        (deal) =>
-          deal.year === 2026 &&
-          deal.ask == null &&
-          deal.trade == null &&
-          deal.delta == null &&
-          deal.dealer === "" &&
-          deal.notes.length === 0
-      )
+      unpricedJayco
+        .filter(
+          (deal) => !(deal.model === "Eagle" && deal.floor === "355MBQS")
+        )
+        .every(
+          (deal) =>
+            deal.year === 2026 &&
+            deal.ask == null &&
+            deal.trade == null &&
+            deal.delta == null &&
+            deal.dealer === "" &&
+            deal.notes.length === 0
+        )
     ).toBe(true)
+    const eagle355mbqs = unpricedJayco.find(
+      (deal) => deal.model === "Eagle" && deal.floor === "355MBQS"
+    )
+    expect(eagle355mbqs).toMatchObject({
+      year: 2026,
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(eagle355mbqs?.notes.length).toBeGreaterThan(0)
 
     const keystone = deals.filter((deal) => deal.manufacturer === "Keystone")
     expect(keystone).toHaveLength(KEYSTONE_FIFTH_WHEELS.length)
@@ -5293,7 +5308,71 @@ describe("deal data", () => {
       trade: null,
       delta: null,
     })
-    expect(mbqs?.notes).toEqual([])
+    expect(mbqs?.notes.length).toBeGreaterThan(0)
+  })
+
+  it("records Jayco Eagle 355MBQS none-found notes with no ask", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Jayco" &&
+        row.model === "Eagle" &&
+        row.floor === "355MBQS" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Checked, no organic New 2026 Jayco Eagle 355MBQS under 40 ft: RV Trader + RVT both returned 0 qualifying matches. Near misses excluded — RVT Heflin $64,991 (malformed 508 ft detail), RVT Grand Rapids $64,999 (42.08 ft body), RV Trader Zoomers Eagle HT 355MBQS $65,000 (42 ft, wrong line). Ask left blank."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /no organic New 2026 Jayco Eagle 355MBQS under 40 ft/i.test(
+              span.text
+            ) &&
+            /RV Trader \+ RVT both returned 0 qualifying matches/i.test(
+              span.text
+            ) &&
+            /Near misses excluded/i.test(span.text) &&
+            /RVT Heflin \$64,991/i.test(span.text) &&
+            /malformed 508 ft detail/i.test(span.text) &&
+            /RVT Grand Rapids \$64,999/i.test(span.text) &&
+            /42\.08 ft body/i.test(span.text) &&
+            /RV Trader Zoomers Eagle HT 355MBQS \$65,000/i.test(span.text) &&
+            /42 ft, wrong line/i.test(span.text) &&
+            /Ask left blank/i.test(span.text)
+        )
+    ).toBe(true)
+    expect(deal?.notes.flat().some((span) => span.type === "link")).toBe(false)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Jayco" &&
+        row.model === "Eagle" &&
+        row.floor === "335LSTS" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: 57198,
+      dealer: "Camping World, Dothan, AL",
+      trade: 46890,
+      delta: 10308,
+    })
+    expect(sibling?.notes.length).toBeGreaterThan(0)
   })
 
   it("applies Jayco Eagle 335LSTS ask and 2026 JDP trade", () => {

@@ -7959,7 +7959,14 @@
     "dealer": "",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Checked, no organic New 2026 Jayco Eagle 355MBQS under 40 ft: RV Trader + RVT both returned 0 qualifying matches. Near misses excluded — RVT Heflin $64,991 (malformed 508 ft detail), RVT Grand Rapids $64,999 (42.08 ft body), RV Trader Zoomers Eagle HT 355MBQS $65,000 (42 ft, wrong line). Ask left blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
