@@ -322,8 +322,16 @@ describe("deal data", () => {
     expect(jayco.map((deal) => [deal.model, deal.floor])).toEqual(
       JAYCO_FIFTH_WHEELS.map(([model, floor]) => [model, floor])
     )
+    const pricedJaycoKeys = new Set(["Eagle|28CRT"])
+    const pricedJayco = jayco.filter((deal) =>
+      pricedJaycoKeys.has(`${deal.model}|${deal.floor}`)
+    )
+    expect(pricedJayco).toHaveLength(1)
+    const unpricedJayco = jayco.filter(
+      (deal) => !pricedJaycoKeys.has(`${deal.model}|${deal.floor}`)
+    )
     expect(
-      jayco.every(
+      unpricedJayco.every(
         (deal) =>
           deal.year === 2026 &&
           deal.ask == null &&
@@ -355,7 +363,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(127)
+    expect(priced).toHaveLength(128)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -3166,6 +3174,95 @@ describe("deal data", () => {
     expect(galley?.notes).toEqual([])
   })
 
+  it("applies Jayco Eagle 28CRT ask and leaves trade/delta blank", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Jayco" &&
+        row.model === "Eagle" &&
+        row.floor === "28CRT" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 56500,
+      dealer: "Bus Supply Company Inc, McComb, MS",
+      trade: null,
+      delta: null,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $56,500 RV Trader (Bus Supply Company Inc, McComb MS), 33 ft New Eagle 28CRT (listing title EAGLE not Eagle HT). Excluded lower $54,991 Premium/featured Eagle 321RSTS. RVT CAPTCHA blocked cross-check. Trade blank: verified JDP miss for non-HT Eagle M-28 CRT (2026 and 2025 list M-28 CRT only under Eagle HT Series — wrong-line, not used as proxy). HT page: https://www.jdpower.com/rvs/2026/jayco/m-28-crt/6648112/values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /verified JDP miss/i.test(span.text) &&
+            /non-HT Eagle M-28 CRT/i.test(span.text) &&
+            /Eagle HT Series/i.test(span.text) &&
+            /wrong-line, not used as proxy/i.test(span.text)
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "RVT")
+    ).toBe(false)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Jayco-EAGLE+28CRT-5039995535" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+
+    const rsts = deals.find(
+      (row) =>
+        row.manufacturer === "Jayco" &&
+        row.model === "Eagle" &&
+        row.floor === "321RSTS" &&
+        row.year === 2026
+    )
+    expect(rsts).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(rsts?.notes).toEqual([])
+
+    const htTwin = deals.find(
+      (row) =>
+        row.manufacturer === "Jayco" &&
+        row.model === "Eagle HT" &&
+        row.floor === "28CRT" &&
+        row.year === 2026
+    )
+    expect(htTwin).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(htTwin?.notes).toEqual([])
+  })
+
   it("applies Sanibel 34LOUNGE ask and 2026 JDP trade", () => {
     const deal = deals.find(
       (row) =>
@@ -4308,6 +4405,12 @@ describe("deal data", () => {
         "30BAM",
         64999,
         "Ron Hoover RV & Marine – Georgetown, TX",
+      ],
+      [
+        "Eagle",
+        "28CRT",
+        56500,
+        "Bus Supply Company Inc, McComb, MS",
       ],
     ] as const
     const verifiedMiss = new Set(["297MK", "235ML", "295RL"])

@@ -7585,11 +7585,33 @@
     "manufacturer": "Jayco",
     "model": "Eagle",
     "floor": "28CRT",
-    "ask": null,
-    "dealer": "",
+    "ask": 56500,
+    "dealer": "Bus Supply Company Inc, McComb, MS",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Bus Supply Company Inc, McComb, MS, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Jayco-EAGLE+28CRT-5039995535",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $56,500 RV Trader (Bus Supply Company Inc, McComb MS), 33 ft New Eagle 28CRT (listing title EAGLE not Eagle HT). Excluded lower $54,991 Premium/featured Eagle 321RSTS. RVT CAPTCHA blocked cross-check. Trade blank: verified JDP miss for non-HT Eagle M-28 CRT (2026 and 2025 list M-28 CRT only under Eagle HT Series — wrong-line, not used as proxy). HT page: https://www.jdpower.com/rvs/2026/jayco/m-28-crt/6648112/values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
