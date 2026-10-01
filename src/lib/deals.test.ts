@@ -419,11 +419,12 @@ describe("deal data", () => {
       "Montana|3795FK",
       "Montana High Country|290RL",
       "Montana High Country|295RL",
+      "Montana High Country|300RK",
     ])
     const pricedKeystone = keystone.filter((deal) =>
       pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedKeystone).toHaveLength(51)
+    expect(pricedKeystone).toHaveLength(52)
     const unpricedKeystone = keystone.filter(
       (deal) => !pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -458,7 +459,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(197)
+    expect(priced).toHaveLength(198)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -10127,7 +10128,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Montana High Country" &&
-        row.floor === "300RK" &&
+        row.floor === "311RD" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -10294,12 +10295,12 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(highCountryTwin).toMatchObject({
-      ask: null,
-      dealer: "",
+      ask: 78989,
+      dealer: "Buckeye RV Wilmington, Wilmington, OH",
       trade: null,
       delta: null,
     })
-    expect(highCountryTwin?.notes).toEqual([])
+    expect(highCountryTwin?.notes.length).toBeGreaterThan(0)
 
     const priorNotes = deals.find(
       (row) =>
@@ -10320,7 +10321,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Montana High Country" &&
-        row.floor === "300RK" &&
+        row.floor === "311RD" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -10446,7 +10447,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Montana High Country" &&
-        row.floor === "300RK" &&
+        row.floor === "311RD" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -10551,7 +10552,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Montana High Country" &&
-        row.floor === "300RK" &&
+        row.floor === "311RD" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -10656,7 +10657,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Montana High Country" &&
-        row.floor === "300RK" &&
+        row.floor === "311RD" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -10753,7 +10754,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Montana High Country" &&
-        row.floor === "300RK" &&
+        row.floor === "311RD" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -10859,7 +10860,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Montana High Country" &&
-        row.floor === "300RK" &&
+        row.floor === "311RD" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -11066,11 +11067,125 @@ describe("deal data", () => {
     })
     expect(priorPriced?.notes.length).toBeGreaterThan(0)
 
-    const nextBlank = deals.find(
+    const nextPriced = deals.find(
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Montana High Country" &&
         row.floor === "300RK" &&
+        row.year === 2026
+    )
+    expect(nextPriced).toMatchObject({
+      ask: 78989,
+      dealer: "Buckeye RV Wilmington, Wilmington, OH",
+      trade: null,
+      delta: null,
+    })
+    expect(nextPriced?.notes.length).toBeGreaterThan(0)
+  })
+
+  it("applies Keystone Montana High Country 300RK ask and leaves trade/delta blank", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Montana High Country" &&
+        row.floor === "300RK" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 78989,
+      dealer: "Buckeye RV Wilmington, Wilmington, OH",
+      trade: null,
+      delta: null,
+    })
+    expect(deal?.model).toBe("Montana High Country")
+    expect(deal?.floor).toBe("300RK")
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Organic New High Country 300RK; 34.92 ft; RVT human-verification blocked cross-check. Trade blank: verified JDP miss — no 2026 or 2025 Montana High Country M-300 RK/300RK (2025 direct URL 404); base Montana not used as proxy."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /Organic New High Country 300RK/i.test(span.text) &&
+            /34\.92 ft/i.test(span.text) &&
+            /RVT human-verification blocked cross-check/i.test(span.text) &&
+            /Trade blank: verified JDP miss/i.test(span.text) &&
+            /no 2026 or 2025 Montana High Country M-300 RK\/300RK/i.test(
+              span.text
+            ) &&
+            /base Montana not used as proxy/i.test(span.text) &&
+            !/trade from/i.test(span.text) &&
+            !/× 0\.9/.test(span.text)
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(
+      deal?.notes.flat().some((span) => span.type === "link" && span.label === "RVT")
+    ).toBe(false)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Keystone-MONTANA+HIGH+COUNTRY+300RK-5040643469" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+
+    expect(deal?.trade).toBeNull()
+    expect(deal?.delta).toBeNull()
+    expect(deal?.trade).not.toBe(0)
+
+    const baseMontana = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Montana" &&
+        row.floor === "300RK" &&
+        row.year === 2026
+    )
+    expect(baseMontana).toMatchObject({
+      ask: 92995,
+      dealer: "General RV Center - North Canton OH, North Canton, OH",
+      trade: null,
+      delta: null,
+    })
+    expect(baseMontana?.notes.length).toBeGreaterThan(0)
+
+    const priorPriced = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Montana High Country" &&
+        row.floor === "295RL" &&
+        row.year === 2026
+    )
+    expect(priorPriced).toMatchObject({
+      ask: 59999,
+      dealer: "Buckeye RV Wilmington, Wilmington, OH",
+      trade: 49410,
+      delta: 10589,
+    })
+    expect(priorPriced?.notes.length).toBeGreaterThan(0)
+
+    const nextBlank = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Montana High Country" &&
+        row.floor === "311RD" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -12315,6 +12430,12 @@ describe("deal data", () => {
         97995,
         "RV Roadway Opelika, Opelika, AL",
       ],
+      [
+        "Montana High Country",
+        "300RK",
+        78989,
+        "Buckeye RV Wilmington, Wilmington, OH",
+      ],
     ] as const
     const verifiedMiss = new Set(["297MK", "235ML", "295RL"])
     const askNoTrade = deals.filter(
@@ -13467,9 +13588,20 @@ describe("filters and sort", () => {
       trade: 49410,
       delta: 10589,
     })
+    expect(highCountry.find((deal) => deal.floor === "300RK")).toMatchObject({
+      ask: 78989,
+      dealer: "Buckeye RV Wilmington, Wilmington, OH",
+      trade: null,
+      delta: null,
+    })
     expect(
       highCountry
-        .filter((deal) => deal.floor !== "290RL" && deal.floor !== "295RL")
+        .filter(
+          (deal) =>
+            deal.floor !== "290RL" &&
+            deal.floor !== "295RL" &&
+            deal.floor !== "300RK"
+        )
         .every(
           (deal) =>
             deal.ask == null &&
