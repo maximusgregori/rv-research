@@ -395,11 +395,12 @@ describe("deal data", () => {
       "Cougar|32BHS",
       "Cougar|350LLK",
       "Cougar|355FBS",
+      "Cougar|360MBI",
     ])
     const pricedKeystone = keystone.filter((deal) =>
       pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedKeystone).toHaveLength(27)
+    expect(pricedKeystone).toHaveLength(28)
     const unpricedKeystone = keystone.filter(
       (deal) => !pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -419,7 +420,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(173)
+    expect(priced).toHaveLength(174)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -6986,7 +6987,8 @@ describe("deal data", () => {
             row.floor !== "320RDS" &&
             row.floor !== "32BHS" &&
             row.floor !== "350LLK" &&
-            row.floor !== "355FBS"
+            row.floor !== "355FBS" &&
+            row.floor !== "360MBI"
         )
         .every(
           (row) =>
@@ -7075,7 +7077,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Cougar" &&
-        row.floor === "360MBI" &&
+        row.floor === "364BHL" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -7137,7 +7139,8 @@ describe("deal data", () => {
             row.floor !== "320RDS" &&
             row.floor !== "32BHS" &&
             row.floor !== "350LLK" &&
-            row.floor !== "355FBS"
+            row.floor !== "355FBS" &&
+            row.floor !== "360MBI"
         )
         .every(
           (row) =>
@@ -7218,7 +7221,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Cougar" &&
-        row.floor === "360MBI" &&
+        row.floor === "364BHL" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -7271,7 +7274,8 @@ describe("deal data", () => {
             row.floor !== "320RDS" &&
             row.floor !== "32BHS" &&
             row.floor !== "350LLK" &&
-            row.floor !== "355FBS"
+            row.floor !== "355FBS" &&
+            row.floor !== "360MBI"
         )
         .every(
           (row) =>
@@ -7352,7 +7356,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Cougar" &&
-        row.floor === "360MBI" &&
+        row.floor === "364BHL" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -7399,7 +7403,8 @@ describe("deal data", () => {
             row.floor !== "320RDS" &&
             row.floor !== "32BHS" &&
             row.floor !== "350LLK" &&
-            row.floor !== "355FBS"
+            row.floor !== "355FBS" &&
+            row.floor !== "360MBI"
         )
         .every(
           (row) =>
@@ -7480,7 +7485,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Cougar" &&
-        row.floor === "360MBI" &&
+        row.floor === "364BHL" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -7527,7 +7532,8 @@ describe("deal data", () => {
             row.floor !== "320RDS" &&
             row.floor !== "32BHS" &&
             row.floor !== "350LLK" &&
-            row.floor !== "355FBS"
+            row.floor !== "355FBS" &&
+            row.floor !== "360MBI"
         )
         .every(
           (row) =>
@@ -7608,7 +7614,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Cougar" &&
-        row.floor === "360MBI" &&
+        row.floor === "364BHL" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -7655,7 +7661,8 @@ describe("deal data", () => {
             row.floor !== "320RDS" &&
             row.floor !== "32BHS" &&
             row.floor !== "350LLK" &&
-            row.floor !== "355FBS"
+            row.floor !== "355FBS" &&
+            row.floor !== "360MBI"
         )
         .every(
           (row) =>
@@ -7736,7 +7743,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Cougar" &&
-        row.floor === "360MBI" &&
+        row.floor === "364BHL" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -7789,7 +7796,8 @@ describe("deal data", () => {
             row.floor !== "320RDS" &&
             row.floor !== "32BHS" &&
             row.floor !== "350LLK" &&
-            row.floor !== "355FBS"
+            row.floor !== "355FBS" &&
+            row.floor !== "360MBI"
         )
         .every(
           (row) =>
@@ -7870,7 +7878,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Cougar" &&
-        row.floor === "360MBI" &&
+        row.floor === "364BHL" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -7917,7 +7925,8 @@ describe("deal data", () => {
             row.floor !== "320RDS" &&
             row.floor !== "32BHS" &&
             row.floor !== "350LLK" &&
-            row.floor !== "355FBS"
+            row.floor !== "355FBS" &&
+            row.floor !== "360MBI"
         )
         .every(
           (row) =>
@@ -7998,7 +8007,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Cougar" &&
-        row.floor === "360MBI" &&
+        row.floor === "364BHL" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -8045,7 +8054,137 @@ describe("deal data", () => {
             row.floor !== "320RDS" &&
             row.floor !== "32BHS" &&
             row.floor !== "350LLK" &&
-            row.floor !== "355FBS"
+            row.floor !== "355FBS" &&
+            row.floor !== "360MBI"
+        )
+        .every(
+          (row) =>
+            row.ask == null &&
+            row.trade == null &&
+            row.delta == null &&
+            row.dealer === "" &&
+            row.notes.length === 0
+        )
+    ).toBe(true)
+  })
+
+  it("applies Keystone Cougar 360MBI ask and 2026 JDP trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar" &&
+        row.floor === "360MBI" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 66698,
+      dealer: "Camping World, Oshkosh, WI",
+      trade: 51525,
+      delta: 15173,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $66,698 Camping World, Oshkosh, WI via RV Trader (39.25 ft); RVT CAPTCHA-blocked; Trader-only. Featured/Premium excluded. Verified base Cougar (not Half-Ton/Sport). 2026 JDP Low Retail $57,250 → trade $51,525. Trade from 2026 JDP Low Retail $57,250 × 0.9 = $51,525. Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-360-mbi/6646962/values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.jdpower.com/rvs/2026/keystone-rv/m-360-mbi/6646962/values" &&
+            span.label === "JDP values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Keystone-COUGAR+360MBI-5042062259" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes.flat().some((span) => span.type === "link" && span.label === "RVT")
+    ).toBe(false)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar" &&
+        row.floor === "355FBS" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: 63985,
+      dealer: "Meyer's RV Superstore Ripley, Ripley, WV",
+      trade: 50625,
+      delta: 13360,
+    })
+
+    const nextBlank = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar" &&
+        row.floor === "364BHL" &&
+        row.year === 2026
+    )
+    expect(nextBlank).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(nextBlank?.notes).toEqual([])
+
+    const halfTonTwin = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar Half-Ton" &&
+        row.floor === "360MBI" &&
+        row.year === 2026
+    )
+    expect(halfTonTwin).toBeUndefined()
+
+    const sportTwin = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar Sport" &&
+        row.floor === "360MBI" &&
+        row.year === 2026
+    )
+    expect(sportTwin).toBeUndefined()
+
+    const otherCougar = deals.filter(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar" &&
+        row.year === 2026
+    )
+    expect(
+      otherCougar
+        .filter(
+          (row) =>
+            row.floor !== "24RDS" &&
+            row.floor !== "260MLE" &&
+            row.floor !== "27SGS" &&
+            row.floor !== "290RLS" &&
+            row.floor !== "316RLS" &&
+            row.floor !== "320RDS" &&
+            row.floor !== "32BHS" &&
+            row.floor !== "350LLK" &&
+            row.floor !== "355FBS" &&
+            row.floor !== "360MBI"
         )
         .every(
           (row) =>
@@ -9383,10 +9522,10 @@ describe("filters and sort", () => {
       4644, 4790, 4875, 4970, 5127, 5243, 5385, 5386, 5480, 5514, 5774, 5834, 5889, 5890, 5965, 6144, 6414, 6438, 6471, 6540,
       6554, 6735, 6900, 7201, 7294, 7370, 7709, 7811, 7840, 7980, 8010, 8356, 8670, 8784, 8790, 8814, 8828, 9034,
       9073, 9314, 9324, 9794, 9835, 9864, 9865, 9877, 10050, 10308, 10414, 10421, 10493, 10708, 10859, 10859, 11385, 11395, 11413, 11726, 11736, 11884, 12053, 12283, 12731, 12745, 13013, 13013, 13019, 13075, 13165, 13360, 13584,
-      14139, 14370, 14805, 15072, 15373, 15379, 15689, 15697, 16095, 16193, 16667, 16667, 16859, 16898, 17460, 17577, 17664, 17740, 17755, 18228, 18256, 18256, 19530, 21524, 21793, 22400, 22745, 22925, 23268, 25615, 25875,
+      14139, 14370, 14805, 15072, 15173, 15373, 15379, 15689, 15697, 16095, 16193, 16667, 16667, 16859, 16898, 17460, 17577, 17664, 17740, 17755, 18228, 18256, 18256, 19530, 21524, 21793, 22400, 22745, 22925, 23268, 25615, 25875,
       26440, 27222, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(259)
+    expect(empty.length).toBe(258)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
@@ -10062,6 +10201,12 @@ describe("filters and sort", () => {
       trade: 50625,
       delta: 13360,
     })
+    expect(rows.find((deal) => deal.floor === "360MBI")).toMatchObject({
+      ask: 66698,
+      dealer: "Camping World, Oshkosh, WI",
+      trade: 51525,
+      delta: 15173,
+    })
     expect(
       rows
         .filter(
@@ -10074,7 +10219,8 @@ describe("filters and sort", () => {
             deal.floor !== "320RDS" &&
             deal.floor !== "32BHS" &&
             deal.floor !== "350LLK" &&
-            deal.floor !== "355FBS"
+            deal.floor !== "355FBS" &&
+            deal.floor !== "360MBI"
         )
         .every((deal) => deal.ask == null && deal.delta == null)
     ).toBe(true)
