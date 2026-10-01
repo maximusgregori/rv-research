@@ -5743,7 +5743,14 @@
     "dealer": "",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Length skip: observed New 2026 plain Cedar Creek 39RKB at RV Dynasty, Bunker Hill IN ($79,995 listed) with exterior length 43 ft 3 in — exceeds under-40-ft filter. Source: https://www.rvdynasty.com/product/new-2026-forest-river-rv-cedar-creek-39rkb-3140454-5. Not Silverback. No ask fill. RV Trader CAPTCHA and RVT CloudFront 403 blocked dual-site listing confirm."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,

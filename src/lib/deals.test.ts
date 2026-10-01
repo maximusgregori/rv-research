@@ -308,7 +308,8 @@ describe("deal data", () => {
             !(
               deal.model === "Cherokee Arctic Wolf" &&
               deal.floor === "3550 SUITE"
-            )
+            ) &&
+            !(deal.model === "Cedar Creek" && deal.floor === "39RKB")
         )
         .every(
           (deal) =>
@@ -332,6 +333,17 @@ describe("deal data", () => {
       delta: null,
     })
     expect(arcticWolf3550?.notes.length).toBeGreaterThan(0)
+    const cedarCreek39 = unpricedForest.find(
+      (deal) => deal.model === "Cedar Creek" && deal.floor === "39RKB"
+    )
+    expect(cedarCreek39).toMatchObject({
+      year: 2026,
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(cedarCreek39?.notes.length).toBeGreaterThan(0)
 
     const jayco = deals.filter((deal) => deal.manufacturer === "Jayco")
     expect(jayco).toHaveLength(JAYCO_FIFTH_WHEELS.length)
@@ -1311,6 +1323,79 @@ describe("deal data", () => {
     expect(
       deal?.notes.flat().some((span) => span.type === "link")
     ).toBe(false)
+  })
+
+  it("records Forest River Cedar Creek 39RKB length-skip notes with no ask", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Cedar Creek" &&
+        row.floor === "39RKB" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Length skip: observed New 2026 plain Cedar Creek 39RKB at RV Dynasty, Bunker Hill IN ($79,995 listed) with exterior length 43 ft 3 in — exceeds under-40-ft filter. Source: https://www.rvdynasty.com/product/new-2026-forest-river-rv-cedar-creek-39rkb-3140454-5. Not Silverback. No ask fill. RV Trader CAPTCHA and RVT CloudFront 403 blocked dual-site listing confirm."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /Length skip/i.test(span.text) &&
+            /plain Cedar Creek 39RKB/i.test(span.text) &&
+            /RV Dynasty, Bunker Hill IN/i.test(span.text) &&
+            /\$79,995 listed/i.test(span.text) &&
+            /43 ft 3 in/i.test(span.text) &&
+            /exceeds under-40-ft filter/i.test(span.text) &&
+            /Not Silverback/i.test(span.text) &&
+            /No ask fill/i.test(span.text)
+        )
+    ).toBe(true)
+    expect(deal?.notes.flat().some((span) => span.type === "link")).toBe(false)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Cedar Creek" &&
+        row.floor === "290RL" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: 74999,
+      dealer: "Bill's Happy Camper RV Sales & Service, Mill Hall, PA",
+      trade: 65205,
+      delta: 9794,
+    })
+    expect(sibling?.notes.length).toBeGreaterThan(0)
+
+    const silverback = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Cedar Creek Silverback" &&
+        row.floor === "29RL" &&
+        row.year === 2026
+    )
+    expect(silverback).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(silverback?.notes.length).toBeGreaterThan(0)
   })
 
   it("applies Cedar Creek Experience 35RL ask and 2025 JDP proxy trade", () => {
