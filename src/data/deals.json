@@ -8546,11 +8546,47 @@
     "manufacturer": "Keystone",
     "model": "Alpine Avalanche Edition",
     "floor": "321RL",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 66988,
+    "dealer": "RV Roadway, Calera, AL",
+    "trade": 51615,
+    "delta": 15373,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was RV Roadway, Calera, AL, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone-Alpine+Avalanche+Edition+321RL-5040718397",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-keystone-alpine-avalanche-edition-321rl/c80b62ea-563a-11f1-adcf-02f5bff6b341/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $66,988 RV Roadway Calera AL via RV Trader + RVT (same inventory, 37 ft); Avalanche Edition confirmed. Trade from 2026 JDP Low Retail $57,350 \u00d7 0.9 = $51,615 (Keystone Alpine Avalanche Edition Series M-321 RL). Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-321-rl/6646771/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/keystone-rv/m-321-rl/6646771/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
