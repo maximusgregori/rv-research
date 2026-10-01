@@ -420,16 +420,31 @@ describe("deal data", () => {
       (deal) => !pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
     expect(
-      unpricedKeystone.every(
-        (deal) =>
-          deal.year === 2026 &&
-          deal.ask == null &&
-          deal.trade == null &&
-          deal.delta == null &&
-          deal.dealer === "" &&
-          deal.notes.length === 0
-      )
+      unpricedKeystone
+        .filter(
+          (deal) => !(deal.model === "Montana" && deal.floor === "295RL")
+        )
+        .every(
+          (deal) =>
+            deal.year === 2026 &&
+            deal.ask == null &&
+            deal.trade == null &&
+            deal.delta == null &&
+            deal.dealer === "" &&
+            deal.notes.length === 0
+        )
     ).toBe(true)
+    const montana295 = unpricedKeystone.find(
+      (deal) => deal.model === "Montana" && deal.floor === "295RL"
+    )
+    expect(montana295).toMatchObject({
+      year: 2026,
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(montana295?.notes.length).toBeGreaterThan(0)
     expect(keystone.some((deal) => deal.model === "Other")).toBe(false)
   })
 
@@ -10104,7 +10119,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Montana" &&
-        row.floor === "295RL" &&
+        row.floor === "300RK" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -10122,6 +10137,78 @@ describe("deal data", () => {
     )
     expect(fuzionProxy).toBeUndefined()
     expect(deal?.trade).not.toBe(0)
+  })
+
+  it("records Keystone Montana 295RL notes with no ask after High Country-only listings", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Montana" &&
+        row.floor === "295RL" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Checked, no organic New 2026 Montana 295RL (non–High Country): RV Trader $64,999 North Canton OH listing is Montana High Country on detail (https://www.rvtrader.com/listing/2026-Keystone-MONTANA+295RL-5037848288); RVT/dealer $75,997 Stanton TX also High Country (https://www.toliverrv.com/product/new-2026-keystone-rv-montana-295rl-3198683-5); RVT search captcha_blocked. Ask left blank."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /no organic New 2026 Montana 295RL/i.test(span.text) &&
+            /non–High Country/i.test(span.text) &&
+            /Montana High Country on detail/i.test(span.text) &&
+            /RVT search captcha_blocked/i.test(span.text) &&
+            /Ask left blank/i.test(span.text)
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes.flat().some((span) => span.type === "link")
+    ).toBe(false)
+
+    const highCountryTwin = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Montana High Country" &&
+        row.floor === "295RL" &&
+        row.year === 2026
+    )
+    expect(highCountryTwin).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(highCountryTwin?.notes).toEqual([])
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Montana" &&
+        row.floor === "300RK" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(sibling?.notes).toEqual([])
   })
 
   it("applies Sanibel 34LOUNGE ask and 2026 JDP trade", () => {
@@ -12387,6 +12474,43 @@ describe("filters and sort", () => {
       trade: null,
       delta: null,
     })
+
+    const montana = matching(deals, {
+      manufacturer: "Keystone",
+      year: "",
+      model: "Montana",
+    })
+    expect(montana).toHaveLength(7)
+    expect(montana.map((deal) => deal.floor)).toEqual([
+      "295RL",
+      "300RK",
+      "3100RL",
+      "3123RL",
+      "3231CK",
+      "3532SP",
+      "3795FK",
+    ])
+    expect(montana.find((deal) => deal.floor === "295RL")).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(
+      montana.find((deal) => deal.floor === "295RL")?.notes.length
+    ).toBeGreaterThan(0)
+    expect(
+      montana
+        .filter((deal) => deal.floor !== "295RL")
+        .every(
+          (deal) =>
+            deal.ask == null &&
+            deal.trade == null &&
+            deal.delta == null &&
+            deal.dealer === "" &&
+            deal.notes.length === 0
+        )
+    ).toBe(true)
   })
 })
 

@@ -10001,7 +10001,14 @@
     "dealer": "",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Checked, no organic New 2026 Montana 295RL (non\u2013High Country): RV Trader $64,999 North Canton OH listing is Montana High Country on detail (https://www.rvtrader.com/listing/2026-Keystone-MONTANA+295RL-5037848288); RVT/dealer $75,997 Stanton TX also High Country (https://www.toliverrv.com/product/new-2026-keystone-rv-montana-295rl-3198683-5); RVT search captcha_blocked. Ask left blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
