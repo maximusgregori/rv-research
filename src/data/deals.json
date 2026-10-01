@@ -8631,11 +8631,38 @@
     "manufacturer": "Keystone",
     "model": "Arcadia",
     "floor": "3260RL",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 58567,
+    "dealer": "Buckeye RV Jeffersonville, Jeffersonville, OH",
+    "trade": 48690,
+    "delta": 9877,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Buckeye RV Jeffersonville, Jeffersonville, OH, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone-ARCADIA+3260RL-5038058139",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $58,567 Buckeye RV Jeffersonville OH via RV Trader (RVT CAPTCHA). Trade from 2026 JDP Low Retail $54,100 \u00d7 0.9 = $48,690. Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-3260-rl/6646954/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/keystone-rv/m-3260-rl/6646954/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
