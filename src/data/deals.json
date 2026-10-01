@@ -9718,11 +9718,33 @@
     "manufacturer": "Keystone",
     "model": "Cougar Half-Ton",
     "floor": "29MBD",
-    "ask": null,
-    "dealer": "",
+    "ask": 49966,
+    "dealer": "Camping World, Roscoe, IL",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Camping World, Roscoe, IL, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone-COUGAR+29MBD-5042064800",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $49,966 Camping World, Roscoe, IL via RV Trader (33.92 ft). Ask only. RVT CAPTCHA-blocked; Trader-only. Featured/Premium excluded. Verified Half-Ton (not base/Sport). Checked, no JDP comparable: 2026 M-29 MBD only under base Cougar Series; 2025 no entry \u2014 wrong-line proxy excluded."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
