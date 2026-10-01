@@ -417,11 +417,12 @@ describe("deal data", () => {
       "Montana|3231CK",
       "Montana|3532SP",
       "Montana|3795FK",
+      "Montana High Country|290RL",
     ])
     const pricedKeystone = keystone.filter((deal) =>
       pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedKeystone).toHaveLength(49)
+    expect(pricedKeystone).toHaveLength(50)
     const unpricedKeystone = keystone.filter(
       (deal) => !pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -456,7 +457,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(195)
+    expect(priced).toHaveLength(196)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -10125,7 +10126,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Montana High Country" &&
-        row.floor === "290RL" &&
+        row.floor === "295RL" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -10209,12 +10210,12 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(sibling).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 75946,
+      dealer: "Bankston Motor Homes of Huntsville, Huntsville, AL",
+      trade: 59400,
+      delta: 16546,
     })
-    expect(sibling?.notes).toEqual([])
+    expect(sibling?.notes.length).toBeGreaterThan(0)
   })
 
   it("applies Keystone Montana 300RK ask and leaves trade/delta blank", () => {
@@ -10318,7 +10319,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Montana High Country" &&
-        row.floor === "290RL" &&
+        row.floor === "295RL" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -10444,7 +10445,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Montana High Country" &&
-        row.floor === "290RL" &&
+        row.floor === "295RL" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -10549,7 +10550,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Montana High Country" &&
-        row.floor === "290RL" &&
+        row.floor === "295RL" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -10654,7 +10655,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Montana High Country" &&
-        row.floor === "290RL" &&
+        row.floor === "295RL" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -10751,7 +10752,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Montana High Country" &&
-        row.floor === "290RL" &&
+        row.floor === "295RL" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -10857,7 +10858,114 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Montana High Country" &&
+        row.floor === "295RL" &&
+        row.year === 2026
+    )
+    expect(nextBlank).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(nextBlank?.notes).toEqual([])
+  })
+
+  it("applies Keystone Montana High Country 290RL ask and 2026 JDP trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Montana High Country" &&
         row.floor === "290RL" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 75946,
+      dealer: "Bankston Motor Homes of Huntsville, Huntsville, AL",
+      trade: 59400,
+      delta: 16546,
+    })
+    expect(deal?.model).toBe("Montana High Country")
+    expect(deal?.floor).toBe("290RL")
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Organic New High Country 290RL; RVT organic New $79,440 Bryan TX; kept cheaper RV Trader. Trade from real 2026 Montana High Country Series M-290 RL Low Retail $66,000 × 0.9."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /Organic New High Country 290RL/i.test(span.text) &&
+            /RVT organic New \$79,440 Bryan TX/i.test(span.text) &&
+            /kept cheaper RV Trader/i.test(span.text) &&
+            /Trade from real 2026 Montana High Country Series M-290 RL Low Retail \$66,000 × 0\.9/i.test(
+              span.text
+            )
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Keystone+Rv-Montana+High+Country+290RL-5040163909" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvt.com/buy/details/2026-keystone-montana-high-country-290rl/d9249b90-5a4c-11f1-adcf-02f5bff6b341/" &&
+            span.label === "RVT"
+        )
+    ).toBe(true)
+
+    const baseMontanaTwin = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Montana" &&
+        row.floor === "290RL" &&
+        row.year === 2026
+    )
+    expect(baseMontanaTwin).toBeUndefined()
+
+    const priorPriced = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Montana" &&
+        row.floor === "3795FK" &&
+        row.year === 2026
+    )
+    expect(priorPriced).toMatchObject({
+      ask: 77694,
+      dealer: "Camping World, Strafford, MO",
+      trade: 72450,
+      delta: 5244,
+    })
+
+    const nextBlank = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Montana High Country" &&
+        row.floor === "295RL" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -12272,10 +12380,10 @@ describe("filters and sort", () => {
       4644, 4790, 4875, 4970, 5127, 5178, 5243, 5244, 5385, 5386, 5480, 5514, 5774, 5834, 5889, 5890, 5965, 6144, 6414, 6438, 6471, 6540,
       6554, 6735, 6783, 6900, 7201, 7294, 7370, 7709, 7811, 7840, 7980, 8010, 8356, 8670, 8784, 8790, 8814, 8828, 9034,
       9073, 9294, 9314, 9324, 9692, 9794, 9835, 9864, 9865, 9877, 10050, 10308, 10414, 10421, 10493, 10708, 10859, 10859, 10984, 11385, 11395, 11413, 11726, 11736, 11884, 12053, 12283, 12731, 12745, 13013, 13013, 13019, 13075, 13165, 13194, 13360, 13584,
-      14139, 14370, 14805, 15072, 15173, 15373, 15379, 15689, 15697, 16095, 16193, 16667, 16667, 16859, 16898, 17460, 17577, 17664, 17740, 17755, 18228, 18256, 18256, 19530, 21524, 21793, 22400, 22745, 22925, 23268, 25615, 25875,
+      14139, 14370, 14805, 15072, 15173, 15373, 15379, 15689, 15697, 16095, 16193, 16546, 16667, 16667, 16859, 16898, 17460, 17577, 17664, 17740, 17755, 18228, 18256, 18256, 19530, 21524, 21793, 22400, 22745, 22925, 23268, 25615, 25875,
       26440, 27222, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(250)
+    expect(empty.length).toBe(249)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )

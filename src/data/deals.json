@@ -10236,11 +10236,42 @@
     "manufacturer": "Keystone",
     "model": "Montana High Country",
     "floor": "290RL",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 75946,
+    "dealer": "Bankston Motor Homes of Huntsville, Huntsville, AL",
+    "trade": 59400,
+    "delta": 16546,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Bankston Motor Homes of Huntsville, Huntsville, AL, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone+Rv-Montana+High+Country+290RL-5040163909",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-keystone-montana-high-country-290rl/d9249b90-5a4c-11f1-adcf-02f5bff6b341/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Organic New High Country 290RL; RVT organic New $79,440 Bryan TX; kept cheaper RV Trader. Trade from real 2026 Montana High Country Series M-290 RL Low Retail $66,000 \u00d7 0.9."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
