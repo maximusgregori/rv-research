@@ -6913,7 +6913,14 @@
     "dealer": "",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Checked, no numeric New 2026 Sabre 25RLS ask: RV Trader Call for price (https://www.rvtrader.com/listing/2026-Forest+River+Rv-Sabre+25RLS-5038627825) and RVT open to offers (https://www.rvt.com/buy/details/2026-forest-river-sabre-25rls/3c7f29f5-d05a-11f0-beaa-02c8259c7411/) both Price Right RV Sterling Heights MI; detail length 29 ft under cut. Ask left blank."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
