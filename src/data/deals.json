@@ -10119,11 +10119,42 @@
     "manufacturer": "Keystone",
     "model": "Montana",
     "floor": "3231CK",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 75228,
+    "dealer": "Camping World, Lowell, AR",
+    "trade": 68445,
+    "delta": 6783,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Camping World, Lowell, AR, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone-MONTANA+3231CK-5042135686",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-keystone-montana-3231ck/33793d9b-b0ff-11f1-84c9-020f812d825b/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Organic New Montana (not High Country) FW; both sites $75,228; detail exterior length 37.42 ft. Trade from real 2026 Montana Series M-3231 CK Low Retail $76,050 \u00d7 0.9."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
