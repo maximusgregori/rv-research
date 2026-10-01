@@ -390,11 +390,12 @@ describe("deal data", () => {
       "Cougar|260MLE",
       "Cougar|27SGS",
       "Cougar|290RLS",
+      "Cougar|316RLS",
     ])
     const pricedKeystone = keystone.filter((deal) =>
       pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedKeystone).toHaveLength(22)
+    expect(pricedKeystone).toHaveLength(23)
     const unpricedKeystone = keystone.filter(
       (deal) => !pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -414,7 +415,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(168)
+    expect(priced).toHaveLength(169)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -8839,11 +8840,11 @@ describe("filters and sort", () => {
       659, 1163, 1340, 1609, 1665, 1919, 2089, 2535, 3005, 3080, 3149, 3185, 3195, 3435, 3498, 3570, 4103, 4310,
       4644, 4790, 4875, 4970, 5127, 5243, 5385, 5386, 5480, 5514, 5774, 5834, 5889, 5890, 5965, 6144, 6414, 6438, 6471, 6540,
       6554, 6735, 6900, 7201, 7294, 7370, 7709, 7811, 7840, 7980, 8010, 8356, 8670, 8784, 8790, 8814, 8828, 9034,
-      9073, 9314, 9324, 9794, 9835, 9865, 9877, 10050, 10308, 10414, 10493, 10708, 10859, 10859, 11385, 11395, 11413, 11726, 11736, 11884, 12053, 12283, 12731, 12745, 13013, 13013, 13019, 13075, 13165, 13584,
+      9073, 9314, 9324, 9794, 9835, 9864, 9865, 9877, 10050, 10308, 10414, 10493, 10708, 10859, 10859, 11385, 11395, 11413, 11726, 11736, 11884, 12053, 12283, 12731, 12745, 13013, 13013, 13019, 13075, 13165, 13584,
       14139, 14370, 14805, 15072, 15373, 15379, 15689, 15697, 16095, 16193, 16667, 16667, 16859, 16898, 17460, 17664, 17740, 17755, 18256, 18256, 19530, 21524, 21793, 22400, 22745, 22925, 23268, 25615, 25875,
       26440, 27222, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(264)
+    expect(empty.length).toBe(263)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
@@ -9489,6 +9490,12 @@ describe("filters and sort", () => {
       trade: 45900,
       delta: 16095,
     })
+    expect(rows.find((deal) => deal.floor === "316RLS")).toMatchObject({
+      ask: 57204,
+      dealer: "Bayird RV - Outdoor & Marine, Mountain Home, AR",
+      trade: 47340,
+      delta: 9864,
+    })
     expect(
       rows
         .filter(
@@ -9496,7 +9503,8 @@ describe("filters and sort", () => {
             deal.floor !== "24RDS" &&
             deal.floor !== "260MLE" &&
             deal.floor !== "27SGS" &&
-            deal.floor !== "290RLS"
+            deal.floor !== "290RLS" &&
+            deal.floor !== "316RLS"
         )
         .every((deal) => deal.ask == null && deal.delta == null)
     ).toBe(true)
