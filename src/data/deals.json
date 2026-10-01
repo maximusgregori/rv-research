@@ -8159,11 +8159,47 @@
     "manufacturer": "Jayco",
     "model": "Eagle SLE",
     "floor": "28BHU",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 34991,
+    "dealer": "Great American RV SuperStores, Hammond, LA",
+    "trade": 27180,
+    "delta": 7811,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Great American RV SuperStores, Hammond, LA, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Jayco-Eagle+SLE+28BHU-5040099466",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-jayco-eagle-sle-28bhu/91a8a5dd-3ddf-11f1-adcf-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $34,991 Great American RV SuperStores Hammond LA via RV Trader + RVT (same inventory, 35 ft). Trade from 2026 JDP Low Retail $30,200 \u00d7 0.9 = $27,180 (Jayco Eagle SLE Series M-28 BHU). Source: https://www.jdpower.com/rvs/2026/jayco/m-28-bhu/6648118/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/jayco/m-28-bhu/6648118/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
