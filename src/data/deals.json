@@ -8508,11 +8508,38 @@
     "manufacturer": "Keystone",
     "model": "Alpine",
     "floor": "3303CK",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 75524,
+    "dealer": "Camping World, Tyler, TX",
+    "trade": 62505,
+    "delta": 13019,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Camping World, Tyler, TX, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone-ALPINE+3303CK-5042060274",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $75,524 Camping World Tyler TX via RV Trader (37.25 ft); RVT CAPTCHA-blocked. Trade from 2026 JDP Low Retail $69,450 \u00d7 0.9 = $62,505 (Keystone Alpine Series M-3303 CK). Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-3303-ck/6646765/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/keystone-rv/m-3303-ck/6646765/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
