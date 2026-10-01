@@ -7526,11 +7526,18 @@
     "manufacturer": "Forest River",
     "model": "Flagstaff Classic",
     "floor": "361RLS",
-    "ask": null,
+    "ask": 61698,
     "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "trade": 49320,
+    "delta": 12378,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Ask $61,698 Camping World St. Augustine FL (RV Trader; RVT lowest $64,877). Trade: 2026 Flagstaff Classic M-361RLS JDP Low Retail $54,800 \u00d70.9=$49,320."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
