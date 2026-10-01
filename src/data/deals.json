@@ -10608,10 +10608,45 @@
     "manufacturer": "Keystone",
     "model": "Sprinter Limited",
     "floor": "3590LFT",
-    "ask": null,
-    "dealer": "",
+    "ask": 63985,
+    "dealer": "Meyer's RV Superstore, Cicero / Syracuse, NY",
     "trade": null,
     "delta": null,
-    "notes": []
+    "lengthFt": 39.0,
+    "askSite": "rvtrader",
+    "askUrl": "https://www.rvtrader.com/listing/2026-Keystone+Rv-Sprinter+3590LFT-5037644695",
+    "askUrlRvt": "https://www.rvt.com/buy/details/2026-keystone-sprinter-limited-3590lft/fc701671-bc27-11f1-84c9-020f812d825b/",
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Meyer's RV Superstore, Cicero / Syracuse, NY, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone+Rv-Sprinter+3590LFT-5037644695",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-keystone-sprinter-limited-3590lft/fc701671-bc27-11f1-84c9-020f812d825b/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Organic New Sprinter Limited 3590LFT; Trader $63,985 Meyer's Cicero/Syracuse NY cheaper than RVT $64,997 Trailside Grain Valley MO; ~39 ft (RVT 39.33 ft). Trade blank: verified JDP miss (2026+2025 M-3590 LFT only under base Sprinter, not Limited; no wrong-line proxy)."
+        }
+      ]
+    ]
   }
 ]

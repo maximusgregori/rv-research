@@ -426,11 +426,12 @@ describe("deal data", () => {
       "Montana High Country|351BH",
       "Sprinter Limited|3210RLS",
       "Sprinter Limited|3520RDS",
+      "Sprinter Limited|3590LFT",
     ])
     const pricedKeystone = keystone.filter((deal) =>
       pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedKeystone).toHaveLength(58)
+    expect(pricedKeystone).toHaveLength(59)
     const unpricedKeystone = keystone.filter(
       (deal) => !pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -478,7 +479,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(204)
+    expect(priced).toHaveLength(205)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -10151,12 +10152,12 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
+      ask: 63985,
+      dealer: "Meyer's RV Superstore, Cicero / Syracuse, NY",
       trade: null,
       delta: null,
     })
-    expect(nextBlank?.notes).toEqual([])
+    expect(nextBlank?.notes.length).toBeGreaterThan(0)
 
     const fuzionProxy = deals.find(
       (row) =>
@@ -10344,12 +10345,12 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
+      ask: 63985,
+      dealer: "Meyer's RV Superstore, Cicero / Syracuse, NY",
       trade: null,
       delta: null,
     })
-    expect(nextBlank?.notes).toEqual([])
+    expect(nextBlank?.notes.length).toBeGreaterThan(0)
   })
 
   it("applies Keystone Montana 3100RL ask and leaves trade/delta blank", () => {
@@ -10471,12 +10472,12 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
+      ask: 63985,
+      dealer: "Meyer's RV Superstore, Cicero / Syracuse, NY",
       trade: null,
       delta: null,
     })
-    expect(nextBlank?.notes).toEqual([])
+    expect(nextBlank?.notes.length).toBeGreaterThan(0)
   })
 
   it("applies Keystone Montana 3123RL ask and 2026 JDP trade", () => {
@@ -10576,12 +10577,12 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
+      ask: 63985,
+      dealer: "Meyer's RV Superstore, Cicero / Syracuse, NY",
       trade: null,
       delta: null,
     })
-    expect(nextBlank?.notes).toEqual([])
+    expect(nextBlank?.notes.length).toBeGreaterThan(0)
   })
 
   it("applies Keystone Montana 3231CK ask and 2026 JDP trade", () => {
@@ -10681,12 +10682,12 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
+      ask: 63985,
+      dealer: "Meyer's RV Superstore, Cicero / Syracuse, NY",
       trade: null,
       delta: null,
     })
-    expect(nextBlank?.notes).toEqual([])
+    expect(nextBlank?.notes.length).toBeGreaterThan(0)
   })
 
   it("applies Keystone Montana 3532SP ask and 2026 JDP trade", () => {
@@ -10778,12 +10779,12 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
+      ask: 63985,
+      dealer: "Meyer's RV Superstore, Cicero / Syracuse, NY",
       trade: null,
       delta: null,
     })
-    expect(nextBlank?.notes).toEqual([])
+    expect(nextBlank?.notes.length).toBeGreaterThan(0)
   })
 
   it("applies Keystone Montana 3795FK ask and 2026 JDP trade", () => {
@@ -10884,12 +10885,12 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
+      ask: 63985,
+      dealer: "Meyer's RV Superstore, Cicero / Syracuse, NY",
       trade: null,
       delta: null,
     })
-    expect(nextBlank?.notes).toEqual([])
+    expect(nextBlank?.notes.length).toBeGreaterThan(0)
   })
 
   it("applies Keystone Montana High Country 290RL ask and 2026 JDP trade", () => {
@@ -11224,12 +11225,12 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
+      ask: 63985,
+      dealer: "Meyer's RV Superstore, Cicero / Syracuse, NY",
       trade: null,
       delta: null,
     })
-    expect(nextBlank?.notes).toEqual([])
+    expect(nextBlank?.notes.length).toBeGreaterThan(0)
   })
 
   it("applies Keystone Montana High Country 311RD ask and 2026 JDP trade", () => {
@@ -11332,12 +11333,12 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
+      ask: 63985,
+      dealer: "Meyer's RV Superstore, Cicero / Syracuse, NY",
       trade: null,
       delta: null,
     })
-    expect(nextBlank?.notes).toEqual([])
+    expect(nextBlank?.notes.length).toBeGreaterThan(0)
   })
 
   it("applies Keystone Montana High Country 325RK ask and 2026 JDP trade", () => {
@@ -11457,12 +11458,12 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
+      ask: 63985,
+      dealer: "Meyer's RV Superstore, Cicero / Syracuse, NY",
       trade: null,
       delta: null,
     })
-    expect(nextBlank?.notes).toEqual([])
+    expect(nextBlank?.notes.length).toBeGreaterThan(0)
   })
 
   it("applies Keystone Montana High Country 331RL ask and 2026 JDP trade", () => {
@@ -11572,12 +11573,12 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
+      ask: 63985,
+      dealer: "Meyer's RV Superstore, Cicero / Syracuse, NY",
       trade: null,
       delta: null,
     })
-    expect(nextBlank?.notes).toEqual([])
+    expect(nextBlank?.notes.length).toBeGreaterThan(0)
   })
 
   it("applies Keystone Montana High Country 351BH ask and 2026 JDP trade", () => {
@@ -11672,12 +11673,12 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
+      ask: 63985,
+      dealer: "Meyer's RV Superstore, Cicero / Syracuse, NY",
       trade: null,
       delta: null,
     })
-    expect(nextBlank?.notes).toEqual([])
+    expect(nextBlank?.notes.length).toBeGreaterThan(0)
   })
 
   it("records Keystone Sprinter 3900DBL length-skip notes with no ask", () => {
@@ -11738,12 +11739,12 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(sibling).toMatchObject({
-      ask: null,
-      dealer: "",
+      ask: 63985,
+      dealer: "Meyer's RV Superstore, Cicero / Syracuse, NY",
       trade: null,
       delta: null,
     })
-    expect(sibling?.notes).toEqual([])
+    expect(sibling?.notes.length).toBeGreaterThan(0)
   })
 
   it("applies Keystone Sprinter Limited 3210RLS ask and leaves trade/delta blank", () => {
@@ -11884,12 +11885,12 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
-      ask: null,
-      dealer: "",
+      ask: 63985,
+      dealer: "Meyer's RV Superstore, Cicero / Syracuse, NY",
       trade: null,
       delta: null,
     })
-    expect(nextBlank?.notes).toEqual([])
+    expect(nextBlank?.notes.length).toBeGreaterThan(0)
   })
 
   it("applies Keystone Sprinter Limited 3520RDS ask and leaves trade/delta blank", () => {
@@ -12013,20 +12014,176 @@ describe("deal data", () => {
     })
     expect(sibling?.notes.length).toBeGreaterThan(0)
 
-    const nextBlank = deals.find(
+    const nextFilled = deals.find(
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Sprinter Limited" &&
         row.floor === "3590LFT" &&
         row.year === 2026
     )
-    expect(nextBlank).toMatchObject({
+    expect(nextFilled).toMatchObject({
+      ask: 63985,
+      dealer: "Meyer's RV Superstore, Cicero / Syracuse, NY",
+      trade: null,
+      delta: null,
+    })
+    expect(nextFilled?.notes.length).toBeGreaterThan(0)
+  })
+
+  it("applies Keystone Sprinter Limited 3590LFT ask and leaves trade/delta blank", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Sprinter Limited" &&
+        row.floor === "3590LFT" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 63985,
+      dealer: "Meyer's RV Superstore, Cicero / Syracuse, NY",
+      trade: null,
+      delta: null,
+    })
+    expect(deal?.model).toBe("Sprinter Limited")
+    expect(deal?.floor).toBe("3590LFT")
+    expect(
+      (deal as { lengthFt?: number; askSite?: string; askUrl?: string; askUrlRvt?: string })
+        .lengthFt
+    ).toBe(39)
+    expect(
+      deal as { askSite?: string; askUrl?: string; askUrlRvt?: string }
+    ).toMatchObject({
+      askSite: "rvtrader",
+      askUrl:
+        "https://www.rvtrader.com/listing/2026-Keystone+Rv-Sprinter+3590LFT-5037644695",
+      askUrlRvt:
+        "https://www.rvt.com/buy/details/2026-keystone-sprinter-limited-3590lft/fc701671-bc27-11f1-84c9-020f812d825b/",
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Organic New Sprinter Limited 3590LFT; Trader $63,985 Meyer's Cicero/Syracuse NY cheaper than RVT $64,997 Trailside Grain Valley MO; ~39 ft (RVT 39.33 ft). Trade blank: verified JDP miss (2026+2025 M-3590 LFT only under base Sprinter, not Limited; no wrong-line proxy)."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /Organic New Sprinter Limited 3590LFT/i.test(span.text) &&
+            /Trader \$63,985 Meyer's Cicero\/Syracuse NY cheaper than RVT \$64,997/i.test(
+              span.text
+            ) &&
+            /~39 ft \(RVT 39\.33 ft\)/i.test(span.text) &&
+            /Trade blank: verified JDP miss/i.test(span.text) &&
+            /2026\+2025 M-3590 LFT only under base Sprinter, not Limited/i.test(
+              span.text
+            ) &&
+            /no wrong-line proxy/i.test(span.text) &&
+            !/trade from/i.test(span.text) &&
+            !/× 0\.9/.test(span.text)
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Keystone+Rv-Sprinter+3590LFT-5037644695" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvt.com/buy/details/2026-keystone-sprinter-limited-3590lft/fc701671-bc27-11f1-84c9-020f812d825b/" &&
+            span.label === "RVT"
+        )
+    ).toBe(true)
+
+    expect(deal?.trade).toBeNull()
+    expect(deal?.delta).toBeNull()
+    expect(deal?.trade).not.toBe(0)
+
+    const baseSprinterTwin = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Sprinter" &&
+        row.floor === "3590LFT" &&
+        row.year === 2026
+    )
+    expect(baseSprinterTwin).toBeUndefined()
+
+    const baseSprinter = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Sprinter" &&
+        row.floor === "3900DBL" &&
+        row.year === 2026
+    )
+    expect(baseSprinter).toMatchObject({
       ask: null,
       dealer: "",
       trade: null,
       delta: null,
     })
-    expect(nextBlank?.notes).toEqual([])
+    expect(baseSprinter?.notes.length).toBeGreaterThan(0)
+    expect(deal?.trade).toBe(baseSprinter?.trade)
+
+    const limited3210 = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Sprinter Limited" &&
+        row.floor === "3210RLS" &&
+        row.year === 2026
+    )
+    expect(limited3210).toMatchObject({
+      ask: 54995,
+      dealer: "Schieks RV - Manitowoc WI",
+      trade: null,
+      delta: null,
+    })
+    expect(limited3210?.notes.length).toBeGreaterThan(0)
+
+    const limited3520 = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Sprinter Limited" &&
+        row.floor === "3520RDS" &&
+        row.year === 2026
+    )
+    expect(limited3520).toMatchObject({
+      ask: 59995,
+      dealer: "Uncharted Recreation, Meridian, ID",
+      trade: null,
+      delta: null,
+    })
+    expect(limited3520?.notes.length).toBeGreaterThan(0)
+
+    const sprinterLimited = deals.filter(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Sprinter Limited" &&
+        row.year === 2026 &&
+        row.floor === "3590LFT"
+    )
+    expect(sprinterLimited).toHaveLength(1)
   })
 
   it("applies Sanibel 34LOUNGE ask and 2026 JDP trade", () => {
@@ -13280,6 +13437,12 @@ describe("deal data", () => {
         59995,
         "Uncharted Recreation, Meridian, ID",
       ],
+      [
+        "Sprinter Limited",
+        "3590LFT",
+        63985,
+        "Meyer's RV Superstore, Cicero / Syracuse, NY",
+      ],
     ] as const
     const verifiedMiss = new Set(["297MK", "235ML", "295RL"])
     const askNoTrade = deals.filter(
@@ -14522,17 +14685,16 @@ describe("filters and sort", () => {
       trade: null,
       delta: null,
     })
+    expect(sprinterLimited.find((deal) => deal.floor === "3590LFT")).toMatchObject({
+      ask: 63985,
+      dealer: "Meyer's RV Superstore, Cicero / Syracuse, NY",
+      trade: null,
+      delta: null,
+    })
     expect(
-      sprinterLimited
-        .filter((deal) => deal.floor !== "3210RLS" && deal.floor !== "3520RDS")
-        .every(
-          (deal) =>
-            deal.ask == null &&
-            deal.trade == null &&
-            deal.delta == null &&
-            deal.dealer === "" &&
-            deal.notes.length === 0
-        )
+      sprinterLimited.every(
+        (deal) => deal.trade == null && deal.delta == null && deal.notes.length > 0
+      )
     ).toBe(true)
   })
 })
