@@ -9652,11 +9652,33 @@
     "manufacturer": "Keystone",
     "model": "Cougar Half-Ton",
     "floor": "27SGS",
-    "ask": null,
-    "dealer": "",
+    "ask": 41452,
+    "dealer": "McKee Auto Center, Perry, IA",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was McKee Auto Center, Perry, IA, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone+Rv-Cougar+Half-Ton+27SGS-5037228404",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $41,452 McKee Auto Center, Perry, IA via RV Trader (30 ft). Ask only. RVT CAPTCHA-blocked; Trader-only. Featured/Premium excluded. Verified Half-Ton (not base/Sport). Checked, no JDP comparable: 2026/2025 M-27 SGS labeled Cougar Series only — wrong-line proxy excluded."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
