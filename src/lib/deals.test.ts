@@ -398,11 +398,12 @@ describe("deal data", () => {
       "Cougar|360MBI",
       "Cougar|364BHL",
       "Cougar Half-Ton|23MLE",
+      "Cougar Half-Ton|24RDS",
     ])
     const pricedKeystone = keystone.filter((deal) =>
       pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedKeystone).toHaveLength(30)
+    expect(pricedKeystone).toHaveLength(31)
     const unpricedKeystone = keystone.filter(
       (deal) => !pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -422,7 +423,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(176)
+    expect(priced).toHaveLength(177)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -6955,12 +6956,14 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(halfTonTwin).toMatchObject({
-      ask: null,
-      dealer: "",
+      ask: 44995,
+      dealer: "Alpin Haus - Orange County, Middletown, NY",
       trade: null,
       delta: null,
     })
-    expect(halfTonTwin?.notes).toEqual([])
+    expect(halfTonTwin?.notes.length).toBeGreaterThan(0)
+    expect(halfTonTwin?.trade).not.toBe(deal?.trade)
+    expect(halfTonTwin?.ask).not.toBe(deal?.ask)
 
     const sportTwin = deals.find(
       (row) =>
@@ -8268,7 +8271,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Cougar Half-Ton" &&
-        row.floor === "24RDS" &&
+        row.floor === "26RES" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -8422,7 +8425,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Cougar Half-Ton" &&
-        row.floor === "24RDS" &&
+        row.floor === "26RES" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -8441,7 +8444,129 @@ describe("deal data", () => {
     )
     expect(
       otherHalfTon
-        .filter((row) => row.floor !== "23MLE")
+        .filter((row) => row.floor !== "23MLE" && row.floor !== "24RDS")
+        .every(
+          (row) =>
+            row.ask == null &&
+            row.trade == null &&
+            row.delta == null &&
+            row.dealer === "" &&
+            row.notes.length === 0
+        )
+    ).toBe(true)
+  })
+
+  it("applies Keystone Cougar Half-Ton 24RDS ask and leaves trade/delta blank", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar Half-Ton" &&
+        row.floor === "24RDS" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 44995,
+      dealer: "Alpin Haus - Orange County, Middletown, NY",
+      trade: null,
+      delta: null,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $44,995 Alpin Haus - Orange County, Middletown, NY via RV Trader (28 ft). Ask only. RVT CAPTCHA-blocked; Trader-only. Featured/Premium excluded. Verified Half-Ton (not base/Sport). Checked, no JDP comparable: 2026/2025 M-24 RDS exists only as base Cougar Series — wrong-line proxy excluded."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /Checked, no JDP comparable/i.test(span.text) &&
+            /2026\/2025 M-24 RDS exists only as base Cougar Series/i.test(
+              span.text
+            ) &&
+            /wrong-line proxy excluded/i.test(span.text)
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(
+      deal?.notes.flat().some((span) => span.type === "link" && span.label === "RVT")
+    ).toBe(false)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Keystone+Rv-Cougar+Half-Ton+24RDS-5039502633" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+
+    const baseTwin = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar" &&
+        row.floor === "24RDS" &&
+        row.year === 2026
+    )
+    expect(baseTwin).toMatchObject({
+      ask: 43434,
+      dealer: "Camping World (San Diego, CA), San Diego, CA",
+      trade: 34110,
+      delta: 9324,
+    })
+    expect(deal?.trade).not.toBe(baseTwin?.trade)
+    expect(deal?.ask).not.toBe(baseTwin?.ask)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar Half-Ton" &&
+        row.floor === "23MLE" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: 41745,
+      dealer: "Dad's Camper Outlet, Picayune, MS",
+      trade: null,
+      delta: null,
+    })
+
+    const nextBlank = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar Half-Ton" &&
+        row.floor === "26RES" &&
+        row.year === 2026
+    )
+    expect(nextBlank).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(nextBlank?.notes).toEqual([])
+
+    const otherHalfTon = deals.filter(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar Half-Ton" &&
+        row.year === 2026
+    )
+    expect(
+      otherHalfTon
+        .filter((row) => row.floor !== "23MLE" && row.floor !== "24RDS")
         .every(
           (row) =>
             row.ask == null &&
@@ -10505,6 +10630,42 @@ describe("filters and sort", () => {
       "355FBS",
       "360MBI",
       "364BHL",
+    ])
+
+    const halfTon = matching(deals, {
+      manufacturer: "Keystone",
+      year: "",
+      model: "Cougar Half-Ton",
+    })
+    expect(halfTon).toHaveLength(10)
+    expect(halfTon.find((deal) => deal.floor === "23MLE")).toMatchObject({
+      ask: 41745,
+      dealer: "Dad's Camper Outlet, Picayune, MS",
+      trade: null,
+      delta: null,
+    })
+    expect(halfTon.find((deal) => deal.floor === "24RDS")).toMatchObject({
+      ask: 44995,
+      dealer: "Alpin Haus - Orange County, Middletown, NY",
+      trade: null,
+      delta: null,
+    })
+    expect(
+      halfTon
+        .filter((deal) => deal.floor !== "23MLE" && deal.floor !== "24RDS")
+        .every((deal) => deal.ask == null && deal.delta == null)
+    ).toBe(true)
+    expect(halfTon.map((deal) => deal.floor)).toEqual([
+      "23MLE",
+      "24RDS",
+      "26RES",
+      "26RKE",
+      "27SGS",
+      "28RLI",
+      "29MBD",
+      "29RLI",
+      "30REP",
+      "32BHS",
     ])
   })
 })
