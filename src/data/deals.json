@@ -8642,11 +8642,38 @@
     "manufacturer": "Keystone",
     "model": "Arcadia Select",
     "floor": "21SRK",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 34995,
+    "dealer": "Bish's RV, Anderson, IN",
+    "trade": 26325,
+    "delta": 8670,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Bish's RV, Anderson, IN, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone+Rv-Arcadia+Select+21SRK-5040108798",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $34,995 Bish's RV Anderson IN via RV Trader (same on RVT; CAPTCHA blocked sort). Length 32'7\" (Trader garbled 327 ft). Trade from 2026 JDP Low Retail $29,250 × 0.9 = $26,325. Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-21-srk/6646778/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/keystone-rv/m-21-srk/6646778/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,

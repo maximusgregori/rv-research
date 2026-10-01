@@ -374,11 +374,12 @@ describe("deal data", () => {
       "Alpine|3303CK",
       "Alpine Avalanche Edition|321RL",
       "Alpine Avalanche Edition|338GK",
+      "Arcadia Select|21SRK",
     ])
     const pricedKeystone = keystone.filter((deal) =>
       pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedKeystone).toHaveLength(6)
+    expect(pricedKeystone).toHaveLength(7)
     const unpricedKeystone = keystone.filter(
       (deal) => !pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -398,7 +399,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(152)
+    expect(priced).toHaveLength(153)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -5450,6 +5451,105 @@ describe("deal data", () => {
     expect(plainAvalanche).toBeUndefined()
   })
 
+  it("applies Keystone Arcadia Select 21SRK ask and 2026 JDP trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Arcadia Select" &&
+        row.floor === "21SRK" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 34995,
+      dealer: "Bish's RV, Anderson, IN",
+      trade: 26325,
+      delta: 8670,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $34,995 Bish's RV Anderson IN via RV Trader (same on RVT; CAPTCHA blocked sort). Length 32'7\" (Trader garbled 327 ft). Trade from 2026 JDP Low Retail $29,250 × 0.9 = $26,325. Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-21-srk/6646778/values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.jdpower.com/rvs/2026/keystone-rv/m-21-srk/6646778/values" &&
+            span.label === "JDP values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Keystone+Rv-Arcadia+Select+21SRK-5040108798" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes.flat().some((span) => span.type === "link" && span.label === "RVT")
+    ).toBe(false)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Arcadia Select" &&
+        row.floor === "24SRE" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(sibling?.notes).toEqual([])
+
+    const nextBlank = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Arcadia Super Lite" &&
+        row.floor === "242SLMD" &&
+        row.year === 2026
+    )
+    expect(nextBlank).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(nextBlank?.notes).toEqual([])
+
+    const baseArcadia = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Arcadia" &&
+        row.floor === "21SRK" &&
+        row.year === 2026
+    )
+    expect(baseArcadia).toBeUndefined()
+
+    const superLite = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Arcadia Super Lite" &&
+        row.floor === "21SRK" &&
+        row.year === 2026
+    )
+    expect(superLite).toBeUndefined()
+  })
+
   it("applies Sanibel 34LOUNGE ask and 2026 JDP trade", () => {
     const deal = deals.find(
       (row) =>
@@ -6767,12 +6867,12 @@ describe("filters and sort", () => {
       -1195, -1170, -831, -795, -586, -343, -110, -101, -30, -20, 390, 535, 573,
       659, 1163, 1340, 1609, 1665, 1919, 2089, 2535, 3005, 3080, 3195, 3435, 3498, 3570, 4103, 4310,
       4644, 4790, 4875, 4970, 5243, 5386, 5480, 5514, 5834, 5889, 5965, 6144, 6438, 6471, 6540,
-      6554, 6735, 6900, 7201, 7294, 7370, 7709, 7811, 7840, 7980, 8010, 8356, 8784, 8790, 8814, 8828, 9034,
+      6554, 6735, 6900, 7201, 7294, 7370, 7709, 7811, 7840, 7980, 8010, 8356, 8670, 8784, 8790, 8814, 8828, 9034,
       9073, 9314, 9794, 9865, 10050, 10308, 10493, 10708, 10859, 10859, 11385, 11726, 11736, 11884, 12053, 12283, 12731, 12745, 13013, 13013, 13019, 13075, 13165, 13584,
       14139, 14370, 14805, 15072, 15373, 15379, 15689, 15697, 16193, 16667, 16667, 16859, 16898, 17460, 17664, 17740, 17755, 18256, 18256, 19530, 21524, 21793, 22400, 22745, 22925, 23268, 25615, 25875,
       26440, 27222, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(279)
+    expect(empty.length).toBe(278)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
@@ -7235,6 +7335,31 @@ describe("filters and sort", () => {
       trade: 53100,
       delta: 16898,
     })
+
+    const arcadiaSelect = matching(deals, {
+      manufacturer: "Keystone",
+      year: "",
+      model: "Arcadia Select",
+    })
+    expect(arcadiaSelect).toHaveLength(5)
+    expect(arcadiaSelect.map((deal) => deal.floor)).toEqual([
+      "21SRK",
+      "24SRE",
+      "25SRD",
+      "27SBH",
+      "28SLS",
+    ])
+    expect(arcadiaSelect.find((deal) => deal.floor === "21SRK")).toMatchObject({
+      ask: 34995,
+      dealer: "Bish's RV, Anderson, IN",
+      trade: 26325,
+      delta: 8670,
+    })
+    expect(
+      arcadiaSelect
+        .filter((deal) => deal.floor !== "21SRK")
+        .every((deal) => deal.ask == null && deal.delta == null)
+    ).toBe(true)
 
     const rows = matching(deals, {
       manufacturer: "Keystone",
