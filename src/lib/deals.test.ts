@@ -293,11 +293,12 @@ describe("deal data", () => {
       "Wildcat|36FUN",
       "Wildcat XL|30BAM",
       "Flagstaff Classic|281RK",
+      "Flagstaff Classic|290CFK",
     ])
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(44)
+    expect(pricedForest).toHaveLength(45)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -596,7 +597,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(208)
+    expect(priced).toHaveLength(209)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -2413,6 +2414,68 @@ describe("deal data", () => {
     expect(sibling?.notes).toEqual([])
   })
 
+  it("applies Flagstaff Classic 290CFK ask and 2026 JDP trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Flagstaff Classic" &&
+        row.floor === "290CFK" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 55828,
+      dealer: "Buckeye RV Jeffersonville, Jeffersonville, OH",
+      trade: 43605,
+      delta: 12223,
+    })
+    expect(deal?.model).toBe("Flagstaff Classic")
+    expect(deal?.floor).toBe("290CFK")
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $55,828 Buckeye RV Jeffersonville OH (RV Trader + RVT). Trade: 2026 Flagstaff Classic M-290CFK JDP Low Retail $48,450 ×0.9=$43,605."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /Ask \$55,828 Buckeye RV Jeffersonville OH/i.test(span.text) &&
+            /RV Trader \+ RVT/i.test(span.text) &&
+            /Trade: 2026 Flagstaff Classic M-290CFK JDP Low Retail \$48,450 ×0\.9=\$43,605/i.test(
+              span.text
+            )
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(deal?.notes.flat().some((span) => span.type === "link")).toBe(false)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Flagstaff Classic" &&
+        row.floor === "282RK" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(sibling?.notes).toEqual([])
+  })
+
   it("applies Rockwood Signature 282RK ask and 2026 JDP trade", () => {
     const deal = deals.find(
       (row) =>
@@ -2541,12 +2604,21 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(flagstaff).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 55828,
+      dealer: "Buckeye RV Jeffersonville, Jeffersonville, OH",
+      trade: 43605,
+      delta: 12223,
     })
-    expect(flagstaff?.notes).toEqual([])
+    expect(
+      flagstaff?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $55,828 Buckeye RV Jeffersonville OH (RV Trader + RVT). Trade: 2026 Flagstaff Classic M-290CFK JDP Low Retail $48,450 ×0.9=$43,605."
+        )
+    ).toBe(true)
   })
 
   it("applies Rockwood Signature 301RKS ask and 2026 JDP trade", () => {
@@ -14450,11 +14522,11 @@ describe("filters and sort", () => {
       659, 1163, 1340, 1609, 1665, 1919, 2089, 2535, 3005, 3080, 3149, 3185, 3195,       3435, 3498, 3570, 4103, 4310, 4552,
       4644, 4790, 4875, 4970, 5127, 5178, 5243, 5244, 5385, 5386, 5480, 5514, 5774, 5834, 5889, 5890, 5965, 6144, 6414, 6438, 6471, 6540,
       6554, 6735, 6783, 6900, 7061, 7201, 7294, 7370, 7709, 7811, 7840, 7980, 8010, 8010, 8356, 8670, 8784, 8790, 8814, 8828, 9034,
-      9073, 9294, 9314, 9324, 9692, 9794, 9835, 9864, 9865, 9877, 10050, 10308, 10414, 10421, 10493, 10589, 10708, 10859, 10859, 10984, 11385, 11395, 11413, 11685, 11726, 11736, 11884, 12053, 12283, 12731, 12745, 13013, 13013, 13019, 13075, 13165, 13194, 13360, 13584,
+      9073, 9294, 9314, 9324, 9692, 9794, 9835, 9864, 9865, 9877, 10050, 10308, 10414, 10421, 10493, 10589, 10708, 10859, 10859, 10984, 11385, 11395, 11413, 11685, 11726, 11736, 11884, 12053, 12223, 12283, 12731, 12745, 13013, 13013, 13019, 13075, 13165, 13194, 13360, 13584,
       14139, 14370, 14805, 15072, 15173, 15373, 15379, 15689, 15697, 15863, 16095, 16193, 16546, 16667, 16667, 16859, 16898, 17460, 17577, 17664, 17740, 17755, 18228, 18256, 18256, 19410, 19530, 21524, 21793, 22400, 22745, 22925, 23268, 25615, 25745, 25875,
       26440, 27222, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(242)
+    expect(empty.length).toBe(241)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
@@ -14604,7 +14676,7 @@ describe("filters and sort", () => {
     })
   })
 
-  it("cascades Forest River models and prices Flagstaff Classic 281RK", () => {
+  it("cascades Forest River models and prices Flagstaff Classic 281RK and 290CFK", () => {
     const options = filterOptions(deals, {
       manufacturer: "Forest River",
       year: "",
@@ -14635,9 +14707,15 @@ describe("filters and sort", () => {
       trade: null,
       delta: null,
     })
+    expect(rows.find((deal) => deal.floor === "290CFK")).toMatchObject({
+      ask: 55828,
+      dealer: "Buckeye RV Jeffersonville, Jeffersonville, OH",
+      trade: 43605,
+      delta: 12223,
+    })
     expect(
       rows
-        .filter((deal) => deal.floor !== "281RK")
+        .filter((deal) => deal.floor !== "281RK" && deal.floor !== "290CFK")
         .every((deal) => deal.ask == null && deal.delta == null)
     ).toBe(true)
     expect(rows.map((deal) => deal.floor)).toEqual([
