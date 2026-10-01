@@ -303,11 +303,12 @@ describe("deal data", () => {
       "Flagstaff Classic|372RL",
       "Flagstaff Classic|374DBH",
       "Wildcat|32LIVE",
+      "Wildcat|33CHEF",
     ])
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(54)
+    expect(pricedForest).toHaveLength(55)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -606,7 +607,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(218)
+    expect(priced).toHaveLength(219)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -1264,7 +1265,7 @@ describe("deal data", () => {
     expect(deal?.notes.flat().some((span) => span.type === "link")).toBe(false)
   })
 
-  it("applies Cardinal 33CHEF ask and 2025 JDP proxy trade and leaves Wildcat 33CHEF blank", () => {
+  it("applies Cardinal 33CHEF ask and 2025 JDP proxy trade and Wildcat 33CHEF ask", () => {
     const deal = deals.find(
       (row) =>
         row.manufacturer === "Forest River" &&
@@ -1335,12 +1336,68 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(wildcatTwin).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 52169,
+      dealer: "Roy’s RV Adventures",
+      trade: 30465,
+      delta: 21704,
     })
-    expect(wildcatTwin?.notes).toEqual([])
+    expect(
+      wildcatTwin?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $52,169 Roy’s RV Adventures Tallahassee FL (RV Trader; RVT organic $53,995 Salem RV — kept cheaper), ~38 ft 3 in New. Trade $30,465 = 2025 JDP Low Retail $33,850 × 0.9 prior-year proxy (2026 Wildcat unavailable; used 2025 Wildcat base 33CHEF not XL)."
+        )
+    ).toBe(true)
+  })
+
+  it("applies Wildcat 33CHEF ask and 2025 JDP proxy trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Wildcat" &&
+        row.floor === "33CHEF" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 52169,
+      dealer: "Roy’s RV Adventures",
+      trade: 30465,
+      delta: 21704,
+    })
+    expect(deal?.model).toBe("Wildcat")
+    expect(deal?.floor).toBe("33CHEF")
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $52,169 Roy’s RV Adventures Tallahassee FL (RV Trader; RVT organic $53,995 Salem RV — kept cheaper), ~38 ft 3 in New. Trade $30,465 = 2025 JDP Low Retail $33,850 × 0.9 prior-year proxy (2026 Wildcat unavailable; used 2025 Wildcat base 33CHEF not XL)."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /Ask \$52,169 Roy.s RV Adventures Tallahassee FL/i.test(span.text) &&
+            /2025 JDP Low Retail \$33,850 × 0\.9 prior-year proxy/i.test(
+              span.text
+            ) &&
+            /used 2025 Wildcat base 33CHEF not XL/i.test(span.text)
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(deal?.notes.flat().some((span) => span.type === "link")).toBe(false)
   })
 
   it("applies Cedar Creek and Arctic Wolf 27SGS asks and proxy trades", () => {
@@ -4689,12 +4746,21 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(chefTwin).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 52169,
+      dealer: "Roy’s RV Adventures",
+      trade: 30465,
+      delta: 21704,
     })
-    expect(chefTwin?.notes).toEqual([])
+    expect(
+      chefTwin?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $52,169 Roy’s RV Adventures Tallahassee FL (RV Trader; RVT organic $53,995 Salem RV — kept cheaper), ~38 ft 3 in New. Trade $30,465 = 2025 JDP Low Retail $33,850 × 0.9 prior-year proxy (2026 Wildcat unavailable; used 2025 Wildcat base 33CHEF not XL)."
+        )
+    ).toBe(true)
   })
 
   it("applies Wildcat XL 30BAM ask and leaves trade/delta blank", () => {
@@ -15168,10 +15234,10 @@ describe("filters and sort", () => {
       4644, 4790, 4875, 4970, 5127, 5178, 5243, 5244, 5385, 5386, 5480, 5514, 5774, 5834, 5889, 5890, 5965, 6144, 6414, 6438, 6471, 6540,
       6554, 6735, 6783, 6900, 7061, 7201, 7294, 7370, 7709, 7811, 7840, 7980, 8010, 8010, 8356, 8670, 8784, 8790, 8814, 8828, 9034,
       9073, 9294, 9314, 9324, 9692, 9794, 9835, 9864, 9865, 9877, 9960, 10050, 10308, 10414, 10421, 10493, 10589, 10708, 10859, 10859, 10984, 11385, 11395, 11413, 11685, 11726, 11736, 11884, 12053, 12223, 12283, 12378, 12650, 12650, 12731, 12745, 13013, 13013, 13019, 13075, 13165, 13194, 13360, 13584,
-      13876, 14139, 14370, 14805, 15072, 15173, 15373, 15379, 15689, 15697, 15863, 16095, 16193, 16546, 16667, 16667, 16750, 16859, 16885, 16898, 17460, 17577, 17664, 17740, 17755, 18228, 18256, 18256, 19410, 19530, 21524, 21793, 22400, 22745, 22925, 23268, 25085, 25615, 25745, 25875,
+      13876, 14139, 14370, 14805, 15072, 15173, 15373, 15379, 15689, 15697, 15863, 16095, 16193, 16546, 16667, 16667, 16750, 16859, 16885, 16898, 17460, 17577, 17664, 17740, 17755, 18228, 18256, 18256, 19410, 19530, 21524, 21704, 21793, 22400, 22745, 22925, 23268, 25085, 25615, 25745, 25875,
       26440, 27135, 27222, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(232)
+    expect(empty.length).toBe(231)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )

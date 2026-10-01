@@ -7634,11 +7634,18 @@
     "manufacturer": "Forest River",
     "model": "Wildcat",
     "floor": "33CHEF",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 52169,
+    "dealer": "Roy’s RV Adventures",
+    "trade": 30465,
+    "delta": 21704,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Ask $52,169 Roy’s RV Adventures Tallahassee FL (RV Trader; RVT organic $53,995 Salem RV — kept cheaper), ~38 ft 3 in New. Trade $30,465 = 2025 JDP Low Retail $33,850 × 0.9 prior-year proxy (2026 Wildcat unavailable; used 2025 Wildcat base 33CHEF not XL)."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
