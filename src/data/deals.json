@@ -8745,11 +8745,38 @@
     "manufacturer": "Keystone",
     "model": "Arcadia Select",
     "floor": "25SRD",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 32800,
+    "dealer": "Zoomers RV, Wabash, IN",
+    "trade": 26910,
+    "delta": 5890,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Zoomers RV, Wabash, IN, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone-Arcadia+Select+25SRD-5040041464#sid=605387",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $32,800 Zoomers RV Wabash IN via RV Trader (RVT CAPTCHA). Trade from 2026 JDP Low Retail $29,900 × 0.9 = $26,910. Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-25-srd/6646780/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/keystone-rv/m-25-srd/6646780/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
