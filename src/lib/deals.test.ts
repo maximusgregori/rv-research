@@ -399,11 +399,12 @@ describe("deal data", () => {
       "Cougar|364BHL",
       "Cougar Half-Ton|23MLE",
       "Cougar Half-Ton|24RDS",
+      "Cougar Half-Ton|26RES",
     ])
     const pricedKeystone = keystone.filter((deal) =>
       pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedKeystone).toHaveLength(31)
+    expect(pricedKeystone).toHaveLength(32)
     const unpricedKeystone = keystone.filter(
       (deal) => !pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -423,7 +424,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(177)
+    expect(priced).toHaveLength(178)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -8271,7 +8272,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Cougar Half-Ton" &&
-        row.floor === "26RES" &&
+        row.floor === "26RKE" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -8425,7 +8426,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Cougar Half-Ton" &&
-        row.floor === "26RES" &&
+        row.floor === "26RKE" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -8444,7 +8445,12 @@ describe("deal data", () => {
     )
     expect(
       otherHalfTon
-        .filter((row) => row.floor !== "23MLE" && row.floor !== "24RDS")
+        .filter(
+          (row) =>
+            row.floor !== "23MLE" &&
+            row.floor !== "24RDS" &&
+            row.floor !== "26RES"
+        )
         .every(
           (row) =>
             row.ask == null &&
@@ -8547,7 +8553,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Cougar Half-Ton" &&
-        row.floor === "26RES" &&
+        row.floor === "26RKE" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -8566,7 +8572,131 @@ describe("deal data", () => {
     )
     expect(
       otherHalfTon
-        .filter((row) => row.floor !== "23MLE" && row.floor !== "24RDS")
+        .filter(
+          (row) =>
+            row.floor !== "23MLE" &&
+            row.floor !== "24RDS" &&
+            row.floor !== "26RES"
+        )
+        .every(
+          (row) =>
+            row.ask == null &&
+            row.trade == null &&
+            row.delta == null &&
+            row.dealer === "" &&
+            row.notes.length === 0
+        )
+    ).toBe(true)
+  })
+
+  it("applies Keystone Cougar Half-Ton 26RES ask and leaves trade/delta blank", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar Half-Ton" &&
+        row.floor === "26RES" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 39981,
+      dealer: "Holman Motors, Inc., Batavia, OH",
+      trade: null,
+      delta: null,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $39,981 Holman Motors, Inc., Batavia, OH via RV Trader (30 ft). Ask only. RVT CAPTCHA-blocked; Trader-only. Featured/Premium excluded. Verified Half-Ton (not base/Sport). Checked, no JDP comparable: 2026 M-26 RES only under base Cougar; 2025 no Half-Ton entry — wrong-line proxy excluded."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /Checked, no JDP comparable/i.test(span.text) &&
+            /2026 M-26 RES only under base Cougar/i.test(span.text) &&
+            /2025 no Half-Ton entry/i.test(span.text) &&
+            /wrong-line proxy excluded/i.test(span.text)
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(
+      deal?.notes.flat().some((span) => span.type === "link" && span.label === "RVT")
+    ).toBe(false)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Keystone+Rv-Cougar+Half+Ton+26RES-5038043357" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+
+    const baseTwin = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar" &&
+        row.floor === "26RES" &&
+        row.year === 2026
+    )
+    expect(baseTwin).toBeUndefined()
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar Half-Ton" &&
+        row.floor === "24RDS" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: 44995,
+      dealer: "Alpin Haus - Orange County, Middletown, NY",
+      trade: null,
+      delta: null,
+    })
+
+    const nextBlank = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar Half-Ton" &&
+        row.floor === "26RKE" &&
+        row.year === 2026
+    )
+    expect(nextBlank).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(nextBlank?.notes).toEqual([])
+
+    const otherHalfTon = deals.filter(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar Half-Ton" &&
+        row.year === 2026
+    )
+    expect(
+      otherHalfTon
+        .filter(
+          (row) =>
+            row.floor !== "23MLE" &&
+            row.floor !== "24RDS" &&
+            row.floor !== "26RES"
+        )
         .every(
           (row) =>
             row.ask == null &&
@@ -10656,9 +10786,20 @@ describe("filters and sort", () => {
       trade: null,
       delta: null,
     })
+    expect(halfTon.find((deal) => deal.floor === "26RES")).toMatchObject({
+      ask: 39981,
+      dealer: "Holman Motors, Inc., Batavia, OH",
+      trade: null,
+      delta: null,
+    })
     expect(
       halfTon
-        .filter((deal) => deal.floor !== "23MLE" && deal.floor !== "24RDS")
+        .filter(
+          (deal) =>
+            deal.floor !== "23MLE" &&
+            deal.floor !== "24RDS" &&
+            deal.floor !== "26RES"
+        )
         .every((deal) => deal.ask == null && deal.delta == null)
     ).toBe(true)
     expect(halfTon.map((deal) => deal.floor)).toEqual([
