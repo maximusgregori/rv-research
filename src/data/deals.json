@@ -7465,11 +7465,18 @@
     "manufacturer": "Forest River",
     "model": "Flagstaff Classic",
     "floor": "290CFK",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 55828,
+    "dealer": "Buckeye RV Jeffersonville, Jeffersonville, OH",
+    "trade": 43605,
+    "delta": 12223,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Ask $55,828 Buckeye RV Jeffersonville OH (RV Trader + RVT). Trade: 2026 Flagstaff Classic M-290CFK JDP Low Retail $48,450 \u00d70.9=$43,605."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
