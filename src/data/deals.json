@@ -5793,38 +5793,34 @@
     "model": "Cedar Creek Experience",
     "floor": "35RL",
     "ask": 68977,
-    "dealer": "Lazydays by Campers Inn RV",
+    "dealer": "Lazydays by Campers Inn RV, Seffner, FL",
     "trade": 53280,
     "delta": 15697,
     "notes": [
       [
         {
           "type": "text",
-          "text": "Lowest ask was Lazydays by Campers Inn RV, on "
+          "text": "Lowest ask was Lazydays by Campers Inn RV, Seffner, FL, on "
         },
         {
           "type": "link",
-          "href": "https://www.rvt.com/buy/details/2026-forest-river-cedar-creek-experience-35rl/92c8592e-5c94-11f0-9079-02c8259c7411/",
-          "label": "RVT"
-        },
-        {
-          "type": "text",
-          "text": " / "
-        },
-        {
-          "type": "link",
-          "href": "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Cedar+Creek+Experience+35RL-5037050467#sid=824715",
+          "href": "https://www.rvtrader.com/listing/2026-Forest+River-Rv-Cedar+Creek+Experience+35RL-5037050467",
           "label": "RV Trader"
         },
         {
           "type": "text",
-          "text": " as of 2026-09-30."
+          "text": " as of 2026-10-01."
         }
       ],
       [
         {
           "type": "text",
-          "text": "Lowest organic ask $68,977 on both RV Trader and RVT (Lazydays by Campers Inn RV; ~39 ft). TRADE FROM 2025: JDP Low Retail $59,200 \u00d7 0.9 = $53,280 (Experience Series M-35RL). 2026 cedar-creek page has no Experience M-35RL."
+          "text": "Ask $68,977 RV Trader only (Lazydays by Campers Inn, Seffner FL), 39 ft New 35RL. RVT CAPTCHA blocked \u2014 not cross-checked. TRADE FROM 2025 (not 2026): J.D. Power Low Retail $59,200 \u00d7 0.9 = $53,280 (Cedar Creek Experience Series M-35RL). 2026 Experience 35RL missing on JDP \u2014 prior-year 2025 proxy used. Source: https://www.jdpower.com/rvs/2025/cedar-creek/m-35rl/6640232/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2025/cedar-creek/m-35rl/6640232/values",
+          "label": "JDP values"
         }
       ]
     ]

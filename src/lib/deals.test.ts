@@ -1059,19 +1059,6 @@ describe("deal data", () => {
         "RV Trader",
       ],
       [
-        "Cedar Creek Experience",
-        "35RL",
-        68977,
-        "Lazydays by Campers Inn RV",
-        53280,
-        15697,
-        "Lowest organic ask $68,977 on both RV Trader and RVT (Lazydays by Campers Inn RV; ~39 ft). TRADE FROM 2025: JDP Low Retail $59,200 × 0.9 = $53,280 (Experience Series M-35RL). 2026 cedar-creek page has no Experience M-35RL.",
-        "https://www.rvt.com/buy/details/2026-forest-river-cedar-creek-experience-35rl/92c8592e-5c94-11f0-9079-02c8259c7411/",
-        "RVT",
-        "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Cedar+Creek+Experience+35RL-5037050467#sid=824715",
-        "RV Trader",
-      ],
-      [
         "Cedar Creek Silverback",
         "29RL",
         74995,
@@ -1150,6 +1137,71 @@ describe("deal data", () => {
           )
       ).toBe(true)
     }
+  })
+
+  it("applies Cedar Creek Experience 35RL ask and 2025 JDP proxy trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Cedar Creek Experience" &&
+        row.floor === "35RL" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 68977,
+      dealer: "Lazydays by Campers Inn RV, Seffner, FL",
+      trade: 53280,
+      delta: 15697,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $68,977 RV Trader only (Lazydays by Campers Inn, Seffner FL), 39 ft New 35RL. RVT CAPTCHA blocked — not cross-checked. TRADE FROM 2025 (not 2026): J.D. Power Low Retail $59,200 × 0.9 = $53,280 (Cedar Creek Experience Series M-35RL). 2026 Experience 35RL missing on JDP — prior-year 2025 proxy used. Source: https://www.jdpower.com/rvs/2025/cedar-creek/m-35rl/6640232/values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.jdpower.com/rvs/2025/cedar-creek/m-35rl/6640232/values" &&
+            span.label === "JDP values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Forest+River-Rv-Cedar+Creek+Experience+35RL-5037050467" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes.flat().some((span) => span.type === "link" && span.label === "RVT")
+    ).toBe(false)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Cedar Creek Experience" &&
+        row.floor === "2925RL" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: 75288,
+      dealer: "Fun Town RV - Nature Coast, Crystal River, FL",
+      trade: 52020,
+      delta: 23268,
+    })
   })
 
   it("applies Arctic Wolf 285OPT and 287BH asks and 2025 proxy trade", () => {
