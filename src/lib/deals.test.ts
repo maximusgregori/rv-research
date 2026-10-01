@@ -424,11 +424,12 @@ describe("deal data", () => {
       "Montana High Country|325RK",
       "Montana High Country|331RL",
       "Montana High Country|351BH",
+      "Sprinter Limited|3520RDS",
     ])
     const pricedKeystone = keystone.filter((deal) =>
       pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedKeystone).toHaveLength(56)
+    expect(pricedKeystone).toHaveLength(57)
     const unpricedKeystone = keystone.filter(
       (deal) => !pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -476,7 +477,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(202)
+    expect(priced).toHaveLength(203)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -11744,6 +11745,143 @@ describe("deal data", () => {
     expect(sibling?.notes).toEqual([])
   })
 
+  it("applies Keystone Sprinter Limited 3520RDS ask and leaves trade/delta blank", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Sprinter Limited" &&
+        row.floor === "3520RDS" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 59995,
+      dealer: "Uncharted Recreation, Meridian, ID",
+      trade: null,
+      delta: null,
+    })
+    expect(deal?.model).toBe("Sprinter Limited")
+    expect(deal?.floor).toBe("3520RDS")
+    expect(
+      (deal as { lengthFt?: number; askSite?: string; askUrl?: string; askUrlRvt?: string })
+        .lengthFt
+    ).toBe(39.42)
+    expect(
+      deal as { askSite?: string; askUrl?: string; askUrlRvt?: string }
+    ).toMatchObject({
+      askSite: "rvt",
+      askUrl: "https://www.rvtrader.com/listing/2026-Keystone-SPRINTER+3520RDS-5042061344",
+      askUrlRvt:
+        "https://www.rvt.com/buy/details/2026-keystone-sprinter-limited-3520rds/b633d959-48dc-11f0-808c-02c8259c7411/",
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Organic New Sprinter Limited 3520RDS; RVT $59,995 Meridian ID cheaper than Trader $60,398; 39.42 ft. Trade blank: verified JDP miss (2026+2025 M-3520 RDS only under base Sprinter, not Limited; no wrong-line proxy)."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /Organic New Sprinter Limited 3520RDS/i.test(span.text) &&
+            /RVT \$59,995 Meridian ID cheaper than Trader \$60,398/i.test(
+              span.text
+            ) &&
+            /39\.42 ft/i.test(span.text) &&
+            /Trade blank: verified JDP miss/i.test(span.text) &&
+            /2026\+2025 M-3520 RDS only under base Sprinter, not Limited/i.test(
+              span.text
+            ) &&
+            /no wrong-line proxy/i.test(span.text) &&
+            !/trade from/i.test(span.text) &&
+            !/× 0\.9/.test(span.text)
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Keystone-SPRINTER+3520RDS-5042061344" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvt.com/buy/details/2026-keystone-sprinter-limited-3520rds/b633d959-48dc-11f0-808c-02c8259c7411/" &&
+            span.label === "RVT"
+        )
+    ).toBe(true)
+
+    expect(deal?.trade).toBeNull()
+    expect(deal?.delta).toBeNull()
+    expect(deal?.trade).not.toBe(0)
+
+    const baseSprinter = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Sprinter" &&
+        row.floor === "3900DBL" &&
+        row.year === 2026
+    )
+    expect(baseSprinter).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(baseSprinter?.notes.length).toBeGreaterThan(0)
+    expect(deal?.trade).toBe(baseSprinter?.trade)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Sprinter Limited" &&
+        row.floor === "3210RLS" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(sibling?.notes).toEqual([])
+
+    const nextBlank = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Sprinter Limited" &&
+        row.floor === "3590LFT" &&
+        row.year === 2026
+    )
+    expect(nextBlank).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(nextBlank?.notes).toEqual([])
+  })
+
   it("applies Sanibel 34LOUNGE ask and 2026 JDP trade", () => {
     const deal = deals.find(
       (row) =>
@@ -12983,6 +13121,12 @@ describe("deal data", () => {
         78989,
         "Buckeye RV Wilmington, Wilmington, OH",
       ],
+      [
+        "Sprinter Limited",
+        "3520RDS",
+        59995,
+        "Uncharted Recreation, Meridian, ID",
+      ],
     ] as const
     const verifiedMiss = new Set(["297MK", "235ML", "295RL"])
     const askNoTrade = deals.filter(
@@ -14177,6 +14321,51 @@ describe("filters and sort", () => {
             deal.floor !== "331RL" &&
             deal.floor !== "351BH"
         )
+        .every(
+          (deal) =>
+            deal.ask == null &&
+            deal.trade == null &&
+            deal.delta == null &&
+            deal.dealer === "" &&
+            deal.notes.length === 0
+        )
+    ).toBe(true)
+
+    const sprinter = matching(deals, {
+      manufacturer: "Keystone",
+      year: "",
+      model: "Sprinter",
+    })
+    expect(sprinter).toHaveLength(1)
+    expect(sprinter.map((deal) => deal.floor)).toEqual(["3900DBL"])
+    expect(sprinter[0]).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(sprinter[0].notes.length).toBeGreaterThan(0)
+
+    const sprinterLimited = matching(deals, {
+      manufacturer: "Keystone",
+      year: "",
+      model: "Sprinter Limited",
+    })
+    expect(sprinterLimited).toHaveLength(3)
+    expect(sprinterLimited.map((deal) => deal.floor)).toEqual([
+      "3210RLS",
+      "3520RDS",
+      "3590LFT",
+    ])
+    expect(sprinterLimited.find((deal) => deal.floor === "3520RDS")).toMatchObject({
+      ask: 59995,
+      dealer: "Uncharted Recreation, Meridian, ID",
+      trade: null,
+      delta: null,
+    })
+    expect(
+      sprinterLimited
+        .filter((deal) => deal.floor !== "3520RDS")
         .every(
           (deal) =>
             deal.ask == null &&
