@@ -8206,11 +8206,47 @@
     "manufacturer": "Jayco",
     "model": "Eagle SLE",
     "floor": "28RKS",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 39911,
+    "dealer": "Bish's RV – Cheyenne, Cheyenne, WY",
+    "trade": 27180,
+    "delta": 12731,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Bish's RV – Cheyenne, Cheyenne, WY, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Jayco-Eagle+SLE+28RKS-5040103592",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-jayco-eagle-sle-28rks/49a6670a-3e06-11f1-adcf-02f5bff6b341/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $39,911 Bish's RV Cheyenne WY via RV Trader + RVT (same inventory); listings showed 336 ft garbled — Jayco official exterior overall 30'9\" (https://www.jayco.com/rvs/fifth-wheels/2026-eagle-sle-fifth-wheels/28RKS/); excluded featured $39,995. Trade from 2026 JDP Low Retail $30,200 × 0.9 = $27,180 (Jayco Eagle SLE Series M-28 RKS). Source: https://www.jdpower.com/rvs/2026/jayco/m-28-rks/6648119/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/jayco/m-28-rks/6648119/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
