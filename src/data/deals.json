@@ -8881,11 +8881,38 @@
     "manufacturer": "Keystone",
     "model": "Arcadia Super Lite",
     "floor": "292SLRL",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 46295,
+    "dealer": "Camping World (Kansas City, KS), Kansas City, KS",
+    "trade": 43110,
+    "delta": 3185,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Camping World (Kansas City, KS), Kansas City, KS, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone-ARCADIA+SUPER+LITE+292SLRL-5042060801",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $46,295 Camping World (Kansas City, KS), Kansas City, KS via RV Trader (29.25 ft); RVT CAPTCHA-blocked; Trader-only. Featured/Premium excluded. 2026 JDP Low Retail $47,900 \u2192 trade $43,110. Trade from 2026 JDP Low Retail $47,900 \u00d7 0.9 = $43,110. Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-292-slrl/6646785/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/keystone-rv/m-292-slrl/6646785/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
