@@ -7566,11 +7566,18 @@
     "manufacturer": "Forest River",
     "model": "Flagstaff Classic",
     "floor": "374DBH",
-    "ask": null,
+    "ask": 59995,
     "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "trade": 43110,
+    "delta": 16885,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Ask $59,995 RV's of Sacramento (RV Trader; RVT lowest $62,995). Trade: 2026 Flagstaff Classic M-374DBH JDP Low Retail $47,900 \u00d70.9=$43,110."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
