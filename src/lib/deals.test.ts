@@ -9739,6 +9739,12 @@ describe("deal data", () => {
         41745,
         "Dad's Camper Outlet, Picayune, MS",
       ],
+      [
+        "Cougar Half-Ton",
+        "24RDS",
+        44995,
+        "Alpin Haus - Orange County, Middletown, NY",
+      ],
     ] as const
     const verifiedMiss = new Set(["297MK", "235ML", "295RL"])
     const askNoTrade = deals.filter(
