@@ -7562,11 +7562,18 @@
     "manufacturer": "Forest River",
     "model": "Flagstaff Classic",
     "floor": "372RL",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 74990,
+    "dealer": "Berryland Campers",
+    "trade": 49905,
+    "delta": 25085,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Ask $74,990 Berryland Campers Ponchatoula LA (RV Trader + RVT same listing), ~36 ft 10 in. Trade $49,905 = 2026 JDP Low Retail $55,450 \u00d7 0.9 (Flagstaff Classic M-372RL). F372RL cross-check ask was $76,999 so used 372RL."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
@@ -7609,11 +7616,18 @@
     "manufacturer": "Forest River",
     "model": "Wildcat",
     "floor": "32LIVE",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 56700,
+    "dealer": "Campinc, LLC",
+    "trade": 29565,
+    "delta": 27135,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Ask $56,700 Campinc LLC Mcalester OK (RVT only; RV Trader Wildcat filter returned 0 / wrong-model Cardinals excluded), 36 ft New. Trade $29,565 = 2025 JDP Low Retail $32,850 \u00d7 0.9 prior-year proxy (2026 Wildcat brand index HTTP 500 / m-32live 404; used 2025 Wildcat base M-32Live not XL)."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
