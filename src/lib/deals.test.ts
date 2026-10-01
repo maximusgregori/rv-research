@@ -1048,14 +1048,14 @@ describe("deal data", () => {
       [
         "Cedar Creek Experience",
         "2925RL",
-        69900,
-        "Open Roads Complete RV - Jasper, GA",
-        43380,
-        26520,
-        "Lowest organic ask $69,900 on both RV Trader and RVT (Open Roads Complete RV, Jasper GA; ~35 ft). TRADE FROM 2024: JDP Low Retail $48,200 × 0.9 = $43,380 (Experience Series M-2925RL). 2026/2025 have no M-2925RL. RV Trader on-page title normalizes to 29RL; page title/RVT confirm 2925RL.",
-        "https://www.rvt.com/buy/details/2026-forest-river-cedar-creek-experience-2925rl/1ad11b75-7da3-11f0-a456-02c8259c7411/",
+        75288,
+        "Fun Town RV - Nature Coast, Crystal River, FL",
+        52020,
+        23268,
+        "Ask $75,288 tied both sites (Fun Town RV Nature Coast, Crystal River FL), 35 ft. RV Trader lists as Experience 29RL; RVT as 2925RL — same unit. TRADE FROM 2025 (not 2026): J.D. Power Low Retail $57,800 × 0.9 = $52,020 (Cedar Creek Experience Series M-29RL). 2026 Experience not on JDP. Do not use base Cedar Creek M-29RL.",
+        "https://www.rvt.com/buy/details/2026-forest-river-cedar-creek-experience-2925rl/a1d37844-b324-11f1-84c9-020f812d825b/",
         "RVT",
-        "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Cedar+Creek+Experience+29RL-5037525197",
+        "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Cedar+Creek+Experience+29RL-5040140754",
         "RV Trader",
       ],
       [
@@ -4411,8 +4411,8 @@ describe("filters and sort", () => {
       4644, 4790, 4875, 4970, 5243, 5480, 5514, 5834, 5889, 5965, 6144, 6471, 6540,
       6554, 6735, 6900, 7201, 7294, 7370, 7709, 7980, 8010, 8356, 8784, 8790, 8828, 9034,
       9073, 9314, 9794, 10050, 10493, 10859, 10859, 11385, 11736, 11884, 12283, 13013, 13013, 13075, 13165, 13584,
-      14139, 15689, 15697, 16667, 16667, 17460, 17664, 17740, 17755, 19530, 21524, 22400, 22745, 22925, 25615, 25875,
-      26440, 26520, 27222, 28866, 29438, 40600,
+      14139, 15689, 15697, 16667, 16667, 17460, 17664, 17740, 17755, 19530, 21524, 22400, 22745, 22925, 23268, 25615, 25875,
+      26440, 27222, 28866, 29438, 40600,
     ])
     expect(empty.length).toBe(303)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
