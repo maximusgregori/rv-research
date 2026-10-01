@@ -7712,11 +7712,38 @@
     "manufacturer": "Jayco",
     "model": "Eagle",
     "floor": "335LSTS",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 57198,
+    "dealer": "Camping World, Dothan, AL",
+    "trade": 46890,
+    "delta": 10308,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Camping World, Dothan, AL, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Jayco-EAGLE+335LSTS-5042061038",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $57,198 Camping World Dothan AL via RV Trader, 38.42 ft; RVT cross-check CAPTCHA-blocked. Trade from 2026 JDP Low Retail $52,100 × 0.9 = $46,890 (Jayco Eagle Series M-335 LSTS). Source: https://www.jdpower.com/rvs/2026/jayco/m-335-lsts/6648123/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/jayco/m-335-lsts/6648123/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,

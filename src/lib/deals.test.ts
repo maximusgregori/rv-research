@@ -326,11 +326,12 @@ describe("deal data", () => {
       "Eagle|28CRT",
       "Eagle|321RSTS",
       "Eagle|325MKTS",
+      "Eagle|335LSTS",
     ])
     const pricedJayco = jayco.filter((deal) =>
       pricedJaycoKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedJayco).toHaveLength(3)
+    expect(pricedJayco).toHaveLength(4)
     const unpricedJayco = jayco.filter(
       (deal) => !pricedJaycoKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -367,7 +368,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(130)
+    expect(priced).toHaveLength(131)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -3397,20 +3398,85 @@ describe("deal data", () => {
         )
     ).toBe(true)
 
-    const lsts = deals.find(
+    const mbqs = deals.find(
+      (row) =>
+        row.manufacturer === "Jayco" &&
+        row.model === "Eagle" &&
+        row.floor === "355MBQS" &&
+        row.year === 2026
+    )
+    expect(mbqs).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(mbqs?.notes).toEqual([])
+  })
+
+  it("applies Jayco Eagle 335LSTS ask and 2026 JDP trade", () => {
+    const deal = deals.find(
       (row) =>
         row.manufacturer === "Jayco" &&
         row.model === "Eagle" &&
         row.floor === "335LSTS" &&
         row.year === 2026
     )
-    expect(lsts).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+    expect(deal).toMatchObject({
+      ask: 57198,
+      dealer: "Camping World, Dothan, AL",
+      trade: 46890,
+      delta: 10308,
     })
-    expect(lsts?.notes).toEqual([])
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $57,198 Camping World Dothan AL via RV Trader, 38.42 ft; RVT cross-check CAPTCHA-blocked. Trade from 2026 JDP Low Retail $52,100 × 0.9 = $46,890 (Jayco Eagle Series M-335 LSTS). Source: https://www.jdpower.com/rvs/2026/jayco/m-335-lsts/6648123/values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.jdpower.com/rvs/2026/jayco/m-335-lsts/6648123/values" &&
+            span.label === "JDP values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Jayco-EAGLE+335LSTS-5042061038" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes.flat().some((span) => span.type === "link" && span.label === "RVT")
+    ).toBe(false)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Jayco" &&
+        row.model === "Eagle" &&
+        row.floor === "325MKTS" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: 58995,
+      dealer: "Crestview RV – Buda, Buda, TX",
+      trade: 44190,
+      delta: 14805,
+    })
   })
 
   it("applies Sanibel 34LOUNGE ask and 2026 JDP trade", () => {
@@ -4731,11 +4797,11 @@ describe("filters and sort", () => {
       659, 1163, 1340, 1609, 1665, 1919, 2089, 2535, 3005, 3080, 3195, 3435, 3498, 3570, 4103, 4310,
       4644, 4790, 4875, 4970, 5243, 5480, 5514, 5834, 5889, 5965, 6144, 6438, 6471, 6540,
       6554, 6735, 6900, 7201, 7294, 7370, 7709, 7980, 8010, 8356, 8784, 8790, 8828, 9034,
-      9073, 9314, 9794, 10050, 10493, 10859, 10859, 11385, 11736, 11884, 12283, 13013, 13013, 13075, 13165, 13584,
+      9073, 9314, 9794, 10050, 10308, 10493, 10859, 10859, 11385, 11736, 11884, 12283, 13013, 13013, 13075, 13165, 13584,
       14139, 14805, 15689, 15697, 16667, 16667, 17460, 17664, 17740, 17755, 19530, 21524, 22400, 22745, 22925, 23268, 25615, 25875,
       26440, 27222, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(301)
+    expect(empty.length).toBe(300)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
