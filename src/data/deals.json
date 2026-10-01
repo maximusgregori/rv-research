@@ -9482,11 +9482,38 @@
     "manufacturer": "Keystone",
     "model": "Cougar",
     "floor": "364BHL",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 62379,
+    "dealer": "Camping World, Davenport, IA",
+    "trade": 49185,
+    "delta": 13194,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Camping World, Davenport, IA, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone-COUGAR+364BHL-5042060791",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $62,379 Camping World, Davenport, IA via RV Trader (39 ft); RVT CAPTCHA-blocked; Trader-only. Featured/Premium excluded. Verified base Cougar (not Half-Ton/Sport). 2026 JDP Low Retail $54,650 → trade $49,185. Trade from 2026 JDP Low Retail $54,650 × 0.9 = $49,185. Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-364-bhl/6646963/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/keystone-rv/m-364-bhl/6646963/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
