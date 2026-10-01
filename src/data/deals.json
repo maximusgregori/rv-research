@@ -10428,11 +10428,33 @@
     "manufacturer": "Keystone",
     "model": "Montana High Country",
     "floor": "331RL",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 77900,
+    "dealer": "Lazydays by Campers Inn RV, Seffner, FL",
+    "trade": 52155,
+    "delta": 25745,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Lazydays by Campers Inn RV, Seffner, FL, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone+Rv-Montana+High+Country+331RL-5038664312",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Organic New High Country 331RL; 37 ft; RVT human-verification blocked cross-check. Trade from real 2026 Montana High Country Series M-331 RL Low Retail $57,950 × 0.9."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
