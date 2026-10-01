@@ -300,12 +300,14 @@ describe("deal data", () => {
       "Flagstaff Classic|331RL",
       "Flagstaff Classic|361RLS",
       "Flagstaff Classic|371RK",
+      "Flagstaff Classic|372RL",
       "Flagstaff Classic|374DBH",
+      "Wildcat|32LIVE",
     ])
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(52)
+    expect(pricedForest).toHaveLength(54)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -604,7 +606,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(216)
+    expect(priced).toHaveLength(218)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -1121,7 +1123,7 @@ describe("deal data", () => {
     }
   })
 
-  it("applies Cardinal 32LIVE ask and 2025 JDP proxy trade and leaves Wildcat 32LIVE blank", () => {
+  it("applies Cardinal 32LIVE ask and 2025 JDP proxy trade", () => {
     const deal = deals.find(
       (row) =>
         row.manufacturer === "Forest River" &&
@@ -1198,12 +1200,68 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(wildcatTwin).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 56700,
+      dealer: "Campinc, LLC",
+      trade: 29565,
+      delta: 27135,
     })
-    expect(wildcatTwin?.notes).toEqual([])
+    expect(
+      wildcatTwin?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $56,700 Campinc LLC Mcalester OK (RVT only; RV Trader Wildcat filter returned 0 / wrong-model Cardinals excluded), 36 ft New. Trade $29,565 = 2025 JDP Low Retail $32,850 × 0.9 prior-year proxy (2026 Wildcat brand index HTTP 500 / m-32live 404; used 2025 Wildcat base M-32Live not XL)."
+        )
+    ).toBe(true)
+  })
+
+  it("applies Wildcat 32LIVE ask and 2025 JDP proxy trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Wildcat" &&
+        row.floor === "32LIVE" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 56700,
+      dealer: "Campinc, LLC",
+      trade: 29565,
+      delta: 27135,
+    })
+    expect(deal?.model).toBe("Wildcat")
+    expect(deal?.floor).toBe("32LIVE")
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $56,700 Campinc LLC Mcalester OK (RVT only; RV Trader Wildcat filter returned 0 / wrong-model Cardinals excluded), 36 ft New. Trade $29,565 = 2025 JDP Low Retail $32,850 × 0.9 prior-year proxy (2026 Wildcat brand index HTTP 500 / m-32live 404; used 2025 Wildcat base M-32Live not XL)."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /Ask \$56,700 Campinc LLC Mcalester OK/i.test(span.text) &&
+            /2025 JDP Low Retail \$32,850 × 0\.9 prior-year proxy/i.test(
+              span.text
+            ) &&
+            /used 2025 Wildcat base M-32Live not XL/i.test(span.text)
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(deal?.notes.flat().some((span) => span.type === "link")).toBe(false)
   })
 
   it("applies Cardinal 33CHEF ask and 2025 JDP proxy trade and leaves Wildcat 33CHEF blank", () => {
@@ -2555,12 +2613,21 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(sibling).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 74990,
+      dealer: "Berryland Campers",
+      trade: 49905,
+      delta: 25085,
     })
-    expect(sibling?.notes).toEqual([])
+    expect(
+      sibling?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $74,990 Berryland Campers Ponchatoula LA (RV Trader + RVT same listing), ~36 ft 10 in. Trade $49,905 = 2026 JDP Low Retail $55,450 × 0.9 (Flagstaff Classic M-372RL). F372RL cross-check ask was $76,999 so used 372RL."
+        )
+    ).toBe(true)
   })
 
   it("applies Flagstaff Classic 331RL ask and 2026 JDP trade", () => {
@@ -2617,12 +2684,21 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(sibling).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 74990,
+      dealer: "Berryland Campers",
+      trade: 49905,
+      delta: 25085,
     })
-    expect(sibling?.notes).toEqual([])
+    expect(
+      sibling?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $74,990 Berryland Campers Ponchatoula LA (RV Trader + RVT same listing), ~36 ft 10 in. Trade $49,905 = 2026 JDP Low Retail $55,450 × 0.9 (Flagstaff Classic M-372RL). F372RL cross-check ask was $76,999 so used 372RL."
+        )
+    ).toBe(true)
 
     const prefixed = deals.find(
       (row) =>
@@ -2688,12 +2764,21 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(sibling).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 74990,
+      dealer: "Berryland Campers",
+      trade: 49905,
+      delta: 25085,
     })
-    expect(sibling?.notes).toEqual([])
+    expect(
+      sibling?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $74,990 Berryland Campers Ponchatoula LA (RV Trader + RVT same listing), ~36 ft 10 in. Trade $49,905 = 2026 JDP Low Retail $55,450 × 0.9 (Flagstaff Classic M-372RL). F372RL cross-check ask was $76,999 so used 372RL."
+        )
+    ).toBe(true)
 
     const prefixed = deals.find(
       (row) =>
@@ -2759,12 +2844,21 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(sibling).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 74990,
+      dealer: "Berryland Campers",
+      trade: 49905,
+      delta: 25085,
     })
-    expect(sibling?.notes).toEqual([])
+    expect(
+      sibling?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $74,990 Berryland Campers Ponchatoula LA (RV Trader + RVT same listing), ~36 ft 10 in. Trade $49,905 = 2026 JDP Low Retail $55,450 × 0.9 (Flagstaff Classic M-372RL). F372RL cross-check ask was $76,999 so used 372RL."
+        )
+    ).toBe(true)
 
     const prefixed = deals.find(
       (row) =>
@@ -3414,12 +3508,77 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(sibling).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 74990,
+      dealer: "Berryland Campers",
+      trade: 49905,
+      delta: 25085,
     })
-    expect(sibling?.notes).toEqual([])
+    expect(
+      sibling?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $74,990 Berryland Campers Ponchatoula LA (RV Trader + RVT same listing), ~36 ft 10 in. Trade $49,905 = 2026 JDP Low Retail $55,450 × 0.9 (Flagstaff Classic M-372RL). F372RL cross-check ask was $76,999 so used 372RL."
+        )
+    ).toBe(true)
+  })
+
+  it("applies Flagstaff Classic 372RL ask and 2026 JDP trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Flagstaff Classic" &&
+        row.floor === "372RL" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 74990,
+      dealer: "Berryland Campers",
+      trade: 49905,
+      delta: 25085,
+    })
+    expect(deal?.model).toBe("Flagstaff Classic")
+    expect(deal?.floor).toBe("372RL")
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $74,990 Berryland Campers Ponchatoula LA (RV Trader + RVT same listing), ~36 ft 10 in. Trade $49,905 = 2026 JDP Low Retail $55,450 × 0.9 (Flagstaff Classic M-372RL). F372RL cross-check ask was $76,999 so used 372RL."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /Ask \$74,990 Berryland Campers Ponchatoula LA/i.test(span.text) &&
+            /Trade \$49,905 = 2026 JDP Low Retail \$55,450 × 0\.9/i.test(
+              span.text
+            ) &&
+            /F372RL cross-check ask was \$76,999 so used 372RL/i.test(span.text)
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(deal?.notes.flat().some((span) => span.type === "link")).toBe(false)
+
+    const prefixed = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Flagstaff Classic" &&
+        row.floor === "F372RL" &&
+        row.year === 2026
+    )
+    expect(prefixed).toBeUndefined()
   })
 
   it("applies Rockwood Signature 371RK ask and 2026 JDP trade", () => {
@@ -3577,12 +3736,21 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(flagstaff).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 74990,
+      dealer: "Berryland Campers",
+      trade: 49905,
+      delta: 25085,
     })
-    expect(flagstaff?.notes).toEqual([])
+    expect(
+      flagstaff?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $74,990 Berryland Campers Ponchatoula LA (RV Trader + RVT same listing), ~36 ft 10 in. Trade $49,905 = 2026 JDP Low Retail $55,450 × 0.9 (Flagstaff Classic M-372RL). F372RL cross-check ask was $76,999 so used 372RL."
+        )
+    ).toBe(true)
 
     const fwTwin = deals.find(
       (row) =>
@@ -4497,12 +4665,21 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(liveTwin).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 56700,
+      dealer: "Campinc, LLC",
+      trade: 29565,
+      delta: 27135,
     })
-    expect(liveTwin?.notes).toEqual([])
+    expect(
+      liveTwin?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $56,700 Campinc LLC Mcalester OK (RVT only; RV Trader Wildcat filter returned 0 / wrong-model Cardinals excluded), 36 ft New. Trade $29,565 = 2025 JDP Low Retail $32,850 × 0.9 prior-year proxy (2026 Wildcat brand index HTTP 500 / m-32live 404; used 2025 Wildcat base M-32Live not XL)."
+        )
+    ).toBe(true)
 
     const chefTwin = deals.find(
       (row) =>
@@ -14991,10 +15168,10 @@ describe("filters and sort", () => {
       4644, 4790, 4875, 4970, 5127, 5178, 5243, 5244, 5385, 5386, 5480, 5514, 5774, 5834, 5889, 5890, 5965, 6144, 6414, 6438, 6471, 6540,
       6554, 6735, 6783, 6900, 7061, 7201, 7294, 7370, 7709, 7811, 7840, 7980, 8010, 8010, 8356, 8670, 8784, 8790, 8814, 8828, 9034,
       9073, 9294, 9314, 9324, 9692, 9794, 9835, 9864, 9865, 9877, 9960, 10050, 10308, 10414, 10421, 10493, 10589, 10708, 10859, 10859, 10984, 11385, 11395, 11413, 11685, 11726, 11736, 11884, 12053, 12223, 12283, 12378, 12650, 12650, 12731, 12745, 13013, 13013, 13019, 13075, 13165, 13194, 13360, 13584,
-      13876, 14139, 14370, 14805, 15072, 15173, 15373, 15379, 15689, 15697, 15863, 16095, 16193, 16546, 16667, 16667, 16750, 16859, 16885, 16898, 17460, 17577, 17664, 17740, 17755, 18228, 18256, 18256, 19410, 19530, 21524, 21793, 22400, 22745, 22925, 23268, 25615, 25745, 25875,
-      26440, 27222, 28866, 29438, 40600,
+      13876, 14139, 14370, 14805, 15072, 15173, 15373, 15379, 15689, 15697, 15863, 16095, 16193, 16546, 16667, 16667, 16750, 16859, 16885, 16898, 17460, 17577, 17664, 17740, 17755, 18228, 18256, 18256, 19410, 19530, 21524, 21793, 22400, 22745, 22925, 23268, 25085, 25615, 25745, 25875,
+      26440, 27135, 27222, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(234)
+    expect(empty.length).toBe(232)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
@@ -15144,7 +15321,7 @@ describe("filters and sort", () => {
     })
   })
 
-  it("cascades Forest River models and prices Flagstaff Classic 281RK, 282RK, F282RK, 290CFK, 301RKS, 331RL, 361RLS, 371RK, and 374DBH", () => {
+  it("cascades Forest River models and prices Flagstaff Classic 281RK, 282RK, F282RK, 290CFK, 301RKS, 331RL, 361RLS, 371RK, 372RL, and 374DBH", () => {
     const options = filterOptions(deals, {
       manufacturer: "Forest River",
       year: "",
@@ -15217,6 +15394,12 @@ describe("filters and sort", () => {
       trade: 48240,
       delta: 16750,
     })
+    expect(rows.find((deal) => deal.floor === "372RL")).toMatchObject({
+      ask: 74990,
+      dealer: "Berryland Campers",
+      trade: 49905,
+      delta: 25085,
+    })
     expect(rows.find((deal) => deal.floor === "374DBH")).toMatchObject({
       ask: 59995,
       dealer: "",
@@ -15235,6 +15418,7 @@ describe("filters and sort", () => {
             deal.floor !== "331RL" &&
             deal.floor !== "361RLS" &&
             deal.floor !== "371RK" &&
+            deal.floor !== "372RL" &&
             deal.floor !== "374DBH"
         )
         .every((deal) => deal.ask == null && deal.delta == null)
