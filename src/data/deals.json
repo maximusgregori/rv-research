@@ -6105,7 +6105,14 @@
     "dealer": "",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Length skip: Forest River Columbus River Ranch 394RKL exterior length 42 ft 7 in (official specs https://www.forestriverinc.com/rvs/print/river-ranch/394RKL/13010) \u2014 exceeds under-40-ft filter. Dealer examples not used as table ask: General RV Fort Pierce FL $99,999; Kunes Lake Mills WI $100,594. No ask fill."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
