@@ -8432,22 +8432,76 @@
     "manufacturer": "Keystone",
     "model": "Alpine",
     "floor": "3100 RE",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 73966,
+    "dealer": "Holman Motors, Inc., Batavia, OH",
+    "trade": 55710,
+    "delta": 18256,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Holman Motors, Inc., Batavia, OH, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone+Rv-Alpine+3100RE-5039474643",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $73,966 Holman Motors Batavia OH via RV Trader (34 ft); RVT CAPTCHA-blocked. Excluded Featured Grand Terrace $81,995 / Dover $77,999. Trade from 2026 JDP Low Retail $61,900 \u00d7 0.9 = $55,710 (Keystone Alpine Series M-3100 RE). Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-3100-re/6646764/values. Same values applied to duplicate floor spellings 3100RE and \"3100 RE\". Duplicate catalog spelling of 3100RE."
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/keystone-rv/m-3100-re/6646764/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
     "manufacturer": "Keystone",
     "model": "Alpine",
     "floor": "3100RE",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 73966,
+    "dealer": "Holman Motors, Inc., Batavia, OH",
+    "trade": 55710,
+    "delta": 18256,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Holman Motors, Inc., Batavia, OH, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone+Rv-Alpine+3100RE-5039474643",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $73,966 Holman Motors Batavia OH via RV Trader (34 ft); RVT CAPTCHA-blocked. Excluded Featured Grand Terrace $81,995 / Dover $77,999. Trade from 2026 JDP Low Retail $61,900 \u00d7 0.9 = $55,710 (Keystone Alpine Series M-3100 RE). Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-3100-re/6646764/values. Same values applied to duplicate floor spellings 3100RE and \"3100 RE\"."
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/keystone-rv/m-3100-re/6646764/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
