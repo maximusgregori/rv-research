@@ -10015,11 +10015,33 @@
     "manufacturer": "Keystone",
     "model": "Montana",
     "floor": "300RK",
-    "ask": null,
-    "dealer": "",
+    "ask": 92995,
+    "dealer": "General RV Center - North Canton OH, North Canton, OH",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was General RV Center - North Canton OH, North Canton, OH, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone-MONTANA+300RK-5040863568",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $92,995 General RV Center - North Canton OH, North Canton, OH via RV Trader (35 ft). Ask only. Organic New Montana (not High Country) FW; RVT exact search 0; RVT captcha; Google-indexed RVT High Country excluded. Featured/Premium excluded. Checked, no JDP comparable: no 2026/2025 base Montana M-300 RK; Montana High Country M-325 RK Low Retail ($58,800 / $54,000) and High Country 300RK inventory listing without Low Retail — wrong-line / no valuation, excluded."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,

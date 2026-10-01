@@ -411,11 +411,12 @@ describe("deal data", () => {
       "Cougar Sport|2400RE",
       "Cougar Sport|2700BH",
       "Impact|321LT",
+      "Montana|300RK",
     ])
     const pricedKeystone = keystone.filter((deal) =>
       pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedKeystone).toHaveLength(43)
+    expect(pricedKeystone).toHaveLength(44)
     const unpricedKeystone = keystone.filter(
       (deal) => !pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -450,7 +451,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(189)
+    expect(priced).toHaveLength(190)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -10119,7 +10120,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Montana" &&
-        row.floor === "300RK" &&
+        row.floor === "3100RL" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -10199,7 +10200,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Montana" &&
-        row.floor === "300RK" &&
+        row.floor === "3100RL" &&
         row.year === 2026
     )
     expect(sibling).toMatchObject({
@@ -10209,6 +10210,119 @@ describe("deal data", () => {
       delta: null,
     })
     expect(sibling?.notes).toEqual([])
+  })
+
+  it("applies Keystone Montana 300RK ask and leaves trade/delta blank", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Montana" &&
+        row.floor === "300RK" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 92995,
+      dealer: "General RV Center - North Canton OH, North Canton, OH",
+      trade: null,
+      delta: null,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $92,995 General RV Center - North Canton OH, North Canton, OH via RV Trader (35 ft). Ask only. Organic New Montana (not High Country) FW; RVT exact search 0; RVT captcha; Google-indexed RVT High Country excluded. Featured/Premium excluded. Checked, no JDP comparable: no 2026/2025 base Montana M-300 RK; Montana High Country M-325 RK Low Retail ($58,800 / $54,000) and High Country 300RK inventory listing without Low Retail — wrong-line / no valuation, excluded."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /Ask \$92,995/i.test(span.text) &&
+            /Organic New Montana \(not High Country\) FW/i.test(span.text) &&
+            /RVT exact search 0/i.test(span.text) &&
+            /RVT captcha/i.test(span.text) &&
+            /Google-indexed RVT High Country excluded/i.test(span.text) &&
+            /Checked, no JDP comparable/i.test(span.text) &&
+            /no 2026\/2025 base Montana M-300 RK/i.test(span.text) &&
+            /Montana High Country M-325 RK Low Retail/i.test(span.text) &&
+            /wrong-line \/ no valuation, excluded/i.test(span.text) &&
+            !/trade from/i.test(span.text) &&
+            !/× 0\.9/.test(span.text)
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(
+      deal?.notes.flat().some((span) => span.type === "link" && span.label === "RVT")
+    ).toBe(false)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Keystone-MONTANA+300RK-5040863568" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+
+    expect(deal?.trade).toBeNull()
+    expect(deal?.delta).toBeNull()
+    expect(deal?.trade).not.toBe(0)
+
+    const highCountryTwin = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Montana High Country" &&
+        row.floor === "300RK" &&
+        row.year === 2026
+    )
+    expect(highCountryTwin).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(highCountryTwin?.notes).toEqual([])
+
+    const priorNotes = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Montana" &&
+        row.floor === "295RL" &&
+        row.year === 2026
+    )
+    expect(priorNotes).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(priorNotes?.notes.length).toBeGreaterThan(0)
+
+    const nextBlank = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Montana" &&
+        row.floor === "3100RL" &&
+        row.year === 2026
+    )
+    expect(nextBlank).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(nextBlank?.notes).toEqual([])
   })
 
   it("applies Sanibel 34LOUNGE ask and 2026 JDP trade", () => {
@@ -11432,6 +11546,12 @@ describe("deal data", () => {
         49995,
         "Uncharted Recreation, Meridian, ID",
       ],
+      [
+        "Montana",
+        "300RK",
+        92995,
+        "General RV Center - North Canton OH, North Canton, OH",
+      ],
     ] as const
     const verifiedMiss = new Set(["297MK", "235ML", "295RL"])
     const askNoTrade = deals.filter(
@@ -12499,9 +12619,15 @@ describe("filters and sort", () => {
     expect(
       montana.find((deal) => deal.floor === "295RL")?.notes.length
     ).toBeGreaterThan(0)
+    expect(montana.find((deal) => deal.floor === "300RK")).toMatchObject({
+      ask: 92995,
+      dealer: "General RV Center - North Canton OH, North Canton, OH",
+      trade: null,
+      delta: null,
+    })
     expect(
       montana
-        .filter((deal) => deal.floor !== "295RL")
+        .filter((deal) => deal.floor !== "295RL" && deal.floor !== "300RK")
         .every(
           (deal) =>
             deal.ask == null &&
