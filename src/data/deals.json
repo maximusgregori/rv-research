@@ -7922,11 +7922,38 @@
     "manufacturer": "Jayco",
     "model": "Eagle HT",
     "floor": "28CRT",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 52999,
+    "dealer": "Terry Town Travel Center, Grand Rapids, MI",
+    "trade": 37620,
+    "delta": 15379,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Terry Town Travel Center, Grand Rapids, MI, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Jayco-Eagle+HT+28CRT-5040249068",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $52,999 Terry Town Travel Center Grand Rapids MI via RV Trader, 33 ft; RVT CAPTCHA-blocked. Excluded Premium $45,991 Breaux Bridge. Trade from 2026 JDP Low Retail $41,800 \u00d7 0.9 = $37,620 (Jayco Eagle HT Series M-28 CRT). Source: https://www.jdpower.com/rvs/2026/jayco/m-28-crt/6648112/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/jayco/m-28-crt/6648112/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
