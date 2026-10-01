@@ -8112,11 +8112,47 @@
     "manufacturer": "Jayco",
     "model": "Eagle SLE",
     "floor": "24MLE",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 32995,
+    "dealer": "Couch Family RV, Cross City, FL",
+    "trade": 25155,
+    "delta": 7840,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Couch Family RV, Cross City, FL, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Jayco-Eagle+SLE+24MLE-5037319706",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-jayco-eagle-sle-24mle/7cfb4182-6ebf-11f0-a59c-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $32,995 Couch Family RV Cross City FL via RV Trader + RVT (same inventory, 29 ft); excluded Gulfport $32,995 garbled 351 ft length. Trade from 2026 JDP Low Retail $27,950 \u00d7 0.9 = $25,155 (Jayco Eagle SLE Series M-24 MLE). Source: https://www.jdpower.com/rvs/2026/jayco/m-24-mle/6648117/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/jayco/m-24-mle/6648117/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
