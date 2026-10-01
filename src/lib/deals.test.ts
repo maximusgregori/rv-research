@@ -397,11 +397,12 @@ describe("deal data", () => {
       "Cougar|355FBS",
       "Cougar|360MBI",
       "Cougar|364BHL",
+      "Cougar Half-Ton|23MLE",
     ])
     const pricedKeystone = keystone.filter((deal) =>
       pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedKeystone).toHaveLength(29)
+    expect(pricedKeystone).toHaveLength(30)
     const unpricedKeystone = keystone.filter(
       (deal) => !pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -421,7 +422,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(175)
+    expect(priced).toHaveLength(176)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -7106,12 +7107,12 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(halfTon23).toMatchObject({
-      ask: null,
-      dealer: "",
+      ask: 41745,
+      dealer: "Dad's Camper Outlet, Picayune, MS",
       trade: null,
       delta: null,
     })
-    expect(halfTon23?.notes).toEqual([])
+    expect(halfTon23?.notes.length).toBeGreaterThan(0)
 
     const sportTwin = deals.find(
       (row) =>
@@ -8267,7 +8268,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Cougar Half-Ton" &&
-        row.floor === "23MLE" &&
+        row.floor === "24RDS" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -8318,6 +8319,129 @@ describe("deal data", () => {
             row.floor !== "360MBI" &&
             row.floor !== "364BHL"
         )
+        .every(
+          (row) =>
+            row.ask == null &&
+            row.trade == null &&
+            row.delta == null &&
+            row.dealer === "" &&
+            row.notes.length === 0
+        )
+    ).toBe(true)
+  })
+
+  it("applies Keystone Cougar Half-Ton 23MLE ask and leaves trade/delta blank", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar Half-Ton" &&
+        row.floor === "23MLE" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 41745,
+      dealer: "Dad's Camper Outlet, Picayune, MS",
+      trade: null,
+      delta: null,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $41,745 Dad's Camper Outlet, Picayune, MS via RV Trader (27.92 ft). Ask only. RVT CAPTCHA-blocked; Trader-only. Featured/Premium excluded. Verified Half-Ton (not base/Sport). Detail length malformed on Trader; used 27.92 ft spec. Verified JDP miss: no 2026/2025 Cougar Half-Ton M-23 MLE; base Cougar Series entry excluded as wrong-line proxy; trade left blank (no wrong-line proxy)."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /verified JDP miss/i.test(span.text) &&
+            /no 2026\/2025 Cougar Half-Ton M-23 MLE/i.test(span.text) &&
+            /base Cougar Series entry excluded as wrong-line proxy/i.test(
+              span.text
+            ) &&
+            /trade left blank/i.test(span.text)
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(
+      deal?.notes.flat().some((span) => span.type === "link" && span.label === "RVT")
+    ).toBe(false)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Keystone+Rv-Cougar+Half-Ton+23MLE+Half+Ton+Towable-5042349814" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+
+    const baseTwin = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar" &&
+        row.floor === "260MLE" &&
+        row.year === 2026
+    )
+    expect(baseTwin).toMatchObject({
+      ask: 55900,
+      dealer: "Marlette RV, Marlette, MI",
+      trade: 44505,
+      delta: 11395,
+    })
+    expect(deal?.trade).not.toBe(baseTwin?.trade)
+    expect(deal?.ask).not.toBe(baseTwin?.ask)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar" &&
+        row.floor === "364BHL" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: 62379,
+      dealer: "Camping World, Davenport, IA",
+      trade: 49185,
+      delta: 13194,
+    })
+
+    const nextBlank = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar Half-Ton" &&
+        row.floor === "24RDS" &&
+        row.year === 2026
+    )
+    expect(nextBlank).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(nextBlank?.notes).toEqual([])
+
+    const otherHalfTon = deals.filter(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar Half-Ton" &&
+        row.year === 2026
+    )
+    expect(
+      otherHalfTon
+        .filter((row) => row.floor !== "23MLE")
         .every(
           (row) =>
             row.ask == null &&
@@ -9483,6 +9607,12 @@ describe("deal data", () => {
         "321RL",
         76995,
         "Bish's RV – Anderson, IN, Anderson, IN",
+      ],
+      [
+        "Cougar Half-Ton",
+        "23MLE",
+        41745,
+        "Dad's Camper Outlet, Picayune, MS",
       ],
     ] as const
     const verifiedMiss = new Set(["297MK", "235ML", "295RL"])
