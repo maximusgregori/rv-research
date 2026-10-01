@@ -7652,11 +7652,18 @@
     "manufacturer": "Forest River",
     "model": "Wildcat",
     "floor": "35FL",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 59950,
+    "dealer": "Wrights Campers – Yadkinville",
+    "trade": 31095,
+    "delta": 28855,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Ask $59,950 Wrights Campers Yadkinville NC (RVT; RV Trader organics under 40 ft none — cheaper Trader $59,254 was 52 ft 1 in over-length), 35 ft New. Trade $31,095 = 2025 JDP Low Retail $34,550 × 0.9 prior-year proxy (2026 Wildcat unavailable; used 2025 Wildcat base 35FL not XL)."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,

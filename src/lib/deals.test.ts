@@ -304,11 +304,12 @@ describe("deal data", () => {
       "Flagstaff Classic|374DBH",
       "Wildcat|32LIVE",
       "Wildcat|33CHEF",
+      "Wildcat|35FL",
     ])
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(55)
+    expect(pricedForest).toHaveLength(56)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -607,7 +608,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(219)
+    expect(priced).toHaveLength(220)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -1390,6 +1391,53 @@ describe("deal data", () => {
               span.text
             ) &&
             /used 2025 Wildcat base 33CHEF not XL/i.test(span.text)
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(deal?.notes.flat().some((span) => span.type === "link")).toBe(false)
+  })
+
+  it("applies Wildcat 35FL ask and 2025 JDP proxy trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Wildcat" &&
+        row.floor === "35FL" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 59950,
+      dealer: "Wrights Campers – Yadkinville",
+      trade: 31095,
+      delta: 28855,
+    })
+    expect(deal?.model).toBe("Wildcat")
+    expect(deal?.floor).toBe("35FL")
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $59,950 Wrights Campers Yadkinville NC (RVT; RV Trader organics under 40 ft none — cheaper Trader $59,254 was 52 ft 1 in over-length), 35 ft New. Trade $31,095 = 2025 JDP Low Retail $34,550 × 0.9 prior-year proxy (2026 Wildcat unavailable; used 2025 Wildcat base 35FL not XL)."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /Ask \$59,950 Wrights Campers Yadkinville NC/i.test(span.text) &&
+            /2025 JDP Low Retail \$34,550 × 0\.9 prior-year proxy/i.test(
+              span.text
+            ) &&
+            /used 2025 Wildcat base 35FL not XL/i.test(span.text)
         )
     ).toBe(true)
     expect(
@@ -15235,9 +15283,9 @@ describe("filters and sort", () => {
       6554, 6735, 6783, 6900, 7061, 7201, 7294, 7370, 7709, 7811, 7840, 7980, 8010, 8010, 8356, 8670, 8784, 8790, 8814, 8828, 9034,
       9073, 9294, 9314, 9324, 9692, 9794, 9835, 9864, 9865, 9877, 9960, 10050, 10308, 10414, 10421, 10493, 10589, 10708, 10859, 10859, 10984, 11385, 11395, 11413, 11685, 11726, 11736, 11884, 12053, 12223, 12283, 12378, 12650, 12650, 12731, 12745, 13013, 13013, 13019, 13075, 13165, 13194, 13360, 13584,
       13876, 14139, 14370, 14805, 15072, 15173, 15373, 15379, 15689, 15697, 15863, 16095, 16193, 16546, 16667, 16667, 16750, 16859, 16885, 16898, 17460, 17577, 17664, 17740, 17755, 18228, 18256, 18256, 19410, 19530, 21524, 21704, 21793, 22400, 22745, 22925, 23268, 25085, 25615, 25745, 25875,
-      26440, 27135, 27222, 28866, 29438, 40600,
+      26440, 27135, 27222, 28855, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(231)
+    expect(empty.length).toBe(230)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
