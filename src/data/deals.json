@@ -7292,11 +7292,18 @@
     "manufacturer": "Forest River",
     "model": "Sierra",
     "floor": "3370RLS",
-    "ask": null,
+    "ask": 55995,
     "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "trade": 36585,
+    "delta": 19410,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Ask $55,995 Royal RV Middlebury IN (both sites), ~36 ft. Trade: verified exact 3370RLS miss on JDP 2026+2025 Sierra (2026 lists M-3370BLS only); same-line proxy 2025 Sierra M-3370BLS Low Retail $40,650 \u00d70.9=$36,585 (BLS\u2260RLS noted)."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,

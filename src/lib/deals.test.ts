@@ -286,6 +286,7 @@ describe("deal data", () => {
       "Salem Hemisphere|321DRL",
       "Salem Hemisphere|325RL",
       "Sandpiper|3370RLS",
+      "Sierra|3370RLS",
       "Sandstorm|2710",
       "Sanibel|34LOUNGE",
       "Vengeance Rogue Armored|341GS11",
@@ -295,7 +296,7 @@ describe("deal data", () => {
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(42)
+    expect(pricedForest).toHaveLength(43)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -3363,7 +3364,7 @@ describe("deal data", () => {
     ).toBe(true)
   })
 
-  it("applies Sandpiper 3370RLS ask and 2025 JDP proxy trade and leaves Sierra 3370RLS blank", () => {
+  it("applies Sandpiper 3370RLS ask and 2025 JDP proxy trade", () => {
     const deal = deals.find(
       (row) =>
         row.manufacturer === "Forest River" &&
@@ -3421,20 +3422,70 @@ describe("deal data", () => {
         )
     ).toBe(true)
 
-    const sierraTwin = deals.find(
+  })
+
+  it("applies Sierra 3370RLS ask and 2025 same-line BLS proxy trade", () => {
+    const deal = deals.find(
       (row) =>
         row.manufacturer === "Forest River" &&
         row.model === "Sierra" &&
         row.floor === "3370RLS" &&
         row.year === 2026
     )
-    expect(sierraTwin).toMatchObject({
-      ask: null,
+    expect(deal).toMatchObject({
+      ask: 55995,
       dealer: "",
-      trade: null,
-      delta: null,
+      trade: 36585,
+      delta: 19410,
     })
-    expect(sierraTwin?.notes).toEqual([])
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $55,995 Royal RV Middlebury IN (both sites), ~36 ft. Trade: verified exact 3370RLS miss on JDP 2026+2025 Sierra (2026 lists M-3370BLS only); same-line proxy 2025 Sierra M-3370BLS Low Retail $40,650 ×0.9=$36,585 (BLS≠RLS noted)."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /Ask \$55,995 Royal RV Middlebury IN \(both sites\)/i.test(
+              span.text
+            ) &&
+            /~36 ft/i.test(span.text) &&
+            /verified exact 3370RLS miss on JDP 2026\+2025 Sierra/i.test(
+              span.text
+            ) &&
+            /2026 lists M-3370BLS only/i.test(span.text) &&
+            /same-line proxy 2025 Sierra M-3370BLS Low Retail \$40,650 ×0\.9=\$36,585/i.test(
+              span.text
+            ) &&
+            /BLS≠RLS noted/i.test(span.text)
+        )
+    ).toBe(true)
+
+    const sierraTwins = deals.filter(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Sierra" &&
+        row.floor !== "3370RLS" &&
+        row.year === 2026
+    )
+    expect(
+      sierraTwins.every(
+        (row) =>
+          row.ask == null &&
+          row.trade == null &&
+          row.delta == null &&
+          row.dealer === "" &&
+          row.notes.length === 0
+      )
+    ).toBe(true)
   })
 
   it("applies Sandstorm 2710 ask and leaves trade/delta blank", () => {
