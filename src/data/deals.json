@@ -9368,11 +9368,38 @@
     "manufacturer": "Keystone",
     "model": "Cougar",
     "floor": "350LLK",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 66402,
+    "dealer": "Bayird RV - Outdoor & Marine, Mountain Home, AR",
+    "trade": 48825,
+    "delta": 17577,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Bayird RV - Outdoor & Marine, Mountain Home, AR, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone+Rv-Cougar+350LLK-5039740070",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $66,402 Bayird RV - Outdoor & Marine, Mountain Home, AR via RV Trader (39 ft); RVT CAPTCHA-blocked; Trader-only. Featured/Premium excluded. Verified base Cougar (not Half-Ton/Sport). 2026 JDP Low Retail $54,250 → trade $48,825. Trade from 2026 JDP Low Retail $54,250 × 0.9 = $48,825. Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-350-llk/6646960/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/keystone-rv/m-350-llk/6646960/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
