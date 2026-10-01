@@ -416,11 +416,12 @@ describe("deal data", () => {
       "Montana|3123RL",
       "Montana|3231CK",
       "Montana|3532SP",
+      "Montana|3795FK",
     ])
     const pricedKeystone = keystone.filter((deal) =>
       pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedKeystone).toHaveLength(48)
+    expect(pricedKeystone).toHaveLength(49)
     const unpricedKeystone = keystone.filter(
       (deal) => !pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -455,7 +456,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(194)
+    expect(priced).toHaveLength(195)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -10123,8 +10124,8 @@ describe("deal data", () => {
     const nextBlank = deals.find(
       (row) =>
         row.manufacturer === "Keystone" &&
-        row.model === "Montana" &&
-        row.floor === "3795FK" &&
+        row.model === "Montana High Country" &&
+        row.floor === "290RL" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -10203,8 +10204,8 @@ describe("deal data", () => {
     const sibling = deals.find(
       (row) =>
         row.manufacturer === "Keystone" &&
-        row.model === "Montana" &&
-        row.floor === "3795FK" &&
+        row.model === "Montana High Country" &&
+        row.floor === "290RL" &&
         row.year === 2026
     )
     expect(sibling).toMatchObject({
@@ -10316,8 +10317,8 @@ describe("deal data", () => {
     const nextBlank = deals.find(
       (row) =>
         row.manufacturer === "Keystone" &&
-        row.model === "Montana" &&
-        row.floor === "3795FK" &&
+        row.model === "Montana High Country" &&
+        row.floor === "290RL" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -10442,8 +10443,8 @@ describe("deal data", () => {
     const nextBlank = deals.find(
       (row) =>
         row.manufacturer === "Keystone" &&
-        row.model === "Montana" &&
-        row.floor === "3795FK" &&
+        row.model === "Montana High Country" &&
+        row.floor === "290RL" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -10547,8 +10548,8 @@ describe("deal data", () => {
     const nextBlank = deals.find(
       (row) =>
         row.manufacturer === "Keystone" &&
-        row.model === "Montana" &&
-        row.floor === "3795FK" &&
+        row.model === "Montana High Country" &&
+        row.floor === "290RL" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -10652,8 +10653,8 @@ describe("deal data", () => {
     const nextBlank = deals.find(
       (row) =>
         row.manufacturer === "Keystone" &&
-        row.model === "Montana" &&
-        row.floor === "3795FK" &&
+        row.model === "Montana High Country" &&
+        row.floor === "290RL" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -10749,8 +10750,114 @@ describe("deal data", () => {
     const nextBlank = deals.find(
       (row) =>
         row.manufacturer === "Keystone" &&
+        row.model === "Montana High Country" &&
+        row.floor === "290RL" &&
+        row.year === 2026
+    )
+    expect(nextBlank).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(nextBlank?.notes).toEqual([])
+  })
+
+  it("applies Keystone Montana 3795FK ask and 2026 JDP trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
         row.model === "Montana" &&
         row.floor === "3795FK" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 77694,
+      dealer: "Camping World, Strafford, MO",
+      trade: 72450,
+      delta: 5244,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Organic New base Montana 3795FK; 39.92 ft; no High Country. RVT Human Verification blocked ask verify. Trade from real 2026 Montana Series M-3795 FK Low Retail $80,500 × 0.9."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /Organic New base Montana 3795FK/i.test(span.text) &&
+            /39\.92 ft/i.test(span.text) &&
+            /no High Country/i.test(span.text) &&
+            /RVT Human Verification blocked ask verify/i.test(span.text) &&
+            /Trade from real 2026 Montana Series M-3795 FK Low Retail \$80,500 × 0\.9/i.test(
+              span.text
+            )
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Keystone-MONTANA+3795FK-5042059538" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvt.com/buy/details/2026-keystone-montana-3795fk/c8e5d54a-ad11-11f1-84c9-020f812d825b/" &&
+            span.label === "RVT"
+        )
+    ).toBe(true)
+
+    const highCountryTwin = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Montana High Country" &&
+        row.floor === "3795FK" &&
+        row.year === 2026
+    )
+    expect(highCountryTwin).toBeUndefined()
+
+    const priorPriced = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Montana" &&
+        row.floor === "3532SP" &&
+        row.year === 2026
+    )
+    expect(priorPriced).toMatchObject({
+      ask: 71827,
+      dealer: "Fun Town RV - San Angelo, San Angelo, TX",
+      trade: 67275,
+      delta: 4552,
+    })
+
+    const nextBlank = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Montana High Country" &&
+        row.floor === "290RL" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -12162,13 +12269,13 @@ describe("filters and sort", () => {
       -2065, -2000, -1971, -1885, -1885, -1862, -1805, -1595, -1476, -1206,
       -1195, -1170, -831, -795, -586, -343, -110, -101, -30, -20, 390, 535, 573,
       659, 1163, 1340, 1609, 1665, 1919, 2089, 2535, 3005, 3080, 3149, 3185, 3195,       3435, 3498, 3570, 4103, 4310, 4552,
-      4644, 4790, 4875, 4970, 5127, 5178, 5243, 5385, 5386, 5480, 5514, 5774, 5834, 5889, 5890, 5965, 6144, 6414, 6438, 6471, 6540,
+      4644, 4790, 4875, 4970, 5127, 5178, 5243, 5244, 5385, 5386, 5480, 5514, 5774, 5834, 5889, 5890, 5965, 6144, 6414, 6438, 6471, 6540,
       6554, 6735, 6783, 6900, 7201, 7294, 7370, 7709, 7811, 7840, 7980, 8010, 8356, 8670, 8784, 8790, 8814, 8828, 9034,
       9073, 9294, 9314, 9324, 9692, 9794, 9835, 9864, 9865, 9877, 10050, 10308, 10414, 10421, 10493, 10708, 10859, 10859, 10984, 11385, 11395, 11413, 11726, 11736, 11884, 12053, 12283, 12731, 12745, 13013, 13013, 13019, 13075, 13165, 13194, 13360, 13584,
       14139, 14370, 14805, 15072, 15173, 15373, 15379, 15689, 15697, 16095, 16193, 16667, 16667, 16859, 16898, 17460, 17577, 17664, 17740, 17755, 18228, 18256, 18256, 19530, 21524, 21793, 22400, 22745, 22925, 23268, 25615, 25875,
       26440, 27222, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(251)
+    expect(empty.length).toBe(250)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
@@ -13092,6 +13199,12 @@ describe("filters and sort", () => {
       trade: 67275,
       delta: 4552,
     })
+    expect(montana.find((deal) => deal.floor === "3795FK")).toMatchObject({
+      ask: 77694,
+      dealer: "Camping World, Strafford, MO",
+      trade: 72450,
+      delta: 5244,
+    })
     expect(
       montana
         .filter(
@@ -13101,7 +13214,8 @@ describe("filters and sort", () => {
             deal.floor !== "3100RL" &&
             deal.floor !== "3123RL" &&
             deal.floor !== "3231CK" &&
-            deal.floor !== "3532SP"
+            deal.floor !== "3532SP" &&
+            deal.floor !== "3795FK"
         )
         .every(
           (deal) =>
