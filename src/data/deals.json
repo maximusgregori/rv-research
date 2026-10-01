@@ -7514,11 +7514,33 @@
     "manufacturer": "Forest River",
     "model": "Wildcat",
     "floor": "36FUN",
-    "ask": null,
-    "dealer": "",
+    "ask": 71990,
+    "dealer": "Family RV Center, Sweetwater, TX",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Family RV Center, Sweetwater, TX, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-forest-river-wildcat-36fun/5bcca309-a467-11f1-84c9-020f812d825b/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $71,990 RVT only (Family RV Center, Sweetwater TX), 38 ft New 36FUN. RV Trader organics all over-length (42 ft). Cheaper RVT organics were 43 ft. Trade blank: verified JDP miss — 2026 Wildcat-by-Forest-River page HTTP 500 / no 36FUN; 2025 lists M-35FUN only (not a valid 36FUN proxy). Do not invent a trade. JDP URL checked: https://www.jdpower.com/rvs/2026/wildcat-by-forest-river"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,

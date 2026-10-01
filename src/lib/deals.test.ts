@@ -289,11 +289,12 @@ describe("deal data", () => {
       "Sandstorm|2710",
       "Sanibel|34LOUNGE",
       "Vengeance Rogue Armored|341GS11",
+      "Wildcat|36FUN",
     ])
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(40)
+    expect(pricedForest).toHaveLength(41)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -347,7 +348,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(126)
+    expect(priced).toHaveLength(127)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -2929,6 +2930,93 @@ describe("deal data", () => {
     ).toBe(true)
   })
 
+  it("applies Wildcat 36FUN ask and leaves trade/delta blank", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Wildcat" &&
+        row.floor === "36FUN" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 71990,
+      dealer: "Family RV Center, Sweetwater, TX",
+      trade: null,
+      delta: null,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $71,990 RVT only (Family RV Center, Sweetwater TX), 38 ft New 36FUN. RV Trader organics all over-length (42 ft). Cheaper RVT organics were 43 ft. Trade blank: verified JDP miss — 2026 Wildcat-by-Forest-River page HTTP 500 / no 36FUN; 2025 lists M-35FUN only (not a valid 36FUN proxy). Do not invent a trade. JDP URL checked: https://www.jdpower.com/rvs/2026/wildcat-by-forest-river"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /M-35FUN/i.test(span.text) &&
+            /not a valid 36FUN proxy/i.test(span.text)
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvt.com/buy/details/2026-forest-river-wildcat-36fun/5bcca309-a467-11f1-84c9-020f812d825b/" &&
+            span.label === "RVT"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "RV Trader")
+    ).toBe(false)
+
+    const liveTwin = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Wildcat" &&
+        row.floor === "32LIVE" &&
+        row.year === 2026
+    )
+    expect(liveTwin).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(liveTwin?.notes).toEqual([])
+
+    const chefTwin = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Wildcat" &&
+        row.floor === "33CHEF" &&
+        row.year === 2026
+    )
+    expect(chefTwin).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(chefTwin?.notes).toEqual([])
+  })
+
   it("applies Sanibel 34LOUNGE ask and 2026 JDP trade", () => {
     const deal = deals.find(
       (row) =>
@@ -4066,6 +4154,12 @@ describe("deal data", () => {
         "2710",
         62980,
         "Bobby Combs RV – Yuma, AZ",
+      ],
+      [
+        "Wildcat",
+        "36FUN",
+        71990,
+        "Family RV Center, Sweetwater, TX",
       ],
     ] as const
     const verifiedMiss = new Set(["297MK", "235ML", "295RL"])
