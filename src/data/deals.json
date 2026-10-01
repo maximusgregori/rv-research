@@ -5830,39 +5830,15 @@
     "manufacturer": "Forest River",
     "model": "Cedar Creek Silverback",
     "floor": "29RL",
-    "ask": 74995,
-    "dealer": "RV Dynasty, Bunker Hill, IN",
+    "ask": null,
+    "dealer": "",
     "trade": null,
     "delta": null,
     "notes": [
       [
         {
           "type": "text",
-          "text": "Lowest ask was RV Dynasty, Bunker Hill, IN, on "
-        },
-        {
-          "type": "link",
-          "href": "https://www.rvt.com/buy/details/2026-forest-river-cedar-creek-silverback-29rl/91332278-235f-11f1-beaa-02c8259c7411/",
-          "label": "RVT"
-        },
-        {
-          "type": "text",
-          "text": " / "
-        },
-        {
-          "type": "link",
-          "href": "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Cedar+Creek+29RL-5039714103",
-          "label": "RV Trader"
-        },
-        {
-          "type": "text",
-          "text": " as of 2026-09-30."
-        }
-      ],
-      [
-        {
-          "type": "text",
-          "text": "Lowest organic NEW ask $74,995 on both sites (RV Dynasty, Bunker Hill IN; ~33 ft). RVT $68,798 Lake Park result was Used \u2014 excluded. Trade blank: verified no recent (2023\u20132026) Cedar Creek Silverback M-29RL on jdpower.com."
+          "text": "Ask cleared 2026-10-01: prior $74,995 Dynasty listing is titled plain Cedar Creek 29RL (not Silverback) \u2014 RV Trader \u201cCEDAR CREEK SILVERBACK\u201d category is taxonomy-only; no Silverback in title/model/description. Filtered Silverback search returned only plain Cedar Creek 29RL titles. No verified New 2026 Silverback 29RL organic ask. Experience 29RL excluded."
         }
       ]
     ]

@@ -254,7 +254,6 @@ describe("deal data", () => {
       "Cedar Creek|290RL",
       "Cedar Creek Experience|2925RL",
       "Cedar Creek Experience|35RL",
-      "Cedar Creek Silverback|29RL",
       "Cherokee Arctic Wolf|27SGS",
       "Cherokee Arctic Wolf|285OPT",
       "Cherokee Arctic Wolf|287BH",
@@ -295,20 +294,27 @@ describe("deal data", () => {
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(42)
+    expect(pricedForest).toHaveLength(41)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
     expect(
-      unpricedForest.every(
-        (deal) =>
-          deal.year === 2026 &&
-          deal.ask == null &&
-          deal.trade == null &&
-          deal.delta == null &&
-          deal.dealer === "" &&
-          deal.notes.length === 0
-      )
+      unpricedForest
+        .filter(
+          (deal) =>
+            !(
+              deal.model === "Cedar Creek Silverback" && deal.floor === "29RL"
+            )
+        )
+        .every(
+          (deal) =>
+            deal.year === 2026 &&
+            deal.ask == null &&
+            deal.trade == null &&
+            deal.delta == null &&
+            deal.dealer === "" &&
+            deal.notes.length === 0
+        )
     ).toBe(true)
 
     const jayco = deals.filter((deal) => deal.manufacturer === "Jayco")
@@ -349,7 +355,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(128)
+    expect(priced).toHaveLength(127)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -1059,19 +1065,6 @@ describe("deal data", () => {
         "RV Trader",
       ],
       [
-        "Cedar Creek Silverback",
-        "29RL",
-        74995,
-        "RV Dynasty, Bunker Hill, IN",
-        null,
-        null,
-        "Lowest organic NEW ask $74,995 on both sites (RV Dynasty, Bunker Hill IN; ~33 ft). RVT $68,798 Lake Park result was Used — excluded. Trade blank: verified no recent (2023–2026) Cedar Creek Silverback M-29RL on jdpower.com.",
-        "https://www.rvt.com/buy/details/2026-forest-river-cedar-creek-silverback-29rl/91332278-235f-11f1-beaa-02c8259c7411/",
-        "RVT",
-        "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Cedar+Creek+29RL-5039714103",
-        "RV Trader",
-      ],
-      [
         "Cherokee Arctic Wolf",
         "27SGS",
         42548,
@@ -1137,6 +1130,35 @@ describe("deal data", () => {
           )
       ).toBe(true)
     }
+  })
+
+  it("clears the mis-tagged Cedar Creek Silverback 29RL ask", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Cedar Creek Silverback" &&
+        row.floor === "29RL" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask cleared 2026-10-01: prior $74,995 Dynasty listing is titled plain Cedar Creek 29RL (not Silverback) — RV Trader “CEDAR CREEK SILVERBACK” category is taxonomy-only; no Silverback in title/model/description. Filtered Silverback search returned only plain Cedar Creek 29RL titles. No verified New 2026 Silverback 29RL organic ask. Experience 29RL excluded."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes.flat().some((span) => span.type === "link")
+    ).toBe(false)
   })
 
   it("applies Cedar Creek Experience 35RL ask and 2025 JDP proxy trade", () => {
@@ -4251,12 +4273,6 @@ describe("deal data", () => {
       ["Ahara", "297MK", 74849, "RV Value Mart - Asheboro, Franklinville, NC"],
       ["Tandara", "235ML", 38204, "Glampers RV"],
       ["Tandara", "295RL", 54990, "Berryland Campers"],
-      [
-        "Cedar Creek Silverback",
-        "29RL",
-        74995,
-        "RV Dynasty, Bunker Hill, IN",
-      ],
       [
         "Cherokee Arctic Wolf",
         "285OPT",
