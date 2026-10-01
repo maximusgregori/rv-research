@@ -1035,14 +1035,14 @@ describe("deal data", () => {
       [
         "Cedar Creek",
         "290RL",
-        102297,
-        "Dakota Discount RV, Rapid City, SD",
-        null,
-        null,
-        "Lowest organic ask $102,297 on both RV Trader and RVT (Dakota Discount RV, Rapid City SD). Trade blank: verified no exact M-290RL on 2025/2026 cedar-creek JDP pages (nearby M-29RL not mapped).",
+        74999,
+        "Bill's Happy Camper RV Sales & Service, Mill Hall, PA",
+        65205,
+        9794,
+        "Ask $74,999 RV Trader (Bill's Happy Camper, Mill Hall PA), 33 ft, listed as Cedar Creek 29RL — treated as catalog 290RL. RVT literal 290RL low $102,297 (Dakota Discount, Rapid City SD, 33 ft). Skipped Premium $74,995; skipped Experience 29RL $69,900 (wrong model line). Trade = 2026 JDP Low Retail $72,450 × 0.9 = $65,205 (real 2026 Cedar Creek M-29RL matching catalog 290RL).",
         "https://www.rvt.com/buy/details/2026-forest-river-cedar-creek-290rl/af3e4f67-859d-11f1-adcf-02f5bff6b341/",
         "RVT",
-        "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Cedar+Creek+290RL-5041432897#sid=683751",
+        "https://www.rvtrader.com/listing/2026-Forest+River-Cedar+Creek+29RL-5039740272",
         "RV Trader",
       ],
       [
@@ -4199,7 +4199,6 @@ describe("deal data", () => {
       ["Ahara", "297MK", 74849, "RV Value Mart - Asheboro, Franklinville, NC"],
       ["Tandara", "235ML", 38204, "Glampers RV"],
       ["Tandara", "295RL", 54990, "Berryland Campers"],
-      ["Cedar Creek", "290RL", 102297, "Dakota Discount RV, Rapid City, SD"],
       [
         "Cedar Creek Silverback",
         "29RL",
@@ -4411,11 +4410,11 @@ describe("filters and sort", () => {
       659, 1163, 1340, 1609, 1665, 1919, 2089, 2535, 3005, 3080, 3195, 3435, 3498, 3570, 4103, 4310,
       4644, 4790, 4875, 4970, 5243, 5480, 5514, 5834, 5889, 5965, 6144, 6471, 6540,
       6554, 6735, 6900, 7201, 7294, 7370, 7709, 7980, 8010, 8356, 8784, 8790, 8828, 9034,
-      9073, 9314, 10050, 10493, 10859, 10859, 11385, 11736, 11884, 12283, 13013, 13013, 13075, 13165, 13584,
+      9073, 9314, 9794, 10050, 10493, 10859, 10859, 11385, 11736, 11884, 12283, 13013, 13013, 13075, 13165, 13584,
       14139, 15689, 15697, 16667, 16667, 17460, 17664, 17740, 17755, 19530, 21524, 22400, 22745, 22925, 25615, 25875,
       26440, 26520, 27222, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(304)
+    expect(empty.length).toBe(303)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
