@@ -286,6 +286,7 @@ describe("deal data", () => {
       "Salem Hemisphere|321DRL",
       "Salem Hemisphere|325RL",
       "Sandpiper|3370RLS",
+      "Sierra|3370RLS",
       "Sandstorm|2710",
       "Sanibel|34LOUNGE",
       "Vengeance Rogue Armored|341GS11",
@@ -295,7 +296,7 @@ describe("deal data", () => {
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(42)
+    expect(pricedForest).toHaveLength(43)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -532,7 +533,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(206)
+    expect(priced).toHaveLength(207)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -3363,7 +3364,7 @@ describe("deal data", () => {
     ).toBe(true)
   })
 
-  it("applies Sandpiper 3370RLS ask and 2025 JDP proxy trade and leaves Sierra 3370RLS blank", () => {
+  it("applies Sandpiper 3370RLS ask and 2025 JDP proxy trade", () => {
     const deal = deals.find(
       (row) =>
         row.manufacturer === "Forest River" &&
@@ -3421,20 +3422,70 @@ describe("deal data", () => {
         )
     ).toBe(true)
 
-    const sierraTwin = deals.find(
+  })
+
+  it("applies Sierra 3370RLS ask and 2025 same-line BLS proxy trade", () => {
+    const deal = deals.find(
       (row) =>
         row.manufacturer === "Forest River" &&
         row.model === "Sierra" &&
         row.floor === "3370RLS" &&
         row.year === 2026
     )
-    expect(sierraTwin).toMatchObject({
-      ask: null,
+    expect(deal).toMatchObject({
+      ask: 55995,
       dealer: "",
-      trade: null,
-      delta: null,
+      trade: 36585,
+      delta: 19410,
     })
-    expect(sierraTwin?.notes).toEqual([])
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $55,995 Royal RV Middlebury IN (both sites), ~36 ft. Trade: verified exact 3370RLS miss on JDP 2026+2025 Sierra (2026 lists M-3370BLS only); same-line proxy 2025 Sierra M-3370BLS Low Retail $40,650 ×0.9=$36,585 (BLS≠RLS noted)."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /Ask \$55,995 Royal RV Middlebury IN \(both sites\)/i.test(
+              span.text
+            ) &&
+            /~36 ft/i.test(span.text) &&
+            /verified exact 3370RLS miss on JDP 2026\+2025 Sierra/i.test(
+              span.text
+            ) &&
+            /2026 lists M-3370BLS only/i.test(span.text) &&
+            /same-line proxy 2025 Sierra M-3370BLS Low Retail \$40,650 ×0\.9=\$36,585/i.test(
+              span.text
+            ) &&
+            /BLS≠RLS noted/i.test(span.text)
+        )
+    ).toBe(true)
+
+    const sierraTwins = deals.filter(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Sierra" &&
+        row.floor !== "3370RLS" &&
+        row.year === 2026
+    )
+    expect(
+      sierraTwins.every(
+        (row) =>
+          row.ask == null &&
+          row.trade == null &&
+          row.delta == null &&
+          row.dealer === "" &&
+          row.notes.length === 0
+      )
+    ).toBe(true)
   })
 
   it("applies Sandstorm 2710 ask and leaves trade/delta blank", () => {
@@ -14052,10 +14103,10 @@ describe("filters and sort", () => {
       4644, 4790, 4875, 4970, 5127, 5178, 5243, 5244, 5385, 5386, 5480, 5514, 5774, 5834, 5889, 5890, 5965, 6144, 6414, 6438, 6471, 6540,
       6554, 6735, 6783, 6900, 7061, 7201, 7294, 7370, 7709, 7811, 7840, 7980, 8010, 8010, 8356, 8670, 8784, 8790, 8814, 8828, 9034,
       9073, 9294, 9314, 9324, 9692, 9794, 9835, 9864, 9865, 9877, 10050, 10308, 10414, 10421, 10493, 10589, 10708, 10859, 10859, 10984, 11385, 11395, 11413, 11685, 11726, 11736, 11884, 12053, 12283, 12731, 12745, 13013, 13013, 13019, 13075, 13165, 13194, 13360, 13584,
-      14139, 14370, 14805, 15072, 15173, 15373, 15379, 15689, 15697, 15863, 16095, 16193, 16546, 16667, 16667, 16859, 16898, 17460, 17577, 17664, 17740, 17755, 18228, 18256, 18256, 19530, 21524, 21793, 22400, 22745, 22925, 23268, 25615, 25745, 25875,
+      14139, 14370, 14805, 15072, 15173, 15373, 15379, 15689, 15697, 15863, 16095, 16193, 16546, 16667, 16667, 16859, 16898, 17460, 17577, 17664, 17740, 17755, 18228, 18256, 18256, 19410, 19530, 21524, 21793, 22400, 22745, 22925, 23268, 25615, 25745, 25875,
       26440, 27222, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(243)
+    expect(empty.length).toBe(242)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
