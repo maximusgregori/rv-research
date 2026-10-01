@@ -11679,6 +11679,12 @@ describe("deal data", () => {
         92995,
         "General RV Center - North Canton OH, North Canton, OH",
       ],
+      [
+        "Montana",
+        "3100RL",
+        97995,
+        "RV Roadway Opelika, Opelika, AL",
+      ],
     ] as const
     const verifiedMiss = new Set(["297MK", "235ML", "295RL"])
     const askNoTrade = deals.filter(
