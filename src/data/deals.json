@@ -10344,11 +10344,42 @@
     "manufacturer": "Keystone",
     "model": "Montana High Country",
     "floor": "311RD",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 61185,
+    "dealer": "Bankston Motor Homes of Gadsden, Attalla, AL",
+    "trade": 49500,
+    "delta": 11685,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Bankston Motor Homes of Gadsden, Attalla, AL, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone+Rv-Montana+High+Country+311RD-5038437368",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvt.com/buy/details/2026-keystone-montana-high-country-311rd/f7085a65-c082-11f0-beaa-02c8259c7411/",
+          "label": "RVT"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Organic New High Country 311RD; both sites $61,185; 35 ft. Trade from real 2026 Montana High Country Series M-311 RD Low Retail $55,000 \u00d7 0.9."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
