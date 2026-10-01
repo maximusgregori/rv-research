@@ -9406,11 +9406,38 @@
     "manufacturer": "Keystone",
     "model": "Cougar",
     "floor": "355FBS",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 63985,
+    "dealer": "Meyer's RV Superstore Ripley, Ripley, WV",
+    "trade": 50625,
+    "delta": 13360,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Meyer's RV Superstore Ripley, Ripley, WV, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone+Rv-Cougar+355FBS-5037199507",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $63,985 Meyer's RV Superstore Ripley, Ripley, WV via RV Trader (39 ft); RVT CAPTCHA-blocked; Trader-only. Featured/Premium excluded. Verified base Cougar (not Half-Ton/Sport). 2026 JDP Low Retail $56,250 → trade $50,625. Trade from 2026 JDP Low Retail $56,250 × 0.9 = $50,625. Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-355-fbs/6646961/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/keystone-rv/m-355-fbs/6646961/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
