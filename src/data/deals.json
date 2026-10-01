@@ -7436,11 +7436,18 @@
     "manufacturer": "Forest River",
     "model": "Flagstaff Classic",
     "floor": "281RK",
-    "ask": null,
-    "dealer": "",
+    "ask": 47967,
+    "dealer": "Colaw RV Sales, Carthage, MO",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Ask $47,967 Colaw RV Sales Carthage MO (RV Trader + RVT, same listing F281RK), ~28 ft 11 in. Trade blank: verified JDP miss \u2014 2026 Flagstaff Classic M-281RK listed but no Low Retail; 2025 same-floor Specs-only, no Low Retail; no wrong-line proxy."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,

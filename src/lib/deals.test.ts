@@ -292,11 +292,12 @@ describe("deal data", () => {
       "Vengeance Rogue Armored|341GS11",
       "Wildcat|36FUN",
       "Wildcat XL|30BAM",
+      "Flagstaff Classic|281RK",
     ])
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(43)
+    expect(pricedForest).toHaveLength(44)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -595,7 +596,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(207)
+    expect(priced).toHaveLength(208)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -2333,12 +2334,83 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(flagstaff).toMatchObject({
+      ask: 47967,
+      dealer: "Colaw RV Sales, Carthage, MO",
+      trade: null,
+      delta: null,
+    })
+    expect(flagstaff?.notes.length).toBeGreaterThan(0)
+  })
+
+  it("applies Flagstaff Classic 281RK ask and leaves trade/delta blank", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Flagstaff Classic" &&
+        row.floor === "281RK" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 47967,
+      dealer: "Colaw RV Sales, Carthage, MO",
+      trade: null,
+      delta: null,
+    })
+    expect(deal?.model).toBe("Flagstaff Classic")
+    expect(deal?.floor).toBe("281RK")
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $47,967 Colaw RV Sales Carthage MO (RV Trader + RVT, same listing F281RK), ~28 ft 11 in. Trade blank: verified JDP miss — 2026 Flagstaff Classic M-281RK listed but no Low Retail; 2025 same-floor Specs-only, no Low Retail; no wrong-line proxy."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /Ask \$47,967 Colaw RV Sales Carthage MO/i.test(span.text) &&
+            /RV Trader \+ RVT, same listing F281RK/i.test(span.text) &&
+            /~28 ft 11 in/i.test(span.text) &&
+            /Trade blank: verified JDP miss/i.test(span.text) &&
+            /2026 Flagstaff Classic M-281RK listed but no Low Retail/i.test(
+              span.text
+            ) &&
+            /2025 same-floor Specs-only, no Low Retail/i.test(span.text) &&
+            /no wrong-line proxy/i.test(span.text) &&
+            !/trade from/i.test(span.text) &&
+            !/× 0\.9/.test(span.text)
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(deal?.notes.flat().some((span) => span.type === "link")).toBe(false)
+    expect(deal?.trade).toBeNull()
+    expect(deal?.delta).toBeNull()
+    expect(deal?.trade).not.toBe(0)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Flagstaff Classic" &&
+        row.floor === "282RK" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
       ask: null,
       dealer: "",
       trade: null,
       delta: null,
     })
-    expect(flagstaff?.notes).toEqual([])
+    expect(sibling?.notes).toEqual([])
   })
 
   it("applies Rockwood Signature 282RK ask and 2026 JDP trade", () => {
@@ -14078,6 +14150,12 @@ describe("deal data", () => {
         "Bobby Combs RV – Yuma, AZ",
       ],
       [
+        "Flagstaff Classic",
+        "281RK",
+        47967,
+        "Colaw RV Sales, Carthage, MO",
+      ],
+      [
         "Wildcat",
         "36FUN",
         71990,
@@ -14526,7 +14604,7 @@ describe("filters and sort", () => {
     })
   })
 
-  it("cascades Forest River models and keeps those rows unpriced", () => {
+  it("cascades Forest River models and prices Flagstaff Classic 281RK", () => {
     const options = filterOptions(deals, {
       manufacturer: "Forest River",
       year: "",
@@ -14551,9 +14629,17 @@ describe("filters and sort", () => {
       model: "Flagstaff Classic",
     })
     expect(rows).toHaveLength(10)
-    expect(rows.every((deal) => deal.ask == null && deal.delta == null)).toBe(
-      true
-    )
+    expect(rows.find((deal) => deal.floor === "281RK")).toMatchObject({
+      ask: 47967,
+      dealer: "Colaw RV Sales, Carthage, MO",
+      trade: null,
+      delta: null,
+    })
+    expect(
+      rows
+        .filter((deal) => deal.floor !== "281RK")
+        .every((deal) => deal.ask == null && deal.delta == null)
+    ).toBe(true)
     expect(rows.map((deal) => deal.floor)).toEqual([
       "281RK",
       "282RK",
