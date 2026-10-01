@@ -9330,11 +9330,38 @@
     "manufacturer": "Keystone",
     "model": "Cougar",
     "floor": "32BHS",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 58098,
+    "dealer": "Camping World, Dover, FL",
+    "trade": 39870,
+    "delta": 18228,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Camping World, Dover, FL, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone-COUGAR+32BHS-5042063274",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $58,098 Camping World, Dover, FL via RV Trader (35.67 ft); RVT CAPTCHA-blocked; Trader-only. Featured/Premium excluded. Verified base Cougar fifth-wheel (not Half-Ton/Sport; not TT entry). 2026 JDP Low Retail $44,300 → trade $39,870. Trade from 2026 JDP Low Retail $44,300 × 0.9 = $39,870. Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-32-bhs/6646973/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/keystone-rv/m-32-bhs/6646973/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
