@@ -306,11 +306,12 @@ describe("deal data", () => {
       "Wildcat|33CHEF",
       "Wildcat|35FL",
       "Wildcat|37GALLEY",
+      "Wildwood Heritage Glen|286RL",
     ])
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(57)
+    expect(pricedForest).toHaveLength(58)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -609,7 +610,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(221)
+    expect(priced).toHaveLength(222)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -4240,12 +4241,12 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(heritageGlenTwin).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 49995,
+      dealer: "Open Road RV – Monticello",
+      trade: 51300,
+      delta: -1305,
     })
-    expect(heritageGlenTwin?.notes).toEqual([])
+    expect(heritageGlenTwin?.notes.length).toBeGreaterThan(0)
   })
 
   it("applies Salem Hemisphere 301FAM ask and 2026 JDP trade", () => {
@@ -4322,16 +4323,23 @@ describe("deal data", () => {
       "286RL",
       "321DRL",
     ])
-    expect(
-      heritageGlenTwins.every(
-        (row) =>
-          row.ask == null &&
-          row.trade == null &&
-          row.delta == null &&
-          row.dealer === "" &&
-          row.notes.length === 0
-      )
-    ).toBe(true)
+    const heritageGlen286 = heritageGlenTwins.find((row) => row.floor === "286RL")
+    expect(heritageGlen286).toMatchObject({
+      ask: 49995,
+      dealer: "Open Road RV – Monticello",
+      trade: 51300,
+      delta: -1305,
+    })
+    const heritageGlen321 = heritageGlenTwins.find(
+      (row) => row.floor === "321DRL"
+    )
+    expect(heritageGlen321).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(heritageGlen321?.notes).toEqual([])
   })
 
   it("applies Salem Hemisphere 321DRL ask and 2026 JDP trade", () => {
@@ -4488,16 +4496,57 @@ describe("deal data", () => {
       "286RL",
       "321DRL",
     ])
+    const heritageGlen286 = heritageGlenTwins.find((row) => row.floor === "286RL")
+    expect(heritageGlen286).toMatchObject({
+      ask: 49995,
+      dealer: "Open Road RV – Monticello",
+      trade: 51300,
+      delta: -1305,
+    })
+    const heritageGlen321 = heritageGlenTwins.find(
+      (row) => row.floor === "321DRL"
+    )
+    expect(heritageGlen321).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(heritageGlen321?.notes).toEqual([])
+  })
+
+  it("applies Wildwood Heritage Glen 286RL ask and 2026 JDP trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Wildwood Heritage Glen" &&
+        row.floor === "286RL" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 49995,
+      dealer: "Open Road RV – Monticello",
+      trade: 51300,
+      delta: -1305,
+    })
+    expect(deal?.model).toBe("Wildwood Heritage Glen")
+    expect(deal?.floor).toBe("286RL")
     expect(
-      heritageGlenTwins.every(
-        (row) =>
-          row.ask == null &&
-          row.trade == null &&
-          row.delta == null &&
-          row.dealer === "" &&
-          row.notes.length === 0
-      )
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $49,995 Open Road RV Monticello MN (RV Trader + RVT same listing), 33 ft New. Trade $51,300 = 2026 JDP Low Retail $57,000 × 0.9 (Wildwood Heritage Glen 286RL exact)."
+        )
     ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(deal?.notes.flat().some((span) => span.type === "link")).toBe(false)
   })
 
   it("applies Sandpiper 3370RLS ask and 2025 JDP proxy trade", () => {
@@ -15350,7 +15399,8 @@ describe("filters and sort", () => {
     const empty = rows.filter((deal) => deal.delta == null)
     expect(priced.map((deal) => deal.delta)).toEqual([
       -10004, -6760, -5628, -5469, -5252, -5190, -3791, -3525, -3461, -2490,
-      -2065, -2000, -1971, -1885, -1885, -1862, -1805, -1595, -1476, -1206,
+      -2065, -2000, -1971, -1885, -1885, -1862, -1805, -1595, -1476, -1305,
+      -1206,
       -1195, -1170, -831, -795, -586, -343, -110, -101, -30, -20, 390, 535, 573,
       659, 1163, 1340, 1609, 1665, 1919, 2089, 2535, 3005, 3080, 3149, 3185, 3195,       3435, 3498, 3570, 4103, 4310, 4552,
       4644, 4790, 4875, 4970, 5127, 5178, 5243, 5244, 5385, 5386, 5480, 5514, 5774, 5834, 5889, 5890, 5965, 6144, 6414, 6438, 6471, 6540,
@@ -15359,7 +15409,7 @@ describe("filters and sort", () => {
       13876, 14139, 14370, 14805, 15072, 15173, 15373, 15379, 15689, 15697, 15863, 16095, 16193, 16546, 16667, 16667, 16750, 16859, 16885, 16898, 17460, 17577, 17664, 17740, 17755, 18228, 18256, 18256, 19410, 19530, 21524, 21704, 21793, 22400, 22745, 22925, 23268, 25085, 25615, 25745, 25875,
       26440, 27135, 27222, 28855, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(230)
+    expect(empty.length).toBe(229)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )

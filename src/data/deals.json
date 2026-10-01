@@ -7754,11 +7754,18 @@
     "manufacturer": "Forest River",
     "model": "Wildwood Heritage Glen",
     "floor": "286RL",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 49995,
+    "dealer": "Open Road RV – Monticello",
+    "trade": 51300,
+    "delta": -1305,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Ask $49,995 Open Road RV Monticello MN (RV Trader + RVT same listing), 33 ft New. Trade $51,300 = 2026 JDP Low Retail $57,000 × 0.9 (Wildwood Heritage Glen 286RL exact)."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
