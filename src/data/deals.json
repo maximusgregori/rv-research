@@ -8897,11 +8897,38 @@
     "manufacturer": "Keystone",
     "model": "Arcadia Super Lite",
     "floor": "260SLCL",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 43694,
+    "dealer": "Camping World, Scott City, MO",
+    "trade": 40545,
+    "delta": 3149,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Camping World, Scott City, MO, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone-ARCADIA+SUPER+LITE+260SLCL-5042059662",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $43,694 Camping World Scott City MO via RV Trader (RVT CAPTCHA; includes freight/prep/docs). Trade from 2026 JDP Low Retail $45,050 × 0.9 = $40,545. Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-260-slcl/6646784/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/keystone-rv/m-260-slcl/6646784/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
