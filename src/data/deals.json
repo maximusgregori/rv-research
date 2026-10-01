@@ -8946,11 +8946,38 @@
     "manufacturer": "Keystone",
     "model": "Arcadia Super Lite",
     "floor": "294SLRD",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 49379,
+    "dealer": "Camping World (Coldwater, MI), Coldwater, MI",
+    "trade": 43605,
+    "delta": 5774,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Camping World (Coldwater, MI), Coldwater, MI, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone-ARCADIA+SUPER+LITE+294SLRD-5042061928",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $49,379 Camping World Coldwater MI via RV Trader (33.17 ft); RVT CAPTCHA-blocked; Trader-only. Featured/Premium excluded. Trade from 2026 JDP Low Retail $48,450 × 0.9 = $43,605. Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-294-slrd/6646786/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/keystone-rv/m-294-slrd/6646786/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,

@@ -382,11 +382,12 @@ describe("deal data", () => {
       "Arcadia Select|28SLS",
       "Arcadia Super Lite|242SLMD",
       "Arcadia Super Lite|292SLRL",
+      "Arcadia Super Lite|294SLRD",
     ])
     const pricedKeystone = keystone.filter((deal) =>
       pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedKeystone).toHaveLength(14)
+    expect(pricedKeystone).toHaveLength(15)
     const unpricedKeystone = keystone.filter(
       (deal) => !pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -406,7 +407,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(160)
+    expect(priced).toHaveLength(161)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -5575,7 +5576,12 @@ describe("deal data", () => {
     })
     expect(
       superLite
-        .filter((row) => row.floor !== "242SLMD" && row.floor !== "292SLRL")
+        .filter(
+          (row) =>
+            row.floor !== "242SLMD" &&
+            row.floor !== "292SLRL" &&
+            row.floor !== "294SLRD"
+        )
         .every(
           (row) =>
             row.ask == null &&
@@ -6285,7 +6291,7 @@ describe("deal data", () => {
       (row) =>
         row.manufacturer === "Keystone" &&
         row.model === "Arcadia Super Lite" &&
-        row.floor === "294SLRD" &&
+        row.floor === "308SLBH" &&
         row.year === 2026
     )
     expect(nextBlank).toMatchObject({
@@ -6311,6 +6317,20 @@ describe("deal data", () => {
     })
     expect(priorBlank?.notes).toEqual([])
 
+    const filled294 = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Arcadia Super Lite" &&
+        row.floor === "294SLRD" &&
+        row.year === 2026
+    )
+    expect(filled294).toMatchObject({
+      ask: 49379,
+      dealer: "Camping World (Coldwater, MI), Coldwater, MI",
+      trade: 43605,
+      delta: 5774,
+    })
+
     const baseArcadia = deals.find(
       (row) =>
         row.manufacturer === "Keystone" &&
@@ -6325,6 +6345,133 @@ describe("deal data", () => {
         row.manufacturer === "Keystone" &&
         row.model === "Arcadia Select" &&
         row.floor === "292SLRL" &&
+        row.year === 2026
+    )
+    expect(selectTwin).toBeUndefined()
+  })
+
+  it("applies Keystone Arcadia Super Lite 294SLRD ask and 2026 JDP trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Arcadia Super Lite" &&
+        row.floor === "294SLRD" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 49379,
+      dealer: "Camping World (Coldwater, MI), Coldwater, MI",
+      trade: 43605,
+      delta: 5774,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $49,379 Camping World Coldwater MI via RV Trader (33.17 ft); RVT CAPTCHA-blocked; Trader-only. Featured/Premium excluded. Trade from 2026 JDP Low Retail $48,450 × 0.9 = $43,605. Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-294-slrd/6646786/values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.jdpower.com/rvs/2026/keystone-rv/m-294-slrd/6646786/values" &&
+            span.label === "JDP values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Keystone-ARCADIA+SUPER+LITE+294SLRD-5042061928" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes.flat().some((span) => span.type === "link" && span.label === "RVT")
+    ).toBe(false)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Arcadia Super Lite" &&
+        row.floor === "292SLRL" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: 46295,
+      dealer: "Camping World (Kansas City, KS), Kansas City, KS",
+      trade: 43110,
+      delta: 3185,
+    })
+
+    const nextBlank = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Arcadia Super Lite" &&
+        row.floor === "308SLBH" &&
+        row.year === 2026
+    )
+    expect(nextBlank).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(nextBlank?.notes).toEqual([])
+
+    const priorPriced = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Arcadia Super Lite" &&
+        row.floor === "242SLMD" &&
+        row.year === 2026
+    )
+    expect(priorPriced).toMatchObject({
+      ask: 43692,
+      dealer: "Buckeye RV Jeffersonville, Jeffersonville, OH",
+      trade: 38565,
+      delta: 5127,
+    })
+
+    const stillBlank = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Arcadia Super Lite" &&
+        row.floor === "260SLCL" &&
+        row.year === 2026
+    )
+    expect(stillBlank).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(stillBlank?.notes).toEqual([])
+
+    const baseArcadia = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Arcadia" &&
+        row.floor === "294SLRD" &&
+        row.year === 2026
+    )
+    expect(baseArcadia).toBeUndefined()
+
+    const selectTwin = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Arcadia Select" &&
+        row.floor === "294SLRD" &&
         row.year === 2026
     )
     expect(selectTwin).toBeUndefined()
@@ -7646,13 +7793,13 @@ describe("filters and sort", () => {
       -2065, -2000, -1971, -1885, -1885, -1862, -1805, -1595, -1476, -1206,
       -1195, -1170, -831, -795, -586, -343, -110, -101, -30, -20, 390, 535, 573,
       659, 1163, 1340, 1609, 1665, 1919, 2089, 2535, 3005, 3080, 3185, 3195, 3435, 3498, 3570, 4103, 4310,
-      4644, 4790, 4875, 4970, 5127, 5243, 5385, 5386, 5480, 5514, 5834, 5889, 5890, 5965, 6144, 6414, 6438, 6471, 6540,
+      4644, 4790, 4875, 4970, 5127, 5243, 5385, 5386, 5480, 5514, 5774, 5834, 5889, 5890, 5965, 6144, 6414, 6438, 6471, 6540,
       6554, 6735, 6900, 7201, 7294, 7370, 7709, 7811, 7840, 7980, 8010, 8356, 8670, 8784, 8790, 8814, 8828, 9034,
       9073, 9314, 9794, 9865, 9877, 10050, 10308, 10493, 10708, 10859, 10859, 11385, 11413, 11726, 11736, 11884, 12053, 12283, 12731, 12745, 13013, 13013, 13019, 13075, 13165, 13584,
       14139, 14370, 14805, 15072, 15373, 15379, 15689, 15697, 16193, 16667, 16667, 16859, 16898, 17460, 17664, 17740, 17755, 18256, 18256, 19530, 21524, 21793, 22400, 22745, 22925, 23268, 25615, 25875,
       26440, 27222, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(271)
+    expect(empty.length).toBe(270)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
@@ -8213,9 +8360,20 @@ describe("filters and sort", () => {
       trade: 43110,
       delta: 3185,
     })
+    expect(arcadiaSuperLite.find((deal) => deal.floor === "294SLRD")).toMatchObject({
+      ask: 49379,
+      dealer: "Camping World (Coldwater, MI), Coldwater, MI",
+      trade: 43605,
+      delta: 5774,
+    })
     expect(
       arcadiaSuperLite
-        .filter((deal) => deal.floor !== "242SLMD" && deal.floor !== "292SLRL")
+        .filter(
+          (deal) =>
+            deal.floor !== "242SLMD" &&
+            deal.floor !== "292SLRL" &&
+            deal.floor !== "294SLRD"
+        )
         .every((deal) => deal.ask == null && deal.delta == null)
     ).toBe(true)
 
