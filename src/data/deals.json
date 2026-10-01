@@ -9888,11 +9888,38 @@
     "manufacturer": "Keystone",
     "model": "Cougar Sport",
     "floor": "2400RE",
-    "ask": null,
-    "dealer": "",
-    "trade": null,
-    "delta": null,
-    "notes": []
+    "ask": 31998,
+    "dealer": "Camping World, London, KY",
+    "trade": 26820,
+    "delta": 5178,
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Camping World, London, KY, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone-COUGAR+SPORT+2400RE-5042059782",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $31,998 Camping World, London, KY via RV Trader (29.33 ft); RVT detail CAPTCHA; Trader-only. Featured/Premium excluded. Verified Cougar Sport (not base/Half-Ton). JDP 2026 Cougar Sport Series M-2400 RE Low Retail $29,800 \u00d7 0.9 = $26,820. Source: https://www.jdpower.com/rvs/2026/keystone-rv/m-2400-re/6646987/values"
+        },
+        {
+          "type": "link",
+          "href": "https://www.jdpower.com/rvs/2026/keystone-rv/m-2400-re/6646987/values",
+          "label": "JDP values"
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
