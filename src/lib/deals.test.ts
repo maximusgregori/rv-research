@@ -385,6 +385,7 @@ describe("deal data", () => {
       "Arcadia Super Lite|292SLRL",
       "Arcadia Super Lite|294SLRD",
       "Arcadia Super Lite|308SLBH",
+      "Avalanche|321RL",
     ])
     const pricedKeystone = keystone.filter((deal) =>
       pricedKeystoneKeys.has(`${deal.model}|${deal.floor}`)
@@ -5340,12 +5341,18 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(plainAvalanche).toMatchObject({
-      ask: null,
-      dealer: "",
+      ask: 76995,
+      dealer: "Bish's RV – Anderson, IN, Anderson, IN",
       trade: null,
       delta: null,
     })
-    expect(plainAvalanche?.notes).toEqual([])
+    expect(plainAvalanche?.trade).toBeNull()
+    expect(plainAvalanche?.delta).toBeNull()
+    expect(
+      plainAvalanche?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
   })
 
   it("applies Keystone Alpine Avalanche Edition 338GK ask and 2026 JDP trade", () => {
@@ -5443,6 +5450,118 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(plainAvalanche).toBeUndefined()
+  })
+
+  it("applies Keystone Avalanche 321RL ask and leaves trade/delta blank", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Avalanche" &&
+        row.floor === "321RL" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 76995,
+      dealer: "Bish's RV – Anderson, IN, Anderson, IN",
+      trade: null,
+      delta: null,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $76,995 Bish's RV – Anderson, IN, Anderson, IN via RV Trader (36.5 ft). Ask only. RVT CAPTCHA-blocked; Trader-only. Lower asks excluded as Alpine Avalanche Edition. Length 36.5 ft from same-plan specs. Verified JDP miss: 2026/2025 have Alpine Avalanche Edition M-321 RL only — no base Avalanche; trade left blank (no wrong-line proxy)."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /verified JDP miss/i.test(span.text) &&
+            /Alpine Avalanche Edition M-321 RL only/i.test(span.text) &&
+            /no base Avalanche/i.test(span.text) &&
+            /no wrong-line proxy/i.test(span.text)
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(
+      deal?.notes.flat().some((span) => span.type === "link" && span.label === "RVT")
+    ).toBe(false)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Keystone+Rv-Avalanche+321RL-5040108874" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+
+    const editionTwin = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Alpine Avalanche Edition" &&
+        row.floor === "321RL" &&
+        row.year === 2026
+    )
+    expect(editionTwin).toMatchObject({
+      ask: 66988,
+      dealer: "RV Roadway, Calera, AL",
+      trade: 51615,
+      delta: 15373,
+    })
+    expect(deal?.trade).not.toBe(editionTwin?.trade)
+    expect(deal?.ask).not.toBe(editionTwin?.ask)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Avalanche" &&
+        row.floor === "302RS" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(sibling?.notes).toEqual([])
+
+    const nextBlank = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Cougar" &&
+        row.floor === "24RDS" &&
+        row.year === 2026
+    )
+    expect(nextBlank).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
+    })
+    expect(nextBlank?.notes).toEqual([])
+
+    const baseAlpine = deals.find(
+      (row) =>
+        row.manufacturer === "Keystone" &&
+        row.model === "Alpine" &&
+        row.floor === "321RL" &&
+        row.year === 2026
+    )
+    expect(baseAlpine).toBeUndefined()
   })
 
   it("applies Keystone Arcadia 3260RL ask and 2026 JDP trade", () => {
@@ -7888,6 +8007,12 @@ describe("deal data", () => {
         56500,
         "Bus Supply Company Inc, McComb, MS",
       ],
+      [
+        "Avalanche",
+        "321RL",
+        76995,
+        "Bish's RV – Anderson, IN, Anderson, IN",
+      ],
     ] as const
     const verifiedMiss = new Set(["297MK", "235ML", "295RL"])
     const askNoTrade = deals.filter(
@@ -8523,6 +8648,26 @@ describe("filters and sort", () => {
       dealer: "Fun Town RV – Amarillo, Amarillo, TX",
       trade: 53100,
       delta: 16898,
+    })
+
+    const avalanche = matching(deals, {
+      manufacturer: "Keystone",
+      year: "",
+      model: "Avalanche",
+    })
+    expect(avalanche).toHaveLength(2)
+    expect(avalanche.map((deal) => deal.floor)).toEqual(["302RS", "321RL"])
+    expect(avalanche.find((deal) => deal.floor === "321RL")).toMatchObject({
+      ask: 76995,
+      dealer: "Bish's RV – Anderson, IN, Anderson, IN",
+      trade: null,
+      delta: null,
+    })
+    expect(avalanche.find((deal) => deal.floor === "302RS")).toMatchObject({
+      ask: null,
+      dealer: "",
+      trade: null,
+      delta: null,
     })
 
     const arcadia = matching(deals, {

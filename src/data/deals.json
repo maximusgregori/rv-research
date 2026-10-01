@@ -9060,11 +9060,33 @@
     "manufacturer": "Keystone",
     "model": "Avalanche",
     "floor": "321RL",
-    "ask": null,
-    "dealer": "",
+    "ask": 76995,
+    "dealer": "Bish's RV – Anderson, IN, Anderson, IN",
     "trade": null,
     "delta": null,
-    "notes": []
+    "notes": [
+      [
+        {
+          "type": "text",
+          "text": "Lowest ask was Bish's RV – Anderson, IN, Anderson, IN, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Keystone+Rv-Avalanche+321RL-5040108874",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " as of 2026-10-01."
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": "Ask $76,995 Bish's RV – Anderson, IN, Anderson, IN via RV Trader (36.5 ft). Ask only. RVT CAPTCHA-blocked; Trader-only. Lower asks excluded as Alpine Avalanche Edition. Length 36.5 ft from same-plan specs. Verified JDP miss: 2026/2025 have Alpine Avalanche Edition M-321 RL only — no base Avalanche; trade left blank (no wrong-line proxy)."
+        }
+      ]
+    ]
   },
   {
     "year": 2026,
