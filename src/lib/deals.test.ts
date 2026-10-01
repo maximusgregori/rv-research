@@ -307,11 +307,12 @@ describe("deal data", () => {
       "Wildcat|35FL",
       "Wildcat|37GALLEY",
       "Wildwood Heritage Glen|286RL",
+      "Wildwood Heritage Glen|321DRL",
     ])
     const pricedForest = forest.filter((deal) =>
       pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedForest).toHaveLength(58)
+    expect(pricedForest).toHaveLength(59)
     const unpricedForest = forest.filter(
       (deal) => !pricedForestKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -610,7 +611,7 @@ describe("deal data", () => {
 
   it("keeps priced Brookstone and Chaparral rows without inventing values", () => {
     const priced = deals.filter((deal) => deal.ask != null)
-    expect(priced).toHaveLength(222)
+    expect(priced).toHaveLength(223)
 
     const brookstone = deals.find(
       (deal) => deal.model === "Brookstone" && deal.floor === "290RL"
@@ -4334,12 +4335,11 @@ describe("deal data", () => {
       (row) => row.floor === "321DRL"
     )
     expect(heritageGlen321).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 58718,
+      dealer: "San Antonio RVs",
+      trade: 57870,
+      delta: 848,
     })
-    expect(heritageGlen321?.notes).toEqual([])
   })
 
   it("applies Salem Hemisphere 321DRL ask and 2026 JDP trade", () => {
@@ -4414,12 +4414,11 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(heritageGlenTwin).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 58718,
+      dealer: "San Antonio RVs",
+      trade: 57870,
+      delta: 848,
     })
-    expect(heritageGlenTwin?.notes).toEqual([])
   })
 
   it("applies Salem Hemisphere 325RL ask and 2025 JDP proxy trade", () => {
@@ -4507,12 +4506,11 @@ describe("deal data", () => {
       (row) => row.floor === "321DRL"
     )
     expect(heritageGlen321).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 58718,
+      dealer: "San Antonio RVs",
+      trade: 57870,
+      delta: 848,
     })
-    expect(heritageGlen321?.notes).toEqual([])
   })
 
   it("applies Wildwood Heritage Glen 286RL ask and 2026 JDP trade", () => {
@@ -4547,6 +4545,68 @@ describe("deal data", () => {
         .some((span) => span.type === "link" && span.label === "JDP values")
     ).toBe(false)
     expect(deal?.notes.flat().some((span) => span.type === "link")).toBe(false)
+  })
+
+  it("applies Wildwood Heritage Glen 321DRL ask and 2026 JDP trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Wildwood Heritage Glen" &&
+        row.floor === "321DRL" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 58718,
+      dealer: "San Antonio RVs",
+      trade: 57870,
+      delta: 848,
+    })
+    expect(deal?.model).toBe("Wildwood Heritage Glen")
+    expect(deal?.floor).toBe("321DRL")
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $58,718 San Antonio RVs Seguin TX (RV Trader + RVT same listing), 36 ft New. Trade $57,870 = 2026 JDP Low Retail $64,300 × 0.9 (Wildwood Heritage Glen M-321DRL exact)."
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            /Ask \$58,718 San Antonio RVs Seguin TX/i.test(span.text) &&
+            /RV Trader \+ RVT same listing/i.test(span.text) &&
+            /Trade \$57,870 = 2026 JDP Low Retail \$64,300 × 0\.9/i.test(
+              span.text
+            ) &&
+            /Wildwood Heritage Glen M-321DRL exact/i.test(span.text)
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some((span) => span.type === "link" && span.label === "JDP values")
+    ).toBe(false)
+    expect(deal?.notes.flat().some((span) => span.type === "link")).toBe(false)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Forest River" &&
+        row.model === "Wildwood Heritage Glen" &&
+        row.floor === "286RL" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: 49995,
+      dealer: "Open Road RV – Monticello",
+      trade: 51300,
+      delta: -1305,
+    })
   })
 
   it("applies Sandpiper 3370RLS ask and 2025 JDP proxy trade", () => {
@@ -15402,14 +15462,14 @@ describe("filters and sort", () => {
       -2065, -2000, -1971, -1885, -1885, -1862, -1805, -1595, -1476, -1305,
       -1206,
       -1195, -1170, -831, -795, -586, -343, -110, -101, -30, -20, 390, 535, 573,
-      659, 1163, 1340, 1609, 1665, 1919, 2089, 2535, 3005, 3080, 3149, 3185, 3195,       3435, 3498, 3570, 4103, 4310, 4552,
+      659, 848, 1163, 1340, 1609, 1665, 1919, 2089, 2535, 3005, 3080, 3149, 3185, 3195,       3435, 3498, 3570, 4103, 4310, 4552,
       4644, 4790, 4875, 4970, 5127, 5178, 5243, 5244, 5385, 5386, 5480, 5514, 5774, 5834, 5889, 5890, 5965, 6144, 6414, 6438, 6471, 6540,
       6554, 6735, 6783, 6900, 7061, 7201, 7294, 7370, 7709, 7811, 7840, 7980, 8010, 8010, 8356, 8670, 8784, 8790, 8814, 8828, 9034,
       9073, 9294, 9314, 9324, 9692, 9794, 9835, 9864, 9865, 9877, 9960, 10050, 10308, 10414, 10421, 10493, 10589, 10708, 10859, 10859, 10984, 11385, 11395, 11413, 11685, 11726, 11736, 11884, 12053, 12223, 12283, 12378, 12650, 12650, 12731, 12745, 13013, 13013, 13019, 13075, 13165, 13194, 13360, 13584,
       13876, 14139, 14370, 14805, 15072, 15173, 15373, 15379, 15689, 15697, 15863, 16095, 16193, 16546, 16667, 16667, 16750, 16859, 16885, 16898, 17460, 17577, 17664, 17740, 17755, 18228, 18256, 18256, 19410, 19530, 21524, 21704, 21793, 22400, 22745, 22925, 23268, 25085, 25615, 25745, 25875,
       26440, 27135, 27222, 28855, 28866, 29438, 40600,
     ])
-    expect(empty.length).toBe(229)
+    expect(empty.length).toBe(228)
     expect(rows.slice(-empty.length).every((deal) => deal.delta == null)).toBe(
       true
     )
