@@ -12430,6 +12430,12 @@ describe("deal data", () => {
         97995,
         "RV Roadway Opelika, Opelika, AL",
       ],
+      [
+        "Montana High Country",
+        "300RK",
+        78989,
+        "Buckeye RV Wilmington, Wilmington, OH",
+      ],
     ] as const
     const verifiedMiss = new Set(["297MK", "235ML", "295RL"])
     const askNoTrade = deals.filter(
