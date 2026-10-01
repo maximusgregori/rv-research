@@ -5697,15 +5697,24 @@
     "manufacturer": "Forest River",
     "model": "Cedar Creek",
     "floor": "290RL",
-    "ask": 102297,
-    "dealer": "Dakota Discount RV, Rapid City, SD",
-    "trade": null,
-    "delta": null,
+    "ask": 74999,
+    "dealer": "Bill's Happy Camper RV Sales & Service, Mill Hall, PA",
+    "trade": 65205,
+    "delta": 9794,
     "notes": [
       [
         {
           "type": "text",
-          "text": "Lowest ask was Dakota Discount RV, Rapid City, SD, on "
+          "text": "Lowest ask was Bill's Happy Camper RV Sales & Service, Mill Hall, PA, on "
+        },
+        {
+          "type": "link",
+          "href": "https://www.rvtrader.com/listing/2026-Forest+River-Cedar+Creek+29RL-5039740272",
+          "label": "RV Trader"
+        },
+        {
+          "type": "text",
+          "text": " / "
         },
         {
           "type": "link",
@@ -5714,22 +5723,13 @@
         },
         {
           "type": "text",
-          "text": " / "
-        },
-        {
-          "type": "link",
-          "href": "https://www.rvtrader.com/listing/2026-Forest+River+Rv-Cedar+Creek+290RL-5041432897#sid=683751",
-          "label": "RV Trader"
-        },
-        {
-          "type": "text",
-          "text": " as of 2026-09-30."
+          "text": " as of 2026-10-01."
         }
       ],
       [
         {
           "type": "text",
-          "text": "Lowest organic ask $102,297 on both RV Trader and RVT (Dakota Discount RV, Rapid City SD). Trade blank: verified no exact M-290RL on 2025/2026 cedar-creek JDP pages (nearby M-29RL not mapped)."
+          "text": "Ask $74,999 RV Trader (Bill's Happy Camper, Mill Hall PA), 33 ft, listed as Cedar Creek 29RL — treated as catalog 290RL. RVT literal 290RL low $102,297 (Dakota Discount, Rapid City SD, 33 ft). Skipped Premium $74,995; skipped Experience 29RL $69,900 (wrong model line). Trade = 2026 JDP Low Retail $72,450 × 0.9 = $65,205 (real 2026 Cedar Creek M-29RL matching catalog 290RL)."
         }
       ]
     ]
