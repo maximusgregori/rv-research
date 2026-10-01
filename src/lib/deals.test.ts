@@ -322,11 +322,11 @@ describe("deal data", () => {
     expect(jayco.map((deal) => [deal.model, deal.floor])).toEqual(
       JAYCO_FIFTH_WHEELS.map(([model, floor]) => [model, floor])
     )
-    const pricedJaycoKeys = new Set(["Eagle|28CRT"])
+    const pricedJaycoKeys = new Set(["Eagle|28CRT", "Eagle|321RSTS"])
     const pricedJayco = jayco.filter((deal) =>
       pricedJaycoKeys.has(`${deal.model}|${deal.floor}`)
     )
-    expect(pricedJayco).toHaveLength(1)
+    expect(pricedJayco).toHaveLength(2)
     const unpricedJayco = jayco.filter(
       (deal) => !pricedJaycoKeys.has(`${deal.model}|${deal.floor}`)
     )
@@ -3240,12 +3240,11 @@ describe("deal data", () => {
         row.year === 2026
     )
     expect(rsts).toMatchObject({
-      ask: null,
-      dealer: "",
-      trade: null,
-      delta: null,
+      ask: 52698,
+      dealer: "Jayco Brooksville, Brooksville, FL",
+      trade: 46260,
+      delta: 6438,
     })
-    expect(rsts?.notes).toEqual([])
 
     const htTwin = deals.find(
       (row) =>
@@ -3261,6 +3260,79 @@ describe("deal data", () => {
       delta: null,
     })
     expect(htTwin?.notes).toEqual([])
+  })
+
+  it("applies Jayco Eagle 321RSTS ask and 2026 JDP trade", () => {
+    const deal = deals.find(
+      (row) =>
+        row.manufacturer === "Jayco" &&
+        row.model === "Eagle" &&
+        row.floor === "321RSTS" &&
+        row.year === 2026
+    )
+    expect(deal).toMatchObject({
+      ask: 52698,
+      dealer: "Jayco Brooksville, Brooksville, FL",
+      trade: 46260,
+      delta: 6438,
+    })
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "text" &&
+            span.text ===
+              "Ask $52,698 RV Trader (Jayco Brooksville, FL), 35.83 ft; RVT organic $54,991 Hammond. Trade from 2026 JDP Low Retail $51,400 × 0.9 = $46,260 (Jayco Eagle Series M-321 RSTS). Source: https://www.jdpower.com/rvs/2026/jayco/m-321-rsts/6648121/values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.jdpower.com/rvs/2026/jayco/m-321-rsts/6648121/values" &&
+            span.label === "JDP values"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvtrader.com/listing/2026-Jayco-EAGLE+321RSTS-5042060324" &&
+            span.label === "RV Trader"
+        )
+    ).toBe(true)
+    expect(
+      deal?.notes
+        .flat()
+        .some(
+          (span) =>
+            span.type === "link" &&
+            span.href ===
+              "https://www.rvt.com/buy/details/2026-jayco-eagle-321rsts/4de5c488-1e4f-11f1-beaa-02c8259c7411/" &&
+            span.label === "RVT"
+        )
+    ).toBe(true)
+
+    const sibling = deals.find(
+      (row) =>
+        row.manufacturer === "Jayco" &&
+        row.model === "Eagle" &&
+        row.floor === "28CRT" &&
+        row.year === 2026
+    )
+    expect(sibling).toMatchObject({
+      ask: 56500,
+      dealer: "Bus Supply Company Inc, McComb, MS",
+      trade: null,
+      delta: null,
+    })
   })
 
   it("applies Sanibel 34LOUNGE ask and 2026 JDP trade", () => {
